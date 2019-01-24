@@ -1,0 +1,194 @@
+\documentclass[12pt,a4paper]{report}
+
+%\usepackage[left=3.5cm, right=3cm, top=4.8cm, bottom=4.8cm]{geometry}
+\textwidth = 390pt
+\textheight = 592pt
+\oddsidemargin = 45pt
+
+\makeatletter
+\renewcommand \dotfill {\leavevmode \cleaders \hb@xt@ 0.75em{\hss .\hss }\hfill \kern \z@}
+\makeatother
+
+\usepackage{graphicx}
+\graphicspath{{IMMAGINI/}}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{subfigure}
+\usepackage{afterpage}
+\usepackage{amsmath,amssymb}            
+\usepackage{rotating}  
+\usepackage{fancyhdr}  
+\usepackage[scriptsize]{caption} 
+\hyphenation{a-gen-tiz-za-zio-ne}
+%\usepackage[top=3cm,bottom=4cm,right=4cm,left=4cm]{geometry}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{filecontents}
+\usepackage{listings}
+\usepackage{nomencl}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
+\usepackage{epigraph}
+
+\makenomenclature
+
+\let\counterwithout\relax
+\let\counterwithin\relax
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+%-------------MESSI IO (FT)
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{50pt}{25pt}
+\titlespacing{\subsection}{0pt}{50pt}{25pt}
+
+%\setlength{\abovedisplayshortskip}{100pt}
+%\setlength{\belowdisplayshortskip}{100pt}
+%\setlength{\abovedisplayskip}{100pt}
+%\setlength{\belowdisplayskip}{100pt}
+
+%--------------------------------------------------- FINE (FT)
+
+\setlength{\abovecaptionskip}{12pt plus 3pt minus 2pt}
+\setlength{\belowcaptionskip}{12pt plus 3pt minus 2pt} %aggiunto io - FT
+\setlength{\textfloatsep}{12pt plus 3.0pt minus 4.0pt}
+\setlength{\floatsep}{12pt plus 3.0pt minus 4.0pt}
+\setlength{\intextsep}{12pt plus 3.0pt minus 4.0pt}
+%\usepackage[skip=2ex]{caption} % spazio tra figura e caption
+\setlength{\parindent}{0cm}
+
+
+%\linespread{1.2}
+\usepackage[nodisplayskipstretch]{setspace}
+\setstretch{1.2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[italian]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+
+
+
+%\renewcommand{\captionfont}{\normalfont \sffamily \itshape \small}
+\pagestyle{empty}
+
+\begin{document}
+
+%---------------------MESSI IO (FT)
+\abovedisplayshortskip= 10pt
+\belowdisplayshortskip= 10pt
+%--------------------FINE
+
+%\\renewcommand{\tablename}{Tabella}
+%\\renewcommand{\figurename}{Figura}
+%\\renewcommand{\chaptername}{Capitolo}
+%\\renewcommand{\contentsname}{Indice}
+%\\renewcommand{\listfigurename}{Lista Figure}
+%\\renewcommand{\listtablename}{Lista Tabelle}
+%\\renewcommand{\bibname}{Bibliografia}
+
+\include{frontespizio}
+\thispagestyle{empty} \normalfont \cleardoublepage
+
+\include{dedica}
+\thispagestyle{empty}  \cleardoublepage
+
+
+\setcounter{page}{3}
+\pagenumbering{Roman}
+
+%Indice
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+
+
+\include{ringraziamenti}
+\thispagestyle{empty} \vspace*{.75truecm} \normalfont \cleardoublepage
+
+
+\include{abstract}
+\thispagestyle{empty} \vspace*{.75truecm} \cleardoublepage
+\pagestyle{plain}\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
+%\fancyhead[LE,RO]{\bfseries\thepage}    
+                                   
+%\renewcommand{\thefigure}{\arabic{figure}.\arabic{section}}
+%\renewcommand{\thetable}{\arabic{table}}
+                                   
+                                        
+%\fancyhead[RE]{\bfseries\leftmark}    
+%\fancyhead[LO]{\bfseries\rightmark}     
+%\renewcommand{\headrulewidth}{0.3pt} 
+
+\pagenumbering{arabic} 
+\setcounter{page}{1}
+
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+\include{conclusions}
+
+\cleardoublepage
+
+%----Appendice tabelle e figure----
+
+\addcontentsline{toc}{chapter}{\listfigurename} %\dotfill aggiungerlo per i puntini
+\listoffigures
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+
+
+
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\include{appendix A}
+
+
+
+
+\leavevmode\thispagestyle{empty}\newpage
+
+\phantomsection
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+%\nocite{*}
+
+%\appendix
+
+%\pagestyle{fancy} 
+%\fancyfoot{}                                               
+%\renewcommand{\chaptermark}[1]{\markboth{\appendixname\ \thechapter.\ #1}{}} 
+%\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
+%\fancyhead[LE,RO]{\bfseries\thepage}    
+                                       
+%\fancyhead[RE]{\bfseries\leftmark}    
+%\fancyhead[LO]{\bfseries\rightmark}     
+%\renewcommand{\headrulewidth}{0.3pt} 
+
+
+
+
+\end{document}
+
+
+
+
+
