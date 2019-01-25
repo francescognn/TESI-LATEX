@@ -230,7 +230,7 @@ The definition of prediction model can be done in several ways like inpulse resp
 
 Let's define the discrete linear time invariant (LTI) model of the process in state space form as:
 
-\begin{equation}
+\begin{equation} \label{system_evolution}
 	\begin{split}
 		\begin{cases}
 			x_{k+1}&=Ax_k+Bu_k \\
@@ -241,10 +241,9 @@ Let's define the discrete linear time invariant (LTI) model of the process in st
 
 where $x \in R^{n_x}$ is the state, $y \in R^{n_y}$ and $u \in R^m$ are respectively the output and the control action and $A$, $B$ and $C$ are the matrices of the system. The prediction of the output for this model is given then by:
 
-\begin{equation}
+\begin{equation}\label{system_prediction}
 	\hat{y}(k\ |\ k+i)=C\hat{x}(k\ |\ k+i)=C\left[A^i x(k) + \sum_{j=1}^{i} A^{j-1}Bu(k\ |\ k+i-j)\right]
 \end{equation}
-\label{system_prediction}
 
 which can be defined in matrix form as: 
 \begin{equation}
@@ -290,7 +289,7 @@ R	 		&		 0	  	&     \dots   &  0 \\
 
 Substituting the \ref{system_prediction} we obtain:
 
-\begin{equation}
+\begin{equation}\label{costfunction_expr}
 \begin{split} 
  J(x_{k|0},\textbf{u})&=x_{k|0}^T Q x_{k|0} + (\bar{S}\textbf{u}+\bar{T}x_{k|0})^T\bar{Q}(\bar{S}\textbf{u}+\bar{T}x_{k|0}) + \textbf{u}^T\bar{R}\textbf{u} \\ 
  &= \frac{1}{2}\textbf{u}^T \underbrace{2(\bar{R}+\bar{S}^T\bar{Q}\bar{S})}_{H}\textbf{u} + x_{k|0}^T\underbrace{2\bar{T}^T\bar{Q}\bar{S}}_{F}\textbf{u}+\frac{1}{2}x_{k|0}\underbrace{2(Q+\bar{T}^T\bar{Q}\bar{T})}_{Y}x_{k|0} \\
@@ -303,7 +302,7 @@ Once we have express the cost as a function of the measured initial state $x_k(0
 \end{equation}
 \label{grad_obj_fun}
 $\textbf{u}$ is then derived inverting the \ref{grad_obj_fun}:
-\begin{equation*}
+\begin{equation*}\label{MPC_control_law}
 	\textbf{u}= \left[
 	\begin{matrix}
 			u_{k|0} \\ u_{k|1} \\ u_{k|2} \\ \vdots \\ u_{k|N-1}
@@ -314,11 +313,75 @@ The contorl law generated that can be derivated is then:
 \begin{equation}
 u(t)=-\left[\ I\ 0\ \dots\  0\ \right]H^{-1}Fx(t)\triangleq Kx(t)
 \end{equation}
-aa
+The same result can be obtained from DARE (discrete-time Algebraic Riccati Equation) as done in \cite{magni2006complementi}.
+By means of this result it is possible to implement the MPC with a simple feedback loop. Since it is possible, the derivation of \ref{MPC_control_law} is done offline in this case, the online controller will then be fast given that the computational effort depend almost only on the inversion of $H$. 
+Anyway the assuptions of Linear and time invariant system are considerably strong, many of practical systems present nonlinearities an time varying relationship. Because of that, different ways to minimize the \ref{costfunction_expr} have to be found.
+Usually what is done in practice is to use algorithms to perform numerical optimization to find an approximation of the optimal solution. The main issue in the solution of the optimization problem is related to the well-definiteness of the problem. Indeed the correct choice of objective function form has to be done. usually the quadratic form allows to define convex problems in order to guarantee the unicity of the solution.
 
- 
+\subsection{Constraints}
+
+In order to take into account feasibility sets and to gurantee stability, constraints are usually added to the optimization problem that becomes: 
+
+\begin{equation} \label{MPC_problem_constrained}
+\begin{split}
+		&\qquad min_\textbf{u}\ J(x_{k|0},\textbf{u}) \\
+		\textnormal{where}\ \  
+		 J(x_{k|0},\textbf{u}) &= \sum_{i=0}^{N-1} \left[\hat{y}_{k|i}^T Q \hat{y}_{k|i} + u_{k|i}^TRu_{k|i} \right] + \hat{y}_{k|N}^T P \hat{y}_{k|N} \\
+		\textnormal{respecting}\ &  	
+		\begin{cases}
+			\hat{x}_{k+1}&=A\hat{x}_k+Bu_k \\
+			\hat{y}_{k+1}&=C\hat{x}_k
+		\end{cases} \\
+		\textnormal{s.t.}\qquad
+		&\ \ \ \ 0 \leq f(x)\leq 0 \\
+		&\ \ \ \ 0 \leq g(u)\leq 0 \\
+	\end{split}	
+\end{equation}
+
+This notation allows us to introduce both equality and inequality constraints. In paractice the constraints are divided into: 
+\begin{itemize}
+ \item \textbf{Input constraints}: generally represent philical limitation for the control $\textbf{u}$ and are defined as "hard" constraints.
+ 	\item \textbf{State/Output constraints}: usually come from rescrictions into the operational space, they can both be "soft" or "hard".
+\end{itemize} 
+
+Hard constraints on the state or on the output gives generally complication in the implementation but soft constraints have to be defined properly according to the application. Moreover constraints allows a resonable control action to be generated when measured or estimated states moves outside the feasible sets. Given this outline, many are the possible constraints definition: Band Constraints, Overshoot Constraints, Monotonic Behaviour, Nonminimum Phase Behaviour, Actuator Nonlinearities, Terminal State Equality Constraints, Terminal Set Constraints and more. Given that it is possible to define different constraints we will refer to terminal state equality constraint as it will be useful for the stability proof later on. \\
+The terminal state constraint is basically defined as: 
+
+\begin{equation}
+\hat{y}_{k|N}=C\left[A^i x_{k|0} + \sum_{j=1}^{i} A^{j-1}Bu_{k|k+N-j}\right]=\bar{y}_N
+\end{equation}
+that can be rewritten following the form in \ref{MPC_problem_constrained}: 
+\begin{equation}
+0 \leq \hat{y}_{k|N}-\bar{y}_N \leq 0
+\end{equation} 
+
+\subsection{Stability and Feasibility}
+
+In this section stability and feasibility of MPC are investigated in order to give a clear understanding of what done to proof stability of the MPC we developed. To assess feasibility we need to investigate and proff is the problem have a solution and then to proof recursive feasibility, so the system accept a solution $\forall\  t>0$. As well as feasibility, stability has to be proof in order to have convergence of the performed trajecotry. We will refer to a regulation problem, so the set point will be defined as the origin.
+The set $X_{k}$ of initial states $x_{k|0}$ defined for any instant $k$ that ensure feasibility for the MPC problem \ref{MPC_problem_constrained} is defined as:
+
+\begin{equation}
+	\begin{split}
+		X_{k}=\lbrace\ x_{k|0}\in\mathbb{R}^n\ |\ \exists\  (u_{k|0}, \dots , u_{k|N-1})\ \textnormal{s.t.}\ x_{k|i} \in X, u_{k|i} \in U,\ &  \\ 
+		\forall\  i=0,\dots,N-1,\ x_{k|N} \in X_f\ \rbrace& \\ 
+	\end{split}
+\end{equation}
+where $x_{k|i+1}$ is propagated following the \ref{system_evolution}
+
+% da aggiungere approfondimento su feasibility e stability
+
+\begin{figure}%
+\centering
+\subfigure[Feasibility points]{%
+\label{fig:first}%
+\includegraphics[scale=0.2]{feasibility_image1}}%
+\qquad
+\subfigure[Feasibility region]{%
+\label{fig:second}%
+\includegraphics[scale=0.25]{feasibility_region}}%
+\caption{sample}
+\end{figure}
 
 
-\subsection{Stability}
 \subsection{NMPC}
 \subsection{LTV MPC} %???
