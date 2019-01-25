@@ -173,7 +173,7 @@ It is possible to further simplify the dynamic model exploiting a useful propert
 A(q)^T G(q) = 0 \qquad\textrm{or}\qquad G(q)^T A(q) = 0
 \end{equation}
 So, premultiplying the dynamic model by $G(q)^T$:
-\begin{equation}
+\begin{equation} \label{premultiplicationbyG}
 G^T(q)\left(B(q)\ddot{q}+C(q,\dot{q})\dot{q}\right) = G^T(q)S(q)\tau
 \end{equation}
 Reducing the $n$ differential equations to a system of $m$ differential equations without Lagrange multipliers.
@@ -547,7 +547,7 @@ Recovering the kinetic energy expression, we can now relate the velocities $ {\d
 	{\dot{\mathbf{p}*}}_i={\dot{\mathbf{p}}}_{l_i}+\boldsymbol{\omega}_i\times\mathbf{r}_i={\dot{\mathbf{p}}}_{l_i}+S(\boldsymbol{\omega}_i)\mathbf{r}_i
 \end{equation}
 Substituting this expression in the equation of the kinetic energy and exploiting the properties of the integral of the centre of mass we obtain.
-\begin{equation}
+\begin{equation} \label{iniziodinamica}
 	\mathcal{T}_{l_i}= \frac{1}{2}m_{l_i}{{\dot{\mathbf{p}}}_{l_i}}^T{\dot{\mathbf{p}}}_{l_i}+\frac{1}{2}{\boldsymbol{\omega}_i}^TR_iI_{l_i}^iR_i^T\boldsymbol{\omega}_i
 \end{equation}
 \begin{equation}
@@ -614,6 +614,7 @@ So the final equation of the manipulator dynamic model is:
 Where $g(q)$ is the gravitational vector that represents the moments acting on links due to gravity force.
 
 \section{Mobile Manipulator Model}
+\subsection{Kinematics}
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{MM_kinematics}
@@ -622,14 +623,20 @@ Where $g(q)$ is the gravitational vector that represents the moments acting on l
 \end{figure}
 Considering the general case of a mobile manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location of the end effector as a function of both the arm and base generalized coordinates.
 \begin{equation}\label{dirkinMM}
-	X_{EE}=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(q)=f\left(\left[\begin{matrix}q_a\\q_b \end{matrix}\right]\right)
+	X_{EE}=\left[\begin{matrix}\mathbf{p}_{EE}\\\Phi\end{matrix}\right]=f(q)=f\left(\left[\begin{matrix}q_b\\q_a \end{matrix}\right]\right)
 \end{equation}
-Where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and$\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation that can be expressed with different conventions like Azimut-Elevation-Rotation or Roll-Pitch-Yaw.
-It is possible to define the function $f$ of Eq.\ref{dirkinMM} adding the rototranslation matrix $A_{base}^{global}$ relative to the mobile base motion, to the direct kinematics of the arm \ref{AAAA}.
+Where $\mathbf{p}_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and$\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation that can be expressed with different conventions like Azimut-Elevation-Rotation or Roll-Pitch-Yaw. As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{MM_kin} is
+\begin{equation*}
+\begin{split}
+	x_{EE}&=x_b+a\cos\theta-b\sin\theta+l_1\cos\left(\theta+\theta_1\right)+l_2\cos\left(\theta+\theta_1+\theta_2\right)\\
+	y_{EE}&=y_b+a\sin\theta-b\cos\theta+l_1\sin\left(\theta+\theta_1\right)+l_2\sin\left(\theta+\theta_1+\theta_2\right)
+\end{split}
+\end{equation*}
+It is possible to define the function $f(q)$ of Eq.\ref{dirkinMM} adding the rototranslation matrix $A_{base}^{global}$ relative to the mobile base motion, to the direct kinematics of the arm \ref{AAAA}. In the case of the previous example:
 \begin{equation}
 	A_{base}^{global}=\left[\begin{matrix}
-		\cos\theta&-\sin\theta&0&x_b+\sqrt{a^2+b^2}\cos\theta\\
-		\sin\theta&\cos\theta&0&y_B+\sqrt{a^2+b^2}\sin\theta\\
+		\cos\theta&-\sin\theta&0&x_b+a\cos\theta-b\sin\theta\\
+		\sin\theta&\cos\theta&0&y_b+a\sin\theta-b\cos\theta\\
 		0&0&1&h_{base}\\
 		0&0&0&1
 	\end{matrix}\right]
@@ -638,20 +645,111 @@ So the forward kinematics can be obtained consequently:
 \begin{equation}
 A_{ee}^{global}=A_{base}^{global}A_1^{base}A_2^1\cdots A_{ee}^{ee-1}
 \end{equation}
-Differentiating $f$ we can obtain the differential forward kinematics of the Mobile Manipulator. 
+\subsubsection{Redundancy}
+As we had said before the forward kinematics of a system is always solvable, but for redundant systems like Mobile Manipulators the inverse kinematics problem has infinite solutions. 
+...........................
+\subsection{Dynamics}
+Differentiating $f$, the differential forward kinematics of the Mobile Manipulator can be obtained. 
+\begin{equation}\label{eq:dotx_EE}
+	\dot{X}_{EE}=\mathcal{J}_b(q)\dot{q}_b+\mathcal{J}_a(q)\dot{q}_a
+\end{equation}
+Where the columns of $\mathcal{J}_a(q)=\frac{\partial f}{\partial q_a}(q_a,\theta)$ can be obtained similarly to the way described in section \ref{jacobians}.
 \begin{equation}
-	\dot{X}_{EE}=\frac{\partial f}{\partial q_a}(q_a,\theta)\dot{q}_a+\frac{\partial f}{\partial q_b}(q_a,\theta)\dot{q}_b
+\mathit{j}_{P_j}^{(EE)}=
+	\begin{cases}
+	z_{j-1} & \text{for a \textit{prismatic} joint} \\
+	z_{j-1}\times \left(\mathbf{p}_{EE}-\mathbf{p}_{j-1}\right) & \text{for a \textit{revolute} joint}	
+	\end{cases}                                             
 \end{equation}
-Where $\frac{\partial f}{\partial q_a}$ is the same as described in section \ref{jacobians}, and $\frac{\partial f}{\partial q_b}(q_a,\theta)$ can be obtained at the same way considering $x$ and $y$ as prismatic joints and $\theta$ as a revolute joint of the compound system.
-In doing this the nonholonomic constraint for the mobile platform should be taken into account:
-As we had said before the forward kinematics of a system is always solvable, but for redundant systems like mobile manipulators the inverse kinematics problem has infinite solutions. 
-\begin{equation}\label{dynamicsMM}
-B\left(q\right)\ddot{q}+C\left(q,\dot{q}\right)\dot{q}+g\left(q\right)=\ \tau
+\begin{equation}
+	\mathit{j}_{O_j}^{(EE)}= 
+	\begin{cases}
+	0 & \text{for a \textit{prismatic} joint} \\
+	z_{j-1} & \text{for a \textit{revolute} joint}	
+	\end{cases} 
 \end{equation}
-
-
-
-
+and $\mathcal{J}_b(q)=\frac{\partial f}{\partial q_b}(q_a,\theta)$ can be obtained at the same way considering $x$ and $y$ as prismatic joints and $\theta$ as a revolute joint of the compound system.\\
+In doing this the nonholonomic constraint of the mobile platform \ref{G} should be taken into account:
+\begin{equation}
+	\mathcal{J}_b(q)\dot{q}_b=\mathcal{J}_b(q)G(q)v=\mathcal{J}_v(\theta)v
+\end{equation}
+Therefore is now possible to reformulate eq \ref{eq:dotx_EE} in a compact form to express the end effector traslational and rotational velocities as a function of the 8-elements input vector of joints and vehicle velocities.
+\begin{equation}
+\dot{X}_{EE}=\left[\begin{matrix}
+\mathcal{J}_v(\theta) & \mathcal{J}_a(q)
+\end{matrix}\right]\left[\begin{matrix}v\\\dot{q_a} \end{matrix}\right]
+\end{equation}
+Once known the expessions of Jacobians $\mathcal{J}_b(q)$ and $\mathcal{J}_a(q)$, equations from \ref{iniziodinamica} to \ref{dynamics} can be applied to the Mobile Manipulator case as if it were a compound manipulator, obtaining:
+\begin{equation}
+B\left(q\right)\left[
+\begin{matrix}\ddot{q}_b\\\ddot{q}_a\\
+\end{matrix}
+\right]+C\left(q,\dot{q}\right)\left[
+\begin{matrix}
+\dot{q}_b\\\dot{q}_a\\
+\end{matrix}\right]+g\left(q\right)= \left[
+\begin{matrix}
+\tau_b\\\tau_a\\
+\end{matrix}\right]+\left[
+\begin{matrix}
+A(q_b)\\0\\
+\end{matrix}\right]\lambda
+\end{equation}
+\begin{equation}
+\begin{split}
+\left[
+\begin{matrix}
+B_b(q)&B_{ba}(q)\\
+B_{ab}(q)&B_a(q)
+\end{matrix}\right]\left[
+\begin{matrix}
+\ddot{q}_b\\\ddot{q}_a
+\end{matrix}\right]&\\ +\left[
+\begin{matrix}
+C_b(q,\dot{q})&C_{ba}(q,\dot{q})\\
+C_{ab}(q,\dot{q})&C_a(q,\dot{q})
+\end{matrix}\right]\left[
+\begin{matrix}
+\dot{q}_b\\\dot{q}_a
+\end{matrix}\right] &\\ +\left[
+\begin{matrix}
+0\\g(q_a)
+\end{matrix}\right]	&= \left[
+\begin{matrix}
+\tau_b\\\tau_a
+\end{matrix}\right]+\left[
+\begin{matrix}
+A(q_b)\\0\\
+\end{matrix}\right]\lambda
+\end{split}	
+\end{equation}
+Where also the Lagrange multipliers term has been added to take into account the nonholonomic constraint on the motion of the base. \\Similarly to the transformation done in \ref{premultiplicationbyG}, the following expression can be obtained:
+\begin{equation}
+\begin{split}
+\left[\begin{matrix}G^T(q_b)B_b(q)&G^T(q_b)B_{ba}(q)\\B_{ab}(q)&B_a(q)\\\end{matrix}\right]\left[\begin{matrix}\ddot{x
+q}_b\\\ddot{q}_a\\\end{matrix}\right] &\\
++\left[\begin{matrix}G^T(q_b)C_a(q,\dot{q})&G^T(q_b)C_{ba}(q,\dot{q})\\C_{ab}(q,\dot{q})&C_a(q,\dot{q})\\\end{matrix}\right]\left[\begin{matrix}\dot{q}_b\\\dot{q}_a\\\end{matrix}\right] &\\
++\left[\begin{matrix}0\\g(q_a)\\\end{matrix}\right]
+&= \left[\begin{matrix}G^T(q_b)\tau_b\\\tau_a\\\end{matrix}\right]
+\end{split}
+\end{equation}
+The columns of $G$ are a basis of the null space of $A(x)T$, so the Lagrange multipliers term is set to zero.
+If we now consider the kinematic equation of the base \ref{G}:
+\begin{equation}
+\left[\begin{matrix}\dot{q}_b\\\dot{q}_a\\\end{matrix}\right]=\left[\begin{matrix}G(q_b)&0\\0&I\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}_a\\\end{matrix}\right]
+\end{equation}
+Whose derivative is:
+\begin{equation}
+\ddot{q}_b=G\left(q_b\right)\dot{v}+\dot{G}\left(\dot{q}_b,q_b\right)v
+\end{equation}
+\begin{equation}
+\left[\begin{matrix}\ddot{q}_b\\\ddot{q}_a\\\end{matrix}\right]=\left[\begin{matrix}G(q_b)&0\\0&I\\\end{matrix}\right]\left[\begin{matrix}\dot{v}\\\ddot{q}_a\\\end{matrix}\right]+\left[\begin{matrix}\dot{G}\left(\dot{q}_b,q_b\right)&0\\0&0\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}_a\\\end{matrix}\right]
+\end{equation}
+If we substitute these expressions in the dynamic model of the mobile manipulator:
+\begin{equation} \label{dynamicsMM}
+\left[\begin{matrix}G^TB_bG&G^TB_{ba}\\B_{ab}G&B_a\\\end{matrix}\right]\left[\begin{matrix}\dot{v}\\\ddot{q}_a\\\end{matrix}\right]+\left[\begin{matrix}G^TB_b\dot{G}+G^TC_bG&G^TC_{ba}\\B_{ab}\dot{G}+C_{ab}G&C_a\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}_a\\\end{matrix}\right]+\left[\begin{matrix}0\\g\\\end{matrix}\right]=\ \left[\begin{matrix}G^T\tau_b\\\tau_a\\\end{matrix}\right]
+\end{equation}
+Where the parenthesis have not been transcribed in order to have a compact expression.
 
 \subsection{Mixed Kinematics and Dynamics Model}
 The idea of the following model is to describe kinematically the mobile base and dynamically the manipulator, in order to have as inputs:
@@ -659,108 +757,24 @@ The idea of the following model is to describe kinematically the mobile base and
 	\item[--] the torques applied at the manipulator joints
 	\item[--] the longitudinal and angular velocity of the mobile base.
 \end{itemize}
-For this purpose, the kinematic equation of the mobile base will be used within the dynamic model of the whole mobile manipulator. 
-We will notate the variables in the following way.\\
-Mobile base coordinates: $x= \left[\begin{matrix}x\\y\\\theta\end{matrix}\right]$\\
-Manipulator coordinates: $ q=\left[\begin{matrix}\theta_1\\\theta_2\\\begin{matrix}\vdots\\\theta_6\\\end{matrix}\\\end{matrix}\right]$\\
-Vector of longitudinal and angular velocity of the base: $v= \left[\begin{matrix}v_{long}\\\omega\\\end{matrix}\right]$\\
-Writing down the dynamic equation of the entire mobile manipulator, which can be obtained as described in section \ref{sec:dynamics}:
-\begin{equation}
-	B\left(x,q\right)\left[
-		\begin{matrix}\ddot{x}\\\ddot{q}\\
-	\end{matrix}
-	\right]+C\left(x,\dot{x},q,\dot{q}\right)\left[
-	\begin{matrix}
-		\dot{x}\\\dot{q}\\
-	\end{matrix}\right]+g\left(x,q\right)= \left[
-	\begin{matrix}
-		\tau_x\\\tau_q\\
-	\end{matrix}\right]+\left[
-	\begin{matrix}
-		A(x)\\0\\
-	\end{matrix}\right]\lambda
-\end{equation}
-\begin{equation}
-\begin{split}
-	\left[
-	\begin{matrix}
-	B_x(x,q)&B_{xq}(x,q)\\
-	B_{qx}(x,q)&B_q(x,q)
-	\end{matrix}\right]\left[
-	\begin{matrix}
-	\ddot{x}\\\ddot{q}
-	\end{matrix}\right]&\\ +\left[
-	\begin{matrix}
-	C_x(x,\dot{x},q,\dot{q})&C_{xq}(x,\dot{x},q,\dot{q})\\
-	C_{qx}(x,\dot{x},q,\dot{q})&C_q(x,\dot{x},q,\dot{q})
-	\end{matrix}\right]\left[
-	\begin{matrix}
-	\dot{x}\\\dot{q}
-	\end{matrix}\right] &\\ +\left[
-	\begin{matrix}
-	0\\g(q)
-	\end{matrix}\right]	&= \left[
-	\begin{matrix}
-	\tau_x\\\tau_q\\
-	\end{matrix}\right]+\left[
-	\begin{matrix}
-	A(x)\\0\\
-	\end{matrix}\right]\lambda
-\end{split}	
-\end{equation}
-Premultiplying by $G^T$ only the rows relative to the base coordinates:
-\begin{equation}
-\begin{split}
-	\left[\begin{matrix}G^T(x)B_x(x,q)&G^T(x)B_{xq}(x,q)\\B_{qx}(x,q)&B_q(x,q)\\\end{matrix}\right]\left[\begin{matrix}\ddot{x}\\\ddot{q}\\\end{matrix}\right] &\\
-	+\left[\begin{matrix}G^T(x)C_x(x,\dot{x},q,\dot{q})&G^T(x)C_{xq}(x,\dot{x},q,\dot{q})\\C_{qx}(x,\dot{x},q,\dot{q})&C_q(x,\dot{x},q,\dot{q})\\\end{matrix}\right]\left[\begin{matrix}\dot{x}\\\dot{q}\\\end{matrix}\right] &\\
-	+\left[\begin{matrix}0\\g(q)\\\end{matrix}\right]
-	&= \left[\begin{matrix}G^T(x)\tau_x\\\tau_q\\\end{matrix}\right]
-\end{split}
-\end{equation}
-
-The columns of $G$ are a basis of the null space of $A(x)T$, so the Lagrange multipliers term is set to zero.
-If we now consider the kinematic equation of the base \ref{G}:
-\begin{equation}
-	\left[\begin{matrix}\dot{x}\\\dot{q}\\\end{matrix}\right]=\left[\begin{matrix}G(x)&0\\0&I\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}\\\end{matrix}\right]
-	\end{equation}
-Whose derivative is:
-\begin{equation}
-	\ddot{x}=G\left(x\right)\dot{v}+\dot{G}\left(\dot{x},x\right)v
-\end{equation}
-\begin{equation}
-	\left[\begin{matrix}\ddot{x}\\\ddot{q}\\\end{matrix}\right]=\left[\begin{matrix}G(x)&0\\0&I\\\end{matrix}\right]\left[\begin{matrix}\dot{v}\\\ddot{q}\\\end{matrix}\right]+\left[\begin{matrix}\dot{G}\left(\dot{x},x\right)&0\\0&0\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}\\\end{matrix}\right]
-\end{equation}
-If we substitute these expressions in the dynamic model of the mobile manipulator:
-\begin{equation} \label{kinodyn}
-	\left[\begin{matrix}G^TB_xG&G^TB_{xq}\\B_{qx}G&B_q\\\end{matrix}\right]\left[\begin{matrix}\dot{v}\\\ddot{q}\\\end{matrix}\right]+\left[\begin{matrix}G^TB_x\dot{G}+G^TC_xG&G^TC_{xq}\\B_{qx}\dot{G}+C_{qx}G&C_q\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}\\\end{matrix}\right]+\left[\begin{matrix}0\\g\\\end{matrix}\right]=\ \left[\begin{matrix}G^T\tau_x\\\tau_q\\\end{matrix}\right]
-\end{equation}
-Where the parenthesis have not been transcribed in order to have a compact expression.
-What now we are interested in is the dynamic equation of only the manipulator part, i.e. the second row of \ref{kinodyn}.
-\begin{equation}
-	\left[\begin{matrix}B_{qx}G&B_q\\\end{matrix}\right]\left[\begin{matrix}\dot{v}\\\ddot{q}\\\end{matrix}\right]+\left[\begin{matrix}B_{qx}\dot{G}+C_{qx}G&C_q\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}\\\end{matrix}\right]+g=\ \tau_q
-\end{equation}
 $v$, which is the velocity vector of the base, is the input vector of the kinematic model of the base. The idea is to use $v$ and $\dot{v}$ as inputs also in the dynamic model of the manipulator. 
-Rearranging the previous equation we obtain:
+For this purpose, we exploit the fact that the kinematic relations of the mobile base are already been used within the dynamic model of the whole mobile manipulator. \\Focusing on the dynamic equation of only the manipulator part, i.e. the second row of \ref{dynamicsMM}.
 \begin{equation}
-	\left[B_q\right]\ddot{q}+\left[C_q\right]\dot{q}+g=\ \tau_q-\left[B_{qx}G\right]\dot{v}-\left[B_{qx}\dot{G}+C_{qx}G\right]v
+	\left[\begin{matrix}B_{ab}G&B_a\\\end{matrix}\right]\left[\begin{matrix}\dot{v}\\\ddot{q}_a\\\end{matrix}\right]+\left[\begin{matrix}B_{ab}\dot{G}+C_{ab}G&\quad C_a\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}_a\\\end{matrix}\right]+g=\ \tau_a
+\end{equation}
+Rearranging the terms we obtain:
+\begin{equation}
+	\left[B_a\right]\ddot{q}_a+\left[C_a\right]\dot{q}_A+g=\tau_a-\left[B_{ab}G\right]\dot{v}-\left[B_{ab}\dot{G}+C_{ab}G\right]v
 \end{equation}
 Which in state space form is:
 \begin{equation}
 \begin{split}
-	\left[\begin{matrix}\ddot{q}\\\dot{q}\\\end{matrix}\right]&=\left[\begin{matrix}-{B_q}^{-1}C_q&0\\I&0\\\end{matrix}\right]\left[\begin{matrix}\dot{q}\\q\\\end{matrix}\right]+\left[\begin{matrix}{{-B}_q}^{-1}g\\0\\\end{matrix}\right]+\left[\begin{matrix}{B_q}^{-1}\\0\\\end{matrix}\right]\tau_q\\&+\left[\begin{matrix}-{B_q}^{-1}B_{qx}G\\0\\\end{matrix}\right]\dot{v}\\&+\left[\begin{matrix}-{B_q}^{-1}\left[B_{qx}\dot{G}+C_{qx}G\right]\\0\\\end{matrix}\right]v
+	\left[\begin{matrix}\ddot{q}_A\\\dot{q}_a\\\end{matrix}\right]&=\left[\begin{matrix}-{B_a}^{-1}C_a&0\\I&0\\\end{matrix}\right]\left[\begin{matrix}\dot{q}_a\\q_a\\\end{matrix}\right]+\left[\begin{matrix}{{-B}_a}^{-1}g\\0\\\end{matrix}\right]+\left[\begin{matrix}{B_a}^{-1}\\0\\\end{matrix}\right]\tau_a\\&+\left[\begin{matrix}-{B_a}^{-1}B_{ab}G\\0\\\end{matrix}\right]\dot{v}\\&+\left[\begin{matrix}-{B_a}^{-1}\left[B_{ab}\dot{G}+C_{ab}G\right]\\0\\\end{matrix}\right]v
 \end{split}
 \end{equation}
 Adding also the kinematic equation of the base we have the entire model of the system in state space form:
 \begin{equation}
 	\begin{split}
-		\left[\begin{matrix}\ddot{q}\\\dot{q}\\\dot{x}\\\end{matrix}\right]&=\left[\begin{matrix}-{B_q}^{-1}C_q&0&0\\I&0&0\\0&0&0\\\end{matrix}\right]\left[\begin{matrix}\dot{q}\\q\\x\\\end{matrix}\right]+\left[\begin{matrix}{{-B}_q}^{-1}g\\0\\0\\\end{matrix}\right]+\left[\begin{matrix}{B_q}^{-1}\\0\\0\\\end{matrix}\right]\tau_q\\&+\left[\begin{matrix}-{B_q}^{-1}B_{qx}G\\0\\0\\\end{matrix}\right]\dot{v}\\&+\left[\begin{matrix}-{B_q}^{-1}\left[B_{qx}\dot{G}+C_{qx}G\right]\\0\\G\\\end{matrix}\right]v 
+		\left[\begin{matrix}\ddot{q}_a\\\dot{q}_A\\\dot{q}_b\\\end{matrix}\right]&=\left[\begin{matrix}-{B_a}^{-1}C_a&0&0\\I&0&0\\0&0&0\\\end{matrix}\right]\left[\begin{matrix}\dot{q}_a\\q_a\\q_b\\\end{matrix}\right]+\left[\begin{matrix}{{-B}_a}^{-1}g\\0\\0\\\end{matrix}\right]+\left[\begin{matrix}{B_a}^{-1}\\0\\0\\\end{matrix}\right]\tau_a\\&+\left[\begin{matrix}-{B_a}^{-1}B_{ab}G\\0\\0\\\end{matrix}\right]\dot{v}\\&+\left[\begin{matrix}-{B_a}^{-1}\left[B_{ab}\dot{G}+C_{ab}G\right]\\0\\G\\\end{matrix}\right]v 
 	\end{split}
 \end{equation}
-More precisely:
-\begin{equation}
-	\begin{split}
-			\left[\begin{matrix}\ddot{q}\\\dot{q}\\\dot{x}\\\end{matrix}\right]&=\left[\begin{matrix}-{B_q}^{-1}(x,q)C_q(x,\dot{x},q,\dot{q})&0&0\\I&0&0\\0&0&0\\\end{matrix}\right]\left[\begin{matrix}\dot{q}\\q\\x\\\end{matrix}\right]+\left[\begin{matrix}{{-B}_q(x,q)}^{-1}g(q)\\0\\0\\\end{matrix}\right]\\&+\left[\begin{matrix}{B_q(x,q)}^{-1}\\0\\0\\\end{matrix}\right]\tau_q\\&+\left[\begin{matrix}-{B_q(x,q)}^{-1}B_{qx}(x,q)G(x)\\0\\0\\\end{matrix}\right]\dot{v}\\&+\left[\begin{matrix}-{B_q(x,q)}^{-1}\left[B_{qx}(x,q)\dot{G(x)}+C_{qx}(x,\dot{x},q,\dot{q})G(x)\right]\\0\\G(x)\\\end{matrix}\right]v 
-	\end{split}
-\end{equation}
-
-
