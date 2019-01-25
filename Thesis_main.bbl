@@ -1,0 +1,151 @@
+\begin{thebibliography}{10}
+
+\bibitem{craig1987adaptive}
+J.~J. Craig, P.~Hsu, and S.~S. Sastry, ``Adaptive control of mechanical
+  manipulators,'' {\em The International Journal of Robotics Research}, vol.~6,
+  no.~2, pp.~16--28, 1987.
+
+\bibitem{kirk1970optimal}
+D.~E. Kirk, {\em Optimal control theory: an introduction}.
+\newblock Springer, 1970.
+
+\bibitem{qin2003survey}
+S.~J. Qin and T.~A. Badgwell, ``A survey of industrial model predictive control
+  technology,'' {\em Control engineering practice}, vol.~11, no.~7,
+  pp.~733--764, 2003.
+
+\bibitem{camacho2013model}
+E.~F. Camacho and C.~B. Alba, {\em Model predictive control}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{liulewis}
+K.~Liu and F.~L. Lewis, ``Decentralized continuous robust controller for mobile
+  robots,'' in {\em Robotics and Automation, 1990. Proceedings., 1990 IEEE
+  International Conference on}, pp.~1822--1827, IEEE, 1990.
+
+\bibitem{chung1998interaction}
+J.~H. Chung, S.~A. Velinsky, and R.~A. Hess, ``Interaction control of a
+  redundant mobile manipulator,'' {\em The International Journal of Robotics
+  Research}, vol.~17, no.~12, pp.~1302--1309, 1998.
+
+\bibitem{siciliano}
+B.~Siciliano, L.~Sciavicco, L.~Villani, and G.~Oriolo, {\em Robotics:
+  modelling, planning and control}.
+\newblock Springer Science \& Business Media, 2010.
+
+\bibitem{dixon}
+W.~Dixon, D.~M. Dawson, E.~Zergeroglu, and A.~Behal, {\em Nonlinear control of
+  wheeled mobile robots}.
+\newblock Springer, 2001.
+
+\bibitem{samson}
+C.~Samson, ``Control of chained systems application to path following and
+  time-varying point-stabilization of mobile robots,'' {\em IEEE transactions
+  on Automatic Control}, vol.~40, no.~1, pp.~64--77, 1995.
+
+\bibitem{samsonCanudas}
+C.~C.~d. Wit, H.~Khennouf, C.~Samson, and O.~J. Sordalen, ``Nonlinear control
+  design for mobile robots,'' in {\em Recent trends in mobile robots},
+  pp.~121--156, World Scientific, 1993.
+
+\bibitem{bayle}
+B.~Bayle, J.-Y. Fourquet, F.~Lamiraux, and M.~Renaud, ``Kinematic control of
+  wheeled mobile manipulators.,'' in {\em IROS}, pp.~1572--1577, 2002.
+
+\bibitem{seraji1998}
+H.~Seraji, ``A unified approach to motion control of mobile manipulators,''
+  {\em The International Journal of Robotics Research}, vol.~17, no.~2,
+  pp.~107--118, 1998.
+
+\bibitem{seraji1993}
+H.~Seraji, ``An on-line approach to coordinated mobility and manipulation,'' in
+  {\em Robotics and Automation, 1993. Proceedings., 1993 IEEE International
+  Conference on}, pp.~28--35, IEEE, 1993.
+
+\bibitem{mikschschroeder}
+W.~Miksch and D.~Schroeder, ``Performance-functional based controller design
+  for a mobile manipulator,'' in {\em Robotics and Automation, 1992.
+  Proceedings., 1992 IEEE International Conference on}, pp.~227--232, IEEE,
+  1992.
+
+\bibitem{multicriteria}
+F.~G. Pin and J.-C. Culioli, ``Multi-criteria position and configuration
+  optimization for redundant platform/manipulator systems,'' in {\em
+  Intelligent Robots and Systems' 90.'Towards a New Frontier of Applications',
+  Proceedings. IROS'90. IEEE International Workshop on}, pp.~103--107, IEEE,
+  1990.
+
+\bibitem{yamamoto}
+Y.~Yamamoto and X.~Yun, ``Coordinating locomotion and manipulation of a mobile
+  manipulator,'' in {\em Decision and Control, 1992., Proceedings of the 31st
+  IEEE Conference on}, pp.~2643--2648, IEEE, 1992.
+
+\bibitem{chen1997dynamic}
+M.~Chen and A.~Zalzala, ``Dynamic modelling and genetic-based trajectory
+  generation for non-holonomic mobile manipulators,'' {\em Control Engineering
+  Practice}, vol.~5, no.~1, pp.~39--48, 1997.
+
+\bibitem{khatib1999}
+O.~Khatib, ``Mobile manipulation: The robotic assistant,'' {\em Robotics and
+  Autonomous Systems}, vol.~26, no.~2-3, pp.~175--183, 1999.
+
+\bibitem{bayle1}
+B.~Bayle, J.-Y. Fourquet, and M.~Renaud, ``A coordination strategy for mobile
+  manipulation,'' in {\em Proceedings of 6th Intern. Conference on Intelligent
+  Autonomous Systems (IAS-6)}, Citeseer, 2000.
+
+\bibitem{bayle2}
+B.~Bayle, J.-Y. Fourquet, and M.~Renaud, ``Manipulability of wheeled mobile
+  manipulators: Application to motion generation,'' {\em The International
+  Journal of Robotics Research}, vol.~22, no.~7-8, pp.~565--581, 2003.
+
+\bibitem{yamamoto1}
+Y.~Yamamoto and X.~Yun, ``Effect of the dynamic interaction on coordinated
+  control of mobile manipulators,'' {\em IEEE Transactions on Robotics and
+  Automation}, vol.~12, no.~5, pp.~816--824, 1996.
+
+\bibitem{libromobilemanipulators}
+Z.~Li and S.~S. Ge, {\em Fundamentals in modeling and control of mobile
+  manipulators}.
+\newblock CRC Press, 2016.
+
+\bibitem{yoshikawa1983}
+T.~Yoshikawa, ``Analysis and control of robot manipulators with redundancy,''
+  in {\em Robotics research: the first international symposium}, pp.~735--747,
+  MIT press Cambridge, MA, 1983.
+
+\bibitem{yoshikawa1985}
+T.~Yoshikawa, ``Manipulability of robotic mechanisms,'' {\em The international
+  journal of Robotics Research}, vol.~4, no.~2, pp.~3--9, 1985.
+
+\bibitem{khatib1986}
+O.~Khatib, ``Real-time obstacle avoidance for manipulators and mobile robots,''
+  in {\em Autonomous robot vehicles}, pp.~396--404, Springer, 1986.
+
+\bibitem{yamamoto2}
+Y.~Yamamoto and X.~Yun, ``Coordinated obstacle avoidance of a mobile
+  manipulator,'' in {\em Robotics and Automation, 1995. Proceedings., 1995 IEEE
+  International Conference on}, vol.~3, pp.~2255--2260, IEEE, 1995.
+
+\bibitem{tanner2000}
+H.~G. Tanner and K.~J. Kyriakopoulos, ``Nonholonomic motion planning for mobile
+  manipulators,'' in {\em IEEE International Conference on Robotics and
+  Automation}, vol.~2, pp.~1233--1238, IEEE; 1999, 2000.
+
+\bibitem{perdereau2002}
+V.~Perdereau, C.~Passi, and M.~Drouin, ``Real-time control of redundant robotic
+  manipulators for mobile obstacle avoidance,'' {\em Robotics and Autonomous
+  Systems}, vol.~41, no.~1, pp.~41--59, 2002.
+
+\bibitem{brockKhatib}
+O.~Brock, O.~Khatib, and S.~Viji, ``Task-consistent obstacle avoidance and
+  motion behavior for mobile manipulation,'' in {\em Robotics and Automation,
+  2002. Proceedings. ICRA'02. IEEE International Conference on}, vol.~1,
+  pp.~388--393, IEEE, 2002.
+
+\bibitem{falconatale}
+P.~Falco and C.~Natale, ``Low-level flexible planning for mobile manipulators:
+  a distributed perception approach,'' {\em Advanced Robotics}, vol.~28,
+  no.~21, pp.~1431--1444, 2014.
+
+\end{thebibliography}

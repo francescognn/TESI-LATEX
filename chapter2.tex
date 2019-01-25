@@ -447,7 +447,7 @@ This matrix is function only on the joint variables $\theta$ and $d$.
 \subsubsection{Direct and Inverse Kinematics} \label{dirinvkin}
 As anticipated, a manipulator is basically made of links chained together by joints that connect the \textit{base} of the manipulator to its \textit{end effector}.\\
 The \textit{direct kinematics} of the manipulator express the position and orientation of the end effector as a function of the robot configuration. Using the concepts showed up to this point, this corresponds to the definition of the rototraslation matrix that describes the end effector frame with respect to the global reference frame:
-\begin{equation}
+\begin{equation}\label{AAAA}
 	A_{ee}^{base}=A_1^{base}A_2^1A_3^2\cdots A_{ee}^{ee-1}
 \end{equation}
 The opposite problem is the definition of the \textit{inverse kinematics}, i.e. given the position and orientation of the end effector, finding the corresponding joint variables. The inverse kinematics problem is not easy to solve since it is often nonlinear and there can be infinite solutions as well as none.\\
@@ -516,7 +516,7 @@ So $S$ can be interpreted as an operator depending only on $\boldsymbol{\omega}\
 	\end{matrix}\right]
 \end{equation}
 
-\subsubsection{Jacobians}
+\subsubsection{Jacobians}\label{jacobians}
 In order to express the Lagrange equation as a function of the joint variables velocities we now introduce the Jacobian matrices for each link.
 \begin{align}
 	{\dot{\mathbf{p}}}_{l_i}=\mathit{j}_{P_1}^{(l_i)}{\dot{q}}_1+\mathit{j}_{P_2}^{(l_i)}{\dot{q}}_2+\cdots+\mathit{j}_{P_i}^{\left(l_i\right)}{\dot{q}}_i=\mathcal{J}_P^{(l_i)}\dot{q}
@@ -614,11 +614,45 @@ So the final equation of the manipulator dynamic model is:
 Where $g(q)$ is the gravitational vector that represents the moments acting on links due to gravity force.
 
 \section{Mobile Manipulator Model}
-The model of the mobile manipulator can be analysed at the same way as a manipulator arm, considering the variables $x$ and $y$ of the base as prismatic joints and the variable $\theta$ of the base as another revolute joint. 
-So the kinematics and dynamics equations can be obtained consequently.
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{MM_kinematics}
+\label{MM_kin}
+\caption{A simple Mobile Manipulator composed by a mobile base and a 2-DoF robotic arm}
+\end{figure}
+Considering the general case of a mobile manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location of the end effector as a function of both the arm and base generalized coordinates.
+\begin{equation}\label{dirkinMM}
+	X_{EE}=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(q)=f\left(\left[\begin{matrix}q_a\\q_b \end{matrix}\right]\right)
+\end{equation}
+Where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and$\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation that can be expressed with different conventions like Azimut-Elevation-Rotation or Roll-Pitch-Yaw.
+It is possible to define the function $f$ of Eq.\ref{dirkinMM} adding the rototranslation matrix $A_{base}^{global}$ relative to the mobile base motion, to the direct kinematics of the arm \ref{AAAA}.
+\begin{equation}
+	A_{base}^{global}=\left[\begin{matrix}
+		\cos\theta&-\sin\theta&0&x_b+\sqrt{a^2+b^2}\cos\theta\\
+		\sin\theta&\cos\theta&0&y_B+\sqrt{a^2+b^2}\sin\theta\\
+		0&0&1&h_{base}\\
+		0&0&0&1
+	\end{matrix}\right]
+\end{equation}
+So the forward kinematics can be obtained consequently:
+\begin{equation}
+A_{ee}^{global}=A_{base}^{global}A_1^{base}A_2^1\cdots A_{ee}^{ee-1}
+\end{equation}
+Differentiating $f$ we can obtain the differential forward kinematics of the Mobile Manipulator. 
+\begin{equation}
+	\dot{X}_{EE}=\frac{\partial f}{\partial q_a}(q_a,\theta)\dot{q}_a+\frac{\partial f}{\partial q_b}(q_a,\theta)\dot{q}_b
+\end{equation}
+Where $\frac{\partial f}{\partial q_a}$ is the same as described in section \ref{jacobians}, and $\frac{\partial f}{\partial q_b}(q_a,\theta)$ can be obtained at the same way considering $x$ and $y$ as prismatic joints and $\theta$ as a revolute joint of the compound system.
+In doing this the nonholonomic constraint for the mobile platform should be taken into account:
+As we had said before the forward kinematics of a system is always solvable, but for redundant systems like mobile manipulators the inverse kinematics problem has infinite solutions. 
 \begin{equation}\label{dynamicsMM}
 B\left(q\right)\ddot{q}+C\left(q,\dot{q}\right)\dot{q}+g\left(q\right)=\ \tau
 \end{equation}
+
+
+
+
+
 \subsection{Mixed Kinematics and Dynamics Model}
 The idea of the following model is to describe kinematically the mobile base and dynamically the manipulator, in order to have as inputs:
 \begin{itemize}\itemsep1pt
@@ -627,9 +661,9 @@ The idea of the following model is to describe kinematically the mobile base and
 \end{itemize}
 For this purpose, the kinematic equation of the mobile base will be used within the dynamic model of the whole mobile manipulator. 
 We will notate the variables in the following way.\\
-Mobile base coordinates: $x=\ \left[\begin{matrix}x\\y\\\theta\end{matrix}\right]$\\
+Mobile base coordinates: $x= \left[\begin{matrix}x\\y\\\theta\end{matrix}\right]$\\
 Manipulator coordinates: $ q=\left[\begin{matrix}\theta_1\\\theta_2\\\begin{matrix}\vdots\\\theta_6\\\end{matrix}\\\end{matrix}\right]$\\
-Vector of longitudinal and angular velocity of the base: $v=\ \left[\begin{matrix}v_{long}\\\omega\\\end{matrix}\right]$\\
+Vector of longitudinal and angular velocity of the base: $v= \left[\begin{matrix}v_{long}\\\omega\\\end{matrix}\right]$\\
 Writing down the dynamic equation of the entire mobile manipulator, which can be obtained as described in section \ref{sec:dynamics}:
 \begin{equation}
 	B\left(x,q\right)\left[
