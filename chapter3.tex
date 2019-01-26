@@ -1,3 +1,5 @@
+%!TEX root = Thesis_main.tex
+
 \chapter{Control Theory}
 \label{chapter3}
 
@@ -258,9 +260,9 @@ which can be defined in matrix form as:
 \end{equation}
 
 The definition of the cost function has a strong influence on stability proof as well as the convergence of numerical optimization methods. A preferrable choice is to consider a positive definite function of the error with respect to the reference trajecotry. As the problem can be easily moved a zero-reference problem we will refere to that case. For simplicity of notation we will refer to $\hat{y}(k\ |\ k+i)$ as $\hat{y}_{k|i}$
-\begin{equation}
+\begin{equation} \label{costfunction}
 	\begin{split}
-		J(x_{k|0},\textbf{u}) = \sum_{i=0}^{N-1} \left[\hat{y}_{k|i}^T Q \hat{y}_{k|i} + u_{k|i}^TRu_{k|i} \right] + \hat{y}_{k|N}^T P \hat{y}_{k|N}
+		J(x_{k|0},\textbf{u}_k) = \sum_{i=0}^{N-1} \left[\hat{y}_{k|i}^T Q \hat{y}_{k|i} + u_{k|i}^TRu_{k|i} \right] + \hat{y}_{k|N}^T P \hat{y}_{k|N}
 	\end{split}	
 \end{equation}
 
@@ -291,19 +293,19 @@ Substituting the \ref{system_prediction} we obtain:
 
 \begin{equation}\label{costfunction_expr}
 \begin{split} 
- J(x_{k|0},\textbf{u})&=x_{k|0}^T Q x_{k|0} + (\bar{S}\textbf{u}+\bar{T}x_{k|0})^T\bar{Q}(\bar{S}\textbf{u}+\bar{T}x_{k|0}) + \textbf{u}^T\bar{R}\textbf{u} \\ 
- &= \frac{1}{2}\textbf{u}^T \underbrace{2(\bar{R}+\bar{S}^T\bar{Q}\bar{S})}_{H}\textbf{u} + x_{k|0}^T\underbrace{2\bar{T}^T\bar{Q}\bar{S}}_{F}\textbf{u}+\frac{1}{2}x_{k|0}\underbrace{2(Q+\bar{T}^T\bar{Q}\bar{T})}_{Y}x_{k|0} \\
- &=\frac{1}{2}\textbf{u}^TH\textbf{u}+x_{k|0}F\textbf{u}+\frac{1}{2}x_{k|0}Yx_{k|0}
+ J(x_{k|0},\textbf{u}_k)&=x_{k|0}^T Q x_{k|0} + (\bar{S}\textbf{u}_k+\bar{T}x_{k|0})^T\bar{Q}(\bar{S}\textbf{u}_k+\bar{T}x_{k|0}) + \textbf{u}_k^T\bar{R}\textbf{u}_k \\ 
+ &= \frac{1}{2}\textbf{u}_k^T \underbrace{2(\bar{R}+\bar{S}^T\bar{Q}\bar{S})}_{H}\textbf{u}_k + x_{k|0}^T\underbrace{2\bar{T}^T\bar{Q}\bar{S}}_{F}\textbf{u}_k+\frac{1}{2}x_{k|0}\underbrace{2(Q+\bar{T}^T\bar{Q}\bar{T})}_{Y}x_{k|0} \\
+ &=\frac{1}{2}\textbf{u}_k^TH\textbf{u}_k+x_{k|0}F\textbf{u}_k+\frac{1}{2}x_{k|0}Yx_{k|0}
  \end{split}
 \end{equation}
 Once we have express the cost as a function of the measured initial state $x_k(0)$ and the future control action we can perform the optimization by zeroing the gradient:
 \begin{equation}
-	\nabla_\textbf{u}J(x_{k|0},\textbf{u})=H\textbf{u}+F^Tx_{k|0}=0
+	\nabla_{\textbf{u}_k}J(x_{k|0},\textbf{u}_k)=H\textbf{u}_k+F^Tx_{k|0}=0
 \end{equation}
 \label{grad_obj_fun}
-$\textbf{u}$ is then derived inverting the \ref{grad_obj_fun}:
+$\textbf{u}_k$ is then derived inverting the \ref{grad_obj_fun}:
 \begin{equation*}\label{MPC_control_law}
-	\textbf{u}= \left[
+	\textbf{u}_k= \left[
 	\begin{matrix}
 			u_{k|0} \\ u_{k|1} \\ u_{k|2} \\ \vdots \\ u_{k|N-1}
 	\end{matrix}\right] = -H^{-1}F^Tx_{k|0}
@@ -324,9 +326,9 @@ In order to take into account feasibility sets and to gurantee stability, constr
 
 \begin{equation} \label{MPC_problem_constrained}
 \begin{split}
-		&\qquad min_\textbf{u}\ J(x_{k|0},\textbf{u}) \\
+		&\qquad min_{\textbf{u}_k}\ J(x_{k|0},\textbf{u}_k) \\
 		\textnormal{where}\ \  
-		 J(x_{k|0},\textbf{u}) &= \sum_{i=0}^{N-1} \left[\hat{y}_{k|i}^T Q \hat{y}_{k|i} + u_{k|i}^TRu_{k|i} \right] + \hat{y}_{k|N}^T P \hat{y}_{k|N} \\
+		 J(x_{k|0},\textbf{u}_k) &= \sum_{i=0}^{N-1} \left[\hat{y}_{k|i}^T Q \hat{y}_{k|i} + u_{k|i}^TRu_{k|i} \right] + \hat{y}_{k|N}^T P \hat{y}_{k|N} \\
 		\textnormal{respecting}\ &  	
 		\begin{cases}
 			\hat{x}_{k+1}&=A\hat{x}_k+Bu_k \\
@@ -340,7 +342,7 @@ In order to take into account feasibility sets and to gurantee stability, constr
 
 This notation allows us to introduce both equality and inequality constraints. In paractice the constraints are divided into: 
 \begin{itemize}
- \item \textbf{Input constraints}: generally represent philical limitation for the control $\textbf{u}$ and are defined as "hard" constraints.
+ \item \textbf{Input constraints}: generally represent philical limitation for the control $\textbf{u}_k$ and are defined as "hard" constraints.
  	\item \textbf{State/Output constraints}: usually come from rescrictions into the operational space, they can both be "soft" or "hard".
 \end{itemize} 
 
@@ -366,22 +368,114 @@ The set $X_{k}$ of initial states $x_{k|0}$ defined for any instant $k$ that ens
 		\forall\  i=0,\dots,N-1,\ x_{k|N} \in X_f\ \rbrace& \\ 
 	\end{split}
 \end{equation}
-where $x_{k|i+1}$ is propagated following the \ref{system_evolution}
+where $U$ is the region of the control action, $X_f$ is the region of terminal states and $x_{k|i+1}$ is propagated following the \ref{system_evolution}
+ The feasible and unfeasible points in a regulation problem can be visualized on a graph (see \ref{feasibility_image1}) and a region of feasible points can be defined (see \ref{feasibility_region})
 
-% da aggiungere approfondimento su feasibility e stability
-
-\begin{figure}%
+ \begin{figure}%
 \centering
 \subfigure[Feasibility points]{%
-\label{fig:first}%
+\label{feasibility_image1}%
 \includegraphics[scale=0.2]{feasibility_image1}}%
 \qquad
 \subfigure[Feasibility region]{%
-\label{fig:second}%
+\label{feasibility_region}%
 \includegraphics[scale=0.25]{feasibility_region}}%
-\caption{sample}
+\caption{Feasibility set}
 \end{figure}
 
+ Feasibility of a point does not guarantee the feasibility of the following inputs generated by the control action. Because of that Recursive feasibility has to be assessed. That means to show that:
+ \begin{equation}
+ \begin{split}
+  &\ \ \ \ \ \ \ \ \ \forall\ k\ \exists\  \textbf{u}_k\in U\  \textnormal{s.t. } \\ 
+  \textnormal{given } &x_{k|0} \in X, \  x_{k|i} \in X\  \forall\ i = 1,\  \dots\ , N-1   
+ \end{split}
+ \end{equation}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.27]{feasible_image2}
+	\caption{Recursive feasibility}
+	\label{feasible_image2}
+\end{figure}
+
+While feasibility proof is straightforward because it is only affected by outputs hard constraints, stability is difficult to assess in some cases.
+Stability is a complex function of $N, Q, R, P, U$ and admissible outputs of the system.
+Usually the stability proof of the MPC is verified imposing terminal constraints and weigths on the terminal state. There are many well studied stability proofs for MPC problems:
+
+\begin{itemize}
+\item Infinite horizon MPC (N = $\inf$) with no additional constraints
+\item Terminal point constraints ($x_{k|N}=0$)
+\item Relaxed terminal constraints ($x_{k|N} \in X_f $)
+\end{itemize}
+
+The equilibrium point of a controlled system is said to be Lyapunof stable in $X$ if $\forall k \in \mathbb{N}$
+\begin{equation}
+\begin{split}
+\forall&\ \epsilon > 0, \exists\ \delta(\epsilon) >0 \textnormal{ such that } \forall x_{k|0} \in X : \\
+&||x_{k|0}|| \leq \delta(\epsilon) \implies ||x_{k|i}|| < \epsilon \forall\ i \in \mathbb{N}
+\end{split}
+\end{equation}
+
+Stability proof is generally made by showing that the cost function to be minimized is a Lyapunov Function and admits an equilibrium point in the origin (regulation problem). The if $J$ is a Lyapunov function, the equilibrium point is stable with region of attraction $X$.
+
+A function $V:X\rightarrow\ \mathbb{R}_+$ is a Lyapunov function if $\forall\ x \in\ X$:
+\begin{equation} \label{Lyap_func}
+\begin{split}
+	V(x)>0 \rightarrow& \forall\ x \neq 0 \\
+	V(0)=&\ 0 \\
+	V(x_{k+1})-V(&x_{k}) \leq 0
+\end{split}
+\end{equation}
+
+In order to guarantee convergence, asymptotic stability in $X$ of the equilibrium point has also to be verified. Hence it's needed to verify that it is Lyapunov stable and attractive in $X$ ( $\lim_{k \to \infty}||x_k||=0\ \forall\ x\ \in\ X$ ). 
+That can be verified by extending the \ref{Lyap_func} asking: 
+\begin{equation}
+	V(x_{k+1})-V(x_{k}) < 0
+\end{equation} 
+\\ 
+\\
+Now let's consider for simplicity the cas in which $C=I$ so the system in \ref{system_evolution}becomes:
+\begin{equation*}
+x_{k+1}=Ax_k+Bu_k
+\end{equation*}
+
+We will assess stability by means of terminal constraints imposition (i.e. $x_{k|N}=0$) considering the quadratic cost function in \ref{costfunction} with  $J(x_{k|0},\textbf{u}_k)=J_k(x_0,\textbf{u})$
+\begin{equation}
+\begin{split}
+J_k(x_0,\textbf{u}) &= \sum_{i=0}^{N-1} \underbrace{\left[x_{k|i}^T Q x_{k|i} + u_{k|i}^TRu_{k|i} \right]}_{q(x_i,u_i)} +\ \underbrace{x_{k|N}^T P x_{k|N}}_{p(x_N)} \\
+\textnormal{and}\ \  x_n&=0
+\end{split}
+\end{equation}
+
+Recursive feasibility has first to be verified:
+Assuming the feasibility of the point $x_0$ and defining $[u_0^*,\ u_1^*,\ \dots,\ u_{N-1}^*]$ the optimal control sequence computed minimizing $J_0(x_0,\textbf{u})$, following the MPC strategy we apply $u_0^*$. The evolution of the system will then be $x_1=Ax_0+Bu_0^*$.
+Now at instant $k=1$ the control sequence $[u_0^*,\ u_1^*,\ \dots,\ u_{N-1}^*,\ 0]$ is feasible because applying a null control input and given that $x_N=0$ the resulting final state is $x_N+1=0$. This implies that, in presence of end point constraints, the recursive feasibility is verified assuming $x_0$ feasible.
+
+Once feasibility has been assessed, stability has to be investigated by checking if $J$ is a Lyapunov function. So, since we are interested in asymptotic stability, we need to verify;
+
+\begin{equation}
+J_0^*(x_1)<J_0^*(x_0)\ \ \ \forall x_0 \neq 0
+\end{equation}
+
+Follows that:
+\begin{equation}
+	\begin{split}
+		&J_0^*(x_0)= \underset{=0}{\cancel{p(x_N)}}+\sum_{i=0}^{N-1} q(x_i,u_i^*) \\
+		&J_0^*(x_1) \leq \tilde{J}_0(x_1)=\sum_{i=1}^{N}q(x_i,u_i^*) \\
+		 = \sum_{i=1}^{N-1}&q(x_1,u_i^*)-q(x_0,u_0^*)+q(x_N,u_N) \\
+		 &\ =\  J_0^*(x_0)-q(x_0,u_0^*)+\underset{=0}{\cancel{q(0,0)}} \\
+	\end{split}
+\end{equation}
+
+Then what can be said is that:
+\begin{equation}
+	J_0^*(x_1)-J_0^*(x_0)\leq \tilde{J}_0^*(x_1) - J_0^*(x_0) \leq -q(x_0,u_0^*) \leq 0
+\end{equation}
+
+Hence, $J*(x)$ is a Lyapunov function, so the point $x_N=0$ is an asymptotically stable point for the control law. This concept can be generalized for different kind of problem. Anyway, as mentioned before, there are other ways to verify stability which depends on how is the problem defined. Summarizing, terminal constraints imposition provides a sufficient condition for stability in practice what is done is to enlarge the control horizon and sampling since the system perform stability. 
 
 \subsection{NMPC}
+
+
+
+
 \subsection{LTV MPC} %???

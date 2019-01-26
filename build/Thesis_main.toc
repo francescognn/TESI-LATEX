@@ -1,0 +1,64 @@
+\select@language {english}
+\contentsline {chapter}{Aknowledgements}{III}{chapter*.3}
+\contentsline {chapter}{Abstract}{V}{chapter*.4}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Mobile Manipulators}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Holonomic and Nonholonomic constraints}{4}{subsection.1.1.1}
+\contentsline {chapter}{\numberline {2}Model of the Mobile Manipulator}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Mobile Robot Model}{6}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Kinematics}{6}{subsection.2.1.1}
+\contentsline {subsubsection}{Unicycle Model}{7}{equation.2.1.1}
+\contentsline {subsubsection}{Bicycle Model}{8}{equation.2.1.6}
+\contentsline {subsection}{\numberline {2.1.2}Dynamics}{10}{subsection.2.1.2}
+\contentsline {subsubsection}{Unicycle Model}{11}{equation.2.1.18}
+\contentsline {section}{\numberline {2.2}Manipulator Model}{14}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Kinematics}{14}{subsection.2.2.1}
+\contentsline {subsubsection}{Rototraslation Matrices}{14}{subsection.2.2.1}
+\contentsline {subsubsection}{Denavit-Hartenberg Parameters}{17}{equation.2.2.41}
+\contentsline {subsubsection}{Direct and Inverse Kinematics}{19}{equation.2.2.42}
+\contentsline {subsection}{\numberline {2.2.2}Dynamics}{20}{subsection.2.2.2}
+\contentsline {subsubsection}{Differential Kinematics}{21}{equation.2.2.46}
+\contentsline {subsubsection}{Jacobians}{22}{equation.2.2.54}
+\contentsline {subsubsection}{Inertia Matrix}{22}{equation.2.2.58}
+\contentsline {subsubsection}{Coriolis Matrix}{23}{equation.2.2.64}
+\contentsline {subsubsection}{Gravitational Vector}{24}{equation.2.2.66}
+\contentsline {section}{\numberline {2.3}Mobile Manipulator Model}{24}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Mixed Kinematics and Dynamics Model}{26}{subsection.2.3.1}
+\contentsline {chapter}{\numberline {3}Control Theory}{30}{chapter.3}
+\contentsline {section}{\numberline {3.1}PID Control}{31}{section.3.1}
+\contentsline {section}{\numberline {3.2}Inverse Dynamics Control}{32}{section.3.2}
+\contentsline {section}{\numberline {3.3}Adaptive Control}{33}{section.3.3}
+\contentsline {section}{\numberline {3.4}Optimal Control}{35}{section.3.4}
+\contentsline {section}{\numberline {3.5}Model Predictive Control}{37}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Basic Concepts}{40}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Constraints}{45}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Stability and Feasibility}{46}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}NMPC}{50}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}LTV MPC}{50}{subsection.3.5.5}
+\contentsline {chapter}{\numberline {4}Mobile Manipulators Control Problem}{51}{chapter.4}
+\contentsline {section}{\numberline {4.1}Control of Mobile Robots}{52}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Regulation}{52}{subsection.4.1.1}
+\contentsline {subsubsection}{Cartesian Regulation}{52}{subsection.4.1.1}
+\contentsline {subsubsection}{Posture Regulation}{53}{equation.4.1.2}
+\contentsline {subsection}{\numberline {4.1.2}Trajectory Tracking}{54}{subsection.4.1.2}
+\contentsline {subsubsection}{Nonlinear Control}{55}{equation.4.1.11}
+\contentsline {subsubsection}{Feedback Linearization}{56}{equation.4.1.13}
+\contentsline {section}{\numberline {4.2}Control of Mobile Manipulators}{57}{section.4.2}
+\contentsline {subsubsection}{Manipulability}{59}{equation.4.2.21}
+\contentsline {subsection}{\numberline {4.2.1}Obstacle Avoidance for Mobile Manipulators}{59}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Grasping}{62}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Controller}{63}{chapter.5}
+\contentsline {chapter}{\numberline {6}Experiments Setup}{64}{chapter.6}
+\contentsline {section}{\numberline {6.1}Super-Mega-Bot Mobile Base}{64}{section.6.1}
+\contentsline {section}{\numberline {6.2}UR5 Manipulator}{65}{section.6.2}
+\contentsline {section}{\numberline {6.3}ADDAMS}{66}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Mission}{68}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Sensors}{68}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}MPC}{68}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Kinematic model based}{68}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Dynamic model based}{68}{subsection.6.4.2}
+\contentsline {chapter}{\numberline {7}Results}{69}{chapter.7}
+\contentsline {chapter}{\numberline {8}Conclusions}{70}{chapter.8}
+\contentsline {chapter}{List of Figures}{71}{chapter.8}
+\contentsline {chapter}{List of Tables}{72}{chapter*.29}
+\contentsline {chapter}{References}{74}{section*.31}
