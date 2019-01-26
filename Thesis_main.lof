@@ -1,0 +1,29 @@
+\babel@toc {english}{}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Houston Mechatronics's Aquanaut\relax }}{2}{figure.caption.5}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Boston Dynamics's Atlas and Spot Mini\relax }}{2}{figure.caption.6}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Kuka KMR iiwa\relax }}{3}{figure.caption.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Unicycle model\relax }}{7}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Bicycle model\relax }}{9}{figure.caption.9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Scheme of a Differential Drive Mobile Robot\relax }}{12}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces \relax }}{14}{figure.caption.11}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces \relax }}{15}{figure.caption.12}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces \relax }}{16}{figure.caption.13}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Denavit-Hartenberg convention for Robot links\relax }}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces A simple Mobile Manipulator composed by a mobile base and a 2-DoF robotic arm\relax }}{25}{figure.caption.15}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Inverse dynamics control scheme\relax }}{34}{figure.caption.16}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces MPC basic architecture scheme\relax }}{41}{figure.caption.18}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces MPC strategy\relax }}{42}{figure.caption.19}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Model based optimizer\relax }}{43}{figure.caption.20}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces sample\relax }}{48}{figure.caption.21}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Feasibility points}}}{48}{figure.caption.21}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Feasibility region}}}{48}{figure.caption.21}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Cartesian Regulation problem\relax }}{51}{figure.caption.22}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Example of artificial potential field\relax }}{58}{figure.caption.23}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
