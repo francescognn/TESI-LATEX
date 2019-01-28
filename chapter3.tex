@@ -481,10 +481,41 @@ There is nothing in the theory overviewed in the previous section that prevent t
 
 \begin{itemize}
 \item The optimization problem becomes non-convex and because of that, to find a solution become not trivial. Local minima may occur influencing performances and stability.
-\item The study of stability and robustness becomes more complex and is still an open field in research
+\item The study of stability and robustness becomes more complex and is still an open field in research.
 \item The computational time becomes a variable that has to be taken into account expecially for high speed systems.
-\item The identification techniques in presence of nonlinear models are still an open field and model representation through first principles is not always feasible. New thecniques like Neural Networks or deep learning are being studied
-
+\item The identification techniques in presence of nonlinear models are still an open field and model representation through first principles is not always feasible. New thecniques like Neural Networks or deep learning are being studied.
 \end{itemize} 
+If we con sinder as an example the nonlinear system:
 
-\subsection{LTV MPC} %???
+\begin{equation}
+y_{k+1}=0.9y_k+u_k^{\frac{1}{4}}
+\end{equation}
+
+the \ref{linearvsnl} shows the response when controlled with linear MPC approximating the system with $y_{k+1} = 0.9y_k+u_k$ or nonlinear MPC and we can see the response of the linear model based controller oscillates for the first set point values while the nonlinear model based is quite good. 
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{linearvsnl}
+	\caption{Linear vs. Nonlinear MPC}
+	\label{linearvsnl}
+\end{figure}
+
+
+In general, since state space models are the most used and can be easily extended to consider nonlinearities, instead of the system in \ref{system_evolution}, we will consider:
+
+\begin{equation}
+\begin{split}
+		\begin{cases}
+			x_{k+1}&=f(x_k,u_k) \\
+			y_{k+1}&=g(x_k)
+		\end{cases}
+	\end{split}
+\end{equation} 
+
+Now, given that $x_k$ is the state vector we can se that this representation allows us to represent both single variable and multi variable systems.
+s rise to a lot of
+Even if model parameters identification is an open issue for nonlinear systems, this is not the only difficulty related to nonlinear MPC. The increase of omputational time required and reliability of the solution have to be taken into account when dealing with online applications of NMPC. 
+The nonlinear problems (NLP) is usually solved using Sequential Quadratic Programming
+(SQP) techniques which are axtension of Newton-type methods for converging the solution of the KKT conditions of the given problem (see \cite{skkt}). The main challange in solving the problem is to guarantee convergence even in presence of ill conditioning and extreme nonlinearities.
+In general if the time given to solve the NLP is not sufficient at one step, the last iteration $u_k$, which satisfies the local linear approximation to the constraints, is sent to the system, although it may violate the original constraints. Many approaches have been developed in the years to overcome the difficulties in solving NLP online dealing with suboptimal solutions and fast convergence. Since now we reviewd basic concepts of MPC logic in order to give an overview of what MPC is based on. Note that what showed can be easily extended for LTV systems since the time dependence of the parameters doesn't affect the cost function definition neither the stability proof.
