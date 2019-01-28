@@ -11,37 +11,39 @@
 \BOOKMARK [2][-]{subsection.2.2.1}{Kinematics}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.2}{Dynamics}{section.2.2}% 12
 \BOOKMARK [1][-]{section.2.3}{Mobile Manipulator Model}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.3.1}{Mixed Kinematics and Dynamics Model}{section.2.3}% 14
-\BOOKMARK [0][-]{chapter.3}{Control Theory}{}% 15
-\BOOKMARK [1][-]{section.3.1}{PID Control}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{Inverse Dynamics Control}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.3}{Adaptive Control}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.4}{Optimal Control}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.5}{Model Predictive Control}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.5.1}{Basic Concepts}{section.3.5}% 21
-\BOOKMARK [2][-]{subsection.3.5.2}{Constraints}{section.3.5}% 22
-\BOOKMARK [2][-]{subsection.3.5.3}{Stability and Feasibility}{section.3.5}% 23
-\BOOKMARK [2][-]{subsection.3.5.4}{NMPC}{section.3.5}% 24
-\BOOKMARK [2][-]{subsection.3.5.5}{LTV MPC}{section.3.5}% 25
-\BOOKMARK [0][-]{chapter.4}{Mobile Manipulators Control Problem}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Control of Mobile Robots}{chapter.4}% 27
-\BOOKMARK [2][-]{subsection.4.1.1}{Regulation}{section.4.1}% 28
-\BOOKMARK [2][-]{subsection.4.1.2}{Trajectory Tracking}{section.4.1}% 29
-\BOOKMARK [1][-]{section.4.2}{Control of Mobile Manipulators}{chapter.4}% 30
-\BOOKMARK [2][-]{subsection.4.2.1}{Obstacle Avoidance for Mobile Manipulators}{section.4.2}% 31
-\BOOKMARK [2][-]{subsection.4.2.2}{Grasping}{section.4.2}% 32
-\BOOKMARK [0][-]{chapter.5}{Controller}{}% 33
-\BOOKMARK [0][-]{chapter.6}{Experiments Setup}{}% 34
-\BOOKMARK [1][-]{section.6.1}{Super-Mega-Bot Mobile Base}{chapter.6}% 35
-\BOOKMARK [1][-]{section.6.2}{UR5 Manipulator}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.3}{ADDAMS}{chapter.6}% 37
-\BOOKMARK [2][-]{subsection.6.3.1}{Mission}{section.6.3}% 38
-\BOOKMARK [2][-]{subsection.6.3.2}{Sensors}{section.6.3}% 39
-\BOOKMARK [1][-]{section.6.4}{MPC}{chapter.6}% 40
-\BOOKMARK [2][-]{subsection.6.4.1}{Kinematic model based}{section.6.4}% 41
-\BOOKMARK [2][-]{subsection.6.4.2}{Dynamic model based}{section.6.4}% 42
-\BOOKMARK [0][-]{chapter.7}{Results}{}% 43
-\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 44
-\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 45
-\BOOKMARK [0][-]{chapter*.29}{List of Tables}{}% 46
-\BOOKMARK [0][-]{section*.31}{References}{}% 47
+\BOOKMARK [2][-]{subsection.2.3.1}{Kinematics}{section.2.3}% 14
+\BOOKMARK [2][-]{subsection.2.3.2}{Dynamics}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.3}{Mixed Kinematics and Dynamics Model}{section.2.3}% 16
+\BOOKMARK [0][-]{chapter.3}{Control Theory}{}% 17
+\BOOKMARK [1][-]{section.3.1}{PID Control}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.2}{Inverse Dynamics Control}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.3}{Adaptive Control}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Optimal Control}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.5}{Model Predictive Control}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.5.1}{Basic Concepts}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.2}{Constraints}{section.3.5}% 24
+\BOOKMARK [2][-]{subsection.3.5.3}{Stability and Feasibility}{section.3.5}% 25
+\BOOKMARK [2][-]{subsection.3.5.4}{NMPC}{section.3.5}% 26
+\BOOKMARK [2][-]{subsection.3.5.5}{LTV MPC}{section.3.5}% 27
+\BOOKMARK [0][-]{chapter.4}{Mobile Manipulators Control Problem}{}% 28
+\BOOKMARK [1][-]{section.4.1}{Control of Mobile Robots}{chapter.4}% 29
+\BOOKMARK [2][-]{subsection.4.1.1}{Regulation}{section.4.1}% 30
+\BOOKMARK [2][-]{subsection.4.1.2}{Trajectory Tracking}{section.4.1}% 31
+\BOOKMARK [1][-]{section.4.2}{Control of Mobile Manipulators}{chapter.4}% 32
+\BOOKMARK [2][-]{subsection.4.2.1}{Obstacle Avoidance for Mobile Manipulators}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.2}{Grasping}{section.4.2}% 34
+\BOOKMARK [0][-]{chapter.5}{Controller}{}% 35
+\BOOKMARK [0][-]{chapter.6}{Experiments Setup}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Super-Mega-Bot Mobile Base}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{UR5 Manipulator}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{ADDAMS}{chapter.6}% 39
+\BOOKMARK [2][-]{subsection.6.3.1}{Mission}{section.6.3}% 40
+\BOOKMARK [2][-]{subsection.6.3.2}{Sensors}{section.6.3}% 41
+\BOOKMARK [1][-]{section.6.4}{MPC}{chapter.6}% 42
+\BOOKMARK [2][-]{subsection.6.4.1}{Kinematic model based}{section.6.4}% 43
+\BOOKMARK [2][-]{subsection.6.4.2}{Dynamic model based}{section.6.4}% 44
+\BOOKMARK [0][-]{chapter.7}{Results}{}% 45
+\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 46
+\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 47
+\BOOKMARK [0][-]{chapter*.29}{List of Tables}{}% 48
+\BOOKMARK [0][-]{section*.31}{References}{}% 49

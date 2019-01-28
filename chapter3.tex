@@ -475,7 +475,16 @@ Hence, $J*(x)$ is a Lyapunov function, so the point $x_N=0$ is an asymptotically
 
 \subsection{NMPC}
 
+The basic concepts of MPC have been investigated so far considering linear systems. In general, most of the systems are nonlinear, but even in presence of linearities the use of linear controllers like linear MPC is widely diffuse. There are two many reasons for that: on one hand approximating the model of the system as linear gives good results when it moves in the neighberhood of a stationary point, on the other hand the system parameter estimation for linear systems based on measurements is relatively easy. Futhermore, the minimization of a quadratic cost function in presence of a linear system (i.e. quadratic programming) has been well studied and many commercial products ae available (see \ref{mpc_usage_table}). Moreover, in fast sampling time applications the usage of a linear model provides faster solving time in order to keep the time used to solve the optimization problem lower than the sampling time of the system.
+Nevertheless there are systems for which the number of dynamic response of the resulting linear controller is unacceptable, expecially in systems highly nonlinear. The solution adopted using nonlinear MPC is generally not suitable, for example, in applications where the dynamic system parameters may change over time. In those cases the adoption of nonlinear models is required. 
+There is nothing in the theory overviewed in the previous section that prevent the usage of a nonlinear system, therfore the extension of what has been done to nonlinear models is straightforward, at least conceptually. However there are many problems that rises from that:
 
+\begin{itemize}
+\item The optimization problem becomes non-convex and because of that, to find a solution become not trivial. Local minima may occur influencing performances and stability.
+\item The study of stability and robustness becomes more complex and is still an open field in research
+\item The computational time becomes a variable that has to be taken into account expecially for high speed systems.
+\item The identification techniques in presence of nonlinear models are still an open field and model representation through first principles is not always feasible. New thecniques like Neural Networks or deep learning are being studied
 
+\end{itemize} 
 
 \subsection{LTV MPC} %???
