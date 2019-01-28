@@ -1,6 +1,41 @@
 \chapter{Model of the Mobile Manipulator}
 \label{chapter2}
 
+\section{Holonomic and Nonholonomic constraints}
+Considering a system of $N$ rigid bodies and assuming that all of them can reach any position in the space, in order to find uniquely the position of all the points of the system, it is necessary to define a vector of $6N = m$ parameters. This set of parameters is termed \textit{ generalized coordinates of the unconstrained system}. 
+Constraints acting on the position (configuration) of the system are said to be  \textit{holonomic}. 
+Holonomic constraints are expressed in the form:
+\begin{equation}
+h\left( x,q \right) =0
+\end{equation}
+where $h$ is a vector of dimension $s<m$.
+The constraints that constrain the velocities of the system of rigid bodies but not their positions are called \textit{nonholonomic}. In general all constraints which are nonintegrable are said to be nonholonomic, so also inequality constraints about the configuration are considered nonholonomic. 
+Nonholonomic constraints reduce the mobility of the mechanical system in a completely different way with respect to holonomic constraints. The fact that the constraint is nonintegrable means that there is no loss of accessibility to the all configuration space for the system. In other words, while the number of DOFs decreases due to the constraint, the number of generalized coordinates cannot be reduced, not even locally. Only the subspace of the generalized velocities is reduced.
+Nonholonomic constraints are expressed in the form:
+\begin{equation}
+h( x,\dot{x},q) =0
+\end{equation}
+where $h$ is a vector of dimension $s<m$.
+On the assumption that $h$ has continuous and continuously differentiable components, and its Jacobian $ \frac{\partial h}{\partial x} $ has full rank, the constraints equations allow the elimination of $s$ out of $m$ coordinates of the system. With the remaining $ n = m - s $ coordinates it is possible to determine uniquely the configurations of the system satisfying the constraints. Such coordinates are the \textit{generalized coordinates of the constrained system}.\\
+Kinematic constraints both holonomic or nonholonomic are usually written in the Pfaffian form, i.e. linearly with respect to the generalized velocities.
+\begin{equation}
+a_i^T \left( q \right)\dot{q} =0 \qquad i=1,...,k<n 
+\end{equation}
+\begin{equation*} 
+A^T \left( q \right)\dot{q} =0  
+\end{equation*}
+Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres.
+The pure rolling constraint for a wheel is expressed in the Pfaffian form as 
+\begin{equation} 
+\dot{x}\sin\theta-\dot{y}\cos\theta=\left[
+\begin{matrix}
+\sin\theta & cos\theta & 0
+\end{matrix}
+\right] \dot{q}=0
+\end{equation}
+and entails that, in the absence of slipping, the velocity of the contact point has zero component in the direction orthogonal to the sagittal plane. The angular velocity of the disk around the vertical axis instead is unconstrained.
+This constraint is nonholonomic, because it implies no loss of accessibility in the configuration space of the disk.
+
 \section{Mobile Robot Model}
 \subsection{Kinematics}
 Assuming to have a $n$ dimensional, $k$ constraint equations imply that the admissible generalized velocities of the system for any of its configurations q necessarily belong to a $(n-k)$-dimensional space. Specifically, expressing the constraint equations in Pfaffian form, the generalized velocities should belong to the null space of matrix $A^T$.\\
