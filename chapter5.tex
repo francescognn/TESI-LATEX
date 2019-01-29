@@ -1,10 +1,34 @@
+%!TEX root = Thesis_main.tex
+
 \chapter{Controller}
 \label{chapter5}
-\section{Basic MPC controller structure}
+
+\section{Introduction and Aim of the controller}
+
+In this chapter the core of the developed controller will be presented. The goal of our research is to solve the mobile manipulation problem of trajectory tracking for movimentation and grasping tasks. The tasks we wish to perform are in general solved decoupling the controller in order to move the mobile robot in a defined position in order to have a fixed position of the base during grasping and to reduce uncertanties in end-effector position. This approach is generally reliable since controlling indipendently the base of the robot and the arm with well known techniques allows precision and robustness. Anyway, if we want to perform the tasks in a time optimal way this approach is not suitable. The possibility to move within an enviroment during grasping operation to allow faster performance time is a goal desired not only in manipulation tasks but for many applications. Futhermore, the usage of a unique controller could allow to exploit the many degrees of redundancy to optimize other process variables such as manipulablity or obstacle avoidance capability. What we've developed, is a unique controller able to deal with the whole mobile manipulator system. The controller we developed aim to solve some of the issues presented in \ref{chapter4} by means of a Nonlinear Model Predictive Control with a novel approach to solve the online optimization problem reducing the overall computational time. The choice of MPC controller has been made for many reasons: 
+
+\begin{itemize}
+\item By means of the Reciding Horizon Principle (\ref{section_MPC}) it is possible to forecast the behaviour of the system. This approach becomes useful for obstacle avoidance and in manipulability maximization tasks.
+\item It is an open framework that allows customized problems.
+\item Introducing contraints allows to take into account feasibility set of the joint variable as well as control input limits.
+\item Being an Optimal controller allows the minimization of customized parameters such as manipulability, control input effort etc...
+\item It is generally used as a high level controller, the low level loops are in charge to track given high level command and deal with system dynamic.
+\end{itemize}
+
+In the next section will be explained the general NMPC definition for the mobile manipulation problem referring to a nonholomic vehicle and a 6 DOF's manipulator. Novel approach to reduce computational time and stability proof will be discussed later on.
+
+\section{Problem Definition}
+
+The kinematic model of the mobile manipulator is given combining \ref{dirkinMM} and \ref{base_kin_mod}. Now defining the new state variables as:
+\begin{equation}
+\textbf{x}_{k} = \left[ \begin{matrix} x \\ y \\ \theta \\ \Theta_1 \\ \Theta_2 \\ \Theta_3 \\ \Theta_4 \\ \Theta_5 \\ \Theta_6 \\ x_{ee} \\ y_{ee} \\ z_{ee} \\ \phi_{1_{ee}} \\ \phi_{2_{ee}} \\ \phi_{3_{ee}} 
+\end{matrix} \right]
+\end{equation}
+
 \subsubsection{Model}
-\subsubsection{Parameters}
 
 \section{Parameterisation}
 
 \section{Terminal constraints-free approach}
+
 \subsection{Stability Proof}
