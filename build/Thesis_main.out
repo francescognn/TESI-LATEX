@@ -38,20 +38,23 @@
 \BOOKMARK [0][-]{chapter.5}{Controller}{}% 38
 \BOOKMARK [1][-]{section.5.1}{Introduction and Aim of the controller}{chapter.5}% 39
 \BOOKMARK [1][-]{section.5.2}{Problem Definition}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{Parameterisation}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{Terminal constraints-free approach}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.4.1}{Stability Proof}{section.5.4}% 43
-\BOOKMARK [0][-]{chapter.6}{Experiments Setup}{}% 44
-\BOOKMARK [1][-]{section.6.1}{Super-Mega-Bot Mobile Base}{chapter.6}% 45
-\BOOKMARK [1][-]{section.6.2}{UR5 Manipulator}{chapter.6}% 46
-\BOOKMARK [1][-]{section.6.3}{ADDAMS}{chapter.6}% 47
-\BOOKMARK [2][-]{subsection.6.3.1}{Mission}{section.6.3}% 48
-\BOOKMARK [2][-]{subsection.6.3.2}{Sensors}{section.6.3}% 49
-\BOOKMARK [1][-]{section.6.4}{MPC}{chapter.6}% 50
-\BOOKMARK [2][-]{subsection.6.4.1}{Kinematic model based}{section.6.4}% 51
-\BOOKMARK [2][-]{subsection.6.4.2}{Dynamic model based}{section.6.4}% 52
-\BOOKMARK [0][-]{chapter.7}{Results}{}% 53
-\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 54
-\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 55
-\BOOKMARK [0][-]{chapter*.31}{List of Tables}{}% 56
-\BOOKMARK [0][-]{section*.33}{References}{}% 57
+\BOOKMARK [2][-]{subsection.5.2.1}{Model}{section.5.2}% 41
+\BOOKMARK [2][-]{subsection.5.2.2}{NLP definition}{section.5.2}% 42
+\BOOKMARK [2][-]{subsection.5.2.3}{Parameterization}{section.5.2}% 43
+\BOOKMARK [2][-]{subsection.5.2.4}{Terminal constraints-free approach}{section.5.2}% 44
+\BOOKMARK [1][-]{section.5.3}{Stability Proof}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.4}{Constraints}{chapter.5}% 46
+\BOOKMARK [0][-]{chapter.6}{Experiments Setup}{}% 47
+\BOOKMARK [1][-]{section.6.1}{Super-Mega-Bot Mobile Base}{chapter.6}% 48
+\BOOKMARK [1][-]{section.6.2}{UR5 Manipulator}{chapter.6}% 49
+\BOOKMARK [1][-]{section.6.3}{ADDAMS}{chapter.6}% 50
+\BOOKMARK [2][-]{subsection.6.3.1}{Mission}{section.6.3}% 51
+\BOOKMARK [2][-]{subsection.6.3.2}{Sensors}{section.6.3}% 52
+\BOOKMARK [1][-]{section.6.4}{MPC}{chapter.6}% 53
+\BOOKMARK [2][-]{subsection.6.4.1}{Kinematic model based}{section.6.4}% 54
+\BOOKMARK [2][-]{subsection.6.4.2}{Dynamic model based}{section.6.4}% 55
+\BOOKMARK [0][-]{chapter.7}{Results}{}% 56
+\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 57
+\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 58
+\BOOKMARK [0][-]{chapter*.32}{List of Tables}{}% 59
+\BOOKMARK [0][-]{section*.34}{References}{}% 60
