@@ -1,3 +1,5 @@
+%!TEX root = Thesis_main.tex
+
 \chapter{Model of the Mobile Manipulator}
 \label{chapter2}
 
@@ -70,7 +72,7 @@ A^T \left( q \right)\dot{q} =0
 \end{equation*}
 This equation expresses that the velocity of the contact point (or of the wheel centre) is zero in the direction orthogonal to the sagittal axis of the disk.\\
 Hence in the unicycle case $n=3$ and $k=1$, so the dimension of the basis of the null space of $A^T$ is 2. Choosing:
-\begin{equation} 
+\begin{equation} \label{Gmatrix_def}
 G(q)=\left[
 \begin{matrix}
 g_1 (q) & g_2 (q)
@@ -81,8 +83,9 @@ g_1 (q) & g_2 (q)
 \sin\theta & 0 \\
 0 & 1 
 \end{matrix}
-\right]
+\right] 
 \end{equation}
+
 All the generalized velocities of the unicycle at q are a combination of $g_1 (q)$ and $g_2 (q)$.
 \begin{equation} 
 \dot{q}=\left[
