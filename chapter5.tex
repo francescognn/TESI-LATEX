@@ -78,7 +78,7 @@ Where $l(\textbf{x}_{k|i},\textbf{u}_{k|i})$ is a positive definite function dep
 \end{equation}
 where $\mathbb{X} = \lbrace \textbf{x}\in \mathbb{R}^n\ \textnormal{s.t.}\ \textbf{x}_{min}\leq\textbf{x}\leq\textbf{x}_{max} \rbrace $ is the feasible region of the state and $\mathbb{U} = \lbrace \textbf{u}\in \mathbb{R}^m\ \textnormal{s.t.}\ \textbf{u}_{min}\leq\textbf{u}\leq\textbf{u}_{max} \rbrace $.
 Note that the problem has to be discretized, we will refer at $T_k$ as the discretization time, so the time between $k$ and $k+1$ as well as the time between $i$ and $i+1$.
-The problem defined in \ref{ourproblem_basic} is a standard NMPC problem that can be solved using well known numarical optimization methods, where equation \ref{NLsystem} is numerically integrated to propagate the state $\textbf{x}_{k|i+1}$. Anyway the problem so defined is to find a solution $U^*\ \in\ \mathbb{R}^{mX(N-1)}\ \textnormal{s.t.}\ U^* =[\textbf{u}^*_{k|0},\ \textbf{u}^*_{k|1},\ \dots,\ \textbf{u}^*_{k|N-1}]$. Even if, according to MPC logic, only the first computed control action $\textbf{u}^*_{k|0}$ will be applied, the problem needs to be solved for all the prediction horizon. Because of that, the dimension of the problem is highly dependendt on N. Considering our case for example, we have $m=8$, so if we set $N=20$ the dimension of $U^*$ that has to be found is $8X20=160$. The dependence of the problem dimension on the optimization horizon length generate restrictions on the choice of $N$. This is due to the increase in computational time that may become too high to solve fast online applications like handling and grasping for mobile manipulators. A solution could be to bound the value of $N$ in order to keep the problem within a solvable dimension. However, some task's performance like obstacle avoidance increase as $N$ increase. For this reason we introduced a parametrized control input approach to reduce the depencende of $N$ on the solving time.
+The problem defined in \ref{ourproblem_basic} is a standard NMPC problem that can be solved using well known numerical optimization methods, where equation \ref{NLsystem} is numerically integrated to propagate the state $\textbf{x}_{k|i+1}$. Anyway the problem so defined is to find a solution $U^*\ \in\ \mathbb{R}^{mX(N-1)}\ \textnormal{s.t.}\ U^* =[\textbf{u}^*_{k|0},\ \textbf{u}^*_{k|1},\ \dots,\ \textbf{u}^*_{k|N-1}]$. Even if, according to MPC logic, only the first computed control action $\textbf{u}^*_{k|0}$ will be applied, the problem needs to be solved for all the prediction horizon. Because of that, the dimension of the problem is highly dependendt on N. Considering our case for example, we have $m=8$, so if we set $N=20$ the dimension of $U^*$ that has to be found is $8X20=160$. The dependence of the problem dimension on the optimization horizon length generate restrictions on the choice of $N$. This is due to the increase in computational time that may become too high to solve fast online applications like handling and grasping for mobile manipulators. A solution could be to bound the value of $N$ in order to keep the problem within a solvable dimension. However, some task's performance like obstacle avoidance increase as $N$ increase. For this reason we introduced a parameterized control input approach to reduce the depencende of $N$ on the solving time.
 
 \subsection{Parameterization}
 
@@ -86,15 +86,15 @@ The problem defined as in \ref{ourproblem_basic} use a control action defined as
 \begin{equation}\label{param_eq}
 \textbf{u}_{k|i}=F(t_j)\textbf{p}_k
 \end{equation}
-Where $\textbf{p} \in \mathbb{R}^p$ s.t. $\textbf{p}=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]$ and $F(t_j)$ is the matrix of the base of the new space $R^p$. The parameters  A good choice of the parametrization is made according to the phisics of the variables to be parametrized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parametrization can fit the phisical meaning requirement. A better explanation of how to choose the parametrization will be given in \ref{stabproof}.
+Where $\textbf{p} \in \mathbb{R}^p$ s.t. $\textbf{p}=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]$ and $F(t_j)$ is the matrix of the base of the new space $R^p$. The parameters  A good choice of the parameterization is made according to the phisics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the phisical meaning requirement. A better explanation of how to choose the parameterization will be given in \ref{stabproof}.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{param_horizon}
-	\caption{Control input parametrization}
+	\caption{Control input parameterization}
 	\label{param_horizon}
 \end{figure}
-Considering a 3rd order Polynomial parametrization as in \ref{param_horizon} we have that each control input (i.e. each raw of the $\textbf{u}$ vector) can be expressed as a function of four parameters, for example $v=p_1i^3+p_2i^2+p_3i+p_4$.
+Considering a 3rd order Polynomial parameterization as in \ref{param_horizon} we have that each control input (i.e. each raw of the $\textbf{u}$ vector) can be expressed as a function of four parameters, for example $v=p_1i^3+p_2i^2+p_3i+p_4$.
 More in general $\textbf{u}_{k|i}$ is
 \begin{equation}
 \textbf{u}_{k|i}=\left[ \begin{matrix}
