@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  29 JAN 2019 22:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  31 JAN 2019 00:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -964,12 +964,8 @@ File: babel.def 2016/02/24 3.9q Babel common definitions
 (build/Thesis_main.aux (build/frontespizio.aux) (build/dedica.aux)
 (build/ringraziamenti.aux) (build/abstract.aux) (build/chapter1.aux)
 (build/chapter2.aux) (build/chapter3.aux) (build/chapter4.aux)
-(build/chapter5.aux
-
-LaTeX Warning: Label `ourproblem_basic' multiply defined.
-
-) (build/chapter6.aux) (build/chapter7.aux) (build/conclusions.aux)
-(build/appendix.aux))
+(build/chapter5.aux) (build/chapter6.aux) (build/chapter7.aux)
+(build/conclusions.aux) (build/appendix.aux))
 \openout1 = `Thesis_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
@@ -988,7 +984,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
 LaTeX Font Info:    ... okay on input line 86.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 86.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 86.
@@ -1421,20 +1418,25 @@ Chapter 5.
 
 
 
-] [69] [70] [71] [72]
-<IMMAGINI/param_horizon.jpg, id=1041, 940.51375pt x 553.06625pt>
+] [69] [70] [71]
+<IMMAGINI/param_horizon.jpg, id=1034, 940.51375pt x 553.06625pt>
 File: IMMAGINI/param_horizon.jpg Graphic file (type jpg)
 
 <use IMMAGINI/param_horizon.jpg>
 Package pdftex.def Info: IMMAGINI/param_horizon.jpg used on input line 93.
 (pdftex.def)             Requested size: 376.19884pt x 221.22258pt.
- [73 <./IMMAGINI/param_horizon.jpg>]) [74]
-[75]
+ [72] [73 <./IMMAGINI/param_horizon.jpg>]
+[74]
+
+LaTeX Warning: Reference `alamir2018stability' on page 75 undefined on input li
+ne 134.
+
+) [75]
 \openout2 = `chapter6.aux'.
 
  (./chapter6.tex
 Chapter 6.
-<IMMAGINI/SuperMegaBot.PNG, id=1061, 432.11438pt x 277.53688pt>
+<IMMAGINI/SuperMegaBot.PNG, id=1063, 432.11438pt x 277.53688pt>
 File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot.PNG>
@@ -1445,7 +1447,7 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 23.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<IMMAGINI/SuperMegaBot1.PNG, id=1063, 371.3875pt x 232.36812pt>
+<IMMAGINI/SuperMegaBot1.PNG, id=1065, 371.3875pt x 232.36812pt>
 File: IMMAGINI/SuperMegaBot1.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot1.PNG>
@@ -1456,7 +1458,7 @@ Package pdftex.def Info: IMMAGINI/SuperMegaBot1.PNG used on input line 26.
 
 
  <./IMMAGINI/SuperMegaBot.PNG>]
-<IMMAGINI/UR5.png, id=1070, 414.54875pt x 405.515pt>
+<IMMAGINI/UR5.png, id=1072, 414.54875pt x 405.515pt>
 File: IMMAGINI/UR5.png Graphic file (type png)
  <use IMMAGINI/UR5.png>
 Package pdftex.def Info: IMMAGINI/UR5.png used on input line 37.
@@ -1537,16 +1539,13 @@ Package rerunfilecheck Info: File `Thesis_main.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
  ) 
 Here is how much of TeX's memory you used:
- 11761 strings out of 493029
- 170287 string characters out of 6136234
- 273187 words of memory out of 5000000
- 14537 multiletter control sequences out of 15000+600000
+ 11765 strings out of 493029
+ 170356 string characters out of 6136234
+ 273194 words of memory out of 5000000
+ 14539 multiletter control sequences out of 15000+600000
  34992 words of font info for 97 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  36i,30n,43p,1533b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1578,10 +1577,10 @@ pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texm
 f/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf/fonts/type1/public
 /cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.p
 fb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on build/Thesis_main.pdf (99 pages, 5437157 bytes).
+Output written on build/Thesis_main.pdf (99 pages, 5439020 bytes).
 PDF statistics:
- 1347 PDF objects out of 1440 (max. 8388607)
- 1158 compressed objects within 12 object streams
- 397 named destinations out of 1000 (max. 500000)
+ 1349 PDF objects out of 1440 (max. 8388607)
+ 1160 compressed objects within 12 object streams
+ 399 named destinations out of 1000 (max. 500000)
  626 words of extra memory for PDF output out of 10000 (max. 10000000)
 

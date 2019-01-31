@@ -41,7 +41,7 @@
 \BOOKMARK [2][-]{subsection.5.2.1}{Model}{section.5.2}% 41
 \BOOKMARK [2][-]{subsection.5.2.2}{NLP definition}{section.5.2}% 42
 \BOOKMARK [2][-]{subsection.5.2.3}{Parameterization}{section.5.2}% 43
-\BOOKMARK [2][-]{subsection.5.2.4}{Terminal constraints-free approach}{section.5.2}% 44
+\BOOKMARK [2][-]{subsection.5.2.4}{Increasing weights cost function definition}{section.5.2}% 44
 \BOOKMARK [1][-]{section.5.3}{Stability Proof}{chapter.5}% 45
 \BOOKMARK [1][-]{section.5.4}{Constraints}{chapter.5}% 46
 \BOOKMARK [0][-]{chapter.6}{Experiments Setup}{}% 47
