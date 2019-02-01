@@ -18,47 +18,42 @@ In industry too automated robotic systems are used in order to achieve:
 \end{itemize}
 In this sense mobile robotics is a very practical example of how the efficiency of a plant can be improved, reducing the effort for the trasportation tasks, or collecting datas from a warehouse automatically, or in many many other ways.\\
 However, when in the early '90s people has started mounting manipulator arms on mobile platforms, the resulting system opened the research to endless possibilities. These systems are now called Mobile Manipulators.
-
-\section{Mobile Manipulators}
 The mobility of robots substantially increased what they can cope. Robots are now expected to explore unknown dynamic environments, interact with human beings or manipulate hazardous products. Mobile manipulators are systems that combine locomotion and manipulation capabilities in order to fulfil such missions. \\
-Mobile manipulators can be very different, according to the environment where they are supposed to work. For example:
+Except for some special types of Mobile Manipulators like:
 \begin{itemize}
-	\item Submarine mobile manipulators for underwater applications;
-	\begin{figure}[h!]
+	\item Submarine Mobile Manipulators for underwater applications;\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.3]{submarine_robot}
 		\caption{Houston Mechatronics's Aquanaut}
 		\label{fig:aquanaut} 
 	\end{figure}
-	\item Legged humanoid or animal-like robots for service missions;
-	\begin{figure}[h]
+	\item Legged humanoid or animal-like robots for service missions;\begin{figure}[h!]
 		\centering 
-		\includegraphics[scale=0.10]{atlas}
+		\includegraphics[scale=0.095]{atlas}
 		\label{fig:atlas} 
 		\quad
 		\includegraphics[scale=0.10]{spot_mini}
 		\label{fig:spotmini} 
 		\caption{Boston Dynamics's Atlas and Spot Mini}
 	\end{figure}
-	\item The most popular ones are the wheeled mobile manipulators or WMM, which combine a wheeled mobile base and one or more robotic arms.
-	\begin{figure}[h!]
+	\item Omnidirectional vehicles \begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.10]{kuka_iiwa}
-		\caption{Kuka KMR iiwa}
+		\includegraphics[scale=0.095]{kuka_iiwa}
+		\caption{Kuka KMR iiwa: a Mobile Manipulator with omnidirectional wheels}
 		\label{fig:iiwa} 
 	\end{figure}
 \end{itemize}
-Among the wheeled mobile manipulators there are many different types, but usually they have the following characteristics:
+Mobile Manipulators combine a nonholonomic wheeled mobile base and one or more robotic arms. From a physical point of view the presence of the base makes the entire Mobile Manipulator a nonholonomic system, meaning a system described by a set of variables subjected to differential constraints. Nonholonomic constraints will be better explained in Chapter \ref{chapter2}. The same chapter is also devoted to the kinematic and dynamic description of wheeled Mobile Manipulators, mainly pointing to two important aspects:
 \begin{enumerate}
-	\item The mobile base is a nonholonomic system;
 	\item The entire system is often kinematically redundant with respect to the task to be achieved;
 	\item The dynamic properties of the base are very different from the manipultor ones.
 \end{enumerate}
-
+After a brief introduction about the theory of control strategies in Chapter \ref{chapter3}, Chapter \ref{chapter4} can be referred for a fairly thorough summary of Mobile Manipulator control; even if Mobile Manipulators are a technology known from the early 90s, just a little can be found in literature on this topic. In particular, except for very few cases, MPC control has been applied only with holonomic Mobile Manipulators. This is due to the fact that this kind of control requires high computational effort, especially with highly nonlinear systems like Mobile Manipulators. MPC is a powerful tool to face all the constraints on Mobile Manipulators motion that have to be taken into account: obstacle avoidance, self collision avoidance, joint limits, joint speed limits, singular configurations avoidance, \dots, exploiting also the kinematic redundancy of the system.\\
+In Chapter \ref{chapter5} we present the architecture of an online MPC control for a nonholonomic Mobile Manipulator in order to achieve a trajectory following task for the manipulator's end effector while coping with the constraints previously mentioned. In Chapter \ref{chapter6} experimental results are presented and eventually in Chapter \ref{chapter5} conclusions are drawn highlighting our main contributions and future work.	
 
 \section{Objective of the thesis}
 
+
 \section{Achieved results}
-\section{Structure of the thesis}
 
 
