@@ -11,7 +11,7 @@ Holonomic constraints are expressed in the form:
 h\left( x,q \right) =0
 \end{equation}
 where $h$ is a vector of dimension $k<s$.
-The constraints that constrain the velocities of the system of rigid bodies but not their positions are called \textit{nonholonomic}. In general all constraints which are nonintegrable are said to be nonholonomic, so also inequality constraints about the configuration are considered nonholonomic. 
+The constraints on the velocities of the system of rigid bodies but not their positions are called \textit{nonholonomic}. In general all constraints which are nonintegrable are said to be nonholonomic, so also inequality constraints about the configuration are considered nonholonomic. 
 Nonholonomic constraints reduce the mobility of the mechanical system in a completely different way with respect to holonomic constraints. The fact that the constraint is nonintegrable means that there is no loss of accessibility to the entire configuration space for the system. In other words, while the number of DOFs decreases due to the constraint, the number of generalized coordinates cannot be reduced. Only the subspace of the generalized velocities is reduced.
 Nonholonomic constraints are expressed in the form:
 \begin{equation}
@@ -469,7 +469,7 @@ The transformation matrix between frame i and frame i-1 can then be built:
 	\end{matrix}
 	\right]
 \end{equation}
-This matrix is function only on the joint variables $\theta$ and $d$.
+This matrix is function only of the joint variables $\theta$ and $d$.
 
 \subsubsection{Direct and Inverse Kinematics} \label{dirinvkin}
 As anticipated, a manipulator is basically made of links chained together by joints that connect the \textit{base} of the manipulator to its \textit{end effector}.\\
