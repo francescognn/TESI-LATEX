@@ -170,7 +170,7 @@ If the vehicle is front-wheel drive, or:
 If the vehicle is rear-wheel drive.
 
 \subsection{Dynamics}
-The dynamic model of a mobile robot can be derived using the Lagrangian formulation for a $n$-dimensional system, defining the Lagrangian $L$ of the mechanical system as the difference between kinetic and potential energy.
+The dynamic model of a mobile robot can be derived using the Lagrangian formulation for a $n$-dimensional system, defining the Lagrangian $\mathcal{L}$ of the mechanical system as the difference between kinetic and potential energy.
 \begin{equation}
 \mathcal{L}(q,\dot{q})=\mathcal{T}(q,\dot{q})-\mathcal{U}(q)=\frac{1}{2}\dot{q}^T B(q)\dot{q} - \mathcal{U}(q)
 \end{equation}
@@ -194,8 +194,8 @@ C(q,\dot{q})=\dot{B}(q)\dot{q}-\frac{1}{2}\left(\frac{\partial}{\partial q}\left
 \begin{equation}
 g(q) = \frac{\partial\mathcal{U}(q)}{\partial q} = 0
 \end{equation}
-The potential energy of a mobile base during its motion can be considered constant, so it is possible to disregard it.\\
-It is possible to further simplify the dynamic model exploiting a useful property of the kinematic relation \ref{G}. Since we defined the coloums of $G(q)$ as vectors belonging to the null space of $A(q)^T$, the following relation holds:
+The potential energy of a mobile base during its motion can be considered constant, so it is possible to disregard its derivative.\\
+It is possible to further simplify the dynamic model ex9ploiting a useful property of the kinematic relation \ref{G}. Since we defined the coloums of $G(q)$ as vectors belonging to the null space of $A(q)^T$, the following relation holds:
 \begin{equation}
 A(q)^T G(q) = 0 \qquad\textrm{or}\qquad G(q)^T A(q) = 0
 \end{equation}
