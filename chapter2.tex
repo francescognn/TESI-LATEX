@@ -2,23 +2,23 @@
 
 \chapter{Model of the Mobile Manipulator}
 \label{chapter2}
-
-\section{Holonomic and Nonholonomic constraints}
-Considering a system of $N$ rigid bodies and assuming that all of them can reach any position in the space, in order to find uniquely the position of all the points of the system, it is necessary to define a vector of $6N = m$ parameters. This set of parameters is termed \textit{ generalized coordinates of the unconstrained system}. 
+\section{Mobile Robot Model}
+\subsection{Holonomic and Nonholonomic constraints}
+Considering a system of $N$ rigid bodies and assuming that all of them can reach any position in the space, in order to define uniquely the position of all the bodies of the system, it is necessary to define a vector of $6N = s$ parameters. This set of parameters is termed \textit{generalized coordinates of the unconstrained system}. 
 Constraints acting on the position (configuration) of the system are said to be  \textit{holonomic}. 
 Holonomic constraints are expressed in the form:
 \begin{equation}
 h\left( x,q \right) =0
 \end{equation}
-where $h$ is a vector of dimension $s<m$.
+where $h$ is a vector of dimension $k<s$.
 The constraints that constrain the velocities of the system of rigid bodies but not their positions are called \textit{nonholonomic}. In general all constraints which are nonintegrable are said to be nonholonomic, so also inequality constraints about the configuration are considered nonholonomic. 
-Nonholonomic constraints reduce the mobility of the mechanical system in a completely different way with respect to holonomic constraints. The fact that the constraint is nonintegrable means that there is no loss of accessibility to the all configuration space for the system. In other words, while the number of DOFs decreases due to the constraint, the number of generalized coordinates cannot be reduced, not even locally. Only the subspace of the generalized velocities is reduced.
+Nonholonomic constraints reduce the mobility of the mechanical system in a completely different way with respect to holonomic constraints. The fact that the constraint is nonintegrable means that there is no loss of accessibility to the entire configuration space for the system. In other words, while the number of DOFs decreases due to the constraint, the number of generalized coordinates cannot be reduced. Only the subspace of the generalized velocities is reduced.
 Nonholonomic constraints are expressed in the form:
 \begin{equation}
 h( x,\dot{x},q) =0
 \end{equation}
 where $h$ is a vector of dimension $s<m$.
-On the assumption that $h$ has continuous and continuously differentiable components, and its Jacobian $ \frac{\partial h}{\partial x} $ has full rank, the constraints equations allow the elimination of $s$ out of $m$ coordinates of the system. With the remaining $ n = m - s $ coordinates it is possible to determine uniquely the configurations of the system satisfying the constraints. Such coordinates are the \textit{generalized coordinates of the constrained system}.\\
+On the assumption that $h$ has continuous and continuously differentiable components, and its Jacobian $ \partial h/\partial x $ has full rank, the constraints equations allow the elimination of $k$ out of $s$ coordinates of the system. With the remaining $n=s-k$ coordinates it is possible to determine uniquely the configurations of the system satisfying the constraints. Such coordinates are the \textit{generalized coordinates of the constrained system}.\\
 Kinematic constraints both holonomic or nonholonomic are usually written in the Pfaffian form, i.e. linearly with respect to the generalized velocities.
 \begin{equation}
 a_i^T \left( q \right)\dot{q} =0 \qquad i=1,...,k<n 
@@ -26,21 +26,7 @@ a_i^T \left( q \right)\dot{q} =0 \qquad i=1,...,k<n
 \begin{equation*} 
 A^T \left( q \right)\dot{q} =0  
 \end{equation*}
-Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres.
-The pure rolling constraint for a wheel is expressed in the Pfaffian form as 
-\begin{equation} 
-\dot{x}\sin\theta-\dot{y}\cos\theta=\left[
-\begin{matrix}
-\sin\theta & cos\theta & 0
-\end{matrix}
-\right] \dot{q}=0
-\end{equation}
-and entails that, in the absence of slipping, the velocity of the contact point has zero component in the direction orthogonal to the sagittal plane. The angular velocity of the disk around the vertical axis instead is unconstrained.
-This constraint is nonholonomic, because it implies no loss of accessibility in the configuration space of the disk.
-
-\section{Mobile Robot Model}
-\subsection{Kinematics}
-Assuming to have a $n$ dimensional, $k$ constraint equations imply that the admissible generalized velocities of the system for any of its configurations q necessarily belong to a $(n-k)$-dimensional space. Specifically, expressing the constraint equations in Pfaffian form, the generalized velocities should belong to the null space of matrix $A^T$.\\
+Assuming now to have $k$ nonholonomic constraint equations for a $n$ dimensional system, this implies that the admissible generalized velocities $\dot{q}$ of the system in any of its configuration $q$ necessarily belong to a $(n-k)$-dimensional space. Specifically, expressing the constraint equations in Pfaffian form, the generalized velocities should belong to the null space of matrix $A^T$.\\
 Thus, it can be written:
 \begin{equation} \label{G}
 \dot{q}=\sum_{j=1}^{m} g_j(q)u_j=G(q)u \qquad m=n-k
@@ -50,16 +36,20 @@ Where $q\in \mathbb{R}^n $ is the state vector, $u= \left[
 u_1 &  \cdots & u_m
 \end{matrix}
 \right]^T\in\mathbb{R}^m $ is the input vector and $\left\lbrace  g_1 (q) \cdots g_m (q) \right\rbrace $ is a basis of the null space of $A^T$, named \textit{input vector fields}. \\
-The choice of the input vector fields is not unique, since the input u can have different meanings: velocities, torques or others.
+The choice of the input vector fields is not unique, since the input u can have different meanings: velocities, torques or others.\\ 
+Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres. The presence of a wheel entails that, in the absence of slipping, the velocity of its contact point has zero component in the direction orthogonal to its sagittal plane. The angular velocity of the wheel around the vertical axis instead is unconstrained.
+This constraint, named pure rolling constraint, is nonholonomic, because it implies no loss of accessibility in the configuration space of the wheel itself.\\
+Now, the kinematics of a wheeled mobile robot subjected to pure rolling constraints changes depending on how locomotion is achieved. Mainly there are two types of wheeled mobile robots: unicycle like robots and bicycle like ones.
 
+\subsection{Kinematics}
 \subsubsection{Unicycle Model}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{unicycle_model}
 	\caption{Unicycle model}
 \end{figure}
-A unicycle is a vehicle which configuration is completely described by the state vector $q = [x y \theta]^T$, where $x$ and $y$ are the Cartesian coordinates of the contact point of the wheel with the ground or of the wheel centre and $\theta$ is the orientation of the wheel with respect to the $x$ axis. \\
-As we already seen in the previous chapter, the constraint of pure rolling for the unicycle is expressed as:
+A unicycle is a vehicle which configuration is completely described by the state vector $q = \left[\begin{matrix}x&y&\theta\end{matrix}\right]^T$, where $x$ and $y$ are the Cartesian coordinates of the contact point of the wheel with the ground and $\theta$ is the orientation of the wheel with respect to the $x$ axis. \\
+The constraint of pure rolling for the unicycle is simply expressed as:
 \begin{equation} 
 \dot{x}\sin\theta-\dot{y}\cos\theta=\left[
 \begin{matrix}
@@ -71,7 +61,7 @@ As we already seen in the previous chapter, the constraint of pure rolling for t
 A^T \left( q \right)\dot{q} =0  
 \end{equation*}
 This equation expresses that the velocity of the contact point (or of the wheel centre) is zero in the direction orthogonal to the sagittal axis of the disk.\\
-Hence in the unicycle case $n=3$ and $k=1$, so the dimension of the basis of the null space of $A^T$ is 2. Choosing:
+Hence the unicycle is a 3-dimensional subject to one nonholonomic constraint, so the dimension of the basis of the null space of $A^T$ is 2. Choosing:
 \begin{equation} \label{Gmatrix_def}
 G(q)=\left[
 \begin{matrix}
@@ -85,8 +75,7 @@ g_1 (q) & g_2 (q)
 \end{matrix}
 \right] 
 \end{equation}
-
-All the generalized velocities of the unicycle at q are a combination of $g_1 (q)$ and $g_2 (q)$.
+All the generalized velocities of the unicycle at $q$ are a combination of $g_1 (q)$ and $g_2 (q)$.
 \begin{equation} 
 \dot{q}=\left[
 \begin{matrix}
@@ -119,13 +108,13 @@ Where $r$ is the wheels radius and $d$ is the distance between their centres.
 	\includegraphics[scale=0.7]{bicycle_model}
 	\caption{Bicycle model}
 \end{figure}
-A bicycle is a vehicle having an orientable wheel and a fixed wheel. Kinematically it can be described with the generalized coordinates $q = [x y \theta \phi]^T$ , where $x$ and $y$ are the Cartesian coordinates of the centre of the rear wheel, $\theta$ is the orientation of the vehicle with respect to the $x$ axis, and $\phi$ is the steering angle of the front wheel with respect to the vehicle axis.\\
+A bicycle is a vehicle having an orientable wheel and a fixed wheel. Kinematically it can be described with the generalized coordinates $q = \left[\begin{matrix}x&y&\theta&\phi\end{matrix}\right]^T$, where $x$ and $y$ are the Cartesian coordinates of the centre of the rear fixed wheel, $\theta$ is the orientation of the vehicle with respect to the $x$ axis, and $\phi$ is the steering angle of the front wheel with respect to the vehicle axis.\\
 Both wheels are subject to pure rolling constraints. So expressing the zero velocity of the centre of the front wheel in the direction orthogonal to the wheel itself, and the zero velocity of the centre of the rear wheel in the direction orthogonal to the sagittal axis of the vehicle:
 \begin{equation}
-\dot{x}_f\sin \left( \theta+\phi \right)-\dot{y}_f \cos\left(\theta+\phi\right)=0
-\end{equation}
-\begin{equation}
+\begin{split}
+\dot{x}_f\sin \left( \theta+\phi \right)-\dot{y}_f \cos\left(\theta+\phi\right)=0\\
 \dot{x}\sin\theta-\dot{y}\cos\theta=0
+\end{split}
 \end{equation}
 Where:
 \begin{align*}
