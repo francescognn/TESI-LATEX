@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  1 FEB 2019 19:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  3 FEB 2019 18:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1102,20 +1102,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ]
 \openout2 = `abstract.aux'.
 
- (./abstract.tex
-
-LaTeX Warning: Citation `shantanuthakar' on page VI undefined on input line 7.
-
-
-LaTeX Warning: Citation `alamir2018stability' on page VI undefined on input lin
-e 12.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--17
-
- []
-
-[6
+ (./abstract.tex [6
 
 
 
@@ -1126,11 +1113,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--17
 
  (./chapter1.tex
 Chapter 1.
-<IMMAGINI/JPL_rover.png, id=348, 2509.375pt x 1411.2725pt>
+<IMMAGINI/JPL_rover.png, id=352, 2509.375pt x 1411.2725pt>
 File: IMMAGINI/JPL_rover.png Graphic file (type png)
 
 <use IMMAGINI/JPL_rover.png>
-Package pdftex.def Info: IMMAGINI/JPL_rover.png used on input line 9.
+Package pdftex.def Info: IMMAGINI/JPL_rover.png used on input line 10.
 (pdftex.def)             Requested size: 376.39001pt x 211.68173pt.
 
 
@@ -1140,46 +1127,48 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.16 	\item R
+l.17 	\item R
              obots can have access to environments which are too risky or no...
 [1
 
 
 
-] <IMMAGINI/submarine_robot.jpg, id=354, 566.115pt x 318.43968pt>
+] <IMMAGINI/submarine_robot.jpg, id=358, 566.115pt x 318.43968pt>
 File: IMMAGINI/submarine_robot.jpg Graphic file (type jpg)
 
 <use IMMAGINI/submarine_robot.jpg>
-Package pdftex.def Info: IMMAGINI/submarine_robot.jpg used on input line 26.
+Package pdftex.def Info: IMMAGINI/submarine_robot.jpg used on input line 27.
 (pdftex.def)             Requested size: 169.8358pt x 95.53264pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<IMMAGINI/atlas.jpg, id=359, 856.19875pt x 1284.8pt>
+File: IMMAGINI/atlas.jpg Graphic file (type jpg)
+ <use IMMAGINI/atlas.jpg>
+Package pdftex.def Info: IMMAGINI/atlas.jpg used on input line 33.
+(pdftex.def)             Requested size: 81.33972pt x 122.05727pt.
+
+<IMMAGINI/spot_mini.jpg, id=360, 1304.875pt x 979.66pt>
+File: IMMAGINI/spot_mini.jpg Graphic file (type jpg)
+
+<use IMMAGINI/spot_mini.jpg>
+Package pdftex.def Info: IMMAGINI/spot_mini.jpg used on input line 36.
+(pdftex.def)             Requested size: 130.49513pt x 97.97174pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 	\item L
-             egged humanoid or animal-like robots for service missions;\begi...
-[2 <./IMMAGINI/JPL_rover.png>]
-<IMMAGINI/atlas.jpg, id=361, 856.19875pt x 1284.8pt>
-File: IMMAGINI/atlas.jpg Graphic file (type jpg)
- <use IMMAGINI/atlas.jpg>
-Package pdftex.def Info: IMMAGINI/atlas.jpg used on input line 32.
-(pdftex.def)             Requested size: 81.33972pt x 122.05727pt.
-
-<IMMAGINI/spot_mini.jpg, id=362, 1304.875pt x 979.66pt>
-File: IMMAGINI/spot_mini.jpg Graphic file (type jpg)
-
-<use IMMAGINI/spot_mini.jpg>
-Package pdftex.def Info: IMMAGINI/spot_mini.jpg used on input line 35.
-(pdftex.def)             Requested size: 130.49513pt x 97.97174pt.
-
-<IMMAGINI/kuka_iiwa.jpg, id=363, 2216.28pt x 1476.51625pt>
+l.40 	\item O
+             mnidirectional vehicles \begin{figure}[h!] [2 <./IMMAGINI/JPL_rove
+r.png>] <IMMAGINI/kuka_iiwa.jpg, id=367, 2216.28pt x 1476.51625pt>
 File: IMMAGINI/kuka_iiwa.jpg Graphic file (type jpg)
 
 <use IMMAGINI/kuka_iiwa.jpg>
-Package pdftex.def Info: IMMAGINI/kuka_iiwa.jpg used on input line 41.
+Package pdftex.def Info: IMMAGINI/kuka_iiwa.jpg used on input line 42.
 (pdftex.def)             Requested size: 210.54878pt x 140.2705pt.
  [3 <./IMMAGINI/submarine_robot.jpg> <./IMMAGINI/atlas.jpg> <./IMMAGINI/spot_mi
-ni.jpg> <./IMMAGINI/kuka_iiwa.jpg>]) [4] [5]
+ni.jpg> <./IMMAGINI/kuka_iiwa.jpg>] [4]) [5]
 \openout2 = `chapter2.aux'.
 
 
@@ -1189,21 +1178,21 @@ Chapter 2.
 
 
 
-] [7] <IMMAGINI/unicycle_model.PNG, id=405, 758.835pt x 311.1625pt>
+] [7] <IMMAGINI/unicycle_model.PNG, id=410, 758.835pt x 311.1625pt>
 File: IMMAGINI/unicycle_model.PNG Graphic file (type png)
 
 <use IMMAGINI/unicycle_model.PNG>
 Package pdftex.def Info: IMMAGINI/unicycle_model.PNG used on input line 58.
 (pdftex.def)             Requested size: 303.52863pt x 124.46278pt.
  [8 <./IMMAGINI/unicycle_model.PNG>] [9]
-<IMMAGINI/bicycle_model.PNG, id=424, 374.39874pt x 277.035pt>
+<IMMAGINI/bicycle_model.PNG, id=429, 374.39874pt x 277.035pt>
 File: IMMAGINI/bicycle_model.PNG Graphic file (type png)
 
 <use IMMAGINI/bicycle_model.PNG>
 Package pdftex.def Info: IMMAGINI/bicycle_model.PNG used on input line 119.
 (pdftex.def)             Requested size: 262.07733pt x 193.92317pt.
  [10 <./IMMAGINI/bicycle_model.PNG>] [11]
-[12] <IMMAGINI/schema_mobile_base.png, id=452, 399.4122pt x 224.037pt>
+[12] <IMMAGINI/schema_mobile_base.png, id=457, 399.4122pt x 224.037pt>
 File: IMMAGINI/schema_mobile_base.png Graphic file (type png)
 
 <use IMMAGINI/schema_mobile_base.png>
@@ -1215,21 +1204,21 @@ Overfull \hbox (48.91692pt too wide) detected at line 249
 \OML/cmm/m/it/12 B\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 ) = []
  []
 
-[14] [15] <IMMAGINI/rotation_frames.PNG, id=481, 334.75063pt x 153.07187pt>
+[14] [15] <IMMAGINI/rotation_frames.PNG, id=486, 334.75063pt x 153.07187pt>
 File: IMMAGINI/rotation_frames.PNG Graphic file (type png)
 
 <use IMMAGINI/rotation_frames.PNG>
 Package pdftex.def Info: IMMAGINI/rotation_frames.PNG used on input line 349.
 (pdftex.def)             Requested size: 334.7498pt x 153.07149pt.
  [16 <./IMMAGINI/rotation_frames.PNG>]
-<IMMAGINI/rotation_frames1.PNG, id=493, 234.37563pt x 200.24812pt>
+<IMMAGINI/rotation_frames1.PNG, id=498, 234.37563pt x 200.24812pt>
 File: IMMAGINI/rotation_frames1.PNG Graphic file (type png)
 
 <use IMMAGINI/rotation_frames1.PNG>
 Package pdftex.def Info: IMMAGINI/rotation_frames1.PNG used on input line 389.
 (pdftex.def)             Requested size: 234.37503pt x 200.24763pt.
 
-<IMMAGINI/rototraslation_frames.PNG, id=494, 227.85126pt x 121.45375pt>
+<IMMAGINI/rototraslation_frames.PNG, id=499, 227.85126pt x 121.45375pt>
 File: IMMAGINI/rototraslation_frames.PNG Graphic file (type png)
 
 <use IMMAGINI/rototraslation_frames.PNG>
@@ -1241,7 +1230,7 @@ Package pdftex.def Info: IMMAGINI/rototraslation_frames.PNG used on input line
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [17 <./IMMAGINI/rotation_frames1.PNG>] [18 <./IMMAGINI/rototraslation_frames.PN
-G>] <IMMAGINI/denavit_hartenberg.PNG, id=519, 242.40562pt x 156.585pt>
+G>] <IMMAGINI/denavit_hartenberg.PNG, id=524, 242.40562pt x 156.585pt>
 File: IMMAGINI/denavit_hartenberg.PNG Graphic file (type png)
 
 <use IMMAGINI/denavit_hartenberg.PNG>
@@ -1250,7 +1239,7 @@ Package pdftex.def Info: IMMAGINI/denavit_hartenberg.PNG used on input line 454
 (pdftex.def)             Requested size: 315.12724pt x 203.56047pt.
  [19 <./IMMAGINI/denavit_hartenberg.PNG>]
 [20] [21] [22] [23] [24]
-<IMMAGINI/MM_kinematics.png, id=574, 332.442pt x 281.3712pt>
+<IMMAGINI/MM_kinematics.png, id=579, 332.442pt x 281.3712pt>
 File: IMMAGINI/MM_kinematics.png Graphic file (type png)
 
 <use IMMAGINI/MM_kinematics.png>
@@ -1283,7 +1272,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--13
 
 
 
-] [33] <IMMAGINI/torque_control.png, id=653, 1122.1925pt x 501.875pt>
+] [33] <IMMAGINI/torque_control.png, id=658, 1122.1925pt x 501.875pt>
 File: IMMAGINI/torque_control.png Graphic file (type png)
 
 <use IMMAGINI/torque_control.png>
@@ -1294,7 +1283,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 161--164
 
  []
 
-[39] <IMMAGINI/mpc_usage_table.png, id=706, 1365.1pt x 760.8425pt>
+[39] <IMMAGINI/mpc_usage_table.png, id=710, 1365.1pt x 760.8425pt>
 File: IMMAGINI/mpc_usage_table.png Graphic file (type png)
 
 <use IMMAGINI/mpc_usage_table.png>
@@ -1306,14 +1295,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 194--196
  []
 
 [41 <./IMMAGINI/mpc_usage_table.png>]
-<IMMAGINI/MPC_base_diagram.jpg, id=722, 955.57pt x 273.02pt>
+<IMMAGINI/MPC_base_diagram.jpg, id=726, 955.57pt x 273.02pt>
 File: IMMAGINI/MPC_base_diagram.jpg Graphic file (type jpg)
 
 <use IMMAGINI/MPC_base_diagram.jpg>
 Package pdftex.def Info: IMMAGINI/MPC_base_diagram.jpg used on input line 199.
 (pdftex.def)             Requested size: 382.22122pt x 109.20605pt.
 
-<IMMAGINI/mpc_horizon_base_scheme.jpg, id=723, 1212.53pt x 720.6925pt>
+<IMMAGINI/mpc_horizon_base_scheme.jpg, id=727, 1212.53pt x 720.6925pt>
 File: IMMAGINI/mpc_horizon_base_scheme.jpg Graphic file (type jpg)
 
 <use IMMAGINI/mpc_horizon_base_scheme.jpg>
@@ -1321,7 +1310,7 @@ Package pdftex.def Info: IMMAGINI/mpc_horizon_base_scheme.jpg used on input lin
 e 214.
 (pdftex.def)             Requested size: 388.01753pt x 230.62631pt.
  [42 <./IMMAGINI/MPC_base_diagram.jpg>] <IMMAGINI/scheme_model_based_opt.jpg, i
-d=729, 1256.695pt x 314.17375pt>
+d=733, 1256.695pt x 314.17375pt>
 File: IMMAGINI/scheme_model_based_opt.jpg Graphic file (type jpg)
 
 <use IMMAGINI/scheme_model_based_opt.jpg>
@@ -1340,7 +1329,7 @@ Overfull \hbox (11.38618pt too wide) in paragraph at lines 301--301
  []
 
 [45] [46] [47]
-<IMMAGINI/feasibility_image1.png, id=777, 879.285pt x 797.98125pt>
+<IMMAGINI/feasibility_image1.png, id=781, 879.285pt x 797.98125pt>
 File: IMMAGINI/feasibility_image1.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_image1.png>
@@ -1348,7 +1337,7 @@ Package pdftex.def Info: IMMAGINI/feasibility_image1.png used on input line 379
 .
 (pdftex.def)             Requested size: 175.85388pt x 159.59341pt.
 
-<IMMAGINI/feasibility_region.png, id=778, 722.7pt x 658.46pt>
+<IMMAGINI/feasibility_region.png, id=782, 722.7pt x 658.46pt>
 File: IMMAGINI/feasibility_region.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_region.png>
@@ -1356,7 +1345,7 @@ Package pdftex.def Info: IMMAGINI/feasibility_region.png used on input line 383
 .
 (pdftex.def)             Requested size: 180.67455pt x 164.6146pt.
  [48]
-<IMMAGINI/feasible_image2.png, id=787, 550.055pt x 628.3475pt>
+<IMMAGINI/feasible_image2.png, id=791, 550.055pt x 628.3475pt>
 File: IMMAGINI/feasible_image2.png Graphic file (type png)
 
 <use IMMAGINI/feasible_image2.png>
@@ -1368,7 +1357,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 434--438
 
  []
 
-[50] [51] [52] <IMMAGINI/linearvsnl.png, id=824, 1018.80624pt x 930.47626pt>
+[50] [51] [52] <IMMAGINI/linearvsnl.png, id=828, 1018.80624pt x 930.47626pt>
 File: IMMAGINI/linearvsnl.png Graphic file (type png)
 
 <use IMMAGINI/linearvsnl.png>
@@ -1387,7 +1376,7 @@ Chapter 4.
 
 
 
-] <IMMAGINI/cartesian_regulation.png, id=852, 473.6094pt x 286.1892pt>
+] <IMMAGINI/cartesian_regulation.png, id=856, 473.6094pt x 286.1892pt>
 File: IMMAGINI/cartesian_regulation.png Graphic file (type png)
 
 <use IMMAGINI/cartesian_regulation.png>
@@ -1399,7 +1388,7 @@ Package pdftex.def Info: IMMAGINI/cartesian_regulation.png used on input line 1
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [57] [58 <./IMMAGINI/cartesian_regulation.png>] [59] [60] [61] [62] [63]
-[64] <IMMAGINI/potential_field.PNG, id=962, 462.72874pt x 399.4925pt>
+[64] <IMMAGINI/potential_field.PNG, id=966, 462.72874pt x 399.4925pt>
 File: IMMAGINI/potential_field.PNG Graphic file (type png)
 
 <use IMMAGINI/potential_field.PNG>
@@ -1416,7 +1405,7 @@ Chapter 5.
 
 
 ] [69] [70] [71]
-<IMMAGINI/param_horizon.jpg, id=1029, 940.51375pt x 553.06625pt>
+<IMMAGINI/param_horizon.jpg, id=1033, 940.51375pt x 553.06625pt>
 File: IMMAGINI/param_horizon.jpg Graphic file (type jpg)
 
 <use IMMAGINI/param_horizon.jpg>
@@ -1433,7 +1422,7 @@ ne 134.
 
  (./chapter6.tex
 Chapter 6.
-<IMMAGINI/SuperMegaBot.PNG, id=1067, 432.11438pt x 277.53688pt>
+<IMMAGINI/SuperMegaBot.PNG, id=1071, 432.11438pt x 277.53688pt>
 File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot.PNG>
@@ -1444,7 +1433,7 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<IMMAGINI/SuperMegaBot1.PNG, id=1069, 371.3875pt x 232.36812pt>
+<IMMAGINI/SuperMegaBot1.PNG, id=1073, 371.3875pt x 232.36812pt>
 File: IMMAGINI/SuperMegaBot1.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot1.PNG>
@@ -1455,7 +1444,7 @@ Package pdftex.def Info: IMMAGINI/SuperMegaBot1.PNG used on input line 30.
 
 
  <./IMMAGINI/SuperMegaBot.PNG>]
-<IMMAGINI/UR5.png, id=1076, 414.54875pt x 405.515pt>
+<IMMAGINI/UR5.png, id=1080, 414.54875pt x 405.515pt>
 File: IMMAGINI/UR5.png Graphic file (type png)
  <use IMMAGINI/UR5.png>
 Package pdftex.def Info: IMMAGINI/UR5.png used on input line 41.
@@ -1539,44 +1528,47 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
  ) 
 Here is how much of TeX's memory you used:
- 11767 strings out of 493029
- 170398 string characters out of 6136234
- 273222 words of memory out of 5000000
- 14539 multiletter control sequences out of 15000+600000
+ 11768 strings out of 493029
+ 170426 string characters out of 6136234
+ 273303 words of memory out of 5000000
+ 14538 multiletter control sequences out of 15000+600000
  34992 words of font info for 97 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  36i,30n,43p,1533b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/
-fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/latxfont/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/
-sfbx0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/s
-hare/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/typ
-e1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
-fbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/sh
-are/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type
-1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
-rm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/sha
-re/texmf/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sft
-i1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on build/Thesis_main.pdf (101 pages, 5436019 bytes).
+pdfTeX warning (dest): name{section.1.3} has been referenced but does not exi
+st, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fo
+nts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/latxfont/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
+bx0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/sha
+re/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1
+/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfb
+x2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/shar
+e/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/
+public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
+1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share
+/texmf/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1
+200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on build/Thesis_main.pdf (101 pages, 5436935 bytes).
 PDF statistics:
- 1355 PDF objects out of 1440 (max. 8388607)
- 1165 compressed objects within 12 object streams
- 401 named destinations out of 1000 (max. 500000)
+ 1360 PDF objects out of 1440 (max. 8388607)
+ 1170 compressed objects within 12 object streams
+ 403 named destinations out of 1000 (max. 500000)
  610 words of extra memory for PDF output out of 10000 (max. 10000000)
 
