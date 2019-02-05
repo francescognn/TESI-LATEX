@@ -51,7 +51,7 @@ That is, properly choosing $K_V$ and $K_P$ parameters theconvergence of the erro
 The usage of the inverse dynamics in Robot controller is widely diffuse and allows the to transform a MIMO nonlinear system into a simple decoupled linear system, nevertheless relies on a precise modeling of the dynamic system and a perfect knowledge of dynamical parameters. For those reasons classical inverse dynamics controllers are affected by changes in dynamical system properties more advanced techniques able to adapt to system modifications like adaptive control have been developed.  
 \section{Adaptive Control}
 
-Adaptive controller are different from other ordinary controller because the control parameters are time varying. Those parameters are adjusted by an online mechanism based on some signal of the closed-loop system. By means of this type of controller, it is possible to reach control goal even if the plant is subjected to uncertanties or modifications. There are many ways in which this controlled has been implemented, including adaptive computed-torque control, adaptive inertia-related control, adaptive control based on passivity, and adaptive control with desired
+Adaptive controller are different from other ordinary controller because the control parameters are time varying. Those parameters are adjusted by an online mechanism based on some signal of the closed-loop system. By means of this type of controller, it is possible to reach control goal even if the plant is subjected to uncertanties or modifications. There are many ways in which this controller has been implemented, including adaptive computed-torque control, adaptive inertia-related control, adaptive control based on passivity, and adaptive control with desired
 compensation. Adaptive computed-torque control will be presented as an example. Failures in model parameters estimation for classical torque control can lead to mismatch terms that can be interpreted as nonlinear perturbation.
 We'll use the same approach of \ref{inverse_dyn_cont_law} but considering estimated parameters:
 \begin{equation}
@@ -60,7 +60,7 @@ We'll use the same approach of \ref{inverse_dyn_cont_law} but considering estima
 \end{equation}
 where $\hat{H},\hat{C},\hat{\tau}$ have the same functional form as $H,C,\tau_g$. By means of the properties of the dynamical model to be linear wih respect to the system parameters it is possible to write:
 \begin{equation}
-	hat{H}(q)\ddot{q}+\hat{C}(q,\dot{q})+\hat{\tau_g}(q)=Y(q,\dot{q}\ddot{q})\hat{a}
+	hat{H}(q)\ddot{q}+\hat{C}(q,\dot{q})+\hat{\tau_g}(q)=Y(q,\dot{q}, \ddot{q})\hat{a}
 \end{equation}
 where $Y(q,\dot{q}\ddot{q})$ is known as a regressor matrix and $a$ is the vector of the estimated parameters. Applying the control law defined as \ref{torque_control_estim} lead to:
 
