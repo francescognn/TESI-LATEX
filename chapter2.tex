@@ -37,11 +37,9 @@ u_1 &  \cdots & u_m
 \end{matrix}
 \right]^T\in\mathbb{R}^m $ is the input vector and $\left\lbrace  g_1 (q) \cdots g_m (q) \right\rbrace $ is a basis of the null space of $A^T$, named \textit{input vector fields}. \\
 The choice of the input vector fields is not unique, since the input u can have different meanings: velocities, torques or others.\\ 
-Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres. The presence of a wheel entails that, in the absence of slipping, the velocity of its contact point has zero component in the direction orthogonal to its sagittal plane. The angular velocity of the wheel around the vertical axis instead is unconstrained.
-This constraint, named pure rolling constraint, is nonholonomic, because it implies no loss of accessibility in the configuration space of the wheel itself.\\
-Now, the kinematics of a wheeled mobile robot subjected to pure rolling constraints changes depending on how locomotion is achieved. Mainly there are two types of wheeled mobile robots: unicycle like robots and bicycle like ones.
-
+Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic pure rolling constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres. The pure rolling constraint is nonholonomic, because it implies no loss of accessibility in the configuration space of the vehicle.\\
 \subsection{Kinematics}
+The kinematics of a wheeled mobile robot subjected to pure rolling constraints changes depending on how locomotion is achieved. Mainly there are two types of wheeled mobile robots models: unicycle like robots and bicycle like ones. We'll focus on the first one.
 \subsubsection{Unicycle Model}
 \begin{figure}[h!]
 	\centering
@@ -102,73 +100,6 @@ v=\frac{r\left(\omega_R + \omega_L\right)}{2} \qquad \omega=\frac{r\left(\omega_
 \end{equation}
 Where $r$ is the wheels radius and $d$ is the distance between their centres.
 
-\subsubsection{Bicycle Model}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.7]{bicycle_model}
-	\caption{Bicycle model}
-\end{figure}
-A bicycle is a vehicle having an orientable wheel and a fixed wheel. Kinematically it can be described with the generalized coordinates $q = \left[\begin{matrix}x&y&\theta&\phi\end{matrix}\right]^T$, where $x$ and $y$ are the Cartesian coordinates of the centre of the rear fixed wheel, $\theta$ is the orientation of the vehicle with respect to the $x$ axis, and $\phi$ is the steering angle of the front wheel with respect to the vehicle axis.\\
-Both wheels are subject to pure rolling constraints. So expressing the zero velocity of the centre of the front wheel in the direction orthogonal to the wheel itself, and the zero velocity of the centre of the rear wheel in the direction orthogonal to the sagittal axis of the vehicle:
-\begin{equation}
-\begin{split}
-\dot{x}_f\sin \left( \theta+\phi \right)-\dot{y}_f \cos\left(\theta+\phi\right)=0\\
-\dot{x}\sin\theta-\dot{y}\cos\theta=0
-\end{split}
-\end{equation}
-Where:
-\begin{align*}
-x_f=x+\ell\cos\theta \\
-y_f=y+\ell\sin\theta
-\end{align*}
-Are the cartesian coordinates of the centre of the front wheel.\\
-The lines orthogonal to the two wheels meet in the instantaneous centre of rotation $C$.\\
-The pure rolling constraints written in the above equation can be expressend in the Pfaffian form as:
-\begin{equation*} 
-A^T \left( q \right)\dot{q} =0  
-\end{equation*}
-\begin{equation}
-A^T \left( q \right) = \left[ 
-\begin{matrix}
-\sin\theta & -\cos\theta & 0 & 0 \\
-\sin\left(\theta+\phi \right) & -\cos\left(\theta+\phi \right) & -\ell\cos\phi & 0
-\end{matrix}
-\right]
-\end{equation}
-Following the same reasoning done before, we have 4 degrees of freedom and 2 kinematic constraints, so the dimension of the null space of $A(q)^T$ is $n-k= 2$. An example of basis of the null space is:
-\begin{equation}
-\left[ 
-\begin{matrix}
-\dot{x} \\ 	\dot{y} \\ 	\dot{\theta} \\	\dot{\phi} 
-\end{matrix}
-\right] = \left[
-\begin{matrix}
-\cos\theta\cos\phi \\ \sin\theta\cos\phi \\ \sin\phi/\ell \\ 0 
-\end{matrix}
-\right] v+ \left[
-\begin{matrix}
-0 \\0 \\0 \\1
-\end{matrix}
-\right] \omega
-\end{equation}
-If the vehicle is front-wheel drive, or:
-\begin{equation}
-\left[ 
-\begin{matrix}
-\dot{x} \\ 	\dot{y} \\ 	\dot{\theta} \\	\dot{\phi} 
-\end{matrix}
-\right] = \left[
-\begin{matrix}
-\cos\theta \\ \sin\theta \\ \tan\phi/\ell \\ 0 
-\end{matrix}
-\right] v+ \left[
-\begin{matrix}
-0 \\0 \\0 \\1
-\end{matrix}
-\right] \omega
-\end{equation}
-If the vehicle is rear-wheel drive.
-
 \subsection{Dynamics}
 The dynamic model of a mobile robot can be derived using the Lagrangian formulation for a $n$-dimensional system, defining the Lagrangian $\mathcal{L}$ of the mechanical system as the difference between kinetic and potential energy.
 \begin{equation}
@@ -189,63 +120,38 @@ A^T \left( q \right)\dot{q} =0
 \end{equation*}
 Where:
 \begin{equation}
-C(q,\dot{q})=\dot{B}(q)\dot{q}-\frac{1}{2}\left(\frac{\partial}{\partial q}\left( \dot{q}^T B(q)\dot{q}\right)\right)^T
-\end{equation}
-\begin{equation}
 g(q) = \frac{\partial\mathcal{U}(q)}{\partial q} = 0
 \end{equation}
 The potential energy of a mobile base during its motion can be considered constant, so it is possible to disregard its derivative.\\
-It is possible to further simplify the dynamic model ex9ploiting a useful property of the kinematic relation \ref{G}. Since we defined the coloums of $G(q)$ as vectors belonging to the null space of $A(q)^T$, the following relation holds:
+It is possible to further simplify the dynamic model exploiting a useful property of the kinematic relation \ref{G}. Since we defined the coloums of $G(q)$ as vectors belonging to the null space of $A(q)^T$, the following relation holds:
 \begin{equation}
-A(q)^T G(q) = 0 \qquad\textrm{or}\qquad G(q)^T A(q) = 0
+G(q)^T A(q) = 0
 \end{equation}
 So, premultiplying the dynamic model by $G(q)^T$:
 \begin{equation} \label{premultiplicationbyG}
 G^T(q)\left(B(q)\ddot{q}+C(q,\dot{q})\dot{q}\right) = G^T(q)S(q)\tau
 \end{equation}
 Reducing the $n$ differential equations to a system of $m$ differential equations without Lagrange multipliers.
+
 \subsubsection{Unicycle Model}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.7]{schema_mobile_base}
+	\includegraphics[scale=0.7]{mobile_base}
 	\caption{Scheme of a Differential Drive Mobile Robot}
-	\label{diffdrive}
+	\label{mobile_base}
 \end{figure}
-In a unicycle case, like a differential drive robot (Figure \ref{diffdrive}), the kinetic energy can be expressed as: 
+In a unicycle case, like a differential drive robot (Figure \ref{mobile_base}), the dynamic model is very simple if we consider the centre of gravity in the geometric centre of the mobile robot, having:
 \begin{equation}
-\mathcal{T}(q,\dot{q})=\frac{1}{2}M\dot{x}_{COG}^2 + \frac{1}{2}M\dot{y}_{COG}^2 + \frac{1}{2}J\dot{\theta}^2
-\end{equation}
-Where:
-\begin{align*}
-x_{COG} = x+x_C\cos\theta-y_C\sin\theta\\ 
-y_{COG} = y+x_C\sin\theta+y_C\cos\theta
-\end{align*}
-Are the global coordinates of the centre of gravity of the mobile base, and their velocities are:
-\begin{align*}
-\dot{x}_{COG} = \dot{x}-\dot{\theta}x_C\sin\theta-\dot{\theta}y_C\cos\theta\\ 
-\dot{y}_{COG} = \dot{y}+\dot{\theta}x_C\cos\theta-\dot{\theta}y_C\sin\theta
-\end{align*}
-And $M$ and $J$ are respectively the base’s mass and moment of inertia along its vertical axis $z$.\\
-So, after substituting these equations in the Lagrange equation we can write:
-\begin{equation*}
-B(q)=\left[ 
-\begin{matrix}
-M & 0 & -M\left( x_C\sin\theta + y_C\cos\theta\right) \\
-0 & M & M\left( x_C\cos\theta - y_C\sin\theta\right) \\
--M\left( x_C\sin\theta + y_C\cos\theta\right) & M\left( x_C\cos\theta - y_C\sin\theta\right) & J+M x_C^2+M y_C^2
-\end{matrix}
-\right]
-\end{equation*}
-\begin{equation}
-C(q,\dot{q})=\left[ 
-\begin{matrix}
-0 & 0 & M\dot{\theta}\left( y_C\sin\theta - x_C\cos\theta\right) \\
-0 & 0 & -M\dot{\theta}\left( y_C\cos\theta +x_C\sin\theta\right) \\
-0 & 0 & 0
-\end{matrix}
-\right]
-\end{equation}
-Taking the kinematic equation of the unicycle model, deriving it and substituting it in the reduced dynamic model we obtain:
+B(q) = \left[\begin{matrix}
+M & 0 & 0\\ 0 & M & 0 \\ 0 & 0 & J
+\end{matrix} \right]
+\qquad 
+C(q,\dot{q}) = \left[\begin{matrix}
+0 & 0 & 0\\ 0 & 0 & 0 \\ 0 & 0 & 0
+\end{matrix} \right]
+\end{equation} 
+Where $M$ and $J$ are respectively the base’s mass and moment of inertia along its vertical axis $z$.\\
+Taking the kinematic equation of the unicycle model, deriving it and substituting it in the dynamic model \ref{premultiplicationbyG} we obtain:
 \begin{equation}\label{base_kin_mod}
 \dot{q}=G(q)\left[
 \begin{matrix}
@@ -263,161 +169,50 @@ v_{long} \\ \omega
 Where:
 \begin{align*}
 &\tilde{B}(q) = G^T(q)B(q)G(q) \\
-&\tilde{C}(q,\dot{q}) = G^T(q)C(q,\dot{q})G(q) + G^T(q)B(q)\dot{G(q)} \\
+&\tilde{C}(q,\dot{q}) = G^T(q)B(q)\dot{G}(q,\dot{q}) \\
 &\tilde{S}(q) = G^T(q)S(q) 
 \end{align*}
-In this way it is also possible to express the system in \textit{state space form}:
-\begin{equation}
-\left[ 
-\begin{matrix}
-\dot{q} \\ \dot{v}
-\end{matrix}
-\right] = \left[ 
-\begin{matrix}
-[0] & G(q)\\ [0] & -\tilde{B}^{-1}\tilde{C}
-\end{matrix}
-\right]\left[ 
-\begin{matrix}
-q \\ v
-\end{matrix}
-\right] + \left[ 
-\begin{matrix}
-[0] \\ \tilde{B}^{-1}\tilde{S}
-\end{matrix}
-\right] \tau
-\end{equation}
-All the system can be eventually simplified considering the centre of gravity in the geometric centre of the mobile robot. 
-\begin{equation*}
-x_C=0\quad,\quad y_C=0;
-\end{equation*}
-\begin{equation}
-B(q) = \left[\begin{matrix}
-M & 0 & 0\\ 0 & M & 0 \\ 0 & 0 & J
-\end{matrix} \right]
-\qquad 
-C(q,\dot{q}) = \left[\begin{matrix}
-0 & 0 & 0\\ 0 & 0 & 0 \\ 0 & 0 & 0
-\end{matrix} \right]
-\end{equation}
-\begin{equation}
-\tilde{B}(q)\dot{v} = \tilde{S}(q)\tau
-\end{equation}
-So, the state space dynamic model becomes:
-\begin{equation}
-\left[ 
-\begin{matrix}
-\dot{q} \\ \dot{v}
-\end{matrix}
-\right] = \left[ 
-\begin{matrix}
-[0] & G(q)\\ [0] & [0]
-\end{matrix}
-\right]\left[ 
-\begin{matrix}
-q \\ v
-\end{matrix}
-\right] + \left[ 
-\begin{matrix}
-[0] \\ \tilde{B}^{-1}\tilde{S}
-\end{matrix}
-\right] \tau
-\end{equation}
 
 \section{Manipulator Model}
 \subsection{Kinematics}
 A manipulator consists of a series of rigid links connected by joints. In order to plan the manipulator motion from an initial to a final configuration, i.e. the set of joint values, it is necessary to define its pose with respect to a reference frame. 
 \subsubsection{Rototraslation Matrices}
-An orthonormal reference frame $\textbf{x’,y’,z’}$ can be described with respect to an orthonormal reference frame $\textbf{x,y,z}$ in the following way:
-\begin{align}
-\textbf{x'}=x'_x\textbf{x}+x'_y\textbf{y}+x'_z\textbf{z}\\
-\textbf{y'}=y'_x\textbf{x}+y'_y\textbf{y}+y'_z\textbf{z}\\
-\textbf{z'}=z'_x\textbf{x}+z'_y\textbf{y}+z'_z\textbf{z}
-\end{align}
+Considering two different reference frames: $x^0,y^0,z^0$ and $x^1,y^1,z^1$ with two different origins $O^0$ and $O^1$, a point P is represented by the two frames respectively with vectors $p^0$ and $p^1$.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=1]{rotation_frames}
-	\caption{}
-\end{figure}
-These three equations can be expressed as a rotation matrix of the frame $\textbf{x’,y’,z’}$ with respect to the frame $\textbf{x,y,z}$:
-\begin{equation}
-R= \left[
-\begin{matrix}
-\textbf{x'} & \textbf{y'} & \textbf{z'}
-\end{matrix}
-\right]=\left[
-\begin{matrix}
-x'_x & y'_x & z'_x \\
-x'_y & y'_y & z'_y \\
-x'_z & y'_z & z'_z 
-\end{matrix}
-\right] 	
-\end{equation}
-Consider now a point P whose coordinates are referred to frame $\textbf{x,y,z}$ describe the vector $\textbf{p}$, and the coordinates referred to the rotated frame $\textbf{x’,y’,z’}$ describe the vector $\textbf{p’}$. Then it is possible to write:
-\begin{equation}
-	\textbf{p} = \left[
-	\begin{matrix}
-		p_x \\ p_y \\ p_z
-	\end{matrix}
-	\right]
-	\quad
-	\textbf{p'} = \left[
-	\begin{matrix}
-		p'_x \\ p'_y \\ p'_z
-	\end{matrix}
-	\right]
-\end{equation}
-\begin{equation}
-	\textbf{p} = p'_x\textbf{x'}+p'_y\textbf{y'}+p'_z\textbf{z'}=\left[
-	\begin{matrix}
-		\textbf{x'} & \textbf{y'} & \textbf{z'}
-	\end{matrix}
-	\right] \textbf{p'} = R \textbf{p'}
-\end{equation}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=1]{rotation_frames1}
-	\caption{}
-\end{figure}
-The rotation matrix is orthogonal because its columns are mutually orthogonal, by definition.
-\begin{equation}
-	R^TR=I \qquad R^T=R^{-1}
-\end{equation}
-If we then consider two different reference frames: $x^0,y^0,z^0$ and $x^1,y^1,z^1$ with two different origins $O^0$ and $O^1$, a point P is represented by the two frames respectively with vectors $p^0$ and $p^1$.
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=1.3]{rototraslation_frames}
+	\includegraphics[scale=0.5]{rototraslation_frames}
 	\caption{}
 \end{figure}
 The vector $p^0$ can be represented as the sum of two vectors:
 \begin{equation} \label{rototrasl}
-	\mathbf{p^0}= \mathbf{o_1^0} + R_1^0 \mathbf{p^1}
+	p^0= o_1^0 + R_1^0 p^1
 \end{equation}
-Where $R^0_1$ is the rotation matrix of frame $x^1,y^1,z^1$ with respect to frame $x^0,y^0,z^0$ and so $R_1^0 \mathbf{p^1}$ is the representation of vector $\mathbf{p^1}$ in the frame $x^0,y^0,z^0$.\\
+Where $R^0_1$ is the rotation matrix of frame $x^1,y^1,z^1$ with respect to frame $x^0,y^0,z^0$ and so $R_1^0 p^1$ is the representation of vector $p^1$ in the frame $x^0,y^0,z^0$.\\
 It is possible to express the equation above in a compact form using the homogenous transformation matrix simply defining:
 \begin{equation} \label{A}
-	\tilde{\mathbf{p}}=\left[
+	\tilde{p}=\left[
 	\begin{matrix}
-	\textbf{p} \\ 1
+	p\\ 1
 	\end{matrix}
 	\right] \qquad 
 	A_1^0 = \left[
 	\begin{matrix}
-       R_1^0 & \mathbf{o_1^0} \\ [0] & 1
+       R_1^0 & o_1^0 \\ [0] & 1
 	\end{matrix}
 	\right]
 \end{equation}
 \begin{equation}
-	\tilde{\mathbf{p}}^0 = A_1^0\tilde{\mathbf{p}}^1
+	\tilde{p}^0 = A_1^0\tilde{p}^1
 \end{equation}
 The matrix $A_1^0$ is called \textit{rototraslation matrix}.\\
 Inverting the equation \ref{rototrasl} we can express the inverse transformation.
 \begin{equation} 
-\mathbf{p^1}= -R_0^1\mathbf{o_1^0} + R_0^1 \mathbf{p^0}
+p^1= -R_0^1o_1^0 + R_0^1 p^0
 \end{equation}
 \begin{equation}
 	A_0^1 = \left[
 	\begin{matrix}
-		R_0^1 & -R_0^1\mathbf{o_1^0} \\ [0] & 1
+		R_0^1 & -R_0^1o_1^0 \\ [0] & 1
 	\end{matrix}
 	\right]
 \end{equation}
@@ -426,7 +221,7 @@ Where:
 	R_0^1 = (R_1^0)^{-1}=(R_1^0)^{T}
 \end{equation*}
 \begin{equation*}
-A_0^1 = (R_1^0)^{-1}
+A_0^1 = (A_1^0)^{-1}
 \end{equation*}
 Both with rotation and rototraslation matrices, it is possible to obtain a composition of consecutive transformations by postmultiplying the matrices related to the single rotations:
 \begin{align}
@@ -440,7 +235,7 @@ Their representation is based on the concept of the common normal between joint 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=1.3]{denavit_hartenberg}
+	\includegraphics[scale=0.5]{denavit_hartenberg}
 	\caption{Denavit-Hartenberg convention for Robot links}
 \end{figure}
 
@@ -478,7 +273,7 @@ The \textit{direct kinematics} of the manipulator express the position and orien
 	A_{ee}^{base}=A_1^{base}A_2^1A_3^2\cdots A_{ee}^{ee-1}
 \end{equation}
 The opposite problem is the definition of the \textit{inverse kinematics}, i.e. given the position and orientation of the end effector, finding the corresponding joint variables. The inverse kinematics problem is not easy to solve since it is often nonlinear and there can be infinite solutions as well as none.\\
-An important concept which roboticists are still working on is \textit{kinematic redundancy}, i.e. when the number of joint variables is greater than the dimension of the operational space, which is 6 in case of the definition of the 3D position and orientation of the end effector. 
+An important concept which roboticists are still working on is \textit{kinematic redundancy}, i.e. when the number of joint variables is greater than the dimension of the operational space relative to the task to be achieved. For example for a problem of end effector position and orientation regulation the task opertaional space is 6-dimensional.
 When a system is kinematically redundant, direct kinematics is always possible to be defined, while inverse kinematics can have infinite solutions.
 Solving the \textit{kinematic redundancy problem} means to define a criterion in order to be able to pick one among the infinite configurations which have the end effector in the same position and orientation.\\
 This concept will be very important in the defintion of Mobile Manipulator control.
@@ -501,57 +296,14 @@ Similarly, the kinetic energy of the entire system is the sum of the kinetic ene
 \begin{equation}
 	\mathcal{T} = \sum_{i=1}^{n}\left(\mathcal{T}_{l_i}+\mathcal{T}_{m_i}\right)
 \end{equation}
-Beginning with the expression of the links kinetic energy:
-\begin{equation}
-	\mathcal{T}_{l_i}=\frac{1}{2}\int_{V_{l_i}}\dot{\mathbf{p}*}_i^T\dot{\mathbf{p}*}_i\rho dV
-\end{equation}
-Where $\dot{\mathbf{p}*}_i$ the velocity vector of the elementary particle of link i.\\
 In order to relate the velocities of every elementary particle of the manipulator to the joint velocities we have to express in a proper way the Jacobians.
-
-\subsubsection{Differential Kinematics}
-First of all we need to introduce the skew symmetric matrix $S(\boldsymbol{\omega})$. It can be obtained from the differentiation with respect to time of a rotation matrix:
-\begin{equation}
-	R(t)R(t)^T=I
-\end{equation}
-\begin{equation}
-	\dot{R}(t)R(t)^T+R(t)\dot{R}(t)^T=0
-\end{equation}
-$S$ is defined as:
-\begin{equation}
-	S(t) = \dot{R}(t)R(t)^T
-\end{equation}
-It is possible now to define the derivative of the rotation matrix as:
-\begin{equation}
-	\dot{R}\left(t\right)=S\left(t\right)R(t)
-\end{equation}
-\begin{equation}
-	p\left(t\right)=R\left(t\right)p'
-\end{equation}
-\begin{equation}
-	\dot{p}\left(t\right)=\dot{R}\left(t\right)p'=S(t)R\left(t\right)p'
-\end{equation}
-But from mechanics it is also known that:
-\begin{equation}
-	\dot{p}\left(t\right)=\boldsymbol{\omega}(t)\times R\left(t\right)p'
-\end{equation}
-Where $\boldsymbol{\omega}\left(t\right)=\left[\begin{matrix}\omega_x&\omega_y&\omega_z\end{matrix}\right]$ is the vector of the angular velocity of the rotating frame described by $R(t)$.
-So $S$ can be interpreted as an operator depending only on $\boldsymbol{\omega}\left(t\right)$.
-\begin{equation}
-	S\left(\boldsymbol{\omega}\right)=\left[
-	\begin{matrix}
-	0&-\omega_z&\omega_y\\\omega_z&0&-\omega_x\\-\omega_y&{-\omega}_x&0
-	\end{matrix}\right]
-\end{equation}
-
-\subsubsection{Jacobians}\label{jacobians}
-In order to express the Lagrange equation as a function of the joint variables velocities we now introduce the Jacobian matrices for each link.
 \begin{align}
 	{\dot{\mathbf{p}}}_{l_i}=\mathit{j}_{P_1}^{(l_i)}{\dot{q}}_1+\mathit{j}_{P_2}^{(l_i)}{\dot{q}}_2+\cdots+\mathit{j}_{P_i}^{\left(l_i\right)}{\dot{q}}_i=\mathcal{J}_P^{(l_i)}\dot{q}
 	\\
 	\omega_{l_i}=\mathit{j}_{O_1}^{(l_i)}{\dot{q}}_1+\mathit{j}_{O_2}^{(l_i)}{\dot{q}}_2\cdots+\mathit{j}_{O_i}^{\left(l_i\right)}{\dot{q}}_i=\mathcal{J}_O^{(l_i)}\dot{q}
 \end{align}
 
-Where with $\mathcal{J}_P^{(l_i)}$ we mean the Jacobian matrix relating the joint velocities to the linear velocity of the centre of mass of link i, and with $\mathcal{J}_O^{(l_i)}$ we mean the Jacobian matrix relating the joint velocities to the angular velocity of the centre of mass of link i. 
+Where with $\mathcal{J}_P^{(l_i)}$ we mean the Jacobian matrix relating the generalized joint velocities to the linear velocity of the centre of mass of link $i$, and with $\mathcal{J}_O^{(l_i)}$ we mean the Jacobian matrix relating the generalized joint velocities to the angular velocity of the centre of mass of link $i$. 
 The columns of the Jacobian matrices are:
 \begin{equation}
 	\mathit{j}_{P_j}^{(l_i)}=
@@ -567,43 +319,16 @@ The columns of the Jacobian matrices are:
 		z_{j-1} & \text{for a \textit{revolute} joint}	
 	\end{cases} 
 \end{equation}
-
-\subsubsection{Inertia Matrix}
-Recovering the kinetic energy expression, we can now relate the velocities $ {\dot{\mathbf{p}*}}_i$ to the velocity vector ${\dot{\mathbf{p}}}_{l_i}$ of the centre of mass of the link.
-\begin{equation}
-	{\dot{\mathbf{p}*}}_i={\dot{\mathbf{p}}}_{l_i}+\boldsymbol{\omega}_i\times\mathbf{r}_i={\dot{\mathbf{p}}}_{l_i}+S(\boldsymbol{\omega}_i)\mathbf{r}_i
-\end{equation}
-Substituting this expression in the equation of the kinetic energy and exploiting the properties of the integral of the centre of mass we obtain.
-\begin{equation} \label{iniziodinamica}
-	\mathcal{T}_{l_i}= \frac{1}{2}m_{l_i}{{\dot{\mathbf{p}}}_{l_i}}^T{\dot{\mathbf{p}}}_{l_i}+\frac{1}{2}{\boldsymbol{\omega}_i}^TR_iI_{l_i}^iR_i^T\boldsymbol{\omega}_i
-\end{equation}
-\begin{equation}
-	\mathcal{T}_{l_i}= \frac{1}{2}m_{l_i}{\dot{q}}^T{\mathcal{J}_P^{(l_i)}}^T\mathcal{J}_P^{(l_i)}\dot{q}+\frac{1}{2}{\dot{q}}^T{\mathcal{J}_O^{(l_i)}}^TR_iI_{l_i}^iR_i^T\mathcal{J}_O^{(l_i)}\dot{q}
-\end{equation}
-
-In an analogous way it can be computed also the motors kinetic energy.
-\begin{equation}
-	\mathcal{T}_{m_i}=
-	\frac{1}{2}m_{m_i}{{\dot{\mathbf{p}}}_{m_i}}^T{\dot{\mathbf{p}}}_{m_i}+\frac{1}{2}{\boldsymbol{\omega}_{m_i}}^TI_{m_i}\boldsymbol{\omega}_{m_i}
-\end{equation}
-
-Where ${\dot{\mathbf{p}}}_{m_i}$ is the velocity vector of the centre of mass of the motor and $\boldsymbol{\omega}_{m_i}$ is the angular velocity of the rotor of motor i.
-\begin{equation}
-	\mathcal{T}_{m_i}=\frac{1}{2}m_{m_i}{\dot{q}}^T{\mathcal{J}_P^{(m_i)}}^T\mathcal{J}_P^{(m_i)}\dot{q}+\frac{1}{2}{\dot{q}}^T{\mathcal{J}_O^{(m_i)}}^TR_{m_i}I_{m_i}^{m_i}R_{m_i}^T\mathcal{J}_O^{(m_i)}\dot{q}
-\end{equation}
-
-Summing all the contributions of the single links, the total kinetic energy of the manipulator is:
-\begin{equation}
-	\mathcal{T}=\ \frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}{b_{ij}(q){\dot{q}}_i{\dot{q}}_j}=\frac{1}{2}{\dot{q}}^TB\left(q\right)\dot{q}
+So it is possible to express the kinetic energy as:
+\begin{equation}\label{iniziodinamica}
+	\mathcal{T}= \frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}{b_{ij}(q){\dot{q}}_i{\dot{q}}_j}=\frac{1}{2}{\dot{q}}^TB\left(q\right)\dot{q}
 \end{equation}
 Where:
 \begin{align*}
-	B\left(q\right)=\ \sum_{i=1}^{n} &m_{l_i}{\mathcal{J}_P^{(l_i)}}^T\mathcal{J}_P^{(l_i)}+\frac{1}{2}{\mathcal{J}_O^{(l_i)}}^TR_iI_{l_i}^iR_i^T\mathcal{J}_O^{(l_i)} \\
-	+ &m_{m_i}{\mathcal{J}_P^{(m_i)}}^T\mathcal{J}_P^{(m_i)}+{\mathcal{J}_O^{(m_i)}}^TR_{m_i}I_{m_i}^{m_i}R_{m_i}^T\mathcal{J}_O^{(m_i)} 
+	B\left(q\right)=\sum_{i=1}^{n} &m_{l_i}{\mathcal{J}_P^{(l_i)}}^T\mathcal{J}_P^{(l_i)}+\frac{1}{2}{\mathcal{J}_O^{(l_i)}}^TR_iI_{l_i}^iR_i^T\mathcal{J}_O^{(l_i)} \\
+	+&m_{m_i}{\mathcal{J}_P^{(m_i)}}^T\mathcal{J}_P^{(m_i)}+{\mathcal{J}_O^{(m_i)}}^TR_{m_i}I_{m_i}^{m_i}R_{m_i}^T\mathcal{J}_O^{(m_i)} 
 \end{align*}
-Is the $(n\times n)$ symmetric positive-definite inertia matrix of the system.
-
-\subsubsection{Coriolis Matrix}
+Is the $(n\times n)$ symmetric positive-definite inertia matrix of the system, with $m_{l_i}$ and $m_{m_i}$ as the mass of link and motor $i$ and $I_{l_i}^i$ and $I_{m_i}^{m_i}$ as the inertia tensor of the the link and motor $i$ with respect to the $i$th reference frame.\\
 Recovering the Lagrange equation:
 \begin{equation*}
 	\frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial\dot{q}}\right)^T-\left(\frac{\partial \mathcal{L}}{\partial q}\right)^T=\tau
@@ -615,13 +340,11 @@ Recovering the Lagrange equation:
 		=\sum_{j=1}^{n}{b_{ij}\left(q\right){\ddot{q}}_j}+\sum_{j=1}^{n}\sum_{k=1}^{n}{h_{ijk}\left(q\right){\dot{q}}_k{\dot{q}}_j}&
 	\end{split}
 \end{equation}
-
 \begin{equation}
 	\frac{d}{dt}\left(\frac{\partial \mathcal{T}}{\partial\dot{q}}\right)^T-\left(\frac{\partial \mathcal{T}}{\partial q}\right)^T=B(q)\ddot{q}+C\left(q,\dot{q}\right)\dot{q}
 \end{equation}
-Where $C\left(q,\dot{q}\right)$ is the non-symmetric positive definite Coriolis matrix that represents the effect of motion of joint j and k on the motion of joint i. 
-\subsubsection{Gravitational Vector}
-Continuing considering the potential energy within the Lagrange equation.
+Where $C\left(q,\dot{q}\right)$ is the non-symmetric positive definite Coriolis matrix that represents the effect of motion of joint $j$ and $k$ on the motion of joint $i$. 
+\\Considering the potential energy within the Lagrange equation.
 \begin{equation*}
 	\mathcal{U}=\sum_{i=1}^{n}{(\mathcal{U}_{l_i}+\mathcal{U}_{m_i})}
 \end{equation*}
@@ -633,12 +356,11 @@ Where $\mathbf{g}_0$ is the gravity acceleration vector. So:
 \begin{equation}
 	\frac{\partial \mathcal{U}}{\partial q_i}=-\sum_{j=1}^{n}\left(m_{l_i}\mathbf{g}_0^T\frac{{\partial\mathbf{p}}_{l_i}}{\partial q_i}+m_{m_i}\mathbf{g}_0^T\frac{{\partial\mathbf{p}}_{m_i}}{\partial q_i}\right)=g_i(q)
 \end{equation}
-
 So the final equation of the manipulator dynamic model is:
-\large\begin{equation}\label{dynamics}
+\begin{equation}\label{dynamics}
 	B\left(q\right)\ddot{q}+C\left(q,\dot{q}\right)\dot{q}+g\left(q\right)=\ \tau
-\end{equation}\normalsize
-Where $g(q)$ is the gravitational vector that represents the moments acting on links due to gravity force.
+\end{equation}
+Where $g(q)$ is the gravitational vector that represents the moments acting on the joints due to gravity force.
 
 \section{Mobile Manipulator Model}
 \subsection{Kinematics}
@@ -652,14 +374,14 @@ Considering the general case of a mobile manipulator composed by a manipulator a
 \begin{equation}\label{dirkinMM}
 	X_{EE}=\left[\begin{matrix}\mathbf{p}_{EE}\\\Phi\end{matrix}\right]=f(q)=f\left(\left[\begin{matrix}q_b\\q_a \end{matrix}\right]\right)
 \end{equation}
-Where $\mathbf{p}_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and$\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation that can be expressed with different conventions like Azimut-Elevation-Rotation or Roll-Pitch-Yaw. As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{MM_kin} is
+Where $\mathbf{p}_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and $\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation that can be expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{MM_kin} is
 \begin{equation*}
 \begin{split}
 	x_{EE}&=x_b+a\cos\theta-b\sin\theta+l_1\cos\left(\theta+\theta_1\right)+l_2\cos\left(\theta+\theta_1+\theta_2\right)\\
 	y_{EE}&=y_b+a\sin\theta-b\cos\theta+l_1\sin\left(\theta+\theta_1\right)+l_2\sin\left(\theta+\theta_1+\theta_2\right)
 \end{split}
 \end{equation*}
-It is possible to define the function $f(q)$ of Eq.\ref{dirkinMM} adding the rototranslation matrix $A_{base}^{global}$ relative to the mobile base motion, to the direct kinematics of the arm \ref{AAAA}. In the case of the previous example:
+It is possible to define the function $f(q)$ of Eq.\ref{dirkinMM} premultiplying the rototranslation matrix $A_{base}^{global}$, relative to the mobile base motion, to the direct kinematics of the arm. In the case of the previous example:
 \begin{equation}
 	A_{base}^{global}=\left[\begin{matrix}
 		\cos\theta&-\sin\theta&0&x_b+a\cos\theta-b\sin\theta\\
@@ -673,14 +395,21 @@ So the forward kinematics can be obtained consequently:
 A_{ee}^{global}=A_{base}^{global}A_1^{base}A_2^1\cdots A_{ee}^{ee-1}
 \end{equation}
 \subsubsection{Redundancy}
-As we had said before the forward kinematics of a system is always solvable, but for redundant systems like Mobile Manipulators the inverse kinematics problem has infinite solutions. 
-...........................
-\subsection{Dynamics}
+As we had briefly introduced before, a robot is kinematically redundant if the number of its degrees of freedom is greater than it is strictly necessary. In this sense redundancy is thus a concept relative to the given task. Mobile Manipulators are systems specifically built redundant in order to exploit the extra degrees of freedom to:
+\begin{itemize}
+	\item avoid collision with obstacles;
+	\item avoid kinematic singularities;
+	\item increase the manipulability of the system;
+	\item move with lower joint velocities;
+	\item etc.
+\end{itemize}
+Anyway redundancy is an issue when dealing with inverse kinematics since infinite solutions exist. So, solutions are mainly sought at velocity levels.
+\subsubsection{Differential kinematics}
 Differentiating $f$, the differential forward kinematics of the Mobile Manipulator can be obtained. 
 \begin{equation}\label{eq:dotx_EE}
 	\dot{X}_{EE}=\mathcal{J}_b(q)\dot{q}_b+\mathcal{J}_a(q)\dot{q}_a
 \end{equation}
-Where the columns of $\mathcal{J}_a(q)=\frac{\partial f}{\partial q_a}(q_a,\theta)$ can be obtained similarly to the way described in section \ref{jacobians}.
+Where the columns of $\mathcal{J}_a(q)=\frac{\partial f}{\partial q_a}(q_a,\theta)$ can be obtained similarly to the way described in section \ref{sec:dynamics}.
 \begin{equation}
 \mathit{j}_{P_j}^{(EE)}=
 	\begin{cases}
@@ -706,7 +435,8 @@ Therefore is now possible to reformulate eq \ref{eq:dotx_EE} in a compact form t
 \mathcal{J}_v(\theta) & \mathcal{J}_a(q)
 \end{matrix}\right]\left[\begin{matrix}v\\\dot{q_a} \end{matrix}\right]
 \end{equation}
-Once known the expessions of Jacobians $\mathcal{J}_b(q)$ and $\mathcal{J}_a(q)$, equations from \ref{iniziodinamica} to \ref{dynamics} can be applied to the Mobile Manipulator case as if it were a compound manipulator, obtaining:
+\subsection{Dynamics}
+Once obtained the expessions of Jacobians $\mathcal{J}^{(l_i)}_b(q)$ and $\mathcal{J}^{(l_i)}_a(q)$, equations from \ref{iniziodinamica} to \ref{dynamics} can be applied to the Mobile Manipulator case as if it were a compound manipulator, obtaining:
 \begin{equation}
 B\left(q\right)\left[
 \begin{matrix}\ddot{q}_b\\\ddot{q}_a\\
@@ -760,7 +490,7 @@ q}_b\\\ddot{q}_a\\\end{matrix}\right] &\\
 &= \left[\begin{matrix}G^T(q_b)\tau_b\\\tau_a\\\end{matrix}\right]
 \end{split}
 \end{equation}
-The columns of $G$ are a basis of the null space of $A(x)T$, so the Lagrange multipliers term is set to zero.
+The columns of $G$ are a basis of the null space of $A(q_b)T$, so the Lagrange multipliers term is set to zero.
 If we now consider the kinematic equation of the base \ref{G}:
 \begin{equation}
 \left[\begin{matrix}\dot{q}_b\\\dot{q}_a\\\end{matrix}\right]=\left[\begin{matrix}G(q_b)&0\\0&I\\\end{matrix}\right]\left[\begin{matrix}v\\\dot{q}_a\\\end{matrix}\right]
