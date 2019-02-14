@@ -4,13 +4,13 @@
 \label{chapter2}
 \section{Mobile Robot Model}
 \subsubsection{Holonomic and Nonholonomic constraints}
-Constraints acting on the configuration, i.e. positions and orientations, of a system of rigid bodies are said to be  \textit{holonomic}. 
+Constraints which reduce the dimensions of the accessible configuration space of a system of rigid bodies, i.e. acting on the generalized coordinates $x$ that describe the system, are said to be \textit{holonomic} or integrable. 
 Holonomic constraints are expressed in the form:
 \begin{equation}
 h\left( x\right) =0
 \end{equation}
-Constraints on the velocities of the system of rigid bodies but not on their positions are called \textit{nonholonomic}. In general all constraints which are nonintegrable are said to be nonholonomic, so also inequality constraints about the configuration are considered nonholonomic. 
-Nonholonomic constraints reduce the mobility of the mechanical system in a completely different way with respect to holonomic constraints. The fact that the constraint is nonintegrable means that there is no loss of accessibility to the entire configuration space for the system. In other words, while the number of DOFs decreases due to the constraint, the number of generalized coordinates cannot be reduced. Only the subspace of the generalized velocities is reduced.
+All constraints which instead are nonintegrable are said to be \textit{nonholonomic}, so also inequality constraints on the configuration space. In particular, constraints on the generalized velocities of the system of rigid bodies but not on its configuration are nonholonomic.\\
+Nonholonomic constraints reduce the mobility of the mechanical system in a completely different way with respect to holonomic constraints. The fact that the constraint is nonintegrable means that there is no loss of accessibility to the entire configuration space for the system. In other words, while the subspace of the generalized velocities is reduced due to the constraint, the number of generalized coordinates cannot be reduced.
 Nonholonomic constraints are expressed in the form:
 \begin{equation}
 h( x,\dot{x}) =0
@@ -19,40 +19,39 @@ Kinematic constraints both holonomic or nonholonomic are usually written in the 
 \begin{equation}
 a_i^T \left( x \right)\dot{x} =0 \qquad i=1,...,k<n 
 \end{equation}
-\begin{equation*} 
+or in a compact form:
+\begin{equation} 
 A^T \left( x \right)\dot{x} =0  
-\end{equation*}
+\end{equation}
 Assuming now to have $k$ nonholonomic constraint equations for a $n$ dimensional system, this implies that the admissible generalized velocities $\dot{x}$ of the system in any of its configuration $x$ necessarily belong to a $(n-k)$-dimensional space. Specifically, expressing the constraint equations in Pfaffian form, the generalized velocities should belong to the null space of matrix $A^T$.\\
-Thus, it can be written:
+Thus, it can be written as
 \begin{equation} \label{G}
 \dot{x}=\sum_{j=1}^{m} g_j(x)u_j=G(x)u \qquad m=n-k
 \end{equation}
-Where $x\in \mathbb{R}^n $ is the state vector, $u= \left[
+where $x\in \mathbb{R}^n $ is the vector of the generalized coordinates describing the system (state vector), $u= \left[
 \begin{matrix}
 u_1 &  \cdots & u_m
 \end{matrix}
 \right]^T\in\mathbb{R}^m $ is the input vector and $\left\lbrace  g_1(x) \cdots g_m(x) \right\rbrace $ is a basis of the null space of $A^T$.\\ 
 Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic pure rolling constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres. The pure rolling constraint is nonholonomic, because it implies no loss of accessibility in the configuration space of the vehicle.\\
-The kinematics of a wheeled mobile robot subjected to pure rolling constraints changes depending on how locomotion is achieved. Mainly there are two types of wheeled mobile robots models: unicycle like robots and bicycle like ones. We'll focus on the first one.
+The kinematics of a wheeled mobile robot subjected to pure rolling constraints changes depending on how locomotion is achieved. Mainly there are two types of wheeled mobile robot models: unicycle like robots and bicycle like ones. We will focus on the first one.
 \subsubsection{Unicycle Model}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.4]{unicycle_model}
+	\includegraphics[scale=0.5]{unicyclemodel}
 	\caption{Unicycle model}
+	\label{fig:unicyclemodel}
 \end{figure}
-A unicycle is a vehicle which configuration is completely described by the state vector $x = \left[\begin{matrix}x_b&y_b&\theta_b\end{matrix}\right]^T$, where $x_b$ and $y_b$ are the Cartesian coordinates of the contact point of the wheel with the ground and $\theta_b$ is the orientation of the wheel with respect to the axis of the abscissas. \\
-The constraint of pure rolling for the unicycle is simply expressed as:
-\begin{equation} 
+A unicycle is a vehicle whose configuration is completely described by the configuration vector $x = \left[\begin{matrix}x_b&y_b&\theta_b\end{matrix}\right]^T$, where $x_b$ and $y_b$ are the Cartesian coordinates of the contact point of the wheel with the ground and $\theta_b$ is the orientation of the wheel with respect to the axis of the abscissas, as showed in figure \ref{fig:unicyclemodel}. \\
+The pure rolling constraint for the unicycle is simply expressed as:
+\begin{equation} \label{At}
 \dot{x}_b\sin\theta_b-\dot{y}_b\cos\theta_b=\left[
 \begin{matrix}
-\sin\theta_b & cos\theta_b & 0
+\sin\theta_b & \cos\theta_b & 0
 \end{matrix}
-\right] \dot{x}=0
+\right] \dot{x}= A^T \left( x \right)\dot{x} =0  
 \end{equation}
-\begin{equation*} \label{At}
-A^T \left( x \right)\dot{x} =0  
-\end{equation*}
-This equation expresses that the velocity of the contact point (or of the wheel centre) is zero in the direction orthogonal to the sagittal axis of the disk.\\
+This equation expresses that the velocity of the contact point (or of the wheel centre) is zero in the direction orthogonal to the sagittal plane of the disk.\\
 Hence the unicycle is a 3-dimensional system subject to one nonholonomic constraint, so the dimension of the basis of the null space of $A^T$ is 2. Choosing:
 \begin{equation} \label{Gmatrix_def}
 G(x)=\left[
@@ -84,33 +83,32 @@ All the generalized velocities of the unicycle at $x$ are a combination of $g_1 
 \right]\omega
 \end{equation}
 Where $v$ is the driving velocity, i.e. the velocity of the disk along its sagittal plane, and $\omega$ is the steering velocity, i.e. the angular speed around its vertical axis.\\
-A lot of mobile robots are kinematically equivalent to a unicycle, like differential drive robots, skid steering robots or synchro drive vehicles.\\
-In most of the unicycle-like mobile robots, $v$ and $\omega$ are the command input to the system, while the actual velocity input are $\omega_R$ and $\omega_L$, i.e. the right and left wheels angular speeds. 
+A lot of mobile robots are kinematically equivalent to a unicycle, like differential drive robots, like the one in figure \ref{fig:mobilebase}, skid steering robots or synchro drive vehicles.\\
+In most of the unicycle-like mobile robots, $v$ and $\omega$ are the command input to the system, while the actual velocity input are $\omega_R$ and $\omega_L$, i.e. the right and left wheels angular speeds: 
 \begin{equation}
 v=\frac{r\left(\omega_R + \omega_L\right)}{2} \qquad \omega=\frac{r\left(\omega_R - \omega_L\right)}{d}
 \end{equation}
 \begin{equation}
 \omega_R =\frac{1}{r}\left(v+\frac{d}{2}\omega\right) \qquad \omega_L=\frac{1}{r}\left(v-\frac{d}{2}\omega\right)
 \end{equation}
-Where $r$ is the wheels radius and $d$ is the distance between their centres.
+where $r$ is the wheel radius and $d$ is the distance between their centres.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.7]{mobile_base}
+	\includegraphics[scale=0.8]{mobilebase}
 	\caption{Scheme of a Differential Drive Mobile Robot}
-	\label{mobile_base}
+	\label{fig:mobilebase}
 \end{figure}
-
 \section{Manipulator Model}
-A manipulator consists of a series of rigid links connected by joints. Mathematically it can be modeled as a kinematic chain where one end of the chain is constrained to a base, while an end effector is mounted to the other end. The end effector is used to manipulate objects in space. Therefore, it is the end effector position and orientation, \textit{pose}, that is often studied. \textit{Forward kinematics} describes the pose of the end effector as a function of the joint values.
+A manipulator consists of a series of rigid links connected by joints. Mathematically it can be modeled as a kinematic chain where one end of the chain is constrained to a base, while an end effector is mounted to the other end. The end effector is used to manipulate objects in space. Therefore, it is the end effector position and orientation, \textit{pose}, that is often studied. \textit{Forward kinematics} describes the pose of the end effector as a function of the joint values:
 \begin{equation}
  	X_{EE}=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)
 \end{equation} 
-Where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and $\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation that can be expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. 
+where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and $\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. 
 It is possible to express this relation in a compact form using the homogenous \textit{rototraslation matrix} $A_{ee}^{base}$ that describes the end effector reference frame with respect to the base global reference frame:
 \begin{equation}\label{AAAA}
 A_{ee}^{base}=A_1^{base}A_2^1A_3^2\cdots A_{ee}^{ee-1}
 \end{equation}
-Where $A_i^{i-1}$ is the expression of the transformation from one joint frame to the following one through the use of Denavit-Hartemberg parameters \cite{DH}: $a\text{, }\alpha\text{, }d\text{, }\theta$
+where $A_i^{i-1}$ is the expression of the transformation from one joint frame to the following one through the use of Denavit-Hartemberg parameters \cite{DH}: $a\text{, }\alpha\text{, }d\text{, }\theta$ (defined as in figure \ref{fig:DH}):
 \begin{equation}
 A_i^{i-1}(q_i)=\left[
 \begin{matrix}
@@ -125,12 +123,13 @@ This matrix is function only of the joint variables $\theta$ and $d$.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.4]{denavit_hartenberg}
+	\includegraphics[scale=0.4]{denavithartenberg}
 	\caption{Denavit-Hartenberg convention for Robot links}
+	\label{fig:DH}
 \end{figure}
 
 The opposite problem is the definition of the \textit{inverse kinematics}, i.e. given the position and orientation of the end effector, finding the corresponding joint variables. The inverse kinematics problem is not easy to solve since it is often nonlinear and there can be infinite solutions as well as none.\\
-An important concept which roboticists are still working on is \textit{kinematic redundancy}, i.e. when the number of joint variables is greater than the dimension of the operational space relative to the task to be achieved. For example for a problem of end effector position and orientation regulation the task operational space is 6-dimensional.
+An important concept which roboticists are still working on is \textit{kinematic redundancy}, i.e. when the number of joint variables is greater than the dimension of the operational space relative to the task to be achieved. For example, for a problem of end effector position and orientation regulation the task operational space is 6-dimensional.
 When a system is kinematically redundant, direct kinematics is always possible to be defined, while inverse kinematics can have infinite solutions.
 Solving the \textit{kinematic redundancy problem} means to define a criterion in order to be able to pick one among the infinite configurations which have the end effector in the same position and orientation.\\
 This concept will be very important in the defintion of Mobile Manipulator control, since Mobile Manipulators are highly redundant systems.
@@ -138,15 +137,16 @@ This concept will be very important in the defintion of Mobile Manipulator contr
 \section{Mobile Manipulator Model}
 \begin{figure}
 \centering
-\includegraphics[scale=0.8]{MM_kinematics}
-\label{MM_kin}
-\caption{A simple Mobile Manipulator composed by a mobile base and a 2-DoF robotic arm}
+\includegraphics[scale=0.8]{MMkinematics}
+\caption{A simple Mobile Manipulator composed by a mobile base and a 2-Dof robotic arm}
+\label{fig:MMkinematics}
 \end{figure}
-Considering the general case of a mobile manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location of the end effector as a function of both the arm and base generalized coordinates.
+Considering the general case of a mobile manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location and orientation of the end effector as a function of both the arm and base generalized coordinates:
 \begin{equation}\label{dirkinMM}
-	X_{EE}=\left[\begin{matrix}\mathbf{p}_{EE}\\\Phi\end{matrix}\right]=f(x)=f\left(\left[\begin{matrix}x_{base}\\x_{arm} \end{matrix}\right]\right)
+	X_{EE}=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)=f\left(\left[\begin{matrix}x_{base}\\x_{arm} \end{matrix}\right]\right)
 \end{equation}
-As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{MM_kin} is
+where $x_{base}$ is the configuration vector of the mobile base and $x_{arm}$ is the vector of joint coordinates of the manipulator.
+As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{fig:MMkinematics} is
 \begin{equation*}
 \begin{split}
 	x_{EE}&=x_b+a\cos\theta-b\sin\theta+l_1\cos\left(\theta+\theta_1\right)+l_2\cos\left(\theta+\theta_1+\theta_2\right)\\
@@ -178,9 +178,9 @@ As we had briefly introduced before, a robot is kinematically redundant if the n
 A common way to deal with redundant systems is to move the problem at velocity level through the use of Jacobians, as we will see more in detail in the following chapters. 
 \paragraph{Differential kinematics}Differentiating $f$, the differential forward kinematics of the Mobile Manipulator can be obtained. 
 \begin{equation}\label{eq:dotx_EE}
-	\dot{X}_{EE}=J_b(x)\dot{x}_b+J_a(x)\dot{x}_a
+	\dot{X}_{EE}=J_b(x)\dot{x}_{base}+J_a(x)\dot{x}_{arm}
 \end{equation}
-Where the columns of $J_a(x)=\frac{\partial f}{\partial x_a}(x_a,\theta)$ can be obtained as:
+where the columns of $J_a(x)={\partial f}/{\partial x_{arm}}(x)$ can be obtained as:
 \begin{equation}
 \mathit{j}_{P_j}^{(EE)}=
 	\begin{cases}
@@ -195,8 +195,8 @@ Where the columns of $J_a(x)=\frac{\partial f}{\partial x_a}(x_a,\theta)$ can be
 	z_{j-1} & \text{for a \textit{revolute} joint}	
 	\end{cases} 
 \end{equation}
-and $J_b(x)={\partial f}/{\partial x_b}(x)$ can be obtained at the same way considering $x_b$ and $y_b$ as prismatic joints and $\theta_b$ as a revolute joint of the compound system.\\
-In doing this the nonholonomic constraint of the mobile platform \ref{G} should be taken into account:
+and $J_b(x)={\partial f}/{\partial x_{base}}(x)$ can be obtained at the same way considering $x_b$ and $y_b$ as prismatic joints and $\theta_b$ as a revolute joint of the compound system.\\
+In this the nonholonomic constraint \ref{G} of the mobile platform should be taken into account:
 \begin{equation}
 	J_b(x)\dot{x}_b=J_b(x)G(x)v=J_v(\theta_b)v
 \end{equation}
@@ -204,6 +204,6 @@ Therefore is now possible to reformulate eq \ref{eq:dotx_EE} in a compact form t
 \begin{equation}
 \dot{X}_{EE}=\left[\begin{matrix}
 J_v(\theta_b) & J_a(x)
-\end{matrix}\right]\left[\begin{matrix}v\\\dot{x}_a \end{matrix}\right] = J(x)\dot{x}
+\end{matrix}\right]\left[\begin{matrix}v\\\dot{x}_{arm} \end{matrix}\right] = J(x)\dot{x}
 \end{equation}
 
