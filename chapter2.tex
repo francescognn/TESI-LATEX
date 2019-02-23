@@ -38,7 +38,7 @@ The kinematics of a wheeled mobile robot subjected to pure rolling constraints c
 \subsubsection{Unicycle Model}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.5]{unicyclemodel}
+	\includegraphics[scale=0.4]{unicyclemodel}
 	\caption{Unicycle model}
 	\label{fig:unicyclemodel}
 \end{figure}
@@ -176,11 +176,11 @@ As we had briefly introduced before, a robot is kinematically redundant if the n
 	\item etc.
 \end{itemize}
 A common way to deal with redundant systems is to move the problem at velocity level through the use of Jacobians, as we will see more in detail in the following chapters. 
-\paragraph{Differential kinematics}Differentiating $f$, the differential forward kinematics of the Mobile Manipulator can be obtained. 
+\paragraph{Differential kinematics}Differentiating $f$, the differential forward kinematics of the Mobile Manipulator can be obtained:
 \begin{equation}\label{eq:dotx_EE}
-	\dot{X}_{EE}=J_b(x)\dot{x}_{base}+J_a(x)\dot{x}_{arm}
+	\dot{X}_{EE}=\mathcal{J}_b(x)\dot{x}_{base}+\mathcal{J}_a(x)\dot{x}_{arm}
 \end{equation}
-where the columns of $J_a(x)={\partial f}/{\partial x_{arm}}(x)$ can be obtained as:
+where the columns of $\mathcal{J}_a(x)={\partial f}/{\partial x_{arm}}(x)$ can be obtained as:
 \begin{equation}
 \mathit{j}_{P_j}^{(EE)}=
 	\begin{cases}
@@ -195,15 +195,15 @@ where the columns of $J_a(x)={\partial f}/{\partial x_{arm}}(x)$ can be obtained
 	z_{j-1} & \text{for a \textit{revolute} joint}	
 	\end{cases} 
 \end{equation}
-and $J_b(x)={\partial f}/{\partial x_{base}}(x)$ can be obtained at the same way considering $x_b$ and $y_b$ as prismatic joints and $\theta_b$ as a revolute joint of the compound system.\\
+and $\mathcal{J}_b(x)={\partial f}/{\partial x_{base}}(x)$ can be obtained at the same way considering $x_b$ and $y_b$ as prismatic joints and $\theta_b$ as a revolute joint of the compound system.\\
 In this the nonholonomic constraint \ref{G} of the mobile platform should be taken into account:
 \begin{equation}
-	J_b(x)\dot{x}_b=J_b(x)G(x)v=J_v(\theta_b)v
+	\mathcal{J}_b(x)\dot{x}_b=\mathcal{J}_b(x)G(x)v=\mathcal{J}_v(\theta_b)v
 \end{equation}
 Therefore is now possible to reformulate eq \ref{eq:dotx_EE} in a compact form to express the end effector traslational and rotational velocities as a function of the 8-elements input vector of joints and vehicle velocities.
 \begin{equation}
 \dot{X}_{EE}=\left[\begin{matrix}
-J_v(\theta_b) & J_a(x)
-\end{matrix}\right]\left[\begin{matrix}v\\\dot{x}_{arm} \end{matrix}\right] = J(x)\dot{x}
+\mathcal{J}_v(\theta_b) & \mathcal{J}_a(x)
+\end{matrix}\right]\left[\begin{matrix}v\\\dot{x}_{arm} \end{matrix}\right] = \mathcal{J}(x)\dot{x}
 \end{equation}
 
