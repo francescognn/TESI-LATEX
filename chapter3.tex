@@ -3,7 +3,7 @@
 \chapter{Control Theory}
 \label{chapter3}
 \section{Overview}
-The interconnection between control theory and robotics has a history of over half a century during which control theory has developed solutions problems in robotics field and problems in robotics have gained the new control theories. The goal of the early design of robotic systems was to develop mechanisms to be as stiff as possible modeled as single-input/single-output (SISO) linear systems with each joint controlled independently. Then Point-to-point control was used to perform simple tasks such as spot welding or pick and place operations. Encouraged by industry request, more complex tasks such as arc welding and spray painting have been enabled by Continuous-path tracking, but more advanced tasks like assembly were restricted by the limited or nonexistent sensing of the external environment. Higher speeds and higher payload-to-weight ratios required a better understanding of modeling of nonlinear dynamical systems. For this reason, new theoretical results in nonlinear, robust, and adaptive control enabled more advanced applications. Today, robot control systems are highly advanced with integrated sensing systems. Robot networks, surgical robots, mobile robots, underwater and flying robots, and others are starting to play important roles in society.\\
+The interconnection between control theory and robotics has a history of over half a century during which control theory has developed solutions for problems in robotics field and problems in robotics have gained the new control theories. The goal of the early design of robotic systems was to develop mechanisms to be as stiff as possible modeled as single-input/single-output (SISO) linear systems with each joint controlled independently. Then Point-to-point control was used to perform simple tasks such as spot welding or pick and place operations. Encouraged by industry request, more complex tasks such as arc welding and spray painting have been enabled by Continuous-path tracking, but more advanced tasks like assembly were restricted by the limited or nonexistent sensing of the external environment. Higher speeds and higher payload-to-weight ratios required a better understanding of modeling of nonlinear dynamical systems. For this reason, new theoretical results in nonlinear, robust, and adaptive control enabled more advanced applications. Today, robot control systems are highly advanced with integrated sensing systems. Robot networks, surgical robots, mobile robots, underwater and flying robots, and others are starting to play important roles in society.\\
 \textit{PID control} architecture is the most common form of feedback controllers. The first implementation of PID controllers dates back to early 20th century. Today more than 90\% of the control loops are PID type and are found in many areas. Nowadays it is often combined with other advanced control techniques where generally the main usage of PID based controllers is for low-level loops like motor controllers, integrated circuits etc. while advanced techniques are used for high-level control. In the case of mobile manipulators for pick and place operation the architecture of the online controller is generally hierarchic and the role of the PID regulator is to track desired high level control input.
 The advantages of this basic control logic are the simplicity of implementation, lucid meaning, and the near-zero memory usage from the physical hardware. Because of that and the many tuning techniques developed in years, PID has been widely accepted in industry. Anyway, this basic feedback control law presents consistent limitations for advanced applications. 
 \\
@@ -11,8 +11,8 @@ The \textit{inverse dynamics control} approach is directly related to the soluti
 The usage of the inverse dynamics in robot control is widely diffused and allows to transform a MIMO nonlinear system into a simple decoupled linear system, nevertheless relies on a precise modeling of the dynamic system and a perfect knowledge of dynamical parameters. For those reasons classical inverse dynamics controllers are affected by changes in dynamical system properties more advanced techniques able to adapt to system modifications like \textit{Adaptive control} have been developed.  
 \\
 Adaptive controllers are different from other ordinary controllers because the control parameters are time-varying. Those parameters are adjusted by an online mechanism based on some signal of the closed-loop system. By means of this type of controller, it is possible to reach the control goal even if the plant is subjected to uncertainties or modifications. There are many ways in which this controller has been implemented, including adaptive computed-torque control, adaptive inertia-related control, adaptive control based on passivity, and adaptive control with desired compensation. 
-\section{Optimal Control}
 
+\section{Optimal Control}
 \begin{quote}
 \textit{In place of determining the optimal sequence of decisions from the fixed state of the system, we wish
 to determine the optimal decision to be made at any state of the system. Only if we know the latter, do
@@ -22,8 +22,7 @@ Richard Bellman, Dynamic Programming,
 1957. [Vinter, p. 435]
 \end{scriptsize}}
 \end{quote}
-
-From a practical point of view, once the stability of a controller has been proved, nothing says that there is only one controller able to perform the control action. In other words since the stability proof doesn't determine a unique controller, generally it is possible to choose among different alternatives. It is pretty natural, in many contexts, that the choice of an optimal controller is preferred. The objective of optimal control theory, indeed, is to determine the control action that will cause a system to satisfy physical constraints and at the same time to minimize (or maximize) some performance criterion. Generally the definition of this criterion (i.e. cost function) is done according with the application of the controller. The design of an optimal controller generally relies on an exact model of the system. In fact, the presence of discrepancy between the model and the real system can lead to non-optimal solution that can easily end in an unstable closed loop system. 
+From a practical point of view, once the stability of a controller has been proved, nothing says that there is only one controller able to perform the control action. In other words since the stability proof does not determine a unique controller, generally it is possible to choose among different alternatives. It is pretty natural, in many contexts, that the choice of an optimal controller is preferred. The objective of optimal control theory, indeed, is to determine the control action that will cause a system to satisfy physical constraints and at the same time to minimize (or maximize) some performance criterion. Generally the definition of this criterion (i.e. cost function) is done according with the application of the controller. The design of an optimal controller generally relies on an exact model of the system. In fact, the presence of discrepancy between the model and the real system can lead to non-optimal solutions that can easily end in an unstable closed loop system. 
 Let us consider a generic system described by nonlinear time-varying differential equation in $x\in \mathbb{R}^n$:
 \begin{equation}
 	\dot{x}(t)=f(x,t)+G(x,t)u
@@ -44,12 +43,10 @@ The optimal control law with a quadratic cost function can be derived from  the 
 \end{split}
 \end{equation}
 
-where $V_t=\frac{\partial V}{\partial t}$ and $V_x=\frac{\partial V}{\partial x^T}$. Then the inverse quadratic optimal control problem is to find a set $Q(x,t)$ and $R(x,t)$ for which $V(x,t)$ is a solution for the HJB. That defines the oprimal controller such as:
-
+where $V_t=\frac{\partial V}{\partial t}$ and $V_x=\frac{\partial V}{\partial x^T}$. That defines the optimal controller such as:
 \begin{equation}
 	u=-R^{-1}(x,t)G^T(x,t)V_x^T(x,t) 
 \end{equation}
-
 A typical implementation of optimal control theory is made in practice by means of Model Predictive Control. 
 
 \section{Model Predictive Control}
@@ -60,14 +57,14 @@ Rafal, Stevens, AiChE Journal, 1968
 \end{scriptsize}}
 
 The term Model Predictive Control (MPC from now on) designate a wide range of control strategies which use explicitly the model of the system to obtain the control action minimizing a specific cost function. The first development originated in the late seventies with IDCOM (Identification and Command) logic, using impulse response for the plant model and optimizing a quadratic objective function. This control, settled the basis of an architecture that has been developed considerably since then, expecially over the last two decades both within research community and industry.
-Such a succes is probably due to its generality, in fact MPC formulation can be considered as one of the most general ways to pose a process control problem. Its formulation can integrate optimal control, stochastic control, control of processes with dead time and multivariable control. In general nonlinear processes which are frequently found in industry, can be handled by MPC logics. Futhermore, unless stability and robustness proof is difficult to asses because of the finite horizon, it has been found to be quite robust in many applications. Anyway, although both in industry and in research is widely diffused, MPC has not reached yet the potential it suggests. One reason can be found in the fact that requires mathematical knowledge which is not usually available by control engineers in practice. This control architecture is generally an open framework that allows the development of many applications in use at the current time, not only in the industrial processes but also application to robotics, power plants, PVC plants, servos etc. 
+Such a success is probably due to its generality, in fact MPC formulation can be considered as one of the most general ways to pose a process control problem. Its formulation can integrate optimal control, stochastic control, control of processes with dead time and multivariable control. In general nonlinear processes which are frequently found in industry, can be handled by MPC logics. Futhermore, unless stability and robustness proof is difficult to asses because of the finite horizon, it has been found to be quite robust in many applications. Anyway, although both in industry and in research is widely diffused, MPC has not reached yet the potential it suggests. One reason can be found in the fact that requires mathematical knowledge which is not usually available by control engineers in practice. This control architecture is generally an open framework that allows the development of many applications in use at the current time, not only in the industrial processes but also application to robotics, power plants, PVC plants, servos etc. 
 \begin{table}
 	\centering
 	\includegraphics[scale=0.28]{mpc_usage_table}
 	\caption{Summary of linear MPC applications by areas}
 	\label{mpc_usage_table}
 \end{table}
-In \cite{qin2003survey} is presented an overview of commercially available model predictive control technology, both linear and nonlinear. Table \ref{mpc_usage_table} from that work shows the applications of MPC logic by area. Such a diffuse usage of this control logic collocate MPC as the second most used control methodology after PID. In the last decades MPC has been investigated in many fields such as Process control (linear or nonlinear MPC), Automotive (Explicit, Hybrid MPC), Aerospace(LTV MPC), ICT(distributed/decentralized MPC), Energy or Finance (stochastic MPC).Since MPC showed good performances in many of these applications as well as its ability to operate with few intervention for long periods of time, the interest in this control strategy has increasend in the last decades. This can be justified also by the increased capability in solving complex problem, sometimes complex rather than nonlinear. Many are the advantages with respect to other control techniques: 
+In \cite{qin2003survey} is presented an overview of industrial technologies where Model Predictive Control is used, both linear and nonlinear. Table \ref{mpc_usage_table} from that work shows the applications of MPC logic by area. Such a diffuse usage of this control logic collocate MPC as the second most used control methodology after PID. In the last decades MPC has been investigated in many fields such as Process control (linear or nonlinear MPC), Automotive (Explicit, Hybrid MPC), Aerospace(LTV MPC), ICT(distributed/decentralized MPC), Energy or Finance (stochastic MPC).Since MPC showed good performances in many of these applications as well as its ability to operate with few intervention for long periods of time, the interest in this control strategy has increasend in the last decades. This can be justified also by the increased capability in solving complex problem, sometimes complex rather than nonlinear. Many are the advantages with respect to other control techniques: 
 \begin{itemize}
 \item Tuning is relatively easy.
 \item Implementing simple dynamics to more complex ones, it can be used to control a great variety of processes also including delay times, nonminimum phase or unstable systems.
@@ -82,24 +79,22 @@ known for example for robotic applications.
 Nevertheless it also has its drawbacks. First of all its derivation is more complex than the one of classical PID controllers. Then, even if with a good model of the system we can prederivate the controller, the system can usually be subject to modification in its dynamics, so the derivation needs to be done online, increasing significantly the computational effort. Moreover the introduction of constraints generally increase the computational time of the problem, that may result in a low frequency controller, not suitable for some applications.
 But computational time is not the only drawback. To be able to perform correctly, the system needs to be accurately modeled and this may not be possible in some cases in which for example the system is very complex or higly coupled.
 Even if there are many practical problems in implementing MPC for complex or high frequency control problems, it is a control logic suitable for many applications in which perform nicely. 
-In the following section basic concepts of Model Predictive Control will be presented in order to understand more in detail what we developed. More details on MPC theory can be found in \cite{camacho2013model}
-
+In the following section basic concepts of Model Predictive Control will be presented in order to understand more in detail what we developed. More details on MPC theory can be found in \cite{camacho2013model}.
 \subsection{Basic Concepts}
-
-As mentioned before Model Predictive Control use the model of the system and the definition of a customized cost function in order to set and solve an optimization problem to find the correct control inputs to perform a specific control task.
-A diagram of how MPC basic architecture is schematized below in Figure \ref{mpc_base_diagram}: the model-based optimizer (usually a computer) uses optimization algorithms in accordance with the model of the system and given measures to minimize the cost function which is generally dependent on the error with respect to the given setpoint.
+As mentioned before Model Predictive Control uses the model of the system and the definition of a customized cost function in order to set and solve an optimization problem to find the correct control inputs to perform a specific control task.
+A diagram of MPC basic architecture is schematized in Figure \ref{mpc_base_diagram}: the model-based optimizer (usually a computer) uses optimization algorithms in accordance with the model of the system and given measures to minimize the cost function which is generally dependent on the error with respect to the given setpoint.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{MPC_base_diagram}
 	\caption{MPC basic architecture scheme}
 	\label{mpc_base_diagram}
 \end{figure}
-Generally other constraints can be added to the problem in order for example to keep the states variables within feasible ranges. The output of the computation is then the input of the real process to be controlled. In  practice the solution of the problem usually has two main limitation:
+Generally other constraints can be added to the problem in order for example to keep the state variables within feasible ranges. The output of the computation is then the input of the real process to be controlled. In  practice the solution of the problem usually has two main limitations:
 
 \begin{itemize}
 \item Model of the process: the nature of the MPC is based on the possibility to forecast the future output of the system by means of a model. Because of that, to have a reliable prediction, we need the system model to be accurate.
 
-\item Optimization algoritm: as mentioned before, the more the system is complex and constraints are added to the problem, the more the problem will be computationally heavy. A proper optimization algoritm needs to be chosen in accordance with the application of the controller.
+\item Optimization algorithm: as mentioned before, the more the system is complex and constraints are added to the problem, the more the problem will be computationally heavy. A proper optimization algorithm needs to be chosen in accordance with the application of the controller.
   
 \end{itemize}
 Referring to Figure \ref{mpc_horizon_base_scheme}, any controller belonging to MPC family is usually amenable to the following methodology:
@@ -112,10 +107,10 @@ Referring to Figure \ref{mpc_horizon_base_scheme}, any controller belonging to M
 
 \begin{enumerate}
 \item At time instant $k$ future outputs $\hat{y}(k|k+i)$ defined on a prediction horizon $N$ for $i=1,...,N-1$ are predicted starting from past inputs and outputs as a function of the future control actions $u(k|k+i)$, $i=0,...,N-1$.
-\item The future control signal set is calculated optimizing a given cost function to keep the predicted future output as close as possible to the given reference trajectory $y_d(k+i)$. The objective function is generally defined as a quadratic fuction with respect to this reference trajectory. Control effort term is also usually added to the cost in most cases. If the system is linear and the cost function is quadratic with respect to the error then an explicit solution can be found, otherwise merical methods have to be used instead.
+\item The future control signal is calculated optimizing a given cost function to keep the predicted future output as close as possible to the given reference trajectory $y_d(k+i)$. The objective function is generally defined as a quadratic fuction with respect to this reference trajectory. Control effort term is also usually added to the cost in most cases. If the system is linear and the cost function is quadratic with respect to the error then an explicit solution can be found, otherwise numerical methods have to be used instead.
 \item The computed control action $u(k|k)$ is applied to the process then another optimization problem is set based on new measures in order to find $u(k+1|k+1)$ that will be in principle different from $u(k|k+1)$. 
 \end{enumerate}
-The sequence above repeats continuously at each time step following the so called Reciding Horizon principle. In order to be implemented, the model-based optimizer, is designed following the scheme in Figure \ref{scheme_model_based_opt}. 
+The sequence above repeats continuously at each time step following the so called Receding Horizon principle. In order to be implemented, the model-based optimizer, is designed following the scheme in Figure \ref{scheme_model_based_opt}. 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.32]{scheme_model_based_opt}
@@ -133,7 +128,7 @@ Let us define the discrete linear time invariant (LTI) model of the process in s
 		\end{cases}
 	\end{split}
 \end{equation}
-where $x \in \mathbb{R}^{n_x}$ is the state, $y \in \mathbb{R}^{n_y}$ and $u \in \mathbb{R}^m$ are respectively the output and the control action and $A$, $B$ and $C$ are the matrices of the system. The prediction of the output for this model is given then by:
+where $x \in \mathbb{R}^{n_x}$ is the state, $y \in \mathbb{R}^{n_y}$ and $u \in \mathbb{R}^m$ are the output and the control action respectively and $A$, $B$ and $C$ are the matrices of the system. The prediction of the output for this model is given then by:
 \begin{equation}\label{system_prediction}
 	\hat{y}(k\ |\ k+i)=C\hat{x}(k\ |\ k+i)=C\left[A^i x(k) + \sum_{j=1}^{i} A^{j-1}Bu(k\ |\ k+i-j)\right]
 \end{equation}
@@ -149,7 +144,7 @@ which can be defined in matrix form as:
 	\end{split}	
 \end{equation}
 where for simplicity of notation we refer to $\hat{y}(k\ |\ k+i)$ as $\hat{y}_{k|i}$ and consequently also $x_{k|i}$ and $u_{k|i}$.\\
-The definition of the cost function has a strong influence on stability as well as the convergence of numerical optimization methods. A preferrable choice is to consider a positive definite function of the error with respect to the reference trajecotry. As the problem can be easily moved a zero-reference problem we will refere to that case. 
+The definition of the cost function has a strong influence on stability as well as the convergence of numerical optimization methods. A preferrable choice is to consider a positive definite function of the error with respect to the reference trajectory. As the problem can be easily moved a zero-reference problem we will refere to that case. 
 \begin{equation} \label{costfunction}
 	\begin{split}
 		J(x_{k|0},\textbf{u}_k) = \sum_{i=0}^{N-1} \left[\hat{y}_{k|i}^T Q \hat{y}_{k|i} + u_{k|i}^TRu_{k|i} \right] + \hat{y}_{k|N}^T P \hat{y}_{k|N}
@@ -320,7 +315,7 @@ We will assess stability by means of terminal constraints imposition (i.e. $x_{k
 \begin{equation}
 \begin{split}
 J_k(x_0,\textbf{u}) &= \sum_{i=0}^{N-1} \underbrace{\left[x_{k|i}^T Q x_{k|i} + u_{k|i}^TRu_{k|i} \right]}_{q(x_i,u_i)} +\ \underbrace{x_{k|N}^T P x_{k|N}}_{p(x_N)} \\
-\textnormal{and}\ \  x_n&=0
+\textnormal{and}\ \  x_{k|N}&=0
 \end{split}
 \end{equation}
 
@@ -346,13 +341,13 @@ Then what can be said is that:
 	J_0^*(x_1)-J_0^*(x_0)\leq \tilde{J}_0^*(x_1) - J_0^*(x_0) \leq -q(x_0,u_0^*) \leq 0
 \end{equation}
 
-Hence, $J^*(x)$ is a Lyapunov function, so the point $x_N=0$ is an asymptotically stable point for the control law. This concept can be generalized for different kind of problem. Anyway, as mentioned before, there are other ways to verify stability which depends on how is the problem defined. Summarizing, terminal constraints imposition provides a sufficient condition for stability, but in practice what is done is to enlarge the control horizon and sampling rate since the system perform stability. 
+Hence, $J^*(x)$ is a Lyapunov function, so the point $x_N=0$ is an asymptotically stable point for the control law. This concept can be generalized for different kind of problems. Anyway, as mentioned before, there are other ways to verify stability which depends on how is the problem defined. Summarizing, terminal constraints imposition provides a sufficient condition for stability.
 
 \subsection{Nonlinear Model Predictive Control (NMPC)}
 
-The basic concepts of MPC have been investigated so far considering linear systems. In general, most of the systems are nonlinear, but even in presence of linearities the use of linear controllers like linear MPC is widely diffuse. There are two main reasons for that: on one hand approximating the model of the system as linear gives good results when it moves in the neighberhood of a stationary point, on the other hand the system parameter estimation for linear systems based on measurements is relatively easy. Futhermore, the minimization of a quadratic cost function in presence of a linear system (i.e. quadratic programming) has been well studied and many commercial products are available (see table \ref{mpc_usage_table}). Moreover, in fast sampling time applications the usage of a linear model provides faster solving time in order to keep the time used to solve the optimization problem lower than the sampling time of the system.
-Nevertheless there are systems for which the dynamic response of the resulting linear controller is unacceptable, expecially in systems highly nonlinear or in applications where the dynamic system parameters may change over time. In those cases the adoption of nonlinear models is required. 
-There is nothing in the theory overviewed in the previous section that prevent the usage of a nonlinear system, therefore the extension of what has been done to nonlinear models is straightforward, at least conceptually. Since state space models are the most used and can be easily extended to consider nonlinearities, instead of the system exppressed in \ref{system_evolution}, we will consider:
+The basic concepts of MPC have been investigated so far considering linear systems. In general, most of the systems are nonlinear, but even in presence of nonlinearities the use of linear controllers like linear MPC is widely diffuse. There are two main reasons for that: on one hand approximating the model of the system as linear gives good results when it moves in the neighberhood of a stationary point, on the other hand the system parameter estimation for linear systems based on measurements is relatively easy. Futhermore, the minimization of a quadratic cost function in presence of a linear system (i.e. quadratic programming) has been well studied and many commercial products are available (see table \ref{mpc_usage_table}). Moreover, in fast sampling time applications the usage of a linear model provides faster solving time in order to keep the time used to solve the optimization problem lower than the sampling time of the system.
+Nevertheless there are cases for which the dynamic response of the resulting linear controller is unacceptable, expecially in highly nonlinear systems or in applications where the dynamic parameters of the system may change over time. In those cases the adoption of nonlinear models is required. 
+There is nothing in the theory overviewed in the previous section that prevent the usage of a nonlinear system, therefore the extension of what has been done to nonlinear models is straightforward, at least conceptually. Since state space models are the most used and can be easily extended to consider nonlinearities, instead of the system expressed in \ref{system_evolution}, we will consider:
 \begin{equation}
 \begin{split}
 \begin{cases}
