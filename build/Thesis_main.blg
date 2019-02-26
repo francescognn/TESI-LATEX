@@ -18,42 +18,42 @@ The style file: ieeetr.bst
 Database file #1: references.bib
 You've used 35 entries,
             1876 wiz_defined-function locations,
-            699 strings with 9335 characters,
-and the built_in function-call counts, 10396 in all, are:
-= -- 1095
-> -- 288
+            698 strings with 9315 characters,
+and the built_in function-call counts, 10238 in all, are:
+= -- 1074
+> -- 285
 < -- 0
-+ -- 111
-- -- 76
-* -- 668
-:= -- 1353
++ -- 110
+- -- 75
+* -- 653
+:= -- 1335
 add.period$ -- 42
 call.type$ -- 35
 change.case$ -- 28
 chr.to.int$ -- 0
 cite$ -- 35
-duplicate$ -- 569
-empty$ -- 1058
-format.name$ -- 76
-if$ -- 2606
+duplicate$ -- 563
+empty$ -- 1048
+format.name$ -- 75
+if$ -- 2566
 int.to.chr$ -- 0
 int.to.str$ -- 35
 missing$ -- 41
 newline$ -- 115
 num.names$ -- 35
-pop$ -- 144
+pop$ -- 147
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 406
+skip$ -- 397
 stack$ -- 0
-substring$ -- 832
-swap$ -- 242
+substring$ -- 808
+swap$ -- 236
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 113
+while$ -- 110
 width$ -- 37
-write$ -- 355
+write$ -- 352

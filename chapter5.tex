@@ -36,7 +36,7 @@ The kinematic model of the mobile manipulator is given combining \ref{dirkinMM} 
 \end{equation}
 By means of this variables the nonlinear kinematic model of the Nonholomic mobile manipulator can be defined as:
 
-\begin{equation}
+\begin{equation} \label{system_base}
 	\dot{{x}}=f({x},{u})
 \end{equation} 
 Where:
@@ -160,8 +160,27 @@ Where $\mathcal{J}$ is defined as $\mathcal{J}=[\ \mathcal{J}_b(q)\ \mathcal{J}_
 \begin{equation}
 	h_2 = W_2 \left( \frac{1}{m_{k|i}} \right)^2
 \end{equation}
-
-\item We will define also a cost releted to the joint position error with respect to some given trajectory. This cost allows to simplify the problem when the system has to move with a fixed position of the arm. In fact the position of the end effector is an absolute position  
+    
+\item $h_3$ is the cost related to the control effort defined as: 
+	\begin{equation}
+	        h_3=\left[ \begin{matrix} v_{k|i-1} \\ \omega_{k|i-1} \end{matrix}\right]^T W_3 \left[ \begin{matrix} v_{k|i-1} \\ \omega_{k|i-1} \end{matrix}\right]
+	 \end{equation}
+This cost is particulary usefull to reduce the movement of the base given that its positioning system is less reliable than the manipulator.
+\end{itemize}
+We will introduce now other 2 therms that will be used instead of the previous to move the system from and towards the grasping area. Decoupling the problem with two different cost functions allows to have a faster controller during the motion of the system when it's required to have high speeds and to increase the complexity of the problem only inside a grasping area where the system moves slower to perform grasping. 
+\begin{itemize}
+    \item $h_4$ will be used to consider the base positioning error with respect to a given planned trajectory to reach the grasping area:
+        \begin{equation}
+            h_4=[q_b-{q_b}_d]^T W_4 [q_b-{q_b}_d]
+        \end{equation}
+        Where ${q_b}_d$ is the desired state of the base of the MM at time instant i. \\
+    \item $h_5$ will be used to control the arm in joint space, so to track a desired Joint position ${q_m}_d$:
+    \begin{equation}
+       h_4=[q_m-{q_m}_d]^T W_5 [q_m-{q_m}_d]
+    \end{equation}
+     
+    This therm is particularly useful to simplify the problem during the motion of the base because it allows to directly compute the error without passing through the forward kinematics.
+\end{itemize}
 
 
 % poi appunto parliamo di h2 che sarebbe la parte legata alla manipolabilità e diciamo bene che come detto nel cap 4?? la manipolabilità si può trattare in diversi modi e noi ne abbiamo scelto uno
@@ -174,10 +193,139 @@ Where $\mathcal{J}$ is defined as $\mathcal{J}=[\ \mathcal{J}_b(q)\ \mathcal{J}_
 
 %così è definita la funcione di costo 
 
-\end{itemize}
 %\\ x_{ee} \\ y_{ee} \\ z_{ee} \\ \phi_{1_{ee}} \\ \phi_{2_{ee}} \\ \phi_{3_{ee}}
 
 \section{Stability Proof}\label{stabproof}
+
+Once the NMPC problem has been formulated and that the recursive feasibility of the problem has been easily investigated in \ref{chapter3}, its stability has to be assessed. 
+The proof is very similar to what done in \cite{alamir2018stability} with few modifications. We will consider now, for the stability proof, the tracking problem in a differnt form to treat the tracking problem as a zero-reference tracking problem. In order to do that we will consider:
+\begin{equation*}
+    e_k=x_k-{x_k}_d
+\end{equation*}
+and so the discretizing the state equation \ref{system_base} we have:
+\begin{equation}\label{sys_eq_con_e}
+    e_{k|i+1}=\hat{f}(e_{k|i},p_k,{x_{k|i}}_d,{x_{k|i+1}}_d)
+\end{equation}
+In this way the problem is moved to track zero error reference and becomes: 
+\begin{equation} \label{ourproblem_stab}
+\begin{split}
+		& min_{{p}_k}\ J({e}_{k|i},{p}_k) =\sum_{i=1}^{N}\hat{l}(e_{k|i},{p}_{k}) \\
+		\textnormal{s.t.}\qquad
+		&\ \ \ \ e_{k|i+1}=\hat{f}(e_{k|i},p_k) \\
+		&\ \ \ \ e_{k|i} \in \mathbb{E}\ \forall\ i=1,\dots,\ N  \\
+		&\ \ \ \ {p}_k\   \in \mathbb{P}\ \\
+	\end{split}	
+\end{equation}
+where $\mathbb{E} = \lbrace {e}\in \mathbb{R}^n\ \textnormal{s.t.}\ {e}_{min}\leq e\leq e_{max} \rbrace$ is the feasible region of the state error. Note that, for simplicity of notation, the system equation in \ref{sys_eq_con_e} has been expressed as a function of the previous state and the parameters only, given that the desired states are known.
+Now, following the \cite{alamir2018stability} we need to introduce some assumptions in order to assess stability of the controller. The proof will consider some modification of what done in \cite{alamir2018stability} to consider the parametrization of the control input. 
+
+
+\paragraph{Assumption 1} The maps of $\hat{f}$ and $\hat{l}$ are continuous and $\hat{l}$ is a positive definite function. 
+
+\paragraph{Assumption 2} We will introduce also a reachibility requirement, so that $\exists \textnormal{ a set } \mathbb{E}_N$ so that $\forall e \in \mathbb{E}_N $ the set:
+\begin{equation*}
+	\mathbb{P}_{e \to 0}:=\lbrace \ p \in \mathbb{P}\ s.t.\ e_N^p(e)=0\ \rbrace
+\end{equation*} exsist and is not empty.
+
+\paragraph{Assumption 3} Is a local control invariance property assumend in the neighberhood of the origin, i.e. there exsist a $\bar{\rho} > 0$ such that:
+\begin{equation*}
+	\begin{split}
+		\forall \rho &\leq \bar{\rho}, \forall e \in B_{\it{l}}(\rho),\exists\ p^+\textnormal{s.t.} \\
+		&\hat{l}(\hat{f}(e,p))-\hat{l}(e) \leq -q(e) \\
+	\end{split}
+\end{equation*}
+for some positive definite function $q$ that satisfy:
+\begin{equation}
+	q(e) \ge \gamma l(e)
+	\label{ass3} 
+\end{equation}
+for some $\gamma \geq 0$ and $\forall x \in \mathbb{X}$.
+Where $B_{\it{l}} \subset \mathbb{R}^n$ is the $\rho-$level set of $l$, defined as $B_{\it{l}} := \lbrace\ e \in \mathbb{R}^n\ |\ l(e) \leq \rho \rbrace$.
+
+\paragraph{Assumption 4} We will require an extended control input parameterization vector $p:=[p_1,\ p_2,\ \dots,\ p_{N_p},\ k^*]$ such that: 
+\begin{equation*}
+\begin{split}
+    u_{k|j}(p_k)=
+        \begin{cases}
+            F(j){p_k}\ \ \ \ \   &\textnormal{if } j<k^* \\
+            \Bar{u}=argmin_u l(\hat{f}(e_{k|N},u_k))\ \ &\textnormal{if } j\ge k^*
+        \end{cases}
+    \end{split}
+\end{equation*} 
+Then given the optimal solution at time instant $k$ defined as $p_k^*=[\ p_{k_1}^*,\ p_{k_2}^*,\  \dots,\  p_{k_{N-1}}^*\ ]$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$ it is possible to obtain the parameters $\tilde{p}_{k+1}$ such that the correspondent control input is $  \textbf{u}_{k+1}^*=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}},\ \Bar{u}^* \ ]$.
+That means to require that the parameterization function $F$ is translatable (see \ref{param_translatability}). \\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{IMMAGINI/trans_u}
+	\caption{Translatability of the $F$ function}
+	\label{param_translatability}
+\end{figure}
+
+\paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}^N$, one as:
+\begin{equation}
+	l(e_N) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
+ 	\label{lemma1}
+\end{equation}
+for some bounded $\eta < 0$. The proof of Lemma 1 is explained in \cite{alamir2018stability}. \\
+
+
+
+%%%%%%%%%%
+
+In order to assess stability is required that the cost function $J({e}_{k|i},{p}_k)$ is a Lyapunov function as explained in \ref{chapter3}. So, considering the cost function related to $\tilde{p}_{k+1}$ is:
+\begin{equation*}
+    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^m h({e}_{k|i},\tilde{p}_{k+1})+h(\hat{f}(e_{k|N},u_k))
+\end{equation*}
+Now considering $j=i+1$ and to simplify notation $h(e_{k|j})^*=h({e}_{k|i},p_{k}^*)$ follows: 
+\begin{equation*}
+    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^m h(e_{k|j})^*+h(\tilde{f}(e_{k|N},u_k))
+\end{equation*}
+Now rearranging the terms: 
+\begin{equation*}
+    \begin{split}
+        J({e}_{k+1|i},\tilde{p}_{k+1})&=\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^m-1\right]\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ \\
+        &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^* + h(\hat{f}(e_{k|N},u_k))
+    \end{split}
+\end{equation*}
+Note that 
+\begin{equation*}
+	\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*=J({e}_{k|i},p_{k}^*)-\frac{1}{N^m}h(e_{k|1})^*
+\end{equation*}
+we get:
+\begin{equation*}
+    \begin{split}
+        J({e}_{k+1|i},\tilde{p}_{k+1})&=J({e}_{k|i},p_{k}^*)-\frac{1}{N^m}h(e_{k|1})^*+ \\ 
+        &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^m\right]\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(\hat{f}(e_{k|N},u_k))
+    \end{split}
+\end{equation*}
+And because $\forall j \in \lbrace2,\ \dots,\ N\rbrace$ holds that: 
+$\left[ 1-\left(\frac{j-1}{N}\right)^m \right]\ge\left[ 1-\left(\frac{N-1}{N}\right)^m \right]= \phi(m)$. We can then say that: 
+\begin{equation}\label{dim1}
+    \begin{split}
+        J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
+        &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(\hat{f}(e_{k|N},u_k))
+    \end{split}
+\end{equation}
+Now following the assumption 3 we can say that:
+\begin{equation*}
+    h(\tilde{f}(e_{k|N},u_k)) \le h(e_{k|N})^*-q(e_{k|N},p_k^*)
+\end{equation*}
+By applying this relation on the \ref{dim1} we obtain: 
+\begin{equation*}
+    \begin{split}
+        &J({e}_{k|i},\tilde{p}_{k+1})\le J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
+        -\phi(m)&\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
+    \end{split}
+\end{equation*}
+Then using the \ref{ass3}:
+\begin{equation*}
+    \begin{split}
+        J({e}_{k|i},\tilde{p}_{k+1})&\le J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
+            &-(\phi(m)-1+\gamma)\ h(e_{k|N})^*
+    \end{split}
+\end{equation*}
+Noting that $\phi(m) \rightarrow 1$ for $m \rightarrow \infty$, for sufficiently high values of m, $J$ is a Lyapunov function. It follows that the closed loop system is asymptotically stable in $e=0$.
+
 
 %vedi slides
 
