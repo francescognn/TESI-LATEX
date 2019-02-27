@@ -228,12 +228,13 @@ Now, following the \cite{alamir2018stability} we need to introduce some assumpti
 \end{equation*} exsist and is not empty.
 
 \paragraph{Assumption 3} Is a local control invariance property assumend in the neighberhood of the origin, i.e. there exsist a $\bar{\rho} > 0$ such that:
-\begin{equation*}
+\begin{equation}
 	\begin{split}
 		\forall \rho &\leq \bar{\rho}, \forall e \in B_{\it{l}}(\rho),\exists\ p^+\textnormal{s.t.} \\
 		&\hat{l}(\hat{f}(e,p))-\hat{l}(e) \leq -q(e) \\
+		\label{ass3}
 	\end{split}
-\end{equation*}
+\end{equation}
 for some positive definite function $q$ that satisfy:
 \begin{equation}
 	q(e) \ge \gamma l(e)
@@ -263,10 +264,10 @@ That means to require that the parameterization function $F$ is translatable (se
 
 \paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}^N$, one as:
 \begin{equation}
-	l(e_N) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
+	l(e_N^{p*}) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
  	\label{lemma1}
 \end{equation}
-for some bounded $\eta < 0$. The proof of Lemma 1 is explained in \cite{alamir2018stability}. \\
+for some bounded $\eta < 0$. The proof of Lemma 1 is given in \cite{alamir2018stability}. \\
 
 
 
@@ -283,7 +284,7 @@ Now considering $j=i+1$ and to simplify notation $h(e_{k|j})^*=h({e}_{k|i},p_{k}
 Now rearranging the terms: 
 \begin{equation*}
     \begin{split}
-        J({e}_{k+1|i},\tilde{p}_{k+1})&=\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^m-1\right]\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ \\
+        J({e}_{k+1|i},\tilde{p}_{k+1})=&\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^m-1\right]\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ \\
         &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^* + h(\hat{f}(e_{k|N},u_k))
     \end{split}
 \end{equation*}
@@ -294,7 +295,7 @@ Note that
 we get:
 \begin{equation*}
     \begin{split}
-        J({e}_{k+1|i},\tilde{p}_{k+1})&=J({e}_{k|i},p_{k}^*)-\frac{1}{N^m}h(e_{k|1})^*+ \\ 
+        J({e}_{k+1|i},\tilde{p}_{k+1})=&J({e}_{k|i},p_{k}^*)-\frac{1}{N^m}h(e_{k|1})^*+ \\ 
         &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^m\right]\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(\hat{f}(e_{k|N},u_k))
     \end{split}
 \end{equation*}
@@ -306,15 +307,23 @@ $\left[ 1-\left(\frac{j-1}{N}\right)^m \right]\ge\left[ 1-\left(\frac{N-1}{N}\ri
         &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(\hat{f}(e_{k|N},u_k))
     \end{split}
 \end{equation}
-Now following the assumption 3 we can say that:
+
+Now according to Lemma 1, $e_N^{p*} \in B_l(\eta c^m)$ and together with Assumption 2 implies that for m sufficiently high, is it possible to say:
+
+\begin{equation}
+\eta c^m \leq \bar{\rho}
+\end{equation}
+
+where $\bar{\rho}$ is the positive real called in Assumption 3.
+This means that \ref{ass3} holds for $e_N^{p*}$ and we can say that:
 \begin{equation*}
     h(\tilde{f}(e_{k|N},u_k)) \le h(e_{k|N})^*-q(e_{k|N},p_k^*)
 \end{equation*}
 By applying this relation on the \ref{dim1} we obtain: 
 \begin{equation*}
     \begin{split}
-        &J({e}_{k|i},\tilde{p}_{k+1})\le J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
-        -\phi(m)&\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
+        J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
+        &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
     \end{split}
 \end{equation*}
 Then using the \ref{ass3}:
@@ -330,3 +339,15 @@ Noting that $\phi(m) \rightarrow 1$ for $m \rightarrow \infty$, for sufficiently
 %vedi slides
 
 \section{Constraints}
+
+The constraints will be defined in order to limitate unfeasible set of joint space as well as acceleration and speed limits of the state. in particular we will define: 
+
+\begin{itemize}
+
+\item  state constraints
+
+\item control input constraints
+
+\item 
+
+\end{itemize}
