@@ -340,7 +340,7 @@ Noting that $\phi(m) \rightarrow 1$ for $m \rightarrow \infty$, for sufficiently
 
 \section{Constraints}
 
-The constraints will be defined in order to properly define the problem taking into account feasibiity configurations, velocity and acceleration as well as to avoid self collision of the system. In particular the constraints definition has been defined in: 
+Constraints will be introduced in order to properly define the problem taking into account feasibiity configurations, maximum velocity and acceleration as well as to avoid self collision of the system. In particular the constraints definition has been divided into: 
 
 \subsubsection*{Joint position constraints}
 	To limit the configurations of the robot into feasible sets and to avoid the arm to self collide there are different approaches. We decided to limit the possible positions of the joints of the arm into feasible ranges. This means to generate a set:
@@ -368,13 +368,13 @@ The constraints will be defined in order to properly define the problem taking i
 	\end{equation}
 
 \subsubsection*{Velocity constraints}
-	To take into account the maximum velcities allowed by the system the control action have been limited into minimum and maximum velocities according to manufacturer data in particular $\mathbb{R}^m$ have been redefined as:
+	To take into account the maximum velcities allowed by the system, the control actions have been limited into minimum and maximum velocities according to manufacturer data in particular $\mathbb{R}^m$ have been redefined as:
 
 	\begin{equation*}
 	\mathbb{R}^m:=\ {u}_{k|i} \in \mathbb{R}^m\ \ \textnormal{s.t.}\ \ u_{min}\leq{u_{k|i}}\leq u_{max}\ \ \forall\ \  i=0,\ \dots,\ N-1
 	\label{vel_constr}
 	\end{equation*}
-	According to the parameterization chosen the constraint has to be defined in parametric form, i.e. we have to map $\mathbb{R}^m$ in $\mathbb{P}$. The constraint to be included in the problem \ref{ourproblem_param} requires that:
+	According to the parameterization chosen, the constraint has to be defined in parametric form, i.e. we have to map $\mathbb{R}^m$ in $\mathbb{P}$. The constraint to be included in the problem \ref{ourproblem_param} requires that:
 	\begin{equation*}
 		\mathbb{P}:=p_k \in \mathbb{P} \textnormal{  s.t. \ref{vel_constr} is satisfied}
 	\end{equation*}
