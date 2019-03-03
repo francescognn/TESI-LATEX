@@ -340,14 +340,95 @@ Noting that $\phi(m) \rightarrow 1$ for $m \rightarrow \infty$, for sufficiently
 
 \section{Constraints}
 
-The constraints will be defined in order to limitate unfeasible set of joint space as well as acceleration and speed limits of the state. in particular we will define: 
+The constraints will be defined in order to properly define the problem taking into account feasibiity configurations, velocity and acceleration as well as to avoid self collision of the system. In particular the constraints definition has been defined in: 
 
-\begin{itemize}
+\subsubsection*{Joint position constraints}
+	To limit the configurations of the robot into feasible sets and to avoid the arm to self collide there are different approaches. We decided to limit the possible positions of the joints of the arm into feasible ranges. This means to generate a set:
+	\begin{equation}
+		\mathbb{R}^{q_m}:=q_m \in \mathbb{R}^{q_m}\ \ s.t.\ \  {q_m}_{min}\ \leq\ q_m\ \leq\ {q_m}_{max} 
+	\end{equation}
+	To apply this constraint into the MPC problem defined in \ref{ourproblem_param} is straigthforward given that $\mathbb{R}^{q_m}$ is a subset of $\mathbb{X}$
+\subsubsection*{Base position constraints}
+	Contrary to the manipulator, self collision of the base of the system is not possible and the joint $q_b$ could remain unconstrained. Anyway, the $x$ and $y$ coordinates of the base have been limited to define a region of operation for the Mobile Manipulator, see as example figure \ref{xy_limits}. This constraint is particulary usefull performing experiments deining a map of the sorrounding enviroment. As before: 
+	\begin{equation}
+		\mathbb{R}^{q_b}:=q_b \in \mathbb{R}^{q_b}\ \ s.t.\ \  {q_b}_{min}\ \leq\ q_b\ \leq\ {q_b}_{max} 
+	\end{equation}
 
-\item  state constraints
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{IMMAGINI/xy_limits.png}
+	\caption{Base $x-y$ limits}
+	\label{xy_limits}
+	\end{figure}
 
-\item control input constraints
+	Base and joints position constraints can be written in a compact form and for the entire prediction horizon redefining: 
 
-\item 
+	\begin{equation}
+	\mathbb{X}:= x \in \mathbb{R}^{n}\ \ s.t.\ \  {x}_{min}\ \leq\ x\ \leq\ {x}_{max}
+	\end{equation}
 
-\end{itemize}
+\subsubsection*{Velocity constraints}
+	To take into account the maximum velcities allowed by the system the control action have been limited into minimum and maximum velocities according to manufacturer data in particular $\mathbb{R}^m$ have been redefined as:
+
+	\begin{equation*}
+	\mathbb{R}^m:=\ {u}_{k|i} \in \mathbb{R}^m\ \ \textnormal{s.t.}\ \ u_{min}\leq{u_{k|i}}\leq u_{max}\ \ \forall\ \  i=0,\ \dots,\ N-1
+	\label{vel_constr}
+	\end{equation*}
+	According to the parameterization chosen the constraint has to be defined in parametric form, i.e. we have to map $\mathbb{R}^m$ in $\mathbb{P}$. The constraint to be included in the problem \ref{ourproblem_param} requires that:
+	\begin{equation*}
+		\mathbb{P}:=p_k \in \mathbb{P} \textnormal{  s.t. \ref{vel_constr} is satisfied}
+	\end{equation*}
+
+	Numerical values will be given in the next section.
+\subsubsection*{Acceleration constraints}
+	Given that any real system is not capable to perform infinte accelerations, a constraint to limit the computed velocity control input has to be defined. In particular, given that the controller compute control actions with a frequency $f_c=\frac{1}{T_j}$, the acceleration constraint is in the form:
+
+	\begin{equation}
+		\begin{split}
+			u_{k|0} &\leq u_{k-1|N-1} + a_{max} T_j\ \ \textnormal{and}\\
+			u_{k|i+1} &\leq u_{k|i} + a_{max} T_j\ \  \forall\ i=0,\dots,N-1
+		\end{split}	
+	\end{equation}  
+
+	Where $a_{max}$ is the vector of the maximum allowable acceleration. Numerical values will be given in the next section. 
+
+\subsubsection*{Self collision avoidance}
+	To avoid self collosion of the system (i.e. the arm with the base), an approach similar to the one in \cite{sandberg1988collision} has been used. In particular spheres to encompass the base and the last joints have been defined ans in figure \ref{spheres_3d}.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{IMMAGINI/spheres_3d.png}
+	\caption{Spheres for self collision avoidance}
+	\label{spheres_3d}	
+	\end{figure}
+	Formally the self collision avoidance constraint has been defined requiring that: 
+	\begin{equation}
+	\begin{split} 
+		&\sqrt{({C_0}_x-{C_1}_x)^2+({C_0}_y-{C_1}_y)^2+({C_0}_z-{C_1}_z)^2} + r_1 +r_0 \geq 0 \\
+		&\ \ \ \ \textnormal{and} \\
+		&\sqrt{({C_0}_x-{C_2}_x)^2+({C_0}_y-{C_2}_y)^2+({C_0}_z-{C_2}_z)^2} + r_2 +r_0 \geq 0 \\
+		&\ \ \ \ \textnormal{whith} \\
+		\ \ \ \ \ \ & \ \ \ \ \ \ \  \ \ \ \ \ \left[ \begin{matrix}
+		{C_0}_x \\ {C_0}_y \\ {C_0}_z
+		\end{matrix} \right]=\left[ \begin{matrix}
+		1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0
+		\end{matrix} \right]A_{{k|i}_{sp}}\left[ \begin{matrix}
+		0 \\ 0 \\ 0 \\ 1\end{matrix} \right]
+	\end{split}
+	\label{spheres_const}
+	\end{equation}
+	Where $A_{{k|i}_{sp}}$ is the rototranslation matrix that defines the center of the sphere encompassing the last links of the arm at time instant $i$ defined as done for the end effector in \ref{AAAA_man}. Note that, because of that, ${C_0}$ is defined in the relative reference frame of the manipulator. ${C_1}$ and ${C_2}$, defined in their components $x$, $y$ and $z$, are the centers of the two spheres for the base defined in the reference frame of the arm that are, indeed, fixed. Their radius are defined as $r_1$ and $r_2$. This constraints definition introduces a nonlinear equation that has to be satiflied in the solution of the \ref{ourproblem_param}. \\
+
+Summarizing, the presented constraints redefines the problem as:
+
+\begin{equation} \label{ourproblem_param}
+	\begin{split}
+			& min_{\textbf{p}_k}\ J({x}_{k|i},\textbf{p}_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},\textbf{p}_k) \\
+			\textnormal{s.t.}\qquad
+			&\ \ \ \ \dot{{x}}=\tilde{f}({x},\textbf{p},t) \\
+			&\ \ \ \ {x}_{min}\ \leq\ x_{k|i}\ \leq\ {x}_{max}\  \forall\ i=1,\dots,\ N  \\
+			&\ \ \ \ 0 \leq g^{sc}_{k|i}(x)\ \ \forall\ i=1,\dots,\ N \\
+			&\ \ \ \ \textbf{p}_k\   \in \mathbb{P}\ \\
+	\end{split}	
+\end{equation}
+where $g^{sc}_{k|i}(x)$ i the function that defines the spheres constraints as in \ref{spheres_const}
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  27 FEB 2019 00:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  2 MAR 2019 23:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,6 +529,12 @@ Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
 (/usr/share/texlive/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
+(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count136
+\c@@ppsavesec=\count137
+\c@@ppsaveapp=\count138
+)
 \@nomenclaturefile=\write3
 \openout3 = `Thesis_main.nlo'.
 
@@ -954,7 +960,7 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2016/02/24 3.9q Babel common definitions
-\babel@savecnt=\count136
+\babel@savecnt=\count139
 \U@D=\dimen155
 )
 \l@canadian = a dialect from \language\l@american 
@@ -968,43 +974,45 @@ File: babel.def 2016/02/24 3.9q Babel common definitions
 
 LaTeX Warning: Label `ass3' multiply defined.
 
+
+LaTeX Warning: Label `ourproblem_param' multiply defined.
+
 ) (build/chapter6.aux) (build/chapter7.aux) (build/conclusions.aux)
-(build/appendix.aux))
+(build/appendices.aux))
 \openout1 = `Thesis_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 87.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 86.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    ... okay on input line 87.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count137
+\scratchcounter=\count140
 \scratchdimen=\dimen156
 \scratchbox=\box62
-\nofMPsegments=\count138
-\nofMParguments=\count139
+\nofMPsegments=\count141
+\nofMParguments=\count142
 \everyMPshowfont=\toks36
-\MPscratchCnt=\count140
+\MPscratchCnt=\count143
 \MPscratchDim=\dimen157
-\MPnumerator=\count141
-\makeMPintoPDFobject=\count142
+\MPnumerator=\count144
+\makeMPintoPDFobject=\count145
 \everyMPtoPDFconversion=\toks37
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -1026,7 +1034,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box63
-Package hyperref Info: Link coloring OFF on input line 86.
+Package hyperref Info: Link coloring OFF on input line 87.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1034,21 +1042,21 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count143
+\c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 86.
-LaTeX Info: Redefining \pageref on input line 86.
-LaTeX Info: Redefining \nameref on input line 86.
+LaTeX Info: Redefining \ref on input line 87.
+LaTeX Info: Redefining \pageref on input line 87.
+LaTeX Info: Redefining \nameref on input line 87.
 
 (build/Thesis_main.out) (build/Thesis_main.out)
 \@outlinefile=\write4
 \openout4 = `Thesis_main.out'.
 
-\c@lstlisting=\count144
+\c@lstlisting=\count147
 \openout2 = `frontespizio.aux'.
 
  (./frontespizio.tex
-<IMMAGINI/Logo_Politecnico_Milano.png, id=191, 666.49pt x 489.83pt>
+<IMMAGINI/Logo_Politecnico_Milano.png, id=220, 666.49pt x 489.83pt>
 File: IMMAGINI/Logo_Politecnico_Milano.png Graphic file (type png)
 
 <use IMMAGINI/Logo_Politecnico_Milano.png>
@@ -1087,35 +1095,35 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 
 
-])
+] [2])
 \tf@toc=\write5
 \openout5 = `Thesis_main.toc'.
 
- [2]
+ [3]
 \openout2 = `ringraziamenti.aux'.
 
 
-(./ringraziamenti.tex) [3
+(./ringraziamenti.tex) [4
 
 
 
-] [4
+] [5
 
 ]
 \openout2 = `abstract.aux'.
 
- (./abstract.tex [5
+ (./abstract.tex [6
 
 
 
-]) [6] [7
+]) [7] [8
 
 ]
 \openout2 = `chapter1.aux'.
 
  (./chapter1.tex
 Chapter 1.
-<IMMAGINI/JPL_rover.png, id=296, 2509.375pt x 1411.2725pt>
+<IMMAGINI/JPL_rover.png, id=336, 2509.375pt x 1411.2725pt>
 File: IMMAGINI/JPL_rover.png Graphic file (type png)
 
 <use IMMAGINI/JPL_rover.png>
@@ -1135,7 +1143,7 @@ l.17 	\item R
 
 
 
-] <IMMAGINI/submarine_robot.jpg, id=302, 566.115pt x 318.43968pt>
+] <IMMAGINI/submarine_robot.jpg, id=342, 566.115pt x 318.43968pt>
 File: IMMAGINI/submarine_robot.jpg Graphic file (type jpg)
 
 <use IMMAGINI/submarine_robot.jpg>
@@ -1145,13 +1153,13 @@ Package pdftex.def Info: IMMAGINI/submarine_robot.jpg used on input line 27.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/atlas.jpg, id=303, 856.19875pt x 1284.8pt>
+<IMMAGINI/atlas.jpg, id=343, 856.19875pt x 1284.8pt>
 File: IMMAGINI/atlas.jpg Graphic file (type jpg)
  <use IMMAGINI/atlas.jpg>
 Package pdftex.def Info: IMMAGINI/atlas.jpg used on input line 33.
 (pdftex.def)             Requested size: 81.33972pt x 122.05727pt.
 
-<IMMAGINI/spot_mini.jpg, id=304, 1304.875pt x 979.66pt>
+<IMMAGINI/spot_mini.jpg, id=344, 1304.875pt x 979.66pt>
 File: IMMAGINI/spot_mini.jpg Graphic file (type jpg)
 
 <use IMMAGINI/spot_mini.jpg>
@@ -1163,7 +1171,7 @@ been already used, duplicate ignored
                    \relax 
 l.40 	\item O
              mnidirectional vehicles \begin{figure}[h!] [2 <./IMMAGINI/JPL_rove
-r.png>] <IMMAGINI/kuka_iiwa.jpg, id=311, 2216.28pt x 1476.51625pt>
+r.png>] <IMMAGINI/kuka_iiwa.jpg, id=352, 2216.28pt x 1476.51625pt>
 File: IMMAGINI/kuka_iiwa.jpg Graphic file (type jpg)
 
 <use IMMAGINI/kuka_iiwa.jpg>
@@ -1185,21 +1193,21 @@ Chapter 2.
 
 
 
-] <IMMAGINI/unicyclemodel.PNG, id=344, 754.017pt x 296.7888pt>
+] <IMMAGINI/unicyclemodel.PNG, id=383, 754.017pt x 296.7888pt>
 File: IMMAGINI/unicyclemodel.PNG Graphic file (type png)
 
 <use IMMAGINI/unicyclemodel.PNG>
 Package pdftex.def Info: IMMAGINI/unicyclemodel.PNG used on input line 41.
 (pdftex.def)             Requested size: 301.60146pt x 118.71341pt.
  [7] [8 <./IMMAGINI/unicyclemodel.PNG>]
-<IMMAGINI/mobilebase.png, id=369, 283.2984pt x 192.72pt>
+<IMMAGINI/mobilebase.png, id=409, 283.2984pt x 192.72pt>
 File: IMMAGINI/mobilebase.png Graphic file (type png)
 
 <use IMMAGINI/mobilebase.png>
 Package pdftex.def Info: IMMAGINI/mobilebase.png used on input line 97.
 (pdftex.def)             Requested size: 226.63902pt x 154.1762pt.
  [9 <./IMMAGINI/mobilebase.png>]
-<IMMAGINI/denavithartenberg.PNG, id=381, 639.38875pt x 393.47pt>
+<IMMAGINI/denavithartenberg.PNG, id=420, 639.38875pt x 393.47pt>
 File: IMMAGINI/denavithartenberg.PNG Graphic file (type png)
 
 <use IMMAGINI/denavithartenberg.PNG>
@@ -1210,7 +1218,7 @@ Package pdftex.def Info: IMMAGINI/denavithartenberg.PNG used on input line 126.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10] <IMMAGINI/MMkinematics.png, id=392, 332.442pt x 280.8894pt>
+[10] <IMMAGINI/MMkinematics.png, id=431, 332.442pt x 280.8894pt>
 File: IMMAGINI/MMkinematics.png Graphic file (type png)
 
 <use IMMAGINI/MMkinematics.png>
@@ -1227,80 +1235,76 @@ Chapter 3.
 
 
 ] [16] [17]
-Overfull \hbox (5.59927pt too wide) in paragraph at lines 38--40
+Overfull \hbox (5.59927pt too wide) in paragraph at lines 37--39
 \T1/cmr/m/n/12 the so-lu-tion of HJB (Hamilton-Jacobi-Bellman) equa-tion for a 
 positive-definite
  []
 
-<IMMAGINI/mpc_usage_table.png, id=443, 1365.1pt x 760.8425pt>
+<IMMAGINI/mpc_usage_table.png, id=483, 1365.1pt x 760.8425pt>
 File: IMMAGINI/mpc_usage_table.png Graphic file (type png)
 
 <use IMMAGINI/mpc_usage_table.png>
-Package pdftex.def Info: IMMAGINI/mpc_usage_table.png used on input line 66.
+Package pdftex.def Info: IMMAGINI/mpc_usage_table.png used on input line 63.
 (pdftex.def)             Requested size: 382.2254pt x 213.03444pt.
  [18] [19] [20 <./IMMAGINI/mpc_usage_table.png>] <IMMAGINI/MPC_base_diagram.jpg
-, id=468, 955.57pt x 273.02pt>
+, id=508, 955.57pt x 273.02pt>
 File: IMMAGINI/MPC_base_diagram.jpg Graphic file (type jpg)
 
 <use IMMAGINI/MPC_base_diagram.jpg>
-Package pdftex.def Info: IMMAGINI/MPC_base_diagram.jpg used on input line 93.
+Package pdftex.def Info: IMMAGINI/MPC_base_diagram.jpg used on input line 88.
 (pdftex.def)             Requested size: 382.22122pt x 109.20605pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21] <IMMAGINI/mpc_horizon_base_scheme.jpg, id=477, 1212.53pt x 720.6925pt>
+[21] <IMMAGINI/mpc_horizon_base_scheme.jpg, id=516, 1212.53pt x 720.6925pt>
 File: IMMAGINI/mpc_horizon_base_scheme.jpg Graphic file (type jpg)
 
 <use IMMAGINI/mpc_horizon_base_scheme.jpg>
 Package pdftex.def Info: IMMAGINI/mpc_horizon_base_scheme.jpg used on input lin
-e 108.
+e 103.
 (pdftex.def)             Requested size: 388.01753pt x 230.62631pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[22 <./IMMAGINI/MPC_base_diagram.jpg>]
-<IMMAGINI/scheme_model_based_opt.jpg, id=486, 1256.695pt x 314.17375pt>
+ [22 <./IMMAGINI/MPC_base_diagram.jpg> <./IMMAGINI/mpc_horizon_base_scheme.jpg>
+]
+<IMMAGINI/scheme_model_based_opt.jpg, id=523, 1256.695pt x 314.17375pt>
 File: IMMAGINI/scheme_model_based_opt.jpg Graphic file (type jpg)
 
 <use IMMAGINI/scheme_model_based_opt.jpg>
 Package pdftex.def Info: IMMAGINI/scheme_model_based_opt.jpg used on input line
- 121.
+ 116.
 (pdftex.def)             Requested size: 402.15062pt x 100.53764pt.
 
-Overfull \hbox (12.15062pt too wide) in paragraph at lines 121--122
+Overfull \hbox (12.15062pt too wide) in paragraph at lines 116--117
  [][] 
  []
 
-[23 <./IMMAGINI/mpc_horizon_base_scheme.jpg> <./IMMAGINI/scheme_model_based_opt
-.jpg>] [24]
-Overfull \hbox (11.38618pt too wide) in paragraph at lines 188--188
+[23 <./IMMAGINI/scheme_model_based_opt.jpg>] [24]
+Overfull \hbox (11.38618pt too wide) in paragraph at lines 183--183
 [] 
  []
 
 [25] [26] [27]
-<IMMAGINI/feasibility_image1.png, id=534, 879.285pt x 797.98125pt>
+<IMMAGINI/feasibility_image1.png, id=573, 879.285pt x 797.98125pt>
 File: IMMAGINI/feasibility_image1.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_image1.png>
-Package pdftex.def Info: IMMAGINI/feasibility_image1.png used on input line 258
+Package pdftex.def Info: IMMAGINI/feasibility_image1.png used on input line 253
 .
 (pdftex.def)             Requested size: 175.85388pt x 159.59341pt.
 
-<IMMAGINI/feasibility_region.png, id=535, 722.7pt x 658.46pt>
+<IMMAGINI/feasibility_region.png, id=574, 722.7pt x 658.46pt>
 File: IMMAGINI/feasibility_region.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_region.png>
-Package pdftex.def Info: IMMAGINI/feasibility_region.png used on input line 262
+Package pdftex.def Info: IMMAGINI/feasibility_region.png used on input line 257
 .
 (pdftex.def)             Requested size: 180.67455pt x 164.6146pt.
 
-<IMMAGINI/feasible_image2.png, id=536, 550.055pt x 628.3475pt>
+<IMMAGINI/feasible_image2.png, id=575, 550.055pt x 628.3475pt>
 File: IMMAGINI/feasible_image2.png Graphic file (type png)
 
 <use IMMAGINI/feasible_image2.png>
-Package pdftex.def Info: IMMAGINI/feasible_image2.png used on input line 275.
+Package pdftex.def Info: IMMAGINI/feasible_image2.png used on input line 270.
 (pdftex.def)             Requested size: 148.51683pt x 169.65608pt.
 
 
@@ -1308,24 +1312,24 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [28 <./IMMAGINI/feasibility_image1.png> <./IMMAGINI/feasibility_region.png>]
 [29 <./IMMAGINI/feasible_image2.png>] [30] [31]
-<IMMAGINI/linearvsnl.png, id=576, 1018.80624pt x 930.47626pt>
+<IMMAGINI/linearvsnl.png, id=616, 1018.80624pt x 930.47626pt>
 File: IMMAGINI/linearvsnl.png Graphic file (type png)
 
 <use IMMAGINI/linearvsnl.png>
-Package pdftex.def Info: IMMAGINI/linearvsnl.png used on input line 371.
+Package pdftex.def Info: IMMAGINI/linearvsnl.png used on input line 366.
 (pdftex.def)             Requested size: 254.70093pt x 232.61848pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [32])
-Overfull \hbox (1.03938pt too wide) in paragraph at lines 383--140
+Overfull \hbox (1.03938pt too wide) in paragraph at lines 378--141
 \T1/cmr/m/n/12 Pro-gram-ming (SQP) tech-niques which are an ex-ten-sion of Newt
 on-type meth-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--140
+Underfull \hbox (badness 10000) in paragraph at lines 378--141
 
  []
 
@@ -1334,80 +1338,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 383--140
 
  (./chapter4.tex
 Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
 [35
 
 
 
-] <IMMAGINI/cartesian_regulation.png, id=605, 473.6094pt x 286.1892pt>
-File: IMMAGINI/cartesian_regulation.png Graphic file (type png)
-
-<use IMMAGINI/cartesian_regulation.png>
-Package pdftex.def Info: IMMAGINI/cartesian_regulation.png used on input line 1
-6.
-(pdftex.def)             Requested size: 378.88803pt x 228.95164pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[36] [37 <./IMMAGINI/cartesian_regulation.png>]
-
-LaTeX Warning: Reference `A' on page 38 undefined on input line 76.
-
-[38] [39] [40]
-
-LaTeX Warning: Reference `dirinvkin' on page 41 undefined on input line 182.
-
-[41] [42] [43]
-<IMMAGINI/potential_field.PNG, id=712, 462.72874pt x 399.4925pt>
+] [36] [37] [38]
+<IMMAGINI/potential_field.PNG, id=694, 462.72874pt x 399.4925pt>
 File: IMMAGINI/potential_field.PNG Graphic file (type png)
 
 <use IMMAGINI/potential_field.PNG>
-Package pdftex.def Info: IMMAGINI/potential_field.PNG used on input line 235.
+Package pdftex.def Info: IMMAGINI/potential_field.PNG used on input line 59.
 (pdftex.def)             Requested size: 185.08821pt x 159.79416pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[44] [45 <./IMMAGINI/potential_field.PNG>]) [46]
+ [39 <./IMMAGINI/potential_field.PNG>]
+[40]) [41]
 \openout2 = `chapter5.aux'.
 
  (./chapter5.tex
 Chapter 5.
-[47
+[42
 
 
 
-] [48]
+] [43]
 
-LaTeX Warning: Reference `base_kin_mod' on page 49 undefined on input line 33.
+LaTeX Warning: Reference `base_kin_mod' on page 44 undefined on input line 33.
 
-[49] [50] [51] <IMMAGINI/param_horizon.jpg, id=785, 940.51375pt x 553.06625pt>
+[44] [45] [46] <IMMAGINI/param_horizon.jpg, id=765, 940.51375pt x 553.06625pt>
 File: IMMAGINI/param_horizon.jpg Graphic file (type jpg)
 
 <use IMMAGINI/param_horizon.jpg>
 Package pdftex.def Info: IMMAGINI/param_horizon.jpg used on input line 93.
 (pdftex.def)             Requested size: 376.19884pt x 221.22258pt.
- [52 <./IMMAGINI/param_horizon.jpg>] [53]
+ [47 <./IMMAGINI/param_horizon.jpg>] [48]
 
-LaTeX Warning: Reference `alamir2018stability' on page 54 undefined on input li
+LaTeX Warning: Reference `alamir2018stability' on page 49 undefined on input li
 ne 134.
 
-[54]
+[49]
 Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
-[55] [56] <IMMAGINI/trans_u.jpg, id=832, 1039.885pt x 577.15625pt>
-File: IMMAGINI/trans_u.jpg Graphic file (type jpg)
+[50] [51] <IMMAGINI/trans_u.png, id=813, 580.41844pt x 287.57437pt>
+File: IMMAGINI/trans_u.png Graphic file (type png)
 
-<use IMMAGINI/trans_u.jpg>
-Package pdftex.def Info: IMMAGINI/trans_u.jpg used on input line 260.
-(pdftex.def)             Requested size: 415.94662pt x 230.8584pt.
-
-Overfull \hbox (25.94662pt too wide) in paragraph at lines 260--261
- [][] 
- []
-
+<use IMMAGINI/trans_u.png>
+Package pdftex.def Info: IMMAGINI/trans_u.png used on input line 260.
+(pdftex.def)             Requested size: 232.16325pt x 115.02771pt.
 
 Overfull \hbox (45.91588pt too wide) in paragraph at lines 255--264
 \T1/cmr/m/n/12 Then given the op-ti-mal so-lu-tion at time in-stant $\OML/cmm/m
@@ -1415,73 +1397,107 @@ Overfull \hbox (45.91588pt too wide) in paragraph at lines 255--264
 \OML/cmm/m/it/12 p[];  p[];  [] ;  p[] \OT1/cmr/m/n/12 ]$
  []
 
-[57]
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 269--271
 
  []
 
-[58 <./IMMAGINI/trans_u.jpg>] [59]) [60]
+[53 <./IMMAGINI/trans_u.png (PNG copy)>] [54] [55]
+<IMMAGINI/xy_limits.png, id=847, 1599.9775pt x 539.01375pt>
+File: IMMAGINI/xy_limits.png Graphic file (type png)
+
+<use IMMAGINI/xy_limits.png>
+Package pdftex.def Info: IMMAGINI/xy_limits.png used on input line 359.
+(pdftex.def)             Requested size: 399.9934pt x 134.7531pt.
+
+Overfull \hbox (9.9934pt too wide) in paragraph at lines 359--360
+ [][] 
+ []
+
+[56 <./IMMAGINI/xy_limits.png>]
+<IMMAGINI/spheres_3d.png, id=864, 357.335pt x 402.50375pt>
+File: IMMAGINI/spheres_3d.png Graphic file (type png)
+
+<use IMMAGINI/spheres_3d.png>
+Package pdftex.def Info: IMMAGINI/spheres_3d.png used on input line 399.
+(pdftex.def)             Requested size: 142.93146pt x 160.99864pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 418--420
+
+ []
+
+[58 <./IMMAGINI/spheres_3d.png>]) [59]
 \openout2 = `chapter6.aux'.
 
  (./chapter6.tex
 Chapter 6.
-<IMMAGINI/SuperMegaBot.PNG, id=864, 432.11438pt x 277.53688pt>
-File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
 
-<use IMMAGINI/SuperMegaBot.PNG>
-Package pdftex.def Info: IMMAGINI/SuperMegaBot.PNG used on input line 7.
-(pdftex.def)             Requested size: 259.27061pt x 166.5234pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
+LaTeX Warning: Reference `imgADDAMS.png' on page 60 undefined on input line 6.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-<IMMAGINI/SuperMegaBot1.PNG, id=866, 371.3875pt x 232.36812pt>
+<IMMAGINI/imgADDAMS.png, id=884, 601.24625pt x 531.9875pt>
+File: IMMAGINI/imgADDAMS.png Graphic file (type png)
+
+<use IMMAGINI/imgADDAMS.png>
+Package pdftex.def Info: IMMAGINI/imgADDAMS.png used on input line 10.
+(pdftex.def)             Requested size: 240.49423pt x 212.79123pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+[60
+
+
+
+ <./IMMAGINI/imgADDAMS.png>]
+<IMMAGINI/SuperMegaBot1.PNG, id=890, 371.3875pt x 232.36812pt>
 File: IMMAGINI/SuperMegaBot1.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot1.PNG>
-Package pdftex.def Info: IMMAGINI/SuperMegaBot1.PNG used on input line 30.
+Package pdftex.def Info: IMMAGINI/SuperMegaBot1.PNG used on input line 27.
 (pdftex.def)             Requested size: 222.83421pt x 139.42194pt.
- [61
-
-
-
- <./IMMAGINI/SuperMegaBot.PNG>]
-<IMMAGINI/UR5.png, id=873, 414.54875pt x 405.515pt>
+ [61 <./IMMAGINI/SuperMegaBot1.PNG>]
+<IMMAGINI/UR5.png, id=901, 414.54875pt x 405.515pt>
 File: IMMAGINI/UR5.png Graphic file (type png)
  <use IMMAGINI/UR5.png>
-Package pdftex.def Info: IMMAGINI/UR5.png used on input line 41.
+Package pdftex.def Info: IMMAGINI/UR5.png used on input line 42.
 (pdftex.def)             Requested size: 165.81656pt x 162.20311pt.
 
-[62 <./IMMAGINI/SuperMegaBot1.PNG>]
-Underfull \hbox (badness 5460) in paragraph at lines 56--56
-[]|\T1/cmr/m/n/12 Collaboration op-er-a-
+[62]
+Overfull \hbox (25.45593pt too wide) in paragraph at lines 55--57
+\T1/cmr/m/n/12 CAMERE? OP-PURE LE MET-TI-AMO DA QUALCHE PARTE FACENDO
  []
 
+[63 <./IMMAGINI/UR5.png>] <IMMAGINI/empty.png, id=913, 961.5925pt x 722.7pt>
+File: IMMAGINI/empty.png Graphic file (type png)
 
-LaTeX Warning: Command \o invalid in math mode on input line 78.
-
-Missing character: There is no ø in font cmr12!
-
-Overfull \hbox (43.22495pt too wide) in paragraph at lines 49--82
-[][] 
- []
-
-) [63 <./IMMAGINI/UR5.png>] [64] [65]
+<use IMMAGINI/empty.png>
+Package pdftex.def Info: IMMAGINI/empty.png used on input line 65.
+(pdftex.def)             Requested size: 288.47997pt x 216.81166pt.
+File: IMMAGINI/empty.png Graphic file (type png)
+ <use IMMAGINI/empty.png>
+Package pdftex.def Info: IMMAGINI/empty.png used on input line 76.
+(pdftex.def)             Requested size: 288.47997pt x 216.81166pt.
+ [64 <./IMMAGINI/empty.png>])
+[65] [66]
 \openout2 = `chapter7.aux'.
 
  (./chapter7.tex
 Chapter 7.
-) [66
+[67
 
 
 
-]
+]) [68]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 8.
-) [67
+) [69
 
 
 
@@ -1489,39 +1505,73 @@ Chapter 8.
 \tf@lof=\write6
 \openout6 = `Thesis_main.lof'.
 
- [68
+ [70
 
 
 
-] (build/Thesis_main.lot)
+] [71] (build/Thesis_main.lot)
 \tf@lot=\write7
 \openout7 = `Thesis_main.lot'.
 
- [69
+ [72
 
 
 ]
-\openout2 = `appendix.aux'.
+\openout2 = `appendices.aux'.
 
 
-No file appendix.tex.
-[70
+(./appendices.tex [73
 
 
-] (build/Thesis_main.bbl [71
 
-] [72] [73])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 194.
- [74]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 194.
+]
+Appendix A.
+<IMMAGINI/SuperMegaBot.PNG, id=989, 432.11438pt x 277.53688pt>
+File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
+
+<use IMMAGINI/SuperMegaBot.PNG>
+Package pdftex.def Info: IMMAGINI/SuperMegaBot.PNG used on input line 10.
+(pdftex.def)             Requested size: 259.27061pt x 166.5234pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 26.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+) [74
+
+ <./IMMAGINI/SuperMegaBot.PNG>]
+Appendix B.
+
+Underfull \hbox (badness 5460) in paragraph at lines 41--41
+[]|\T1/cmr/m/n/12 Collaboration op-er-a-
+ []
+
+
+Overfull \hbox (43.22495pt too wide) in paragraph at lines 34--67
+[][] 
+ []
+
+[75
+
+] [76]
+Appendix C.
+) [77
+
+] [78
+
+] (build/Thesis_main.bbl [79
+
+] [80] [81])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
+ [82]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
  (build/Thesis_main.aux
 (build/frontespizio.aux) (build/dedica.aux) (build/ringraziamenti.aux)
 (build/abstract.aux) (build/chapter1.aux) (build/chapter2.aux)
 (build/chapter3.aux) (build/chapter4.aux) (build/chapter5.aux)
 (build/chapter6.aux) (build/chapter7.aux) (build/conclusions.aux)
-(build/appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 194.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 194.
+(build/appendices.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
 Package rerunfilecheck Info: File `Thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
@@ -1531,13 +1581,13 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 196.
  ) 
 Here is how much of TeX's memory you used:
- 11608 strings out of 493029
- 167776 string characters out of 6136234
- 272174 words of memory out of 5000000
- 14494 multiletter control sequences out of 15000+600000
+ 11733 strings out of 493029
+ 169609 string characters out of 6136234
+ 274611 words of memory out of 5000000
+ 14608 multiletter control sequences out of 15000+600000
  29248 words of font info for 76 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  36i,30n,43p,1533b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1568,10 +1618,10 @@ public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 /texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/p
 ublic/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1
 200.pfb>
-Output written on build/Thesis_main.pdf (84 pages, 5369267 bytes).
+Output written on build/Thesis_main.pdf (93 pages, 6026225 bytes).
 PDF statistics:
- 1120 PDF objects out of 1200 (max. 8388607)
- 958 compressed objects within 10 object streams
- 296 named destinations out of 1000 (max. 500000)
- 502 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1198 PDF objects out of 1200 (max. 8388607)
+ 1020 compressed objects within 11 object streams
+ 301 named destinations out of 1000 (max. 500000)
+ 573 words of extra memory for PDF output out of 10000 (max. 10000000)
 

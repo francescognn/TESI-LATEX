@@ -105,7 +105,7 @@ A manipulator consists of a series of rigid links connected by joints. Mathemati
 \end{equation} 
 where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and $\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. 
 It is possible to express this relation in a compact form using the homogenous \textit{rototraslation matrix} $A_{ee}^{base}$ that describes the end effector reference frame with respect to the base global reference frame:
-\begin{equation}\label{AAAA}
+\begin{equation}\label{AAAA_man}
 A_{ee}^{base}=A_1^{base}A_2^1A_3^2\cdots A_{ee}^{ee-1}
 \end{equation}
 where $A_i^{i-1}$ is the expression of the transformation from one joint frame to the following one through the use of Denavit-Hartemberg parameters \cite{DH}: $a\text{, }\alpha\text{, }d\text{, }\theta$ (defined as in figure \ref{fig:DH}):
@@ -163,7 +163,7 @@ It is possible to express the function $f(x)$ of Eq.\ref{dirkinMM} as in \ref{AA
 	\end{matrix}\right]
 \end{equation}
 So the forward kinematics can be obtained consequently:
-\begin{equation}
+\begin{equation}\label{AAAA}
 A_{ee}^{global}=A_{base}^{global}A_1^{base}A_2^1\cdots A_{ee}^{ee-1}
 \end{equation}
 \paragraph{Redundancy}

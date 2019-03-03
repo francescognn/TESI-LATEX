@@ -1,40 +1,41 @@
+%!TEX root = Thesis_main.tex
+
 \chapter{Experiments Setup}
 \label{chapter6}
 
-\section{Super-Mega-Bot Mobile Base}
-\begin{figure}[h]
+The Mobile Manipulator under analisys in this thesis is a prototype assembled at University of Southern California in the Center of Advance Manufacturing (CAM) Laboratory. The system has been called ADDAMS: A*********** and is shown in figure \ref{imgADDAMS.png}. (IMMAGINE TEMPORANEA)
+
+\begin{figure}[h] \label{imgADDAMS1}
 	\begin{center} 
-		\includegraphics[scale=0.6]{SuperMegaBot}
+		\includegraphics[scale=0.4]{imgADDAMS.png}
 		\centering
-		\label{fig:SuperMegaBot} 
 	\end{center}
 \end{figure}
-PAYLOAD
 
-NON CI STA LA CONTROL BOX DELL'UR5
+ The goal of this prototype is to study a system able to handle parts as well as to perform operations in unstructured industrial enviroments to fill the gap between small and large production systems. Indeed, companies with small production volumes are nowdays required to innovate production systems towards the generation of smart factories. Given that those companies are generally not economically able to manage automated production lines and that the production mix is generally changed frequently, flexible systems to support production are required. For those reasons ADDAMS wants to be a low cost solution, using low cost sensors and to be capable, once it's operation have been planned, to perform in any enviroment. \\
+
+The controller presented in this thesis wants to be the first step towards the design of an online software that make the system able to operate autonomously once the task has been given. In the next sections the main components of ADDAMS will be shown in its Hardare and Software parts then, setups used for simulations and physical tests will be presented. 
 
 
-The InspectorBots Super Mega Bot robot platform is a Heavy-Duty, All-Terrain, 4WD Robotic Platform. It is a very rugged, Indoor/outdoor, remotely operated platform and can be fitted with a variety of sensors, cameras and equipment. The MEGA Bot has been designed to be Modular and Reconfigurable, so an end user can swap out various modules. There are several methods available to control the SMB including: RC radio, Analog Joystick, Wireless Modem, or Microcomputer.\\
-Its base model comes with:\\
-•	Chassis: Powder Coated Steel and Aluminum \\
-•	Dimensions: 84cm L x 84cm W x 40.64cm H, Weight: 109 kg\\
-•	Drive: Four Electric Motors\\
-•	Load Capacity: 113,5 kg\\
-•	Speed Controllers: RoboteQ 2x VDC2450\\
-•	Speed: 0-16 km/h \\
-•	Suspension: Rigid\\
-•	Tires: Interchangeable, Pneumatic, 40.64cm Diameter Turf Tires\\
-\url{https://www.youtube.com/watch?v=3X8IWnR1QDI}
+
+\section{Hardware}
+
+\subsection{Mobile Base}
+
 \begin{figure}[h]
 	\begin{center} 
 		\includegraphics[scale=0.6]{SuperMegaBot1}
 		\centering
+		\caption{Nonholomic Mobile base}
 		\label{fig:SuperMegaBot1}
 	\end{center}
 \end{figure}
+The mobile base, provided by InspectorBots and named Super Mega Bot, is a Heavy-Duty, All-Terrain, 4WD robotic platform shown in figure \ref{fig:SuperMegaBot1}. It is a rugged, Indoor/outdoor, remotely operated platform and can be fitted with a variety of sensors, cameras and equipment. The base has been designed to be Modular and Reconfigurable, so an end user can swap out various modules. There are several methods available to control the SMB provided by the manufacturer including: RC radio, Analog Joystick, Wireless Modem, or Microcomputer.\\
+The SMB is designed with non-steering coupled wheels and because of that the rotation of the base is obtained giving different velocities to the right and left wheels. For this reason the SMB is configured as a differential drive mobile robot for which the kinematic relationships explained in \ref{chapter2} hold.
+In appendix \ref{appA} can be found technical data of the SMB and informations about the motor used.
 
-\section{UR5 Manipulator}
-The UR5 is a robot developed by Universal Robots, a Danish company. According to the company the key benefits of their robots are that they are light weight, safe and easy to use. The robotic arm is regarded as safe, because it will stop acting as soon as the robot hits an object sensed by a force sensor in one of the joints. UR5 is ideal for automating low-weight processing tasks like picking, placing and testing. The medium-sized robot arm is easy to program, fast to set up and, always according to UR, offers one of the fastest payback times in the industry.
+\subsection{UR5 Manipulator}
+The UR5 is a collaborative robotic arm developed by Universal Robots. According to the company the key benefits of their robots are that they are light weight, safe and easy to use. The robotic arm is regarded as safe, because it will stop acting as soon as the robot hits an object sensed by a force sensor in one of the joints. UR5 is ideal for automating low-weight processing tasks like picking, placing and testing. The medium-sized robot arm is easy to program, fast to set up and, always according to UR, offers one of the fastest payback times in the industry. Because it is designed as a collobarative robot, the UR5 is generally suitable for tasks in which the operative space of the robot is shared with humans and that fits also ADDAMS objectives. The UR5 comes from the manufacturer with its control unit that can be easily accessed and provide low level controllers for tracking velocities of the joints. More technincal details on UR5 can be found in appendix \ref{appB}.
 
 \begin{figure}[htbp]
 	\begin{center} 
@@ -44,47 +45,54 @@ The UR5 is a robot developed by Universal Robots, a Danish company. According to
 	\end{center}
 \end{figure}
 
-In the following table the specifications given by Universal Robots are stated. 
-\begin{table}
-	\begin{tabular}{p{4cm} | p{3cm} p{3cm}}
-		\hline
-		Performance & \multicolumn{2}{l}{ } \\
-		\hline \hline
-		Repeatibility & \multicolumn{2}{l}{$\pm$ 0.1 mm} \\
-		Ambient temperature range & \multicolumn{2}{l}{0-50°} \\
-		Power Consumption  & \multicolumn{2}{l}{Min 90W, Typical 150W, Max 325W} \\
-		Collaboration operation & \multicolumn{2}{l}{15 advanced adjustable safety functions} \\
-		\hline \hline
-		Specifications & \multicolumn{2}{l}{ }\\
-		\hline \hline 
-		Payload & \multicolumn{2}{l}{5 kg} \\
-		Reach & \multicolumn{2}{l}{850 mm} \\
-		Degrees of freedom & \multicolumn{2}{l}{6 rotating joints} \\
-		Programming & \multicolumn{2}{l}{Polyscope graphical user interface on 12 inch touchscreen} \\
-		\hline \hline
-		Movement & & \\
-		\hline 
-		& Working range & Maximum speed \\
-		\hline \hline
-		Base & $\pm$ 360°  & $\pm$ 180°/sec \\
-		Shoulder & $\pm$ 360° & $\pm$ 180°/sec \\
-		Wrist1 & $\pm$ 360° & $\pm$ 180°/sec \\
-		Wrist2 & $\pm$ 360° & $\pm$ 180°/sec \\
-		Wrist3 & $\pm$ 360° & $\pm$ 180°/sec \\
-		Typical tool & & 1m/sec \\
-		\hline \hline
-		Physical & \multicolumn{2}{l}{ }\\
-		\hline \hline
-		Footprint & \multicolumn{2}{l}{$\o$ 149mm} \\
-		Materials & \multicolumn{2}{l}{Aluminium, PP Plastics} \\
-		Weight (with cable) & 18.4 kg 
-	\end{tabular}
-\end{table}
 
-\section{ADDAMS}
-SCRITTA MALISSIMO: The goal of this mobile manipulator is to fill the gap between small and large production. Indeed small production companies could not have the need to have a static robot, still needing an automatized process.  Maybe they also don’t have the money for the sensors needed to accomplish things. So there is the need of a robot able to substitute a person in the process but still having a user interface. 
-\subsection{Mission}
 \subsection{Sensors}
-\section{MPC}
-\subsection{Kinematic model based}
-\subsection{Dynamic model based}
+
+The sensors of the ADDAMS prototype will be used to measure positions of the joints to perform the desired task. Breafly the sensor system is composed of:
+\begin{itemize}
+	\item Anglular encoders for the UR5 joints wich provide an accuracy of $0.1$ mm
+	\item Encoders on the wheels of the base that will be used to derive the position and orientation of the mobile base through a simple transformation. This measuring system is reliable only at slow speed and provide an accuracy of $\pm 2$ cm. Because the position of the end effector is computed knowing the position of the base, the accuracy of this measures is not sufficient to perform precise operation. Considerations on this aspect will be done later on.
+	\item Lidar that can be used to measure unknown obstacles position in the operative area of the robot.
+	(AGGIUNGERE ANCHE LE TELECAMERE? OPPURE LE METTIAMO DA QUALCHE PARTE FACENDO UNA CONSIDERAZIONE SULLA SENSORISTICA?)
+\end{itemize}
+
+\section{Software}
+
+To have an easy interface to all the components of ADDAMS we used ROS, an open-source, meta-operating system for robotic systems. ROS provides the services that allow communication between all the components, message-passing between processes, hardware abstraction, low-level device control. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers. The ROS network used to run the Phisical system is shown in the Graph
+
+\begin{figure}[htbp]
+	\begin{center} 
+		\includegraphics[scale=0.3]{empty}
+		\centering
+		\label{ROSnodes} 
+		\caption{ROS nodes and messages for ADDAMS}
+	\end{center}
+\end{figure}
+
+The controller we designed has been developed using Matlab/Simulink enviroment through the CasADi, an open-source tool for nonlinear optimization and algorithmic differentiation that allows using Matlab/Simulink to define optimization problems and different commercial solvers. More information about CasADi can be found in \cite{Andersson2018}. The solver used to solve the Nonlinear Problem defined in \ref{chapter5} is IPOPT, a brief introduction to IPOPT can be found in Appendix \ref{appC}.
+
+\begin{figure}[htbp]
+	\begin{center} 
+		\includegraphics[scale=0.3]{empty}
+		\centering
+		\label{Hierpir}
+		\caption{Control hierarchy} 
+	\end{center}
+\end{figure}
+
+
+- dobbiamo mettere cosa stiamo usando per interfacciarci con il robot(ROS) e la struttura dei nodi, e che stiamo pubblicando da matlab
+- che il controllore gira su matlab/simulink e spiegare che stiamo usando casadi e IPOPT, magari piccola parentesi su IPOPT e come funziona (?)
+- Piramide con livelli dei controllori
+
+Dire che abbiamo fatto simulazioni per due cose diverse (movimento verso grasp. area e grasping trajectory tracking)
+
+\section{Simulations setup}
+
+	diagramma simulazioni simulink
+	
+\section{Phisical Experiments Setup}
+	
+	block diagram esperimenti reali simulink
+
+	low lwvwl controllers and considerations

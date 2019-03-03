@@ -13,47 +13,47 @@ A level-1 auxiliary file: chapter5.aux
 A level-1 auxiliary file: chapter6.aux
 A level-1 auxiliary file: chapter7.aux
 A level-1 auxiliary file: conclusions.aux
-A level-1 auxiliary file: appendix.aux
+A level-1 auxiliary file: appendices.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
-You've used 35 entries,
+You've used 33 entries,
             1876 wiz_defined-function locations,
-            698 strings with 9315 characters,
-and the built_in function-call counts, 10238 in all, are:
-= -- 1074
-> -- 285
+            689 strings with 9090 characters,
+and the built_in function-call counts, 9744 in all, are:
+= -- 1024
+> -- 264
 < -- 0
-+ -- 110
-- -- 75
-* -- 653
-:= -- 1335
-add.period$ -- 42
-call.type$ -- 35
++ -- 102
+- -- 69
+* -- 621
+:= -- 1266
+add.period$ -- 38
+call.type$ -- 33
 change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 563
-empty$ -- 1048
-format.name$ -- 75
-if$ -- 2566
+cite$ -- 33
+duplicate$ -- 539
+empty$ -- 998
+format.name$ -- 69
+if$ -- 2442
 int.to.chr$ -- 0
-int.to.str$ -- 35
-missing$ -- 41
-newline$ -- 115
-num.names$ -- 35
-pop$ -- 147
+int.to.str$ -- 33
+missing$ -- 37
+newline$ -- 107
+num.names$ -- 33
+pop$ -- 138
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 397
+skip$ -- 386
 stack$ -- 0
-substring$ -- 808
-swap$ -- 236
+substring$ -- 784
+swap$ -- 228
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 110
-width$ -- 37
-write$ -- 352
+while$ -- 105
+width$ -- 35
+write$ -- 331
