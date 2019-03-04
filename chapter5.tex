@@ -128,7 +128,7 @@ Where $\mathbb{P} = \lbrace \textbf{p}\in \mathbb{R}^p\ \textnormal{s.t.}\ F(t_j
 
 Once the problem has been defined in it's general form we have to properly choose the cost function. In particular the stage cost $\tilde{l}$ has to be defined. A common choice is to use a quadratic stage cost in order to have a positive definite cost function to help in having a convex problem. Even if it's important to have a quadratic cost function for the stability of the controller, because of the nonlinearities of the system, it is still possible to find suboptimal solutions (i.e. local minima). We will define the stage cost $\tilde{l}$ as a sum of different contrubutions using increasing wheights into the optimization horizon. 
 
-\begin{equation}
+\begin{equation} \label{costfunctionh}
 J({x}_{k|i},\textbf{p}_k)=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^m \left[ \sum_{j=1}^{5} h_j({x}_{k|i},\textbf{p}_k) \right]
 \end{equation} 
 This approach allows, by means of increasing wheighted stage costs, to assess the stability of the NMPC without the imposition of terminal constraints as shown in \ref{alamir2018stability}. This aspect will be reviewed in detail later on.
