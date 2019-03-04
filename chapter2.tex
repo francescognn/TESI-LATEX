@@ -101,7 +101,7 @@ where $r$ is the wheel radius and $d$ is the distance between their centres.
 \section{Manipulator Model}
 A manipulator consists of a series of rigid links connected by joints. Mathematically it can be modeled as a kinematic chain where one end of the chain is constrained to a base, while an end effector is mounted to the other end. The end effector is used to manipulate objects in space. Therefore, it is the end effector position and orientation, \textit{pose}, that is often studied. \textit{Forward kinematics} describes the pose of the end effector as a function of the joint values:
 \begin{equation}
- 	X_{EE}=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)
+ 	\xi=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)
 \end{equation} 
 where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and $\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. 
 It is possible to express this relation in a compact form using the homogenous \textit{rototraslation matrix} $A_{ee}^{base}$ that describes the end effector reference frame with respect to the base global reference frame:
@@ -143,7 +143,7 @@ This concept will be very important in the defintion of Mobile Manipulator contr
 \end{figure}
 Considering the general case of a mobile manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location and orientation of the end effector as a function of both the arm and base generalized coordinates:
 \begin{equation}\label{dirkinMM}
-	X_{EE}=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)=f\left(\left[\begin{matrix}x_{base}\\x_{arm} \end{matrix}\right]\right)
+	\xi=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)=f\left(\left[\begin{matrix}x_{base}\\x_{arm} \end{matrix}\right]\right)
 \end{equation}
 where $x_{base}$ is the configuration vector of the mobile base and $x_{arm}$ is the vector of joint coordinates of the manipulator.
 As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{fig:MMkinematics} is
