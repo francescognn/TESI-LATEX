@@ -58,38 +58,49 @@ The sensors of the ADDAMS prototype will be used to measure positions of the joi
 
 \section{Software}
 
-To have an easy interface to all the components of ADDAMS we used ROS, an open-source, meta-operating system for robotic systems. ROS provides the services that allow communication between all the components, message-passing between processes, hardware abstraction, low-level device control. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers. The ROS network used to run the Phisical system is shown in the Graph
+To easily interface with all the components of ADDAMS we used ROS, an open-source, meta-operating system for robotic systems. ROS provides the services that allow communication between all the components, message-passing between processes, hardware abstraction, low-level device control. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers. The ROS network used to run the Phisical system is shown in the graph \ref{ROSnodes}
 
 \begin{figure}[htbp]
 	\begin{center} 
-		\includegraphics[scale=0.3]{empty}
+		\includegraphics[scale=0.24]{nodegraph2}
 		\centering
 		\label{ROSnodes} 
 		\caption{ROS nodes and messages for ADDAMS}
 	\end{center}
 \end{figure}
 
-The controller we designed has been developed using Matlab/Simulink enviroment through the CasADi, an open-source tool for nonlinear optimization and algorithmic differentiation that allows using Matlab/Simulink to define optimization problems and different commercial solvers. More information about CasADi can be found in \cite{Andersson2018}. The solver used to solve the Nonlinear Problem defined in \ref{chapter5} is IPOPT, a brief introduction to IPOPT can be found in Appendix \ref{appC}.
-
-\begin{figure}[htbp]
+The controller we designed has been developed using Matlab/Simulink enviroment through the CasADi, an open-source tool for nonlinear optimization and algorithmic differentiation that allows using Matlab/Simulink to define optimization problems and different commercial solvers. More information about CasADi can be found in \cite{Andersson2018}. The solver used to solve the Nonlinear Problem defined in \ref{chapter5} is IPOPT, a brief introduction to IPOPT can be found in Appendix \ref{appC}. As shown in graph \ref{ROSnodes} the simulink node where the controller is running reads position of the base and joint angles and give velocity commands to the system through a "talker" node we defined to communicate with the robot. As already mentioned the commands given to the system are velocity commands, i.e. high level commands that the system is required to track. Anyway, given that the manufacturers already provides reliable low level controllers able to track those desired velocities, we decided to use, as mentioned in \ref{chapter5}, a hierarchical approach that is breafly explained in figure \ref{Hdiagram}.  
+\begin{figure}[h!]
 	\begin{center} 
-		\includegraphics[scale=0.3]{empty}
+		\includegraphics[scale=0.35]{Hdiagram}
 		\centering
-		\label{Hierpir}
+		\label{Hdiagram}
 		\caption{Control hierarchy} 
 	\end{center}
 \end{figure}
+\\
+Simulations and Physical experiments have been carried out to test the developed controller and to analyze performances and influences of parameters. In particular two conditions have been tested: 
 
+\begin{itemize}
+	\item \textbf{Movement of the system toward grasping area}. Referring to the controller as presented in \ref{chapter5} we will consider the cost function \ref{costfunctionh} as a composition of $h_4$ and $h_5$. In fact the task of moving the system towards grasping area is performed controllig the base position and the joint angles positions without requiring to track end effector position. The choice of this formulation for the cost function allows the problem to be easier to solve given that we are tracking joint angles rather than EE position, computed through forward Kinematics. Futhermore, the arm is generally not required to move during the movement of the system outside grasping areas.
 
-- dobbiamo mettere cosa stiamo usando per interfacciarci con il robot(ROS) e la struttura dei nodi, e che stiamo pubblicando da matlab
-- che il controllore gira su matlab/simulink e spiegare che stiamo usando casadi e IPOPT, magari piccola parentesi su IPOPT e come funziona (?)
-- Piramide con livelli dei controllori
-
-Dire che abbiamo fatto simulazioni per due cose diverse (movimento verso grasp. area e grasping trajectory tracking)
+	\item \textbf{Trajectory tracking inside graping area}. In this case, as already mentioned, we will consider the problem of tracking the EE position considering the cost function \ref{costfunctionh} as a composition of $h_1$, $h_2$ and $h_3$. This task is more of interest of this thesis and then will be discussed more in detail than the first one. Considerations about online changing the cost function will be given in the next section. 
 
 \section{Simulations setup}
 
-	diagramma simulazioni simulink
+	Simulations for both the tasks object of study have been performed using Simulink to test stability, robustness, performances and effects of the parameters on the controller. The model used to simulate the system is basically the same presented in \ref{chapter2} that has been numerically integrated to allows calculating positions. The block diagram in figure \ref{simdiagram1} shows the simple achitecture of the controller used in simulations.
+
+	\begin{figure}[h!]
+	\begin{center} 
+		\includegraphics[scale=0.35]{simdiagram1}
+		\centering
+		\label{simdiagram1}
+		\caption{Simulations block diagram} 
+	\end{center}
+	\end{figure}
+
+	The results of the simulations have been saved and processed in MATLAB R2018b. The frequency used  
+	
 	
 \section{Phisical Experiments Setup}
 	
