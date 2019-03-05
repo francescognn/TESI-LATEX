@@ -384,10 +384,10 @@ Constraints will be introduced in order to properly define the problem taking in
 	\end{split}
 	\label{spheres_const}
 	\end{equation}
-	where $C_0_{x,y,z},C_1_{x,y,z} \text{and }C_2_{x,y,z}$ are the coordinates of the centres of the end effector and base spheres respectively defined in the reference frame of the base and $r_1$ and $r_2$ are their radii. This constraints definition introduces a nonlinear equation that has to be satiflied in the solution of the \ref{ourproblem_param}. \\
+	where ${C_0}_{x,y,z},{C_1}_{x,y,z} \text{and }{C_2}_{x,y,z}$ are the coordinates of the centres of the end effector and base spheres respectively defined in the reference frame of the base and $r_1$ and $r_2$ are their radii. This constraints definition introduces a nonlinear equation that has to be satiflied in the solution of the \ref{ourproblem_param}. \\
 
 Summarizing, the presented constraints redefines the problem as:
-\begin{equation} %\label{ourproblem_param}
+\begin{equation} \label{ourproblem_param_vinc}
 	\begin{split}
 			& min_{\textbf{p}_k}\ J({x}_{k|i},\textbf{p}_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},\textbf{p}_k) \\
 			\textnormal{s.t.}\qquad
