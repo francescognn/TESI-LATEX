@@ -2,9 +2,37 @@
 
 \chapter{Results}
 \label{chapter7}
-
-
 \section{Simulations results}
+The goal of the initial simulations is to assess the actual convenience of our approach and to tune the MPC parameters and weights. Once achieved good performances with a proper set of parameters, the controller can betested with the physical system.\\
+Initially some simulations with only the mobile base have been run on a trajectory with low-radius curves (in Figure \ref{traj_base_curves}), seeing the effect of different control horizon lengths and of input disturbances. This trajectory has been chosen to simulate the system going around some 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{traj_base_curves}
+\caption{Base trajectory for simulations: radius=0.6m}
+\label{traj_base_curves}
+\end{figure}
+As it is possible to see from Figures \ref{base_curves} and \ref{base_curves_errors}, our controller is able to manage even high disturbances, but because of the limitation introduced by the parameterization of the input, it is more difficult for the optimizer to find a curve built on polynomial input that correctly approximates the given trajectory. This effect is even enlarged by the weighting profile of the cost function which give less importance to the accuracy of the first steps in the control horizon. Nevertheless Figure \ref{base_curves_errors} let us see that the time elapsed during the the optimization process doesn't increase exponentially like in traditional MPC, but it stays almost constant.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.36]{base_curves_small.png}
+	\caption{Mobile platform trajectories with different N}
+	\label{base_curves}
+\end{figure}
+%\begin{figure}[h!]
+%	\includegraphics[scale=0.45]{images/base_curves_errorsandtime.png}
+%	\caption{Optimization time and Cartesian error when varying N}
+%	\label{base_curves_errors}
+%\end{figure}
+Then the motion of the entire MM has been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path, allowing us to more accurately tune some parameters. 
+We compared the solving times of our approach with the ones of a traditional MPC dealing with the same problem at different time horizon, in Figure \ref{solving_times}. It is easy to see the convenience of our approach, since the number of the unknowns that the optimizer has to find does not increase with $N$ and so with the dimension of the problem. In other words the mean time needed to the optimizer to solve the MPC problem stays almost constant instead of increasing exponentially.
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[scale=0.40]{images/solving_times_small.png}
+%	\caption{Solving time comparison}
+%	\label{solving_times}
+%\end{figure}
+However, from the results showed in Figure \ref{ee_tests} and from other experiments run with different time steps $T$, it can be seen that, as in previous tests, the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons
+
 Considerazioni iniziali sulle traiettorie provate e perchè abbiamo scelto tali traiettorie (farei step e traiettoria grasping)
 	\subsection{effect of N}
 		
