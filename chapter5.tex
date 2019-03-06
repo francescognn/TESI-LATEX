@@ -193,7 +193,7 @@ and so, considering the state equation \ref{system_base} in a discretized way, w
 \begin{equation}\label{sys_eq_con_e}
     e_{k|i+1}=\hat{f}(e_{k|i},p_k,{x_{k|i}}_d,{x_{k|i+1}}_d)
 \end{equation}
-In this way the problem is moved to track zero error reference and becomes: 
+In this way the problem is moved to track a zero error reference and becomes: 
 \begin{equation} \label{ourproblem_stab}
 \begin{split}
 		& min_{{p}_k}\ J({e}_{k|i},{p}_k) =\sum_{i=1}^{N}\hat{l}(e_{k|i},{p}_{k}) \\
@@ -239,7 +239,7 @@ Where $B_{\it{l}} \subset \mathbb{R}^n$ is the $\rho-$level set of $l$, defined 
         \end{cases}
     \end{split}
 \end{equation} 
-Then given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$ it is possible to obtain the parameters $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, a suboptimal solution for the optimization problem at time instant $k+1$ can be the one described by the same blue line followed by the red one ($\bar{u}$).
+Then given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$ it is possible to obtain the parameters $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
 That means to require that the parameterization function \ref{new_parameterization} has to be translatable.
 \begin{figure}[h!]
 	\centering

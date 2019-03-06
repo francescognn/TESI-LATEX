@@ -3,22 +3,18 @@
 \chapter{Experimental Setup}
 \label{chapter6}
 
-The Mobile Manipulator under analisys in this thesis is a prototype assembled at University of Southern California in the Center of Advance Manufacturing (CAM) Laboratory. The system has been called ADDAMS: A*********** and is shown in figure \ref{imgADDAMS1}.
+The Mobile Manipulator under analysis in this thesis is a prototype assembled at the University of Southern California in the Center of Advanced Manufacturing (CAM) Laboratory. The system has been called ADDAMS: A*********** and it is shown in Figure \ref{imgADDAMS1}.
 
-\begin{figure}[h] \label{imgADDAMS1}
-	\begin{center} 
-		\includegraphics[scale=0.25]{ADDAMS1}
-		\centering
-		\caption{ADDAMS}
-	\end{center}
+\begin{figure}[h!] 
+	\includegraphics[scale=0.25]{ADDAMS1}
+	\centering
+	\caption{ADDAMS}
+	\label{imgADDAMS1}
 \end{figure}
 
- The goal of this prototype is to study a system able to handle parts as well as to perform operations in unstructured industrial enviroments to fill the gap between small and large production systems. Indeed, companies with small production volumes are nowdays required to innovate production systems towards the generation of smart factories. Given that those companies are generally not economically able to manage automated production lines and that the production mix is generally changed frequently, flexible systems to support production are required. For those reasons ADDAMS wants to be a low cost solution, using low cost sensors and to be capable, once it's operation have been planned, to perform in any enviroment. \\
+ The goal of this prototype is to study a system able to handle parts as well as to perform operations in unstructured industrial environments to fill the gap between small and large production systems. Indeed, companies with small production volumes are nowadays required to innovate production systems towards the generation of smart factories. Given that those companies are generally not economically able to manage automated production lines and that the production mix is generally changed frequently, flexible systems to support production are required. For those reasons ADDAMS wants to be a low-cost solution, using low-cost sensors and to be capable, once its operation has been planned, to perform tasks in any environment. \\
 
-The controller presented in this thesis wants to be the first step towards the design of an online software that make the system able to operate autonomously once the task has been given. In the next sections the main components of ADDAMS will be shown in its Hardare and Software parts then, setups used for simulations and physical tests will be presented. 
-
-
-
+The controller presented in this thesis wants to be the first step towards the design of an online software that makes the system able to operate autonomously once the task has been given. In the next sections the main components of ADDAMS will be shown in its Hardware and Software parts, then setups used for simulations and physical tests will be presented. 
 \section{Hardware}
 
 \subsection{Mobile Base}
@@ -31,65 +27,66 @@ The controller presented in this thesis wants to be the first step towards the d
 		\label{fig:SuperMegaBot1}
 	\end{center}
 \end{figure}
-The mobile base, provided by InspectorBots and named Super Mega Bot, is a Heavy-Duty, All-Terrain, 4WD robotic platform shown in figure \ref{fig:SuperMegaBot1}. It is a rugged, indoor/outdoor platform and can be fitted with a variety of sensors, cameras and equipment. The base has been designed to be Modular and Reconfigurable, so an end user can swap out various modules. There are several methods available to control the SMB provided by the manufacturer including: RC radio, Analog Joystick, Wireless Modem, or Microcomputer.\\
-The SMB is designed with non-steering coupled wheels and because of that the rotation of the base is obtained giving different velocities to the right and left wheels. For this reason the SMB is configured as a differential drive mobile robot for which the kinematic relationships explained in \ref{chapter2} hold.
-In appendix \ref{appA} can be found technical data of the SMB and informations about the motor used.
+The mobile base shown in Figure \ref{fig:SuperMegaBot1}, provided by InspectorBots and named Super Mega Bot (SMB), is a Heavy-Duty, All-Terrain, 4WD robotic platform. It is a rugged, indoor/outdoor platform and can be fitted with a variety of sensors, cameras and equipment. The base has been designed to be Modular and Reconfigurable, so an end user can swap out various modules. There are several methods available provided by the manufacturer to control the SMB including RC radio, Analog Joystick, Wireless Modem, or Microcomputer.\\
+The SMB is designed with non-steering coupled wheels and because of that the rotation of the base is obtained giving different velocities to the right and left wheels. For this reason, the SMB is configured as a differential-drive mobile robot for which the kinematic relationships explained in Chapter \ref{chapter2} hold. In Appendix \ref{appA} can be found technical data of the SMB and information about the motors used.\\
+This particular mobile platform has been chosen for its high payload and because it is large enough to keep on its surface the UR5 control unit.
 
 \subsection{UR5 Manipulator}
-The UR5 is a collaborative robotic arm developed by Universal Robots. According to the company the key benefits of their robots are light weight, safe and easy to use. The robotic arm is regarded as safe, because it will stop acting as soon as the robot hits an object sensed by a force sensor in one of the joints. UR5 is ideal for automating low-weight processing tasks like picking, placing and testing. The medium-sized robot arm is easy to program, fast to set up and, always according to UR, offers one of the fastest payback times in the industry. Because it is designed as a collobarative robot, the UR5 is generally suitable for tasks in which the operative space of the robot is shared with humans and that fits also ADDAMS objectives. The UR5 comes from the manufacturer with its control unit that can be easily accessed and provide low level controllers for tracking velocities of the joints. More technincal details on UR5 can be found in appendix \ref{appB}.
+The UR5 is a collaborative robotic arm developed by Universal Robots. According to the company, the key benefits of their robots are lightweight, safety and easiness to use. The robotic arm is regarded as safe because it will stop acting as soon as the robot hits an object sensed by a force sensor in one of the joints. UR5 is ideal for automating low-weight processing tasks like picking, placing and testing. The medium-sized robot arm is easy to program, fast to set up and, always according to UR, offers one of the fastest payback times in the industry. Because it is designed as a collaborative robot, the UR5 is generally suitable for tasks in which the operative space of the robot is shared with humans and that fits also ADDAMS objectives. The UR5 comes from the manufacturer with its control unit that can be easily accessed and provide low-level controllers for tracking velocities of the joints. More technical details on UR5 can be found in Appendix \ref{appB}.
 
 \begin{figure}[htbp]
 	\begin{center} 
 		\includegraphics[scale=0.4]{UR5}
 		\centering
-		\label{fig:UR5} 
+		\label{fig:UR5}
+		\caption{UR5 robot arm} 
 	\end{center}
 \end{figure}
 
 
 \subsection{Sensors}
 
-The sensors of the ADDAMS prototype will be used to measure positions of the joints to perform the desired task. Breafly the sensor system is composed of:
+The sensors of the ADDAMS prototype are used to measure the positions of the joints, in order to perform the desired task. Briefly, the sensor system is composed of:
 \begin{itemize}
-	\item Anglular encoders for the UR5 joints wich provide an accuracy of $0.1$ mm
-	\item Encoders on the wheels of the base that will be used to derive the position and orientation of the mobile base through a simple transformation. This measuring system is reliable only at slow speed and provide an accuracy of $\pm 2$ cm. Because the position of the end effector is computed knowing the position of the base, the accuracy of this measures is not sufficient to perform precise operation. Considerations on this aspect will be done later on.
-	\item Lidar that can be used to measure unknown obstacles position in the operative area of the robot.
-	\item Kinect for simultaneus localization an mapping (SLAM)
+	\item Angular encoders for the UR5 joints which provide an accuracy of $0.1$ mm at the end effector position, considering only the manipulator.
+	\item Encoders on the wheels of the base that will be used to derive the position and orientation of the mobile base through a simple transformation. This measuring system is reliable only at slow speed and provides an accuracy of $\pm 2$ cm. Because the position of the end effector is computed knowing the position of the base, the accuracy of these measures is not sufficient to perform precise operations. Considerations on this aspect will be done later on.
+	\item A lidar that can be used to measure unknown obstacles position in the operative area of the robot.
+	\item A Kinect sensor for Simultanous Localization And Mapping (SLAM)
 \end{itemize}
 
 \section{Software}
 
-To easily interface with all the components of ADDAMS we used ROS, an open-source, meta-operating system for robotic systems. ROS provides the services that allow communication between all the components, message-passing between processes, hardware abstraction, low-level device control. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers. The ROS network used to run the Phisical system is shown in the graph \ref{ROSnodes}
+To easily interface with all the components of ADDAMS we used ROS, an open-source, meta-operating system for robotic systems. ROS provides the services that allow communication between all the components, message-passing between processes, hardware abstraction, low-level device control. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers. The ROS network used to run the physical system is shown in the graph of Figure \ref{ROSnodes}
+\begin{figure}[h!]
 
-\begin{figure}[htbp]
-	\begin{center} 
-		\includegraphics[scale=0.24]{nodegraph2}
-		\centering
-		\label{ROSnodes} 
-		\caption{ROS nodes and messages for ADDAMS}
-	\end{center}
+	\includegraphics[scale=0.24]{nodegraph2}
+	\centering
+	
+	\caption{ROS nodes and messages for ADDAMS}
+\label{ROSnodes} 
 \end{figure}
 
-The controller we designed has been developed using Matlab/Simulink enviroment through CasADi, an open-source tool for nonlinear optimization and algorithmic differentiation that allows using Matlab/Simulink to define optimization problems and different commercial solvers. More information about CasADi can be found in \cite{Andersson2018}. The solver used to solve the Nonlinear Problem defined in \ref{chapter5} is IPOPT, a brief introduction to IPOPT can be found in Appendix \ref{appC}. As shown in graph \ref{ROSnodes} the simulink node where the controller is running reads position of the base and joint angles and give velocity commands to the system through a "talker" node we defined to communicate with the robot. As already mentioned the commands given to the system are velocity commands, i.e. high level commands that the system is required to track. Anyway, given that the manufacturers already provides reliable low level controllers able to track those desired velocities, we decided to use, as mentioned in \ref{chapter5}, a hierarchical approach that is breafly explained in figure \ref{Hdiagram}.  
+The controller we designed has been developed using Matlab/Simulink environment through CasADi, an open-source tool for nonlinear optimization and algorithmic differentiation that allows using Matlab/Simulink to define optimization problems and different commercial solvers. More information about CasADi can be found in \cite{Andersson2018}. The solver used to solve the Nonlinear Problem descried in Chapter \ref{chapter5} is IPOPT; a brief introduction to IPOPT can be found in Appendix \ref{appC}. As shown in graph of Figure \ref{ROSnodes}, the Simulink node where the controller is running reads position of the base and joint angles and give velocity commands to the system through a "talker" node we defined to communicate with the robot. As already mentioned the commands given to the system are velocity commands, i.e. high-level commands that the system is required to track. Anyway, given that the manufacturers already provides reliable low-level controllers able to track those desired velocities, we decided to use, as mentioned in Chapter \ref{chapter5}, a hierarchical approach that is briefly explained in Figure \ref{Hdiagram}.  
 \begin{figure}[h!]
-	\begin{center} 
-		\includegraphics[scale=0.35]{Hdiagram}
+ 
+		\includegraphics[scale=0.45]{Hdiagram}
 		\centering
-		\label{Hdiagram}
+		
 		\caption{Control hierarchy} 
-	\end{center}
+	
+\label{Hdiagram}
 \end{figure}
 \\
-Simulations and Physical experiments have been carried out to test the developed controller and to analyze performances and influences of parameters. In particular two tasks have been tested: 
+Simulations and physical experiments have been carried out to test the developed controller and to analyze performances and influences of parameters. In particular two tasks have been tested: 
 
 \begin{itemize}
-	\item \textbf{Movement of the system toward grasping area}. Referring to the controller as presented in \ref{chapter5} we will consider the cost function \ref{costfunctionh} as a composition of $h_4$ and $h_5$. In fact the task of moving the system towards grasping area is performed controllig the base position and the joint angles positions without requiring to track end effector position. The choice of this formulation for the cost function allows the problem to be easier to solve given that we are tracking joint angles rather than EE position, computed through forward Kinematics. Futhermore, the arm is generally not required to move during the movement of the system outside grasping areas.
+	\item \textbf{Movement of the system toward grasping area}. Referring to the controller as presented in Chapter \ref{chapter5} we will consider the cost function \ref{costfunctionh} as a composition of $h_4$ and $h_5$. Indeed, the task of moving the system towards the grasping area is performed controlling the base position and the joint angles positions without requiring to track end effector position. The choice of this formulation for the cost function allows the problem to be easier to solve given that we are tracking joint angles rather than EE position, computed through Forward Kinematics. Furthermore, the arm is generally not required to move during the movement of the system outside grasping areas.
 
-	\item \textbf{Trajectory tracking inside graping area}. In this case, as already mentioned, we will consider the problem of tracking the EE position considering the cost function \ref{costfunctionh} as a composition of $h_1$, $h_2$ and $h_3$. This task is more of interest of this thesis and then will be discussed more in detail than the first one. Considerations about online changing the cost function will be given in the next section. 
+	\item \textbf{Trajectory tracking inside grasping area}. In this case, as already mentioned, we will consider the problem of tracking the EE position considering the cost function \ref{costfunctionh} as a composition of $h_1$, $h_2$ and $h_3$. This task is more of interest of this thesis and then will be discussed more in detail than the first one. Considerations about online changing the cost function will be given in the next section. 
 \end{itemize}
 \section{Simulations setup}
 
-	Simulations for both the tasks object of study have been performed using Simulink to test stability, robustness, performances and effects of the parameters on the controller. The model used to simulate the system is basically the same presented in \ref{chapter2} that has been numerically integrated to allows calculating positions. The block diagram in figure \ref{simdiagram1} shows the simple achitecture of the controller used in simulations.
+	Simulations for both the tasks object of study have been performed using Simulink to test stability, robustness, performances and effects of the parameters on the controller. The model used to simulate the system is basically the same presented in \ref{chapter2} that has been numerically integrated to allows calculating positions. The block diagram in Figure \ref{simdiagram1} shows the simple architecture of the controller used in simulations.
 
 	\begin{figure}[h!]
 	\begin{center} 
@@ -107,9 +104,9 @@ Simulations and Physical experiments have been carried out to test the developed
 	\item $u_{k-1|0}$: needed to compute the velocity constraint at time step $i=0$ each call of the solver.
 	\item $p_0$: the initial guess of the parameters to be estimated solving the problem. 
 	\end{itemize}
-	Referring to this last input $p_0$, the value has been chosen, both for simulations and physical experiments, equal to zero at initial time (i.e. a vector of zeros). For all the other calls of the solver $k\neq0$, the previus optimal solution $p_{k-1}^*$ has been given. This choice generally helps finding the solution given that the previus solution is usually not so far from the new one.
+	Referring to this last input $p_0$, the value has been chosen, both for simulations and physical experiments, equal to zero at the initial time (i.e. a vector of zeros). For all the other calls of the solver $k\neq0$, the previous optimal solution $p_{k-1}^*$ has been given. This choice generally helps to find the solution given that the previous solution is usually not so far from the new one.
 \section{Physical Experiments Setup}
-	The software setup for the phisical experiments, as anticipated, makes use of ROS to interface with real system. In particular the controller node has been created in Simulink by means of the Robotic System Toolbox provided by Mathworks. The control input velocities have been given to the system by means of a communication node to interface with the low level controllers. Figure \ref{diagramreal} shows the architecture of the controller used for Physical experiments.
+	The software setup for the physical experiments, as anticipated, makes use of ROS to interface with the real system. In particular, the controller node has been created in Simulink by means of the Robotic System Toolbox provided by Mathworks. The control input velocities have been given to the system by means of a communication node to interface with the low-level controllers. Figure \ref{diagramreal} shows the architecture of the controller used for Physical experiments.
 	\begin{figure}[h!]
 	\begin{center} 
 		\includegraphics[scale=0.35]{diagramreal}
@@ -118,7 +115,7 @@ Simulations and Physical experiments have been carried out to test the developed
 		\caption{Physical experiments block diagram} 
 	\end{center}
 	\end{figure}
-	Performances of the low level controller have been tested primarily giving step input velocities commands to test the response of the base and the arm joints. With few changes in the low level controller parameters, have been obtained sufficient performances. In figure \ref{testllbase} and \ref{testllarm} are reported the step responses of the base linear velocity $v$ and the joint angle velocity $\theta_3$ respectively.
+	Performances of the low level controller have been tested primarily giving step input velocities commands to test the response of the base and the arm joints. With few changes in the low level controller parameters, have been obtained sufficient performances. In Figure \ref{testllbase} and \ref{testllarm} are reported the step responses of the base linear velocity $v$ and the joint angle velocity $\theta_3$ respectively.
 	\begin{figure}[ht]
 	\centering
 	\subfigure[Base step response]{%
@@ -130,7 +127,7 @@ Simulations and Physical experiments have been carried out to test the developed
 	\includegraphics[scale=0.15]{empty}}%
 	\caption{Low level controllers step response}
 	\end{figure}
-	The measurements of the performed velocity for this tests have been derived from joints encoders for the arm and encoders on the wheels for the base. The aim of the controller is to generate proper velocity control action to perform a desired task. Low level controllers are in charge of track those commands. Because of that, after testing the step response, trajectory tracking has been analyzed with simple sine trajectories. In figure \ref{testllbase2} and \ref{testllarm2} are reported the results.
+	The measurements of the performed velocity for this tests have been derived from joints encoders for the arm and encoders on the wheels for the base. The aim of the controller is to generate proper velocity control action to perform a desired task. Low level controllers are in charge of track those commands. Because of that, after testing the step response, trajectory tracking has been analyzed with simple sine trajectories. In Figures \ref{testllbase2} and \ref{testllarm2} are reported the results.
 	\begin{figure}[ht]
 	\centering
 	\subfigure[Base sine response]{%
