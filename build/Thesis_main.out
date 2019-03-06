@@ -47,8 +47,10 @@
 \BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 47
 \BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 48
 \BOOKMARK [0][-]{chapter*.34}{List of Tables}{}% 49
-\BOOKMARK [0][-]{section*.36}{Appendices}{}% 50
-\BOOKMARK [0][-]{Appendix.1.A}{Super Mega Bot Datasheet}{}% 51
-\BOOKMARK [0][-]{Appendix.1.B}{UR5 Datasheed}{}% 52
-\BOOKMARK [0][-]{Appendix.1.C}{Interior Point OPTimizer \(IPOPT\)}{}% 53
-\BOOKMARK [0][-]{section*.39}{References}{}% 54
+\BOOKMARK [0][-]{chapter*.35}{Appendices}{}% 50
+\BOOKMARK [1][-]{section.Alph0.1}{Super Mega Bot Datasheet}{chapter*.35}% 51
+\BOOKMARK [0][-]{figure.caption.37}{Appendices}{}% 52
+\BOOKMARK [1][-]{section.Alph0.2}{UR5 Datasheet}{figure.caption.37}% 53
+\BOOKMARK [0][-]{table.caption.38}{Appendices}{}% 54
+\BOOKMARK [1][-]{section.Alph0.3}{Interior Point OPTimizer \(IPOPT\)}{table.caption.38}% 55
+\BOOKMARK [0][-]{section*.39}{References}{}% 56
