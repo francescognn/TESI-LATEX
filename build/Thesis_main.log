@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  6 MAR 2019 15:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  6 MAR 2019 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1050,7 +1050,7 @@ LaTeX Info: Redefining \nameref on input line 88.
 \openout2 = `frontespizio.aux'.
 
  (./frontespizio.tex
-<IMMAGINI/Logo_Politecnico_Milano.png, id=228, 666.49pt x 489.83pt>
+<IMMAGINI/Logo_Politecnico_Milano.png, id=232, 666.49pt x 489.83pt>
 File: IMMAGINI/Logo_Politecnico_Milano.png Graphic file (type png)
 
 <use IMMAGINI/Logo_Politecnico_Milano.png>
@@ -1061,10 +1061,11 @@ e 12.
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./IMMAGINI/Logo_Politecnic
-o_Milano.png>] [2])
+o_Milano.png>])
 \openout2 = `dedica.aux'.
 
- (./dedica.tex) [3
+ (./dedica.tex)
+[2
 
 
 
@@ -1117,7 +1118,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
  (./chapter1.tex
 Chapter 1.
-<IMMAGINI/JPL_rover.png, id=346, 2509.375pt x 1411.2725pt>
+<IMMAGINI/JPL_rover.png, id=347, 2509.375pt x 1411.2725pt>
 File: IMMAGINI/JPL_rover.png Graphic file (type png)
 
 <use IMMAGINI/JPL_rover.png>
@@ -1137,7 +1138,7 @@ l.17 	\item R
 
 
 
-] <IMMAGINI/submarine_robot.jpg, id=352, 566.115pt x 318.43968pt>
+] <IMMAGINI/submarine_robot.jpg, id=353, 566.115pt x 318.43968pt>
 File: IMMAGINI/submarine_robot.jpg Graphic file (type jpg)
 
 <use IMMAGINI/submarine_robot.jpg>
@@ -1147,13 +1148,13 @@ Package pdftex.def Info: IMMAGINI/submarine_robot.jpg used on input line 27.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/atlas.jpg, id=353, 856.19875pt x 1284.8pt>
+<IMMAGINI/atlas.jpg, id=354, 856.19875pt x 1284.8pt>
 File: IMMAGINI/atlas.jpg Graphic file (type jpg)
  <use IMMAGINI/atlas.jpg>
 Package pdftex.def Info: IMMAGINI/atlas.jpg used on input line 33.
 (pdftex.def)             Requested size: 81.33972pt x 122.05727pt.
 
-<IMMAGINI/spot_mini.jpg, id=354, 1304.875pt x 979.66pt>
+<IMMAGINI/spot_mini.jpg, id=355, 1304.875pt x 979.66pt>
 File: IMMAGINI/spot_mini.jpg Graphic file (type jpg)
 
 <use IMMAGINI/spot_mini.jpg>
@@ -1171,13 +1172,8 @@ File: IMMAGINI/kuka_iiwa.jpg Graphic file (type jpg)
 <use IMMAGINI/kuka_iiwa.jpg>
 Package pdftex.def Info: IMMAGINI/kuka_iiwa.jpg used on input line 42.
 (pdftex.def)             Requested size: 210.54878pt x 140.2705pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.48 \begin{enumerate}
-                       [3 <./IMMAGINI/submarine_robot.jpg> <./IMMAGINI/atlas.jp
-g> <./IMMAGINI/spot_mini.jpg> <./IMMAGINI/kuka_iiwa.jpg>] [4]) [5]
+ [3 <./IMMAGINI/submarine_robot.jpg> <./IMMAGINI/atlas.jpg> <./IMMAGINI/spot_mi
+ni.jpg> <./IMMAGINI/kuka_iiwa.jpg>] [4]) [5]
 \openout2 = `chapter2.aux'.
 
 
@@ -1187,21 +1183,21 @@ Chapter 2.
 
 
 
-] <IMMAGINI/unicyclemodel.PNG, id=393, 754.017pt x 296.7888pt>
+] <IMMAGINI/unicyclemodel.PNG, id=395, 754.017pt x 296.7888pt>
 File: IMMAGINI/unicyclemodel.PNG Graphic file (type png)
 
 <use IMMAGINI/unicyclemodel.PNG>
 Package pdftex.def Info: IMMAGINI/unicyclemodel.PNG used on input line 41.
 (pdftex.def)             Requested size: 301.60146pt x 118.71341pt.
  [7] [8 <./IMMAGINI/unicyclemodel.PNG>]
-<IMMAGINI/mobilebase.png, id=419, 283.2984pt x 192.72pt>
+<IMMAGINI/mobilebase.png, id=420, 283.2984pt x 192.72pt>
 File: IMMAGINI/mobilebase.png Graphic file (type png)
 
 <use IMMAGINI/mobilebase.png>
 Package pdftex.def Info: IMMAGINI/mobilebase.png used on input line 97.
 (pdftex.def)             Requested size: 226.63902pt x 154.1762pt.
  [9 <./IMMAGINI/mobilebase.png>]
-<IMMAGINI/denavithartenberg.PNG, id=430, 639.38875pt x 393.47pt>
+<IMMAGINI/denavithartenberg.PNG, id=432, 639.38875pt x 393.47pt>
 File: IMMAGINI/denavithartenberg.PNG Graphic file (type png)
 
 <use IMMAGINI/denavithartenberg.PNG>
@@ -1212,7 +1208,7 @@ Package pdftex.def Info: IMMAGINI/denavithartenberg.PNG used on input line 126.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10] <IMMAGINI/MMkinematics.png, id=441, 332.442pt x 280.8894pt>
+[10] <IMMAGINI/MMkinematics.png, id=443, 332.442pt x 280.8894pt>
 File: IMMAGINI/MMkinematics.png Graphic file (type png)
 
 <use IMMAGINI/MMkinematics.png>
@@ -1234,14 +1230,14 @@ Overfull \hbox (5.59927pt too wide) in paragraph at lines 37--39
 positive-definite
  []
 
-<IMMAGINI/mpc_usage_table.png, id=493, 1365.1pt x 760.8425pt>
+<IMMAGINI/mpc_usage_table.png, id=495, 1365.1pt x 760.8425pt>
 File: IMMAGINI/mpc_usage_table.png Graphic file (type png)
 
 <use IMMAGINI/mpc_usage_table.png>
 Package pdftex.def Info: IMMAGINI/mpc_usage_table.png used on input line 63.
 (pdftex.def)             Requested size: 382.2254pt x 213.03444pt.
  [18] [19] [20 <./IMMAGINI/mpc_usage_table.png>] <IMMAGINI/MPC_base_diagram.jpg
-, id=518, 955.57pt x 273.02pt>
+, id=519, 955.57pt x 273.02pt>
 File: IMMAGINI/MPC_base_diagram.jpg Graphic file (type jpg)
 
 <use IMMAGINI/MPC_base_diagram.jpg>
@@ -1251,7 +1247,7 @@ Package pdftex.def Info: IMMAGINI/MPC_base_diagram.jpg used on input line 88.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21] <IMMAGINI/mpc_horizon_base_scheme.jpg, id=526, 1212.53pt x 720.6925pt>
+[21] <IMMAGINI/mpc_horizon_base_scheme.jpg, id=528, 1212.53pt x 720.6925pt>
 File: IMMAGINI/mpc_horizon_base_scheme.jpg Graphic file (type jpg)
 
 <use IMMAGINI/mpc_horizon_base_scheme.jpg>
@@ -1260,7 +1256,7 @@ e 103.
 (pdftex.def)             Requested size: 388.01753pt x 230.62631pt.
  [22 <./IMMAGINI/MPC_base_diagram.jpg> <./IMMAGINI/mpc_horizon_base_scheme.jpg>
 ]
-<IMMAGINI/scheme_model_based_opt.jpg, id=533, 1256.695pt x 314.17375pt>
+<IMMAGINI/scheme_model_based_opt.jpg, id=535, 1256.695pt x 314.17375pt>
 File: IMMAGINI/scheme_model_based_opt.jpg Graphic file (type jpg)
 
 <use IMMAGINI/scheme_model_based_opt.jpg>
@@ -1278,7 +1274,7 @@ Overfull \hbox (11.38618pt too wide) in paragraph at lines 183--183
  []
 
 [25] [26] [27]
-<IMMAGINI/feasibility_image1.png, id=583, 879.285pt x 797.98125pt>
+<IMMAGINI/feasibility_image1.png, id=585, 879.285pt x 797.98125pt>
 File: IMMAGINI/feasibility_image1.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_image1.png>
@@ -1286,7 +1282,7 @@ Package pdftex.def Info: IMMAGINI/feasibility_image1.png used on input line 253
 .
 (pdftex.def)             Requested size: 175.85388pt x 159.59341pt.
 
-<IMMAGINI/feasibility_region.png, id=584, 722.7pt x 658.46pt>
+<IMMAGINI/feasibility_region.png, id=586, 722.7pt x 658.46pt>
 File: IMMAGINI/feasibility_region.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_region.png>
@@ -1294,7 +1290,7 @@ Package pdftex.def Info: IMMAGINI/feasibility_region.png used on input line 257
 .
 (pdftex.def)             Requested size: 180.67455pt x 164.6146pt.
 
-<IMMAGINI/feasible_image2.png, id=585, 550.055pt x 628.3475pt>
+<IMMAGINI/feasible_image2.png, id=587, 550.055pt x 628.3475pt>
 File: IMMAGINI/feasible_image2.png Graphic file (type png)
 
 <use IMMAGINI/feasible_image2.png>
@@ -1306,7 +1302,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [28 <./IMMAGINI/feasibility_image1.png> <./IMMAGINI/feasibility_region.png>]
 [29 <./IMMAGINI/feasible_image2.png>] [30] [31]
-<IMMAGINI/linearvsnl.png, id=626, 1018.80624pt x 930.47626pt>
+<IMMAGINI/linearvsnl.png, id=628, 1018.80624pt x 930.47626pt>
 File: IMMAGINI/linearvsnl.png Graphic file (type png)
 
 <use IMMAGINI/linearvsnl.png>
@@ -1342,7 +1338,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
 
 ] [36] [37] [38]
-<IMMAGINI/potential_field.PNG, id=704, 462.72874pt x 399.4925pt>
+<IMMAGINI/potential_field.PNG, id=705, 462.72874pt x 399.4925pt>
 File: IMMAGINI/potential_field.PNG Graphic file (type png)
 
 <use IMMAGINI/potential_field.PNG>
@@ -1358,60 +1354,58 @@ Chapter 5.
 
 
 
-] [43] [44] [45]
-<IMMAGINI/param_horizon.jpg, id=768, 940.51375pt x 553.06625pt>
+] [43] [44] [45] [46]
+<IMMAGINI/param_horizon.jpg, id=776, 940.51375pt x 553.06625pt>
 File: IMMAGINI/param_horizon.jpg Graphic file (type jpg)
 
 <use IMMAGINI/param_horizon.jpg>
-Package pdftex.def Info: IMMAGINI/param_horizon.jpg used on input line 90.
+Package pdftex.def Info: IMMAGINI/param_horizon.jpg used on input line 97.
 (pdftex.def)             Requested size: 376.19884pt x 221.22258pt.
- [46] [47 <./IMMAGINI/param_horizon.jpg>]
-[48] [49] [50] [51] [52]
-<IMMAGINI/trans_u.png, id=829, 580.41844pt x 287.57437pt>
+ [47 <./IMMAGINI/param_horizon.jpg>] [48]
+[49] [50] [51] [52] [53]
+<IMMAGINI/trans_u.png, id=842, 580.41844pt x 287.57437pt>
 File: IMMAGINI/trans_u.png Graphic file (type png)
 
 <use IMMAGINI/trans_u.png>
-Package pdftex.def Info: IMMAGINI/trans_u.png used on input line 246.
+Package pdftex.def Info: IMMAGINI/trans_u.png used on input line 270.
 (pdftex.def)             Requested size: 348.25375pt x 172.54594pt.
+ [54 <./IMMAGINI/trans_u.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
+
+ []
+
+[55] [56] <IMMAGINI/xy_limits.png, id=868, 1599.9775pt x 539.01375pt>
+File: IMMAGINI/xy_limits.png Graphic file (type png)
+
+<use IMMAGINI/xy_limits.png>
+Package pdftex.def Info: IMMAGINI/xy_limits.png used on input line 361.
+(pdftex.def)             Requested size: 399.9934pt x 134.7531pt.
+
+Overfull \hbox (9.9934pt too wide) in paragraph at lines 361--362
+ [][] 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 255--257
-
- []
-
-[53] [54 <./IMMAGINI/trans_u.png (PNG copy)>] [55] [56]
-<IMMAGINI/xy_limits.png, id=864, 1599.9775pt x 539.01375pt>
-File: IMMAGINI/xy_limits.png Graphic file (type png)
-
-<use IMMAGINI/xy_limits.png>
-Package pdftex.def Info: IMMAGINI/xy_limits.png used on input line 337.
-(pdftex.def)             Requested size: 399.9934pt x 134.7531pt.
-
-Overfull \hbox (9.9934pt too wide) in paragraph at lines 337--338
- [][] 
- []
-
-[57 <./IMMAGINI/xy_limits.png>]
-<IMMAGINI/spheres_3d.png, id=880, 357.335pt x 402.50375pt>
+[57] [58 <./IMMAGINI/xy_limits.png>]
+<IMMAGINI/spheres_3d.png, id=891, 357.335pt x 402.50375pt>
 File: IMMAGINI/spheres_3d.png Graphic file (type png)
 
 <use IMMAGINI/spheres_3d.png>
-Package pdftex.def Info: IMMAGINI/spheres_3d.png used on input line 374.
+Package pdftex.def Info: IMMAGINI/spheres_3d.png used on input line 398.
 (pdftex.def)             Requested size: 142.93146pt x 160.99864pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--388
+Underfull \hbox (badness 10000) in paragraph at lines 410--412
 
  []
 
-[58 <./IMMAGINI/spheres_3d.png>]) [59]
+[59 <./IMMAGINI/spheres_3d.png>]) [60]
 \openout2 = `chapter6.aux'.
 
  (./chapter6.tex
 Chapter 6.
-<IMMAGINI/ADDAMS1.png, id=897, 1019.007pt x 942.4008pt>
+<IMMAGINI/ADDAMS1.png, id=907, 1019.007pt x 942.4008pt>
 File: IMMAGINI/ADDAMS1.png Graphic file (type png)
 
 <use IMMAGINI/ADDAMS1.png>
@@ -1422,12 +1416,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
 
-[60
+[61
 
 
 
  <./IMMAGINI/ADDAMS1.png>]
-<IMMAGINI/SuperMegaBot1.PNG, id=904, 371.3875pt x 232.36812pt>
+<IMMAGINI/SuperMegaBot1.PNG, id=914, 371.3875pt x 232.36812pt>
 File: IMMAGINI/SuperMegaBot1.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot1.PNG>
@@ -1438,30 +1432,30 @@ Package pdftex.def Info: IMMAGINI/SuperMegaBot1.PNG used on input line 24.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Reference `appA' on page 61 undefined on input line 31.
+LaTeX Warning: Reference `appA' on page 62 undefined on input line 31.
 
-[61]
+[62]
 
-LaTeX Warning: Reference `appB' on page 62 undefined on input line 35.
+LaTeX Warning: Reference `appB' on page 63 undefined on input line 35.
 
-<IMMAGINI/UR5.png, id=912, 414.54875pt x 405.515pt>
+<IMMAGINI/UR5.png, id=922, 414.54875pt x 405.515pt>
 File: IMMAGINI/UR5.png Graphic file (type png)
  <use IMMAGINI/UR5.png>
 Package pdftex.def Info: IMMAGINI/UR5.png used on input line 39.
 (pdftex.def)             Requested size: 165.81656pt x 162.20311pt.
 
-[62 <./IMMAGINI/SuperMegaBot1.PNG>]
-<IMMAGINI/nodegraph2.png, id=920, 1574.88374pt x 308.15125pt>
+[63 <./IMMAGINI/SuperMegaBot1.PNG>]
+<IMMAGINI/nodegraph2.png, id=930, 1574.88374pt x 308.15125pt>
 File: IMMAGINI/nodegraph2.png Graphic file (type png)
 
 <use IMMAGINI/nodegraph2.png>
 Package pdftex.def Info: IMMAGINI/nodegraph2.png used on input line 62.
-(pdftex.def)             Requested size: 377.97983pt x 73.9578pt.
- [63 <./IMMAGINI/UR5.png>]
+(pdftex.def)             Requested size: 472.46877pt x 92.44608pt.
+ [64 <./IMMAGINI/UR5.png>]
 
-LaTeX Warning: Reference `appC' on page 64 undefined on input line 69.
+LaTeX Warning: Reference `appC' on page 65 undefined on input line 69.
 
-<IMMAGINI/Hdiagram.png, id=932, 415.5525pt x 413.545pt>
+<IMMAGINI/Hdiagram.png, id=942, 415.5525pt x 413.545pt>
 File: IMMAGINI/Hdiagram.png Graphic file (type png)
 
 <use IMMAGINI/Hdiagram.png>
@@ -1471,90 +1465,92 @@ Package pdftex.def Info: IMMAGINI/Hdiagram.png used on input line 72.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[64 <./IMMAGINI/nodegraph2.png>]
-
-LaTeX Warning: Reference `costfunctionh' on page 65 undefined on input line 83.
-
-
-
-LaTeX Warning: Reference `costfunctionh' on page 65 undefined on input line 85.
-
-
-
-Package caption Warning: \label without proper reference on input line 95.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `simdiagram1' on page 65 undefined on input line 89.
-
-[65 <./IMMAGINI/Hdiagram.png>]
-<IMMAGINI/simdiagram1.png, id=948, 707.64375pt x 272.01625pt>
+[65 <./IMMAGINI/nodegraph2.png>] [66 <./IMMAGINI/Hdiagram.png>]
+<IMMAGINI/simdiagram1.png, id=960, 707.64375pt x 272.01625pt>
 File: IMMAGINI/simdiagram1.png Graphic file (type png)
 
 <use IMMAGINI/simdiagram1.png>
-Package pdftex.def Info: IMMAGINI/simdiagram1.png used on input line 93.
-(pdftex.def)             Requested size: 247.67902pt x 95.2071pt.
- [66 <./IMMAGINI/simdiagram1.png>]
-
-Package caption Warning: \label without proper reference on input line 114.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `diagramreal' on page 67 undefined on input line 109.
-
-<IMMAGINI/diagramreal.png, id=957, 1047.915pt x 321.2pt>
+Package pdftex.def Info: IMMAGINI/simdiagram1.png used on input line 92.
+(pdftex.def)             Requested size: 318.43675pt x 122.40617pt.
+ [67 <./IMMAGINI/simdiagram1.png>]
+<IMMAGINI/diagramreal.png, id=969, 1047.915pt x 321.2pt>
 File: IMMAGINI/diagramreal.png Graphic file (type png)
 
 <use IMMAGINI/diagramreal.png>
-Package pdftex.def Info: IMMAGINI/diagramreal.png used on input line 112.
-(pdftex.def)             Requested size: 366.77574pt x 112.42168pt.
-
-<IMMAGINI/empty.png, id=960, 961.5925pt x 722.7pt>
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 123.
-(pdftex.def)             Requested size: 144.23265pt x 108.40031pt.
-File: IMMAGINI/empty.png Graphic file (type png)
-
-<use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 127.
-(pdftex.def)             Requested size: 144.23265pt x 108.40031pt.
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 135.
-(pdftex.def)             Requested size: 144.23265pt x 108.40031pt.
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 139.
-(pdftex.def)             Requested size: 144.23265pt x 108.40031pt.
-File: IMMAGINI/empty.png Graphic file (type png)
-
-<use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 143.
-(pdftex.def)             Requested size: 144.23265pt x 108.40031pt.
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 147.
-(pdftex.def)             Requested size: 144.23265pt x 108.40031pt.
-) [67 <./IMMAGINI/diagramreal.png>] [68 <./IMMAGINI/empty.png>] [69]
+Package pdftex.def Info: IMMAGINI/diagramreal.png used on input line 110.
+(pdftex.def)             Requested size: 419.15857pt x 128.47772pt.
+) [68 <./IMMAGINI/diagramreal.png>]
 \openout2 = `chapter7.aux'.
 
- (./chapter7.tex
+
+(./chapter7.tex
 Chapter 7.
-[70
+<IMMAGINI/traj_base_curves.png, id=976, 292.84406pt x 539.01375pt>
+File: IMMAGINI/traj_base_curves.png Graphic file (type png)
+
+<use IMMAGINI/traj_base_curves.png>
+Package pdftex.def Info: IMMAGINI/traj_base_curves.png used on input line 10.
+(pdftex.def)             Requested size: 117.13554pt x 215.60167pt.
+
+
+LaTeX Warning: Reference `base_curves_errors' on page 69 undefined on input lin
+e 14.
+
+
+LaTeX Warning: Reference `base_curves_errors' on page 69 undefined on input lin
+e 14.
+
+<IMMAGINI/base_curves_small.png, id=978, 627.09282pt x 236.38312pt>
+File: IMMAGINI/base_curves_small.png Graphic file (type png)
+
+<use IMMAGINI/base_curves_small.png>
+Package pdftex.def Info: IMMAGINI/base_curves_small.png used on input line 17.
+(pdftex.def)             Requested size: 225.75323pt x 85.09785pt.
+
+
+LaTeX Warning: Reference `solving_times' on page 69 undefined on input line 27.
 
 
 
-] [71]) [72]
+LaTeX Warning: Reference `ee_tests' on page 69 undefined on input line 34.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[69
+
+
+
+] [70 <./IMMAGINI/traj_base_curves.png (PNG copy)> <./IMMAGINI/base_curves_smal
+l.png (PNG copy)>] [71]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 74.
+
+
+LaTeX Warning: Reference `traj_ee1_comp' on page 72 undefined on input line 112
+.
+
+[72] <IMMAGINI/traj_ee1.png, id=1001, 897.3525pt x 325.215pt>
+File: IMMAGINI/traj_ee1.png Graphic file (type png)
+
+<use IMMAGINI/traj_ee1.png>
+Package pdftex.def Info: IMMAGINI/traj_ee1.png used on input line 116.
+(pdftex.def)             Requested size: 323.04665pt x 117.0773pt.
+ [73 <./IMMAGINI/traj_ee1.png>]) [74]
 \openout2 = `conclusions.aux'.
 
- (./conclusions.tex
+
+(./conclusions.tex
 Chapter 8.
-) [73
+) [75
 
 
 
-] (build/Thesis_main.lof [74
+] (build/Thesis_main.lof [76
 
 
 
@@ -1562,11 +1558,11 @@ Chapter 8.
 \tf@lof=\write6
 \openout6 = `Thesis_main.lof'.
 
- [75] (build/Thesis_main.lot)
+ [77] (build/Thesis_main.lot)
 \tf@lot=\write7
 \openout7 = `Thesis_main.lot'.
 
- [76
+ [78
 
 
 ]
@@ -1574,7 +1570,7 @@ Chapter 8.
 
 
 (./appendixA.tex
-<IMMAGINI/SuperMegaBot.PNG, id=1049, 432.11438pt x 277.53688pt>
+<IMMAGINI/SuperMegaBot.PNG, id=1062, 432.11438pt x 277.53688pt>
 File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot.PNG>
@@ -1585,13 +1581,13 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<IMMAGINI/SMBwires.png, id=1051, 559.08875pt x 324.21124pt>
+<IMMAGINI/SMBwires.png, id=1064, 559.08875pt x 324.21124pt>
 File: IMMAGINI/SMBwires.png Graphic file (type png)
 
 <use IMMAGINI/SMBwires.png>
 Package pdftex.def Info: IMMAGINI/SMBwires.png used on input line 33.
 (pdftex.def)             Requested size: 223.63153pt x 129.68219pt.
-) [77
+) [79
 
  <./IMMAGINI/SuperMegaBot.PNG> <./IMMAGINI/SMBwires.png>]
 \openout2 = `appendixB.aux'.
@@ -1606,23 +1602,23 @@ Overfull \hbox (43.22495pt too wide) in paragraph at lines 8--41
 [][] 
  []
 
-) [78
+) [80
 
 
 ]
 \openout2 = `appendixC.aux'.
 
- (./appendixC.tex) [79
+ (./appendixC.tex) [81
 
 
-] [80
+] [82
 
-] (build/Thesis_main.bbl [81
+] (build/Thesis_main.bbl [83
 
-] [82] [83])
+] [84] [85])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 201.
 
-[84]
+[86]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 201.
  (build/Thesis_main.aux (build/frontespizio.aux) (build/dedica.aux)
 (build/ringraziamenti.aux) (build/abstract.aux) (build/chapter1.aux)
@@ -1641,10 +1637,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 201.
  ) 
 Here is how much of TeX's memory you used:
- 11811 strings out of 493029
- 170989 string characters out of 6136234
- 275620 words of memory out of 5000000
- 14651 multiletter control sequences out of 15000+600000
+ 11819 strings out of 493029
+ 171274 string characters out of 6136234
+ 275307 words of memory out of 5000000
+ 14656 multiletter control sequences out of 15000+600000
  29248 words of font info for 76 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  36i,30n,43p,1607b,450s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1674,10 +1670,10 @@ er/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0800.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sftt1200.pfb>
-Output written on build/Thesis_main.pdf (95 pages, 5778866 bytes).
+Output written on build/Thesis_main.pdf (96 pages, 5812363 bytes).
 PDF statistics:
- 1252 PDF objects out of 1440 (max. 8388607)
- 1066 compressed objects within 11 object streams
+ 1265 PDF objects out of 1440 (max. 8388607)
+ 1077 compressed objects within 11 object streams
  316 named destinations out of 1000 (max. 500000)
- 614 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 632 words of extra memory for PDF output out of 10000 (max. 10000000)
 

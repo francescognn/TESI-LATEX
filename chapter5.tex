@@ -55,6 +55,13 @@ G({x}) =  \left[
 \right] 
 \end{equation*}
 
+The continuous time model in \ref{system_base} has been discretized by means of Runge Kutta 4 method. that results in: 
+
+\begin{equation*}
+	{x}_{k+1}=f(x_k,u_k)
+\end{equation*}
+Note that $f$ is now a discretized state equation approximating the \ref{system_base}. Runge Kutta method will be discussed more in details later on.
+
 \subsubsection*{Notation:}
 We will use the same notation as in Chapter \ref{chapter3}. Briefly recalling: ${x}_{k|i}$ is the state vector at time instant $i$ propagated starting from time instant $k$, and ${u}_{k|i}$ is defined in the same way.
 
@@ -69,7 +76,7 @@ where $l({x}_{k|i},{u}_{k|i})$ is a positive definite function dependent on the 
 \begin{split}
 		& min_{\textbf{u}}\ J({x}_{k|i},{u}_{k|i}) \\
 		\textnormal{s.t.}\qquad
-		&\ \ \ \ \dot{{x}}=f({x},{u}) \\
+		&\ \ \ \ x_{k|i+1}=f(x_{k|i},u_{k|i}) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\ \forall\ i=1,\dots,\ N  \\
 		&\ \ \ \ {u}_{k|i} \in \mathbb{U}\ \forall\ i=0,\dots,\ N-1 \\
 	\end{split}	
@@ -108,17 +115,34 @@ Note that $t_i$  is defined as:
 \begin{equation*}
 	t_i=(i-1)T_k\ \ \ \ \forall\ i=1,\dots,N
 \end{equation*}
+Considering this parameterization, the state equation of the system in \ref{system_base} becomes a LTV system for which the Runge Kutta 4 discretization is done defining: 
+\begin{equation*}
+\begin{split}
+    &k_1 = f(x_{k|i},\textbf{p}_k,t_i) \\
+	&k_2 = f(x_{k|i}+k_1\frac{T_k}{2},\textbf{p}_k,t_i+\frac{T_k}{2}) \\
+	&k_3 = f(x_{k|i}+k_2\frac{T_k}{2},\textbf{p}_k,t_i+\frac{T_k}{2})\\
+	&k_4 = f(x_{k|i}+k_3T_k,\textbf{p}_k,t_i+\frac{T_k}{2})\\
+\end{split}	
+\end{equation*}
+The new state equation becomes:  
+\begin{equation}
+\begin{split}
+	x_{k|i+1}&=x_{k|i}+\frac{T_k}{6}(k_1+2k_2+2k_3+k4) \\
+	&=\tilde{f}(x_{k|i},\textbf{p}_k,t_i)
+\end{split}
+\end{equation}
 By applying the change of variables of Equation \ref{param_eq} into the problem formulation in \ref{ourproblem_basic} we obtain:
 \begin{equation} \label{ourproblem_param}
 \begin{split}
 		& min_{\textbf{p}_k}\ J({x}_{k|i},\textbf{p}_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},\textbf{p}_k) \\
 		\textnormal{s.t.}\qquad
-		&\ \ \ \ \dot{{x}}=\tilde{f}({x},\textbf{p},t) \\
+		&\ \ \ \ x_{k|i+1}=\tilde{f}(x_{k|i},\textbf{p}_k,t_i) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\quad \forall i=1,\dots, N  \\
 		&\ \ \ \ \textbf{p}_k   \in \mathbb{P}\ \\
 	\end{split}	
 \end{equation}
 where $\mathbb{P} = \lbrace \textbf{p}\in \mathbb{R}^{N_p}\ \textnormal{s.t.}\ F(t_j(i))\textbf{p} \in \mathbb{U}\quad \forall i = 1, \dots, N-1 \rbrace $ and $\tilde{l}$ is simply the stage cost defined as a function of $\textbf{p}_k$ instead of ${u}_{k|i}$. By means of this substitution the problem has to be minimized with respect to $N_p$ parameters, whose number do not depend on $N$. As a matter of fact, using 3rd order polynomials as in the previous example, we have to minimize $J$ with respect to $32$ parameters for any length of the prediction horizon. Implementing this approach results in a faster solution of the optimization problem, and the possibility to enlarge significantly the prediction horizon. Anyway $N$ has to be chosen properly: increasing too much the prediction horizon may result in bad performances due to overconstraining of the control action. This effect, as well as a performance comparison with respect to traditional MPC will be discussed later on.
+
 
 \subsection{Increasing-Weights Cost Function definition}
 
@@ -169,7 +193,7 @@ Where $\mathcal{J}=[\ \mathcal{J}_b(q)\ \mathcal{J}_a(q)\ ]$ i.e. the Jacobians 
 	 \end{equation}
 This cost is particularly useful since the higher it is, the less the controller will choose to make adjustments on the end effector position through motions of the base, given that its positioning system is less reliable than the manipulator's one.
 \end{itemize}
-We will introduce now other two terms that will be used instead of the previous ones to move the system from and towards the grasping area. Decoupling the problem with two different cost functions allows having a faster controller during the motion of the system when it is required to have high speeds, and to increase the complexity of the problem only inside a grasping area, where the system moves slower, to perform grasping. 
+We will introduce now other two terms that will be used according to the application and in moving the system from and towards the grasping area. Decoupling the problem with two different cost functions allows having a faster controller during the motion of the system when it is required to have high speeds, and to increase the complexity of the problem only inside a grasping area, where the system moves slower, to perform grasping. 
 \begin{itemize}
     \item $h_4$ will be used to consider the base positioning error with respect to a given planned trajectory ${x_b}_d$ to reach the grasping area:
         \begin{equation}
@@ -391,7 +415,7 @@ Summarizing, the presented constraints redefines the problem as:
 	\begin{split}
 			& min_{\textbf{p}_k}\ J({x}_{k|i},\textbf{p}_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},\textbf{p}_k) \\
 			\textnormal{s.t.}\qquad
-			&\ \ \ \ \dot{{x}}=\tilde{f}({x},\textbf{p},t) \\
+			&\ \ \ \ x_{k|i+1}=\tilde{f}(x_{k|i},\textbf{p}_k,t_i) \\
 			&\ \ \ \ {x}_{min}\ \leq\ x_{k|i}\ \leq\ {x}_{max}\  \forall\ i=1,\dots,\ N  \\
 			&\ \ \ \ 0 \leq g^{sc}_{k|i}(x)\ \ \forall\ i=1,\dots,\ N \\
 			&\ \ \ \ \textbf{p}_k\   \in \mathbb{P}\ \\

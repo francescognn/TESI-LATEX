@@ -41,16 +41,17 @@
 \BOOKMARK [2][-]{subsection.7.1.2}{effect of different parameterization}{section.7.1}% 41
 \BOOKMARK [2][-]{subsection.7.1.3}{Movement of the system toward grasping area}{section.7.1}% 42
 \BOOKMARK [2][-]{subsection.7.1.4}{Trajectory tracking in grasping operation}{section.7.1}% 43
-\BOOKMARK [1][-]{section.7.2}{Physical experiments results}{chapter.7}% 44
-\BOOKMARK [2][-]{subsection.7.2.1}{Movement of the system toward grasping area}{section.7.2}% 45
-\BOOKMARK [2][-]{subsection.7.2.2}{Trajectory tracking in grasping operation}{section.7.2}% 46
-\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 47
-\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 48
-\BOOKMARK [0][-]{chapter*.34}{List of Tables}{}% 49
-\BOOKMARK [0][-]{chapter*.35}{Appendices}{}% 50
-\BOOKMARK [1][-]{section.Alph0.1}{Super Mega Bot Datasheet}{chapter*.35}% 51
-\BOOKMARK [0][-]{figure.caption.37}{Appendices}{}% 52
-\BOOKMARK [1][-]{section.Alph0.2}{UR5 Datasheet}{figure.caption.37}% 53
-\BOOKMARK [0][-]{table.caption.38}{Appendices}{}% 54
-\BOOKMARK [1][-]{section.Alph0.3}{Interior Point OPTimizer \(IPOPT\)}{table.caption.38}% 55
-\BOOKMARK [0][-]{section*.39}{References}{}% 56
+\BOOKMARK [2][-]{subsection.7.1.5}{passaggio da una funz costo all'altra}{section.7.1}% 44
+\BOOKMARK [1][-]{section.7.2}{Physical experiments results}{chapter.7}% 45
+\BOOKMARK [2][-]{subsection.7.2.1}{Movement of the system toward grasping area}{section.7.2}% 46
+\BOOKMARK [2][-]{subsection.7.2.2}{Trajectory tracking in grasping operation}{section.7.2}% 47
+\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 48
+\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 49
+\BOOKMARK [0][-]{chapter*.36}{List of Tables}{}% 50
+\BOOKMARK [0][-]{chapter*.37}{Appendices}{}% 51
+\BOOKMARK [1][-]{section.Alph0.1}{Super Mega Bot Datasheet}{chapter*.37}% 52
+\BOOKMARK [0][-]{figure.caption.39}{Appendices}{}% 53
+\BOOKMARK [1][-]{section.Alph0.2}{UR5 Datasheet}{figure.caption.39}% 54
+\BOOKMARK [0][-]{table.caption.40}{Appendices}{}% 55
+\BOOKMARK [1][-]{section.Alph0.3}{Interior Point OPTimizer \(IPOPT\)}{table.caption.40}% 56
+\BOOKMARK [0][-]{section*.41}{References}{}% 57
