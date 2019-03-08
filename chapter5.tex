@@ -22,8 +22,8 @@ In the next section the general NMPC structure for the mobile manipulation probl
 In this section the variables of the system and the model used for the MPC problem will be defined. The choice of the kinematic model instead of the dynamic one has been made for different reasons:
 
 \begin{itemize}
-\item even if our approach allows to reduce computational time, the usage of the dynamic model introduce further complexity in using the model to forecast the future states, this slow down significantly the solving time;
-\item because the control action of the kinematic model has been defined as velocities, velocity constraints can be easily implemented;
+\item even if our approach allows to reduce computational time, the usage of the dynamic model introduce further complexity to forecast the future states, this slow down significantly the solving time;
+\item because the control action of the kinematic model has been defined as velocities, it is easy to implement velocity constraints;
 \item low-level motor controllers are usually in charge to track velocities with higher frequency loops, this hierarchical approach is widely diffuse in controlling complex robotic systems;
 \item from a user point of view, kinematic variables allows a better understanding of what is happening on the real system;
 \end{itemize}
