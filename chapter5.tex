@@ -34,7 +34,7 @@ Consider the kinematic relation in \ref{dirkinMM} and the new state variables de
 \begin{equation} \label{state_control_def}
 {x}(t) \in \mathbb{R}^n\ \  \textnormal{s.t.}\ \  {x}  = \left[ \begin{matrix} x_b \\ y_b \\ \theta_b \\ \Theta_1 \\ \Theta_2 \\ \Theta_3 \\ \Theta_4 \\ \Theta_5 \\ \Theta_6 \end{matrix} \right]\ \   \textnormal{and}\ \  {u}(t) \in \mathbb{R}^m\ \ \textnormal{s.t.}\ \ {u}=\left[ \begin{matrix} v \\ \omega \\ \dot{\Theta}_1 \\ \dot{\Theta}_2 \\ \dot{\Theta}_3 \\ \dot{\Theta}_4 \\ \dot{\Theta}_5 \\ \dot{\Theta}_6 \end{matrix} \right]
 \end{equation}
-where $\Theta_1, \Theta_2, \Theta_3, \Theta_4, \Theta_5 ,\Theta_6$ are the joint values of the manipulator arm.
+where $x_b,\ y_b,\ \theta_b$ are the mobile base coordinates, $\Theta_1, \cdots ,\Theta_6$ are the joint values of the manipulator arm, $v, \ \omega$ are the base longitudinal and angular velocities, and $\dot{\Theta}_1, \cdots ,\dot{\Theta}_6$ are the manipulator joint velocities.
 By means of these variables the nonlinear kinematic model of the Nonholonomic Mobile Manipulator can be defined as:
 \begin{equation} \label{system_base}
 	\dot{{x}}=f({x},{u})
@@ -44,7 +44,7 @@ where:
 	f({x},{u}) = \left[ \begin{matrix}
 	G({x}) & 0 \\ 0 & I \end{matrix} \right]u
 \end{equation}
-and $G(x)$ is defined as in \ref{Gmatrix_def}:
+and $G(x)$ is defined as in Equation \ref{Gmatrix_def}:
 \begin{equation*}
 G({x}) =  \left[
 \begin{matrix}
@@ -60,16 +60,16 @@ The continuous time model in \ref{system_base} has been discretized by means of 
 \begin{equation*} \label{system_base_d}
 	{x}_{k+1}=f^+(x_k,u_k)
 \end{equation*}
-Note that $f^+$ is now a discretized state equation approximating the \ref{system_base}. Runge Kutta method will be discussed more in details later on.
+Runge-Kutta method will be discussed more in details later on.
 
 \subsubsection*{Notation:}
-We will use the same notation as in Chapter \ref{chapter3}. Briefly recalling: ${x}_{k|i}$ is the state vector at time instant $i$ propagated starting from time instant $k$, and ${u}_{k|i}$ is defined in the same way.
+We will use the same notation as in Chapter \ref{chapter3}. Briefly recalling: ${x}_{k|i}$ is the state vector at time instant $i$ propagated starting from time instant $k$, and ${u}_{k|i}$ is defined in the same way. Moreover $(\vdots)^+$ will define the discrete Runge-Kutta function approximating $(\vdots)$.
 
 \subsection{NLP definition}
 
 As done in Chapter \ref{chapter3} we will set up a minimization problem considering a quadratic cost function in the form:
 \begin{equation}
-J_{k}({x}_{k|i},{u}_{k|i})=\sum_{i=1}^{N}l({x}_{k|i},{u}_{k|i})
+J({x}_{k|i},{u}_{k|i})=\sum_{i=1}^{N}l({x}_{k|i},{u}_{k|i})
 \end{equation} 
 where $l({x}_{k|i},{u}_{k|i})$ is a positive definite function dependent on the state and the control action. By including Equation \ref{NLsystem} and state and control feasibility boundaries the problem becomes: 
 \begin{equation} \label{ourproblem_basic}
@@ -82,26 +82,26 @@ where $l({x}_{k|i},{u}_{k|i})$ is a positive definite function dependent on the 
 	\end{split}	
 \end{equation}
 where $\mathbb{X} = \lbrace {x}\in \mathbb{R}^n\ \textnormal{s.t.}\ {x}_{min}\leq x\leq x_{max} \rbrace$ is the feasible region of the state, $\mathbb{U} = \lbrace {u}\in \mathbb{R}^m\ \textnormal{s.t.}\ {u}_{min}\leq{u}\leq{u}_{max} \rbrace $ and $\textbf{u}=[\ u_{k|0},\ u_{k|1},\ \dots,\ u_{k|N-1}\ ]$.
-Note that the problem has to be discretized; we will refer at $T_k$ as the discretization time, so the time between $k$ and $k+1$ as well as the time between $i$ and $i+1$.
+Note that the problem is discrete; we will refer at $T_k$ as the discretization time, so the time between $k$ and $k+1$ as well as the time between $i$ and $i+1$.
 The problem defined in \ref{ourproblem_basic} is a standard NMPC problem that can be solved using well-known numerical optimization methods, where Equation \ref{NLsystem} is numerically integrated to propagate the state ${x}_{k|i+1}$. Anyway, the problem so defined is to find a solution $\textbf{u}^* \in \mathbb{R}^{m\times(N-1)}\ \textnormal{s.t.}\ \textbf{u}^* =[{u}^*_{k|0},\ {u}^*_{k|1},\ \dots,\ {u}^*_{k|N-1}]$. Even if, according to MPC logic, only the first computed control action ${u}^*_{k|0}$ will be applied, the problem needs to be solved for all the prediction horizon. Because of that, the dimension of the problem is highly dependent on N. Considering our case, for example, we have $m=8$, so if we set $N=20$ the dimension of $\textbf{u}^*$ that has to be found is $8\times20=160$. The dependence of the problem dimension on the optimization horizon length generate restrictions on the choice of $N$. This is due to the increase in computational effort that may become too high to solve fast online applications like handling and grasping for mobile manipulators. A solution could be to bound the value of $N$ in order to keep the problem within a solvable dimension. However, the performance clearly increases as $N$ increase, allowing compliance with some constraints, like obstacle avoidance, over a longer period. For this reason, we introduced a parameterized control input approach to reduce the dependence of $N$ on the solving time without losing the advantages of a longer prediction horizon.
 
 \subsection{Parameterization}
 The problem in \ref{ourproblem_basic} uses a control action defined as piece-wise constant that, as explained before, brings high computational cost dependence on $N$. To solve this issue we propose to express the control vector as a function of some parameters.
-Let's consider a coninuous time parametrization for the control input $u$ in \ref{state_control_def} defined as:
+Let's consider a continuous time parametrization for the control input $u$ in \ref{state_control_def} defined as:
 \begin{equation}
 {u}(t)=F(t)p
 \label{param_eq_cont}
 \end{equation}
-Considering this parameterization, the state equation of the system becomes a LTV system, i.e. \ref{system_base} becomes:
+where $p \in \mathbb{R}^{N_p}$ s.t. $p=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]^T$. Considering this parameterization, the state equation of the system becomes a LTV system, i.e. \ref{system_base} becomes:
 \begin{equation}
 	f(x,F(t)p)=\tilde{f}(x,p,t)
 	\label{state_eq_par}
 \end{equation}
-Besause the problem we aim to solve in \ref{ourproblem_basic} is defined as a discrete time problem, we will move the \ref{param_eq_cont} to discrete time redefining:
+Besause the problem we aim to solve in \ref{ourproblem_basic} is defined as a discrete time problem, we will consider Equation \ref{param_eq_cont} to discrete time redefining:
 \begin{equation}\label{param_eq}
 {u}_{k|i}=F(t_i)p_k
 \end{equation}
-where $p \in \mathbb{R}^{N_p}$ s.t. $p=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]^T$, $t_i=(i-1)T_k\ \forall\ i=1,\ \dots,\  N$, and the matrix $F(t_i)$ is the base of the new space $\mathbb{R}^{N_p}$. The subscript $k$ for $p$ indicates the time instant the parameterization is referred to. A good choice of the parameterization is made according to the physics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the physical meaning requirement. A better explanation of how to choose the parameterization will be given in Section \ref{stabproof}.
+where $t_i=(i-1)T_k\ \forall\ i=1,\ \dots,\  N$, and the matrix $F(t_i)$ is the base of the new space $\mathbb{R}^{N_p}$. The subscript $k$ for $p$ indicates the time instant the parameterization is referred to. A good choice of the parameterization is made according to the physics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the physical meaning requirement. A better explanation of how to choose the parameterization will be given in Section \ref{stabproof}.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{param_horizon}
@@ -223,7 +223,7 @@ We will consider now, for the stability proof, the tracking problem as a zero-re
 \begin{equation}\label{change_var}
     e_k=x_k-{x_k}_d
 \end{equation}
-and so, considering the state equation \ref{system_base} in a discretized way, we have:
+and so, substituting \ref{change_var} the state equation \ref{ourproblem_param}, we have:
 \begin{equation}\label{sys_eq_con_e}
     e_{k|i+1}=\hat{f}(e_{k|i},p_k,{x_{k|i}}_d,{x_{k|i+1}}_d)=\hat{f}(e_{k|i},p_k)
 \end{equation}
@@ -265,7 +265,7 @@ Where $B_{\hat{h}} \subset \mathbb{R}^n$ is the $\rho-$level set of $\hat{h}$, d
 \\{REMARK:  } Since in the definition of $B_{\hat{h}}$, $e$ is said to be feasible belonging to $\mathbb{E}$, this guarantees the recursive feasibility of the problem, as stated in \cite{alamir2018stability}.
 
 \paragraph{Assumption 4}
-We will require an extended control input parameterization vector $p:=[p_1,\ p_2,\ \dots,\ p_{N_p},\ \kappa]$ such that: 
+We will require an extended control input parameterization vector $p:=[p_1,\ p_2,\ \dots,\ p_{N_p},\ \kappa]$, with $\kappa\in\mathbb{N}$ such that: 
 \begin{equation}
 \begin{split}\label{new_parameterization}
     u_{k|i}(p_k)=
