@@ -287,7 +287,7 @@ Assumption 4 is equivalent to require that the parameterization function \ref{ne
 	h(e_N(e,p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
  	\label{lemma1}
 \end{equation}
-for some bounded $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
+for some bounded $\eta > 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
 
 {PROOF:} The proof, as presented in \cite{alamir2018stability}, is done considering $p^0 \in \mathbb{P}_{e \to 0}$, which means to take a $p^0$ that allows reaching $e_N=0$ which is possible because of Assumption 1. By the definition of optimal solution we have: 
 \begin{equation}
@@ -296,7 +296,7 @@ for some bounded $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time insta
 	&\leq \sum_{i=1}^{N}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)
 \end{split}
 \end{equation}
-and since by Assimption 1 we have $\hat{h}(e_N,p^0)=0$ we can remove the last term leading to:
+and since by Assumption 1 we have $\hat{h}(e_N,p^0)=0$ we can remove the last term leading to:
 \begin{equation}
 \begin{split}
 	J(e,p^*)&\leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0) \\
@@ -307,7 +307,7 @@ and considering:
 \begin{equation}
  \eta \leq \textnormal{sup} \sum_{i=1}^{N-1}\hat{h}(e,p^0)
 \end{equation}
-In order to assess stability is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. So, considering the cost function related to $\tilde{p}_{k+1}$ is:
+proving Lemma 1. \\In order to assess stability is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. So, considering the cost function related to $\tilde{p}_{k+1}$ is:
 \begin{equation*}
     J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},\tilde{p}_{k+1})+\hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
