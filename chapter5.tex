@@ -91,7 +91,7 @@ Let's consider a continuous time parametrization for the control input $u$ in \r
 {u}(t)=F(t)p
 \label{param_eq_cont}
 \end{equation}
-where $p \in \mathbb{R}^{N_p}$ s.t. $p=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]^T$. Considering this parameterization, the state equation of the system becomes a LTV system, i.e. \ref{system_base} becomes:
+where $p \in \mathbb{R}^{N_p}$ s.t. $p=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]^T$. Considering this parameterization, the state equation of the system becomes:
 \begin{equation}
 	f(x,F(t)p)=\tilde{f}(x,p,t)
 	\label{state_eq_par}
@@ -150,7 +150,7 @@ By applying the change of variables of Equation \ref{param_eq} into the problem 
 		&\ \ \ \ p_k   \in \mathbb{P}\ \\
 	\end{split}	
 \end{equation}
-where $\mathbb{P} = \lbrace p\in \mathbb{R}^{N_p}\ \textnormal{s.t.}\ F(t_j(i))\textbf{p} \in \mathbb{U}\quad \forall i = 1, \dots, N-1 \rbrace $ and $\tilde{l}$ is the stage cost $l$ as in Equation \ref{J_continua} being expressed as a function of $p_k$ instead of ${u}_{k|i}$. By means of this substitution the problem has to be minimized with respect to $N_p$ parameters, whose number do not depend on $N$. As a matter of fact, using 3rd order polynomials as in the previous example, we have to minimize $J$ with respect to $32$ parameters for any length of the prediction horizon. Implementing this approach results in a faster solution of the optimization problem, and the possibility to enlarge significantly the prediction horizon. Anyway $N$ has to be chosen properly: increasing too much the prediction horizon may result in bad performances due to overconstraining of the control action. This effect, as well as a performance comparison with respect to traditional MPC will be discussed later on.
+where $\mathbb{P} = \lbrace p\in \mathbb{R}^{N_p}\ \textnormal{s.t.}\ F(t_i)p \in \mathbb{U}\quad \forall i = 1, \dots, N-1 \rbrace $ and $\tilde{l}$ is the stage cost $l$ as in Equation \ref{J_continua} being expressed as a function of $p_k$ instead of ${u}_{k|i}$. By means of this substitution the problem has to be minimized with respect to $N_p$ parameters, whose number do not depend on $N$. As a matter of fact, using 3rd order polynomials as in the previous example, we have to minimize $J$ with respect to $32$ parameters for any length of the prediction horizon. Implementing this approach results in a faster solution of the optimization problem, and the possibility to enlarge significantly the prediction horizon. Anyway $N$ has to be chosen properly: increasing too much the prediction horizon may result in bad performances due to overconstraining of the control action. This effect, as well as a performance comparison with respect to traditional MPC will be discussed later on.
 \subsection{Increasing-Weights Cost Function definition}
 
 Once the problem has been defined in its general form we have to properly choose the cost function. In particular, the stage cost $\tilde{l}$ has to be defined. A common choice is to use a quadratic stage cost in order to have a positive definite cost function. Even if it is important to have a quadratic cost function for the stability of the controller, it is still possible to find suboptimal solutions (i.e. local minima) because of the nonlinearities of the system. We will define the stage cost $\tilde{l}$ as a sum of different contributions using increasing weights into the optimization horizon, 
@@ -212,7 +212,7 @@ We will introduce now other two terms that will be used according to the applica
     \end{equation}
 \end{itemize}
 where $x_{base}$ and $x_{arm}$ are defined as in \ref{dirkinMM}.
-This terms allowing to directly compute the error without passing through the forward kinematics, simplify a lot the problem during the motion of the base allowing a faster computation of the control action.\\We have shown only few terms, but others can also be added to make the controller more completely defined or to make it choose a solution for the kinematic redundancy problem in a different way. 
+This terms, allowing to directly compute the error without passing through the forward kinematics, simplify a lot the problem during the motion of the base allowing a faster computation of the control action.\\We have shown only few terms, but others can also be added to make the controller more completely defined or to make it choose a solution for the kinematic redundancy problem in a different way. 
 
 \section{Stability Proof}\label{stabproof}
 
@@ -260,7 +260,7 @@ for some positive definite function $q$ that satisfy:
 \end{equation}
 for some $\gamma \geq 0$ and $\forall e \in \mathbb{E}$.
 Where $B_{\hat{h}}(\rho) \subset \mathbb{R}^n$ is the $\rho-$level set of $\hat{h}$, defined as $B_{\hat{h}}(\rho) := \lbrace\ e \in \mathbb{E}\ |\ l(e) \leq \rho \rbrace$. This is a rather standard assumption simply meaning that $\hat{h}$ is a local Lyapunov function with decrease rate described by $q$. In general, if $\hat{h}$ and $q$ are positive definite quadratic functions, inequality \ref{ass3_1} is valid.
-\\{REMARK:  } Since in the definition of $B_{\hat{h}}(\rho)$, $e$ is said to be feasible belonging to $\mathbb{E}$, this guarantees the recursive feasibility of the problem, as stated in \cite{alamir2018stability}.
+\\{REMARK:  } Since in the definition of $B_{\hat{h}}(\rho)$, $e$ is said to be feasible belonging to $\mathbb{E}$, this guarantees the recursive feasibility of the problem, as stated also in \cite{alamir2018stability}.
 
 \paragraph{Assumption 4}
 We will require an extended control input parameterization vector $p:=[p_1,\ p_2,\ \dots,\ p_{N_p},\ \kappa]$, with $\kappa\in\mathbb{N}$ such that: 
@@ -269,12 +269,12 @@ We will require an extended control input parameterization vector $p:=[p_1,\ p_2
     u_{k|i}(p_k)=
         \begin{cases}
             F(t_i){p_k}\ \ \ \ \   &\textnormal{if } i\le\kappa \\
-            \bar{u}=\arg \min_u \hat{h}\left(f^+(x_{k-1|N},u,t_i),u\right)\ \ &\textnormal{if } i> \kappa
+            \bar{u}=\arg \min_u \hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)\ \ &\textnormal{if } i> \kappa
         \end{cases}
     \end{split}
 \end{equation} 
-where $f^+$ has been defined in \ref{system_base_d}. To better understand the meaning of $\bar{u}$: at time step $k-1$ the optimization of $J$ has already been solved having as a result a forecasting of the state after $N$ steps as $x_{k-1|N}$, and therefore an error $e_{k-1|N}$; $\bar{u}$ is the single vector of the control commands for which $\hat{h}\left(f^+(x_{k-1|N},u,t_i),u\right)$ has the minimum value. Note that the expression of $\bar{u}$ doesn't depend on the parameters vector $p$, since what we are interested in is a single evaluation of the input and not a parameterized function.\\
-Assumption 4 is equivalent to require that the parameterization function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameters $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
+where $f^+$ has been defined in \ref{system_base_d} and $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ is the stage cost expressed directly as a function of $u$ without passing through the parameterization. To better understand the meaning of $\bar{u}$: at time step $k-1$ the optimization of $J$ has already been solved having as a result a forecast of the state after $N$ steps as $x_{k-1|N}$, and therefore an error $e_{k-1|N}$; $\bar{u}$ is the single vector of the control commands for which $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ has the minimum value. Note that the expression of $\bar{u}$ doesn't depend on the parameters vector $p$, since what we are interested in is a single evaluation of the input and not a parameterized function.\\
+Moreover we will require that the parameterization function function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameters $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{IMMAGINI/trans_u.png}
@@ -287,7 +287,7 @@ Assumption 4 is equivalent to require that the parameterization function \ref{ne
 	h(e_N(e,p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
  	\label{lemma1}
 \end{equation}
-for some bounded $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
+for some $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
 
 {PROOF:} The proof, as presented in \cite{alamir2018stability}, is done considering $p^0 \in \mathbb{P}_{e \to 0}$, which means to take a $p^0$ that allows reaching $e_N=0$ which is possible because of Assumption 1. By the definition of optimal solution we have: 
 \begin{equation}
@@ -307,19 +307,20 @@ and considering:
 \begin{equation}
  \eta \leq \textnormal{sup} \sum_{i=1}^{N-1}\hat{h}(e,p^0)
 \end{equation}
+leads to the proof of \ref{lemma1}
 In order to assess stability is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. So, considering the cost function related to $\tilde{p}_{k+1}$ is:
 \begin{equation*}
-    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},\tilde{p}_{k+1})+\hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},\tilde{p}_{k+1})+\hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
 Now considering $j=i+1$ and a simplified notation $\hat{h}({e}_{k|i},p_{k}^*)=\hat{h}(e_{k|i})^*$, it follows: 
 \begin{equation*}
-    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
 Now rearranging the terms: 
 \begin{equation*}
     \begin{split}
         J({e}_{k+1|i},\tilde{p}_{k+1})=&\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^b-1\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \\
-        &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^* + \hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+        &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^* + \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation*}
 Note that 
@@ -330,7 +331,7 @@ So we get:
 \begin{equation*}
     \begin{split}
         J({e}_{k+1|i},\tilde{p}_{k+1})=&J({e}_{k|i},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-        &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^b\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+        &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^b\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation*}
 And because $\forall j \in \lbrace2,\ \dots,\ N\rbrace$ holds that: 
@@ -338,7 +339,7 @@ $\left[ 1-\left(\frac{j-1}{N}\right)^b \right]\ge\left[ 1-\left(\frac{N-1}{N}\ri
 \begin{equation}\label{dim1}
     \begin{split}
         J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-        &-\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ \hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+        &-\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation}
 
@@ -351,7 +352,7 @@ where $\bar{\rho}$ is the positive real called in Assumption 3. This means that 
 \begin{equation}\label{dim2}
     \hat{h}(\hat{f}(e_{k|N},p_k^*,t_i),p_k^*) \le \hat{h}(e_{k|N})^*-q(e_{k|N},p_k^*)
 \end{equation}
-Note that, considering the definitions in Assumption 4, $\hat{h}(\hat{f}(e_{k|N},p_k^*,t_i),p_k^*)$ corresponds to $\hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)$. So, by applying this relation and Equation \ref{dim2} in Equation \ref{dim1} we obtain: 
+Note that, considering the definitions in Assumption 4, $\hat{h}(\hat{f}(e_{k|N},p_k^*,t_i),p_k^*)$ corresponds to $\hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)$. So, by applying this relation and Equation \ref{dim2} in Equation \ref{dim1} we obtain: 
 \begin{equation*}
     \begin{split}
         J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
@@ -448,7 +449,7 @@ Summarizing, the presented constraints redefines the problem as:
 	\begin{split}
 			& min_{p_k}\ J({x}_{k|i},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
 			\textnormal{s.t.}\qquad
-			&\ \ \ \ x_{k|i+1}=\tilde{f}(x_{k|i},p_k,t_i) \\
+			&\ \ \ \ x_{k|i+1}=\tilde{f}^+(x_{k|i},p_k,t_i) \\
 			&\ \ \ \ {x}_{min}\ \leq\ x_{k|i}\ \leq\ {x}_{max}\  \forall\ i=1,\dots,\ N  \\
 			&\ \ \ \ 0 \leq g^{sc}_{k|i}(x)\ \ \forall\ i=1,\dots,\ N \\
 			&\ \ \ \ p_k\   \in \mathbb{P}\ \\
