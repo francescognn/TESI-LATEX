@@ -5,36 +5,36 @@
 
 \section{Introduction and Aim of the controller}
 
-In this chapter the core of the developed controller will be presented. The goal of our research is to solve the mobile manipulation problem of trajectory tracking for handling and grasping tasks. The tasks we wish to perform are in general solved decoupling the controller in order to move the mobile robot in a defined position in order to have a fixed position of the base during grasping and to reduce uncertainties in end-effector position, and only then perform the grasping task with the manipulator. This approach is generally reliable since controlling independently the base of the robot and the arm with well-known techniques allows precision and robustness. Anyway, if we want to perform the tasks in a time-optimal way this approach is not suitable. The possibility to move within an environment during grasping operation to allow faster performance time is a goal desired not only in manipulation tasks but for many applications. Furthermore, the usage of a unique controller could allow exploiting the many degrees of redundancy to optimize other process variables such as manipulability or obstacle avoidance capability. What we have developed, is a unique controller able to deal with the whole mobile manipulator system. The controller we developed aim is to solve some of the issues presented in Chapter \ref{chapter4} by means of a Nonlinear Model Predictive Control with a novel approach to solve the online optimization problem reducing the overall computational time. The choice of MPC controller has been made for many reasons: 
+In this chapter the core of the developed controller will be presented. The goal of our research is to solve the mobile manipulation problem of trajectory tracking for handling and grasping tasks. The tasks we wish to perform are in general solved decoupling the controller in order to move the mobile robot in a defined position in order to have a fixed position of the base during grasping and to reduce uncertainties in end-effector position, and only then perform the grasping task with the manipulator. This approach is generally reliable since controlling independently the base of the robot and the arm with well-known techniques allows precision and robustness. Anyway, if we want to perform the tasks in a time-optimal way this approach is not suitable. The possibility to move within an environment during grasping operation to allow faster performance time is a goal desired not only in manipulation tasks but for many applications. Furthermore, the usage of a unique controller could allow exploiting the many degrees of redundancy to optimize other process variables such as manipulability or obstacle avoidance capability. What we have developed, is a unique controller able to deal with the whole mobile manipulator system. The controller we developed aims at solving some of the issues presented in Chapter \ref{chapter4} by means of a Nonlinear Model Predictive Control with a novel approach to solve the online optimization problem reducing the overall computational time. The choice of MPC controller has been made for many reasons: 
 
 \begin{itemize}
-\item By means of the Receding Horizon Principle (explained in Section \ref{section_MPC}) it is possible to forecast the behaviour of the system. This approach becomes useful for obstacle avoidance and in manipulability maximization tasks.
-\item It is an open framework that allows customized problems.
-\item Introducing constraints allows taking into account the feasibility set of the joint variable as well as control input limits.
-\item Being an Optimal controller allows the minimization of customized parameters such as manipulability, control input effort etc...
-\item It is generally used as a high-level controller, the low-level loops are in charge to track given high-level command and deal with system dynamic.
+\item by means of predicting the future states through the definition of a model it is possible to forecast the behaviour of the system. This approach becomes useful for obstacle avoidance and in manipulability maximization tasks;
+\item it is an open framework that allows customized problems;
+\item introducing constraints allows taking into account the feasibility set of the joint variable as well as control input limits;
+\item being an Optimal controller allows the minimization of customized costs such as manipulability, control input effort etc...
+\item it is generally used as a high-level controller, the low-level loops are in charge to track given high-level commands and deal with system dynamic;
 \end{itemize}
 
 In the next section the general NMPC structure for the mobile manipulation problem will be explained referring to a Nonholonomic vehicle and a 6 DOFs manipulator. Our novel approach to reduce computational time and the related stability proof will be discussed later on.
 
 \section{Problem Definition}
 
-In this section the variables of the system and the model used for the MPC problem definition will be defined. The choice of the kinematic model instead of the dynamic one has been made for different reasons:
+In this section the variables of the system and the model used for the MPC problem will be defined. The choice of the kinematic model instead of the dynamic one has been made for different reasons:
 
 \begin{itemize}
-\item Even if our approach allows to reduce computational time, the usage of the Dynamic model introduce further complexity in system propagation that slow down significantly the solving time.
-\item Because the control action of the kinematic model has been defined as velocities, it is easy to implement velocity constraints.
-\item Low-level motor controllers are usually in charge to track velocities with higher frequency loops. This hierarchical approach is widely diffuse in controlling complex robotic systems.
-\item From a user point of view, kinematic variables allows a better understanding of what is happening on the real system
+\item even if our approach allows to reduce computational time, the usage of the dynamic model introduce further complexity in using the model to forecast the future states, this slow down significantly the solving time;
+\item because the control action of the kinematic model has been defined as velocities, it is easy to implement velocity constraints;
+\item low-level motor controllers are usually in charge to track velocities with higher frequency loops, this hierarchical approach is widely diffuse in controlling complex robotic systems;
+\item from a user point of view, kinematic variables allows a better understanding of what is happening on the real system;
 \end{itemize}
 
 \subsection{Model}
 
 Consider the kinematic relation in \ref{dirkinMM} and the new state variables defined as:
-\begin{equation}
+\begin{equation} \label{state_control_def}
 {x}(t) \in \mathbb{R}^n\ \  \textnormal{s.t.}\ \  {x}  = \left[ \begin{matrix} x_b \\ y_b \\ \theta_b \\ \Theta_1 \\ \Theta_2 \\ \Theta_3 \\ \Theta_4 \\ \Theta_5 \\ \Theta_6 \end{matrix} \right]\ \   \textnormal{and}\ \  {u}(t) \in \mathbb{R}^m\ \ \textnormal{s.t.}\ \ {u}=\left[ \begin{matrix} v \\ \omega \\ \dot{\Theta}_1 \\ \dot{\Theta}_2 \\ \dot{\Theta}_3 \\ \dot{\Theta}_4 \\ \dot{\Theta}_5 \\ \dot{\Theta}_6 \end{matrix} \right]
 \end{equation}
-where $\Theta_1, \cdots,\Theta_6$ are the joint values of the manipulator arm.
+where $\Theta_1, \Theta_2, \Theta_3, \Theta_4, \Theta_5 ,\Theta_6$ are the joint values of the manipulator arm.
 By means of these variables the nonlinear kinematic model of the Nonholonomic Mobile Manipulator can be defined as:
 \begin{equation} \label{system_base}
 	\dot{{x}}=f({x},{u})
@@ -42,7 +42,7 @@ By means of these variables the nonlinear kinematic model of the Nonholonomic Mo
 where:
 \begin{equation} \label{NLsystem}
 	f({x},{u}) = \left[ \begin{matrix}
-	G({x}) & \textbf{0} \\ \textbf{0} & I \end{matrix} \right]
+	G({x}) & 0 \\ 0 & I \end{matrix} \right]u
 \end{equation}
 and $G(x)$ is defined as in \ref{Gmatrix_def}:
 \begin{equation*}
@@ -57,10 +57,10 @@ G({x}) =  \left[
 
 The continuous time model in \ref{system_base} has been discretized by means of Runge Kutta 4 method. that results in: 
 
-\begin{equation*}
-	{x}_{k+1}=f(x_k,u_k)
+\begin{equation*} \label{system_base_d}
+	{x}_{k+1}=f^+(x_k,u_k)
 \end{equation*}
-Note that $f$ is now a discretized state equation approximating the \ref{system_base}. Runge Kutta method will be discussed more in details later on.
+Note that $f^+$ is now a discretized state equation approximating the \ref{system_base}. Runge Kutta method will be discussed more in details later on.
 
 \subsubsection*{Notation:}
 We will use the same notation as in Chapter \ref{chapter3}. Briefly recalling: ${x}_{k|i}$ is the state vector at time instant $i$ propagated starting from time instant $k$, and ${u}_{k|i}$ is defined in the same way.
@@ -76,7 +76,7 @@ where $l({x}_{k|i},{u}_{k|i})$ is a positive definite function dependent on the 
 \begin{split}
 		& min_{\textbf{u}}\ J({x}_{k|i},{u}_{k|i}) \\
 		\textnormal{s.t.}\qquad
-		&\ \ \ \ x_{k|i+1}=f(x_{k|i},u_{k|i}) \\
+		&\ \ \ \ x_{k|i+1}=f^+(x_{k|i},u_{k|i}) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\ \forall\ i=1,\dots,\ N  \\
 		&\ \ \ \ {u}_{k|i} \in \mathbb{U}\ \forall\ i=0,\dots,\ N-1 \\
 	\end{split}	
@@ -86,12 +86,22 @@ Note that the problem has to be discretized; we will refer at $T_k$ as the discr
 The problem defined in \ref{ourproblem_basic} is a standard NMPC problem that can be solved using well-known numerical optimization methods, where Equation \ref{NLsystem} is numerically integrated to propagate the state ${x}_{k|i+1}$. Anyway, the problem so defined is to find a solution $\textbf{u}^* \in \mathbb{R}^{m\times(N-1)}\ \textnormal{s.t.}\ \textbf{u}^* =[{u}^*_{k|0},\ {u}^*_{k|1},\ \dots,\ {u}^*_{k|N-1}]$. Even if, according to MPC logic, only the first computed control action ${u}^*_{k|0}$ will be applied, the problem needs to be solved for all the prediction horizon. Because of that, the dimension of the problem is highly dependent on N. Considering our case, for example, we have $m=8$, so if we set $N=20$ the dimension of $\textbf{u}^*$ that has to be found is $8\times20=160$. The dependence of the problem dimension on the optimization horizon length generate restrictions on the choice of $N$. This is due to the increase in computational effort that may become too high to solve fast online applications like handling and grasping for mobile manipulators. A solution could be to bound the value of $N$ in order to keep the problem within a solvable dimension. However, the performance clearly increases as $N$ increase, allowing compliance with some constraints, like obstacle avoidance, over a longer period. For this reason, we introduced a parameterized control input approach to reduce the dependence of $N$ on the solving time without losing the advantages of a longer prediction horizon.
 
 \subsection{Parameterization}
-
-The problem in \ref{ourproblem_basic} uses a control action defined as piece-wise constant that, as explained before, brings high computational cost dependence on $N$. To solve this issue we propose to express the control vector ${u}_{k|i}$ as a function of some parameters:
-\begin{equation}\label{param_eq}
-{u}_{k|i}=F(t_i)\textbf{p}_k
+The problem in \ref{ourproblem_basic} uses a control action defined as piece-wise constant that, as explained before, brings high computational cost dependence on $N$. To solve this issue we propose to express the control vector as a function of some parameters.
+Let's consider a coninuous time parametrization for the control input $u$ in \ref{state_control_def} defined as:
+\begin{equation}
+{u}(t)=F(t)p
+\label{param_eq_cont}
 \end{equation}
-where $\textbf{p} \in \mathbb{R}^{N_p}$ s.t. $\textbf{p}=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]^T$ and the matrix $F(t_i)$ is the base of the new space $\mathbb{R}^{N_p}$. A good choice of the parameterization is made according to the physics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the phisical meaning requirement. A better explanation of how to choose the parameterization will be given in Section \ref{stabproof}.
+Considering this parameterization, the state equation of the system becomes a LTV system, i.e. \ref{system_base} becomes:
+\begin{equation}
+	f(x,F(t)p)=\tilde{f}(x,p,t)
+	\label{state_eq_par}
+\end{equation}
+Besause the problem we aim to solve in \ref{ourproblem_basic} is defined as a discrete time problem, we will move the \ref{param_eq_cont} to discrete time redefining:
+\begin{equation}\label{param_eq}
+{u}_{k|i}=F(t_i)p_k
+\end{equation}
+where $p \in \mathbb{R}^{N_p}$ s.t. $p=[\ p_1,\ p_2,\ \dots,\ p_{N_p}\ ]^T$, $t_i=(i-1)T_k\ \forall\ i=1,\ \dots,\  N$, and the matrix $F(t_i)$ is the base of the new space $\mathbb{R}^{N_p}$. The subscript $k$ for $p$ indicates the time instant the parameterization is referred to. A good choice of the parameterization is made according to the physics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the physical meaning requirement. A better explanation of how to choose the parameterization will be given in Section \ref{stabproof}.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{param_horizon}
@@ -100,90 +110,91 @@ where $\textbf{p} \in \mathbb{R}^{N_p}$ s.t. $\textbf{p}=[\ p_1,\ p_2,\ \dots,\ 
 \end{figure}
 Considering a 3rd order Polynomial parameterization as in Figure \ref{param_horizon} for control input, each row of the ${u}$ vector can be expressed as a function of four parameters, for example $v=p_1t_i^3+p_2t_i^2+p_3t_i+p_4$. More in general ${u}_{k|i}$ is
 \begin{equation}
-{u}_{k|i}=\left[ \begin{matrix}
-H_v(t_i)          & \textbf{0} & \dots      & \textbf{0}  \\
-\textbf{0} &     H_\omega(t_i)      & \dots      & \textbf{0}  \\
+{u}_{k|i}=\underbrace{\left[ \begin{matrix}
+H_v(t_i)          & 0 & \dots      & 0  \\
+0 &     H_\omega(t_i)      & \dots      & 0  \\
 \vdots     & \vdots     & \ddots     & \vdots      \\
-\textbf{0} & \dots      & \textbf{0} &   H_{\Theta_6}(t_i)         \\
-\end{matrix} \right] \left[ \begin{matrix} \textbf{p}_v \\ \textbf{p}_{\omega} \\ \textbf{p}_{\Theta_1} \\ \textbf{p}_{\Theta_2} \\ \vdots \\ \textbf{p}_{\Theta_6} \end{matrix} \right]
+0 & \dots      & 0 &   H_{\Theta_6}(t_i)         \\
+\end{matrix} \right]}_{F(t_i)} \left[ \begin{matrix} p_v \\ p_{\omega} \\ p_{\Theta_1} \\ p_{\Theta_2} \\ \vdots \\ p_{\Theta_6} \end{matrix} \right]
 \end{equation}
 where: 
 \begin{equation}
-\left[ \begin{matrix} \textbf{p}_v \\ \textbf{p}_{\omega} \\ \textbf{p}_{\Theta_1} \\ \textbf{p}_{\Theta_2} \\ \vdots \\ \textbf{p}_{\Theta_6} \end{matrix} \right] = \left[ \begin{matrix} p_1 \\ p_2 \\ p_3 \\ \vdots \\ p_{32} \end{matrix} \right]\ \ \textnormal{and }\ \ H(i)=[\ t_j^3\ \ t_j^2\ \ t_j\ \ 1\ ]
+\left[ \begin{matrix} p_v \\ p_{\omega} \\ {p}_{\Theta_1} \\ {p}_{\Theta_2} \\ \vdots \\ {p}_{\Theta_6} \end{matrix} \right] = \left[ \begin{matrix} p_1 \\ p_2 \\ p_3 \\ \vdots \\ p_{32} \end{matrix} \right]\ \ \textnormal{and }\ \ H_.(t_i)=[\ t_i^3\ \ t_i^2\ \ t_i\ \ 1\ ]
 \end{equation}
-Note that $t_i$  is defined as:
-\begin{equation*}
-	t_i=(i-1)T_k\ \ \ \ \forall\ i=1,\dots,N
-\end{equation*}
-Considering this parameterization, the state equation of the system in \ref{system_base} becomes a LTV system for which the Runge Kutta 4 discretization is done defining: 
+where $H_.(t_i)$ indicates each element on the diagonal of $F(t_i)$.
+Note that because $t_i$ varies with respect to time instant $i$, it follows that $H$ does the same. 
+
+%%%%%%%%%%
+Now to discretize the continuous system in \ref{state_eq_par} we will use Runge Kutta 4,so defining: 
 \begin{equation*}
 \begin{split}
-    &k_1 = f(x_{k|i},\textbf{p}_k,t_i) \\
-	&k_2 = f(x_{k|i}+k_1\frac{T_k}{2},\textbf{p}_k,t_i+\frac{T_k}{2}) \\
-	&k_3 = f(x_{k|i}+k_2\frac{T_k}{2},\textbf{p}_k,t_i+\frac{T_k}{2})\\
-	&k_4 = f(x_{k|i}+k_3T_k,\textbf{p}_k,t_i+\frac{T_k}{2})\\
+    &k_1 = \tilde{f}(x_{k|i},p_k,t_i) \\
+	&k_2 = \tilde{f}(x_{k|i}+k_1\frac{T_k}{2},p_k,t_i+\frac{T_k}{2}) \\
+	&k_3 = \tilde{f}(x_{k|i}+k_2\frac{T_k}{2},p_k,t_i+\frac{T_k}{2})\\
+	&k_4 = \tilde{f}(x_{k|i}+k_3T_k,p_k,t_i+\frac{T_k}{2})\\
 \end{split}	
 \end{equation*}
 The new state equation becomes:  
 \begin{equation}
 \begin{split}
 	x_{k|i+1}&=x_{k|i}+\frac{T_k}{6}(k_1+2k_2+2k_3+k4) \\
-	&=\tilde{f}(x_{k|i},\textbf{p}_k,t_i)
+	&=\tilde{f}^+(x_{k|i},p_k,t_i)
 \end{split}
 \end{equation}
+Where $\tilde{f}^+$ denotes now the discretized parameterized state equation.
 By applying the change of variables of Equation \ref{param_eq} into the problem formulation in \ref{ourproblem_basic} we obtain:
 \begin{equation} \label{ourproblem_param}
 \begin{split}
-		& min_{\textbf{p}_k}\ J({x}_{k|i},\textbf{p}_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},\textbf{p}_k) \\
+		& min_{p_k}\ J({x}_{k|i},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
 		\textnormal{s.t.}\qquad
-		&\ \ \ \ x_{k|i+1}=\tilde{f}(x_{k|i},\textbf{p}_k,t_i) \\
+		&\ \ \ \ x_{k|i+1}=\tilde{f}^+(x_{k|i},p_k,t_i) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\quad \forall i=1,\dots, N  \\
-		&\ \ \ \ \textbf{p}_k   \in \mathbb{P}\ \\
+		&\ \ \ \ p_k   \in \mathbb{P}\ \\
 	\end{split}	
 \end{equation}
 where $\mathbb{P} = \lbrace \textbf{p}\in \mathbb{R}^{N_p}\ \textnormal{s.t.}\ F(t_j(i))\textbf{p} \in \mathbb{U}\quad \forall i = 1, \dots, N-1 \rbrace $ and $\tilde{l}$ is simply the stage cost defined as a function of $\textbf{p}_k$ instead of ${u}_{k|i}$. By means of this substitution the problem has to be minimized with respect to $N_p$ parameters, whose number do not depend on $N$. As a matter of fact, using 3rd order polynomials as in the previous example, we have to minimize $J$ with respect to $32$ parameters for any length of the prediction horizon. Implementing this approach results in a faster solution of the optimization problem, and the possibility to enlarge significantly the prediction horizon. Anyway $N$ has to be chosen properly: increasing too much the prediction horizon may result in bad performances due to overconstraining of the control action. This effect, as well as a performance comparison with respect to traditional MPC will be discussed later on.
 \subsection{Increasing-Weights Cost Function definition}
 
-Once the problem has been defined in its general form we have to properly choose the cost function. In particular, the stage cost $\tilde{l}$ has to be defined. A common choice is to use a quadratic stage cost in order to have a positive definite cost function to help in having a convex problem. Even if it is important to have a quadratic cost function for the stability of the controller, it is still possible to find suboptimal solutions (i.e. local minima) because of the nonlinearities of the system. We will define the stage cost $\tilde{l}$ as a sum of different contributions using increasing weights into the optimization horizon. 
+Once the problem has been defined in its general form we have to properly choose the cost function. In particular, the stage cost $\tilde{l}$ has to be defined. A common choice is to use a quadratic stage cost in order to have a positive definite cost function. Even if it is important to have a quadratic cost function for the stability of the controller, it is still possible to find suboptimal solutions (i.e. local minima) because of the nonlinearities of the system. We will define the stage cost $\tilde{l}$ as a sum of different contributions using increasing weights into the optimization horizon, 
 \begin{equation}\label{costfunctionh}
-J({x}_{k|i},\textbf{p}_k)=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^m \left[ \sum_{j=1}^{5} h_j({x}_{k|i},\textbf{p}_k) \right]
+J({x}_{k|i},p_k)=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \left[ \sum_{j=1}^{5} h_j({x}_{k|i},p_k) \right]
 \end{equation} 
-This approach allows, by means of increasing weighted stage costs, to assess the stability of the NMPC without the imposition of terminal constraints, as shown in \cite{alamir2018stability}. This aspect will be reviewed in detail in the following section.
+Where $b \in \mathbb{N}$ is the exponent of the weight term that will be discussed later on. This approach allows, by means of increasing weighted stage costs, to assess the stability of the NMPC without the imposition of terminal constraints, as shown in \cite{alamir2018stability}. This aspect will be reviewed in detail in the following section.
 The definition of the functions $h_j$ defines what we want to minimize. Because the aim of the controller is to track the trajectory of the end-effector solving the mobile manipulation problem, the following stage costs are defined.
 \begin{itemize}
 
 \item First of all, $h_1$ is the cost related to the end effector pose error defined as: 
 \begin{equation}
 \begin{split}
-h_1 = \left[\begin{matrix} \xi_{k|i}-\xi_{{k|i}_{d}} \\ 1-\Phi_{k|i} \end{matrix}\right]^T W_1\left[\begin{matrix} \xi_{k|i}-\xi_{{k|i}_{d}} \\ 1-\Phi_{k|i}\end{matrix}\right]\textbf{}
+h_1 = \left[\begin{matrix} \xi_{k|i}-\xi_{{d}_{k|i}} \\ 1-\Phi_{k|i} \end{matrix}\right]^T W_1\left[\begin{matrix} \xi_{k|i}-\xi_{{d}_{k|i}} \\ 1-\Phi_{k|i}\end{matrix}\right]\textbf{}
 \end{split}
 \end{equation}
 Defining:
 \begin{equation} 
-\xi_{k|i} = \left[ \begin{matrix} x_{{k|i}_{ee}} \\ y_{{k|i}_{ee}} \\ z_{{k|i}_{ee}} 
+\xi_{k|i} = \left[ \begin{matrix} x_{{ee}_{k|i}} \\ y_{{ee}_{k|i}} \\ z_{{ee}_{k|i}} 
 \end{matrix} \right] = \left[ \begin{matrix}
 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0
-\end{matrix} \right]A_{{k|i}_{ee}}\left[ \begin{matrix}
+\end{matrix} \right]A_{{ee}_{k|i}}\left[ \begin{matrix}
 0 \\ 0 \\ 0 \\ 1
 \end{matrix} \right]
 \end{equation} 
 and
 \begin{equation}
-\Phi_{k|i}=\left[\begin{matrix}\vec{\vartheta}_{k|i}\cdot\vec{\vartheta}_{{k|i}_d}\\ \vec{\psi}_{k|i}\cdot\vec{\psi}_{{k|i}_d}
+\Phi_{k|i}=\left[\begin{matrix}\vec{\vartheta}_{k|i}\cdot\vec{\vartheta}_{d_{k|i}}\\ \vec{\psi}_{k|i}\cdot\vec{\psi}_{d_{k|i}}
 \end{matrix}\right] 
 \end{equation}
 
-Where $A_{{k|i}_{ee}}$ is the rototraslation matrix of the end effector with respect to the global reference frame, which is a function of the state $x$;  $\vec{\vartheta}_{k|i}$ and $\vec{\psi}_{k|i}$ are the orientation vectors of the end effector position (i.e. the first and the third columns of $A_{{k|i}_{ee}}$) and $W_1$ is the diagonal weighting matrix for cost $h_1$.
+Where $A_{{ee}_{k|i}}$ is the rototraslation matrix of the end effector with respect to the global reference frame, which is a function of the state $x$;  $\vec{\vartheta}_{k|i}$ and $\vec{\psi}_{k|i}$ are the orientation vectors of the end effector position (i.e. the first and the third columns of $A_{{ee}_{k|i}}$) and $W_1$ is the diagonal weighting matrix for cost $h_1$.
 
 \item In order to maximize the manipulability a cost related to the manipulability of the system is defined as:
 \begin{equation}
-h_2 = W_2 \left( \frac{1}{m_{k|i}} \right)^2
+h_2 = W_2 \left( \frac{1}{man_{k|i}} \right)^2
 \end{equation}
 with:
 \begin{equation}
-m_{k|i} =  \det(\mathcal{J}_{ee}^T\mathcal{J}_{ee})
+man_{k|i} =  \det(\mathcal{J}_{ee}^T\mathcal{J}_{ee})
 \end{equation}
-Where $\mathcal{J}=[\ \mathcal{J}_b(q)\ \mathcal{J}_a(q)\ ]$ i.e. the Jacobians which relates the end effector pose to the joints of the base and of the arm respectively. Like before $W_2$ is a weighting term. As briefly mentioned in Chapter \ref{chapter4}, there are many other ways to express an index for the manipulability of the system. For example, another way this index can be described is with the sine of the elbow joint angle of the manipulator, since the manipulability depends mostly on that angle.
+Where $\mathcal{J}=[\ \mathcal{J}_b(q)\ \mathcal{J}_a(q)\ ]$ i.e. the Jacobians which relates the end effector pose to the joints of the base and of the arm, respectively. Like before $W_2$ is a weighting term. As briefly mentioned in Chapter \ref{chapter4}, there are many other ways to express an index for the manipulability of the system. For example, another way this index can be described is with the sine of the elbow joint angle of the manipulator, since the manipulability depends mostly on that angle.
     
 \item $h_3$ is the cost related to the control effort defined as: 
 	\begin{equation}
@@ -193,16 +204,17 @@ This cost is particularly useful since the higher it is, the less the controller
 \end{itemize}
 We will introduce now other two terms that will be used according to the application and in moving the system from and towards the grasping area. Decoupling the problem with two different cost functions allows having a faster controller during the motion of the system when it is required to have high speeds, and to increase the complexity of the problem only inside a grasping area, where the system moves slower, to perform grasping. 
 \begin{itemize}
-    \item $h_4$ will be used to consider the base positioning error with respect to a given planned trajectory ${x_b}_d$ to reach the grasping area:
+    \item $h_4$ will be used to consider the base positioning error with respect to a given planned trajectory $x_{d_{base}}$ to reach the grasping area:
         \begin{equation}
-            h_4=[x_b-{x_b}_d]^T W_4 [x_b-{x_b}_d]
+            h_4=[x_{base}-x_{d_{base}}]^T W_4 [x_{base}-x_{d_{base}}]
         \end{equation}
-     \item $h_5$ will be used to control the arm in joint space, so to track a desired joint position ${x_a}_d$:
+     \item $h_5$ will be used to control the arm in joint space, so to track a desired joint position ${x_d}_{arm}$:
     \begin{equation}
-       h_5=[x_a-{x_a}_d]^T W_5 [x_a-{x_a}_d]
+       h_5=[x_{arm}-{x_d}_{arm}]^T W_5 [x_{arm}-{x_d}_{arm}]
     \end{equation}
 \end{itemize}
-This terms allowing to directly compute the error without passing through the forward kinematics, simplify a lot the problem during the motion of the base permitting a faster computation of the control action.\\We have shown only few terms, but others can also be added to make the controller more completely defined or to make it choose a solution for the kinematic redundancy problem in a different way. 
+where $x_{base}$ and $x_{arm}$ are defined as in \ref{dirkinMM}.
+This terms allowing to directly compute the error without passing through the forward kinematics, simplify a lot the problem during the motion of the base allowing a faster computation of the control action.\\We have shown only few terms, but others can also be added to make the controller more completely defined or to make it choose a solution for the kinematic redundancy problem in a different way. 
 
 \section{Stability Proof}\label{stabproof}
 
@@ -272,13 +284,31 @@ Assumption 4 is equivalent to require that the parameterization function \ref{ne
 	\label{param_translatability}
 \end{figure}
 
-\paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}^N$, one has:
+\paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}_N$, one has:
 \begin{equation}
-	l(e_N(p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
+	h(e_N(e,p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
  	\label{lemma1}
 \end{equation}
-for some bounded $\eta < 0$. The proof of Lemma 1 is given in \cite{alamir2018stability}. \\
+for some bounded $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
 
+{PROOF:} The proof, as presented in \cite{alamir2018stability}, is done considering $p^0 \in \mathbb{P}_{e \to 0}$, which means to take a $p^0$ that allows reaching $e_N=0$ which is possible because of Assumption 1. By the definition of optimal solution we have: 
+\begin{equation}
+\begin{split}
+	J(e,p^*)&\leq J(e,p^0) \\
+	&\leq \sum_{i=1}^{N}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)
+\end{split}
+\end{equation}
+and since by Assimption 1 we have $\hat{h}(e_N,p^0)=0$ we can remove the last term leading to:
+\begin{equation}
+\begin{split}
+	J(e,p^*)&\leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0) \\
+	&\leq \left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0)
+\end{split}
+\end{equation}
+and considering:
+\begin{equation}
+ \eta \leq \textnormal{sup} \sum_{i=1}^{N-1}\hat{h}(e,p^0)
+\end{equation}
 In order to assess stability is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. So, considering the cost function related to $\tilde{p}_{k+1}$ is:
 \begin{equation*}
     J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},\tilde{p}_{k+1})+\hat{h}\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
@@ -341,7 +371,8 @@ Noting that $\phi(b) \rightarrow 1$ for $b \rightarrow \infty$, for sufficiently
 
 \section{Constraints}
 
-Constraints will be introduced in order to properly define the problem taking into account feasibility configurations, maximum velocities and accelerations as well as to avoid self-collision of the system. In particular, the constraints definition has been divided into: 
+Constraints will be introduced in order to properly define the problem taking into account feasibility configurations, maximum velocities and accelerations as well as to avoid self-collision of the system. Introducing constraints in the problem \ref{ourproblem_param} does not affect the stability proof since limiting state and control is equal to redefine accordingly sets $\mathbb{P}$ an $\mathbb{E}$ in Assumption 2 presented above.
+In particular, the constraints definition has been divided into: 
 
 \subsubsection*{Joint position constraints}
 	To limit the configurations of the robot into feasible sets and to avoid the arm to self collide there are different approaches. We decided to limit the possible positions of the joints of the arm into feasible ranges. This means to generate a set:
@@ -386,9 +417,14 @@ Constraints will be introduced in order to properly define the problem taking in
 			\lvert u_{k|0}\rvert &\leq \lvert u_{k-1|0}\rvert + a_{max} T_k\qquad \textnormal{and}\\
 			\lvert u_{k|i+1}\rvert &\leq \lvert u_{k|i}\rvert + a_{max} T_k\quad  \forall i=0,\dots,N-1
 		\end{split}	
+		\label{acc_constr}
 	\end{equation}  
 
-	where $a_{max}$ is the vector of the maximum allowable acceleration. Numerical values will be given in the next section. 
+	where $a_{max}$ is the vector of the maximum allowable acceleration. As done for velocity constraints this has to be written as a constraint on parameters, and results in requiring also that:
+	\begin{equation*}
+		\mathbb{P}:=p_k \in \mathbb{P}\ \textnormal{ s.t. Eq.\ref{acc_constr} is satisfied}
+	\end{equation*}
+	Numerical values will be given in the next section. 
 
 \subsubsection*{Self collision avoidance}
 	To avoid self collosion of the system (i.e. the arm with the base), an approach similar to the one in \cite{sandberg1988collision} has been used. In particular spheres to encompass the base and the last joints have been defined as in Figure \ref{spheres_3d}.
@@ -412,12 +448,12 @@ Constraints will be introduced in order to properly define the problem taking in
 Summarizing, the presented constraints redefines the problem as:
 \begin{equation} 
 	\begin{split}
-			& min_{\textbf{p}_k}\ J({x}_{k|i},\textbf{p}_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},\textbf{p}_k) \\
+			& min_{p_k}\ J({x}_{k|i},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
 			\textnormal{s.t.}\qquad
-			&\ \ \ \ x_{k|i+1}=\tilde{f}(x_{k|i},\textbf{p}_k,t_i) \\
+			&\ \ \ \ x_{k|i+1}=\tilde{f}(x_{k|i},p_k,t_i) \\
 			&\ \ \ \ {x}_{min}\ \leq\ x_{k|i}\ \leq\ {x}_{max}\  \forall\ i=1,\dots,\ N  \\
 			&\ \ \ \ 0 \leq g^{sc}_{k|i}(x)\ \ \forall\ i=1,\dots,\ N \\
-			&\ \ \ \ \textbf{p}_k\   \in \mathbb{P}\ \\
+			&\ \ \ \ p_k\   \in \mathbb{P}\ \\
 	\end{split}	
 	\label{ourproblem_param_vinc}
 \end{equation}
