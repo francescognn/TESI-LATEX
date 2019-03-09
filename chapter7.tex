@@ -8,7 +8,7 @@
 	\includegraphics[scale=0.4]{traj_base_curves}
 	\caption{Base trajectory for simulations: radius of the curve = 0.6m\label{traj_base_curves}}
 \end{floatingfigure}
-The goal of the initial simulations is to assess the actual convenience of our approach and to tune the MPC parameters and weights. Once achieved good performances with a proper set of parameters, the controller can betested with the physical system.\\
+The goal of the initial simulations is to assess the actual convenience of our approach and to tune the MPC parameters and weights. Once achieved good performances with a proper set of parameters, the controller can be tested with the physical system.\\
 Initially some simulations with only the mobile base have been run on a trajectory with low-radius curves (in Figure \ref{traj_base_curves}), seeing the effect of different control horizon lengths and of input disturbances. This trajectory has been chosen to simulate how our controller tracks a trajectory which goes around some obstacles. No obstacle avoidance is considered in this simulation.
 \begin{figure}[!h]
 	\centering
@@ -54,26 +54,39 @@ To better understand the effect of a too high $N$ for complex trajectories, the 
 	\caption{Comparison of errors and time of computation for 3rd and 5th order polynomial inputs}
 	\label{base_curves_poly5}
 \end{figure}
-The previous tests have been performed describing the input commands $v$ and $\omega$ with a 3rd order polynomial. As Figures \ref{base_curves3} and \ref{base_curves_errors3} show, the effect of $N$ is lowered increasing the order of the input polynomial to 5. In Figure \ref{base_curves_poly5} a comparison in term of Cartesian error and elapsed times is shown. As was foreseeable, since the unknowns of the problem are more numerous having increased the polynomial order, the time needed for the computation of the optimization problem are higher. On the other hand, lower errors were desirable with higher order polynomials; however a better performance in this sense is reached only at high $N$, since the optimizer can now found trajectories which stay closer to the reference trajectory.
+The previous tests have been performed describing the input commands $v$ and $\omega$ with a 3rd order polynomial. As Figures \ref{base_curves3} and \ref{base_curves_errors3} show, the effect of $N$ is lowered increasing the order of the input polynomial to 5. In Figure \ref{base_curves_poly5} a comparison between the two parameterizations in term of Cartesian error and elapsed times is shown; as was foreseeable, since the unknowns of the problem are more numerous having increased the polynomial order, the time needed for the computation of the optimization problem is higher. On the other hand, lower errors were expected with higher order polynomials; however a better performance in this sense is reached only at high $N$, since the optimizer can now found trajectories which stay closer to the reference trajectory.
+\\\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.60]{solving_times_small}
+	\caption{Solving time comparison}
+	\label{solving_times}
+\end{figure}
+Once understood how some parameters affect the performance of the controlled system, we assessed the actual convenience of the presented approach running some simulations with the entire Mobile Manipulator system. We compared the solving times of our approach with the ones of a traditional MPC at different time horizon tracking a simple sinusoidal trajectory for the end effector position, in Figure \ref{solving_times}. It is easy to see the convenience of our approach, since the number of the unknowns that the optimizer has to find does not increase with $N$ and so with the dimension of the problem. In other words, the mean time needed to the optimizer to solve the MPC problem stays almost constant instead of increasing exponentially.\\
+The following results have been obtained simulating the control of the Mobile Manipulator performing two types of motion, handling and grasping, since the controller is meant to be suitable for all the phases of a pick-and-transport task. The stage costs used in both cases have been explained in Chapter \ref{chapter6}.
 \subsection{Mobile Manipulator Handling Simulations}
-The entire Mobile Manipulator has been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path, allowing us to more accurately tune some parameters. 
-%We compared the solving times of our approach with the ones of a traditional MPC dealing with the same problem at different time horizon, in Figure \ref{solving_times}. It is easy to see the convenience of our approach, since the number of the unknowns that the optimizer has to find does not increase with $N$ and so with the dimension of the problem. In other words the mean time needed to the optimizer to solve the MPC problem stays almost constant instead of increasing exponentially.
-%\begin{figure}[h!]
-%	\centering
-%	\includegraphics[scale=0.40]{solving_times}
-%	\caption{Solving time comparison}
-%	\label{solving_times}
-%\end{figure}
-However, from the results showed in Figure \ref{ee_tests} and from other experiments run with different time steps $T$, it can be seen that, as in previous tests, the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons
+The entire Mobile Manipulator has been simulated performing a trajectory tracking in joint space, i.e. a custom trajectory for each coordinate of the base and for each manipulator joint has been given. Typically, in Mobile Manipulator handling tasks, the main objective is the locomotion of the base, while the arm can be kept stationary. For this reason a constant trajectory is asked to be tracked for the joints of the arm, while we have chosen to give the mobile base a trajectory involving high velocities to track. The results of the simulations are shown in Figures \ref{handling_traj} and \ref{handling_joints}. 
+\begin{figure}[p]
+	\centering
+	\includegraphics[scale=0.45]{handling_traj}
+	\caption{Trajectory following of the mobile base during a Mobile Manipulator handling task}
+	\label{handling_traj}
+\end{figure}
+\begin{figure}[p]
+	\centering
+	\includegraphics[scale=0.45]{handling_joints}
+	\caption{Trajectory following of the joints during a Mobile Manipulator handling task}
+	\label{handling_joints}
+\end{figure}A first consideration can be done on the Cartesian errors in tracking the mobile base motion. Indeed, in Figure \ref{handling_traj}, a peak of $1$ m of error can be seen at the very beginning of the trajectory. This is because the reference trajectory does not start with velocity equal to zero, while the robot starts from a stationary position; for this reason we can notice that the robot cuts the corner of the path to keep up with the reference trajectory. This "cutting the corner", actually, is the reason why increasing $N$, the errors in tracking the base position increase, as can also be seen in Figure \ref{handling_traj}. A second consideration is done on the trajectory tracking of the joint variables. Figure \ref{handling_joints} shows that our controller tracks very well a constant reference trajectory, varying the convergence to the constant value depending on $N$. This is because, even without imposing a constraint on the terminal state, our controller is driven to track exactly the reference value at the end of the prediction horizon; having kept the time step $T$ constant in all the simulations, a smaller time horizon leads to more reactive responses of the state.
 
 	\subsubsection{errors in tracking}
 		
-	\subsubsection{time elapsed}
-		comparison con clasical MPC logic
 	\subsubsection{J function components}
 
 \subsection{Mobile Manipulator Grasping Simulations}
 
+The entire Mobile Manipulator has been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path.
+However, from the results showed in Figure \ref{ee_tests} and from other experiments run with different time steps $T$, it can be seen that, as in previous tests, the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons
 	\subsubsection{errors in tracking}
 		
 	\subsubsection{time elapsed}
@@ -117,9 +130,9 @@ However, from the results showed in Figure \ref{ee_tests} and from other experim
 	\begin{tabular}{|l|l|l|ll}
 	\cline{1-3}
 	\textbf{Constraints}    	& \textbf{min} 					& \textbf{max}			\\ \cline{1-3}
-	$x$		 			 		&  -0.15 $m$ 					&  3.00 $m$ 			\\ \cline{1-3}
-	$x$		 			 		&  -2.60 $m$ 					&  0.20 $m$ 			\\ \cline{1-3}
-	$\Theta$ 			 		&  -$\infty$  					&  +$\infty$ 			\\ \cline{1-3}
+	$x_b$		 			 		&  -0.15 $m$ 					&  3.00 $m$ 			\\ \cline{1-3}
+	$y_b$		 			 		&  -2.60 $m$ 					&  0.20 $m$ 			\\ \cline{1-3}
+	$\theta_b$ 			 		&  -$\infty$  					&  +$\infty$ 			\\ \cline{1-3}
 	$\Theta_1$ (Base)			&  -350°  						&  350° 				\\ \cline{1-3}
 	$\Theta_2$ (Shoulder)		&  -180° 						&  0°		 			\\ \cline{1-3}
 	$\Theta_3$ (Elbow) 			&  -140° 						&  140°		 			\\ \cline{1-3}
