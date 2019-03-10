@@ -40,6 +40,7 @@
 \usepackage[makeroom]{cancel}
 \usepackage[toc,page]{appendix}
 \usepackage{floatflt}
+\usepackage{xcolor}
 \makenomenclature
 
 \let\counterwithout\relax
@@ -125,7 +126,7 @@
 \pagestyle{plain}\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
 %\fancyhead[LE,RO]{\bfseries\thepage}    
-                                   
+\newcommand\fix[1]{\textcolor{red}{FIX: #1} }                             
 %\renewcommand{\thefigure}{\arabic{figure}.\arabic{section}}
 %\renewcommand{\thetable}{\arabic{table}}
                                    

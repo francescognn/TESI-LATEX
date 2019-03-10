@@ -14,6 +14,7 @@ The Mobile Manipulator under analysis in this thesis is a prototype assembled at
 
 The goal of this prototype is to study a system able to handle parts as well as to perform operations in unstructured industrial environments to fill the gap between small and large production systems. Indeed, companies with small production volumes are nowadays required to innovate production systems towards the generation of smart factories. Given that those companies are generally not economically able to manage automated production lines and that the production mix is generally changed frequently, flexible systems to support production are required. For those reasons ADDAMS wants to be a low-cost solution, using low-cost sensors and to be capable, once its operation has been planned, to perform tasks in any environment. \\
 
+
 The controller presented in this thesis wants to be the first step towards the design of an online software that makes the system able to operate autonomously once the task has been given. In the next sections the main components of ADDAMS will be shown in its Hardware and Software parts, then setups used for simulations and physical tests will be presented. 
 \section{Hardware}
 
@@ -50,6 +51,7 @@ The sensors of the ADDAMS prototype are used to measure the positions of the joi
 \begin{itemize}
 \item Angular encoders for the UR5 joints which provide an accuracy of $0.1$ mm at the end effector position, considering only the manipulator.
 \item Encoders on the wheels of the base that will be used to derive the position and orientation of the mobile base through a simple transformation. This measuring system is reliable only at slow speed and provides an accuracy of $\pm 2$ cm. Because the position of the end effector is computed knowing the position of the base, the accuracy of these measures is not sufficient to perform precise operations. Considerations on this aspect will be done later on.
+\fix{metterei le relazioni per ricavare x,y theta dagli encoder}
 \item A lidar that can be used to measure unknown obstacles position in the operative area of the robot.
 \item A Kinect sensor for Simultanous Localization And Mapping (SLAM)
 \end{itemize}
