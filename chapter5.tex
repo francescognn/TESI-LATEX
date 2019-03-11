@@ -214,7 +214,7 @@ This terms, allowing to directly compute the error without passing through the f
 
 \section{Stability Proof}\label{stabproof}
 
-Once the NMPC problem has been formulated and the feasibility of the problem has been investigated as in Equation \ref{feasibility} guaranteeing the fulfillment of hard  constraints, its stability has to be assessed. The proof is very similar to what done in \cite{alamir2018stability} with few modifications.\\
+Once the NMPC problem has been formulated and the feasibility of the problem has been investigated as in Equation \ref{feasibility} guaranteeing the fulfillment of hard  constraints, its stability has to be assessed. The proof is very similar to what done in \cite{alamir2018stability} with few modifications: extending it to a tracking problem, requiring an additional assumption regarding the parameterization and including the fulfillment of state and control constraints.
 We will consider now, for the stability proof, the tracking problem as a zero-reference tracking problem. In order to do that we will consider:
 \begin{equation}\label{change_var}
     e_k=x_k-{x_d}_k
@@ -277,7 +277,7 @@ We will require an extended control input parameterization vector $p:=[p_1,\ p_2
     \end{split}
 \end{equation} 
 where $f^+$ has been defined in \ref{system_base_d} and $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ is the stage cost expressed directly as a function of $u$ without passing through the parameterization. Note that the expression of $\bar{u}$ does not depend on the parameters vector $p$, since what we are interested in is a single evaluation of the input and not a parameterized function.\\
-Moreover we will require that the parameterization function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameter $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
+Moreover we will require that the parameterization function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameter $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{IMMAGINI/trans_u.png}
@@ -287,10 +287,10 @@ Moreover we will require that the parameterization function \ref{new_parameteriz
 
 \paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}_N$, one has:
 \begin{equation}
-	\hat{h}(e_N(e,p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
+	\hat{h}(e_N(e,p^*)) \leq \eta\ c^b\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
  	\label{lemma1}
 \end{equation}
-for some $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
+for some $\eta > 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
 
 {PROOF:} The proof, as presented in \cite{alamir2018stability}, is done considering $p^0 \in \mathbb{P}_{e \to 0}$, which means to take a $p^0$ that allows reaching $e_N=0$ which is possible because of Assumption 1. By the definition of optimal solution we have: 
 \begin{equation}
@@ -306,36 +306,48 @@ and since by Assumption 1 we have $\hat{h}(e_N,p^0)=0$ we can remove the last te
 now, given that $\left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0) \geq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)$:
 
 \begin{equation}
-	J(e,p^*)\leq \left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0)
+	J(e,p^*)\leq \left(\frac{N-1}{N}\right)^b\sum_{i=1}^{N-1}\hat{h}(e,p^0)
 \end{equation}
 and considering:
 \begin{equation}
  \eta \leq \textnormal{sup} \sum_{i=1}^{N-1}\hat{h}(e,p^0)
 \end{equation}
-leads to the proof of \ref{lemma1}
-In order to assess stability is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. So, considering the cost function related to $\tilde{p}_{k+1}$ is:
+leads to the proof of \ref{lemma1} because: 
+\begin{equation}
+h(e_N(e,p^*))\leq J(e,p^*) \leq \left(\frac{N-1}{N}\right)^b\eta = \eta c^b
+\end{equation}
+
+In order to assess stability it is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. 
+We will consider now to have $p_k^*$ to which corresponds $\textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$ as the optimal control parameterization at time instant $k$ and $\tilde{p}_{k+1}$ to which corresponds $\tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$ a suboptimal solution for time instant $k+1$.
+
+So, considering the cost function related to $\tilde{p}_{k+1}$ as presented in \ref{ourproblem_stab} is it possible to state that:
+
 \begin{equation*}
-    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},\tilde{p}_{k+1})+\hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+	\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i+1},p^*_{k})+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
+\end{equation*}
+and then:
+\begin{equation*}
+    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i+1},p^*_{k})+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
 Now considering $j=i+1$ and a simplified notation $\hat{h}({e}_{k|i},p_{k}^*)=\hat{h}(e_{k|i})^*$, it follows: 
 \begin{equation*}
-    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
 Now rearranging the terms: 
 \begin{equation*}
     \begin{split}
         J({e}_{k+1|i},\tilde{p}_{k+1})=&\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^b-1\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \\
-        &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^* + \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+        &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^* + \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation*}
-Note that 
+Note that, subtracting the first stage cost at the optimal cost function at time instant $k$:   
 \begin{equation*}
 	\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*=J({e}_{k|i},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*
 \end{equation*}
 So we get:
 \begin{equation*}
     \begin{split}
-        J({e}_{k+1|i},\tilde{p}_{k+1})=&J({e}_{k|i},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
+        J({e}_{k+1|i},&\tilde{p}_{k+1})=J({e}_{k|i},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
         &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^b\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation*}
@@ -348,12 +360,12 @@ $\left[ 1-\left(\frac{j-1}{N}\right)^b \right]\ge\left[ 1-\left(\frac{N-1}{N}\ri
     \end{split}
 \end{equation}
 
-Now according to Lemma 1, $e_{k|N}(p_k^*) \in B_{\hat{h}}(\eta c^b)$ and together with Assumption 3 implies that for $b$ sufficiently high, it is possible to say:
+Now according to Lemma 1, $e_{k|N}(p_k^*) \in B_{\hat{h}}(\eta c^b)$ and together with Assumption 3 implies that exist a value of $b$ for which it is possible to say:
 \begin{equation}
 \eta c^b \leq \bar{\rho}
 \end{equation}
-
-where $\bar{\rho}$ is the positive real called in Assumption 3. This means that \ref{ass3} holds for $e_{k|N}(p_k^*)$ and we can say that:
+where $\bar{\rho}$ is the positive real called in Assumption 3. This is possible because, from the definition of $\rho$ in Assumption 3, we have that $\rho > 0$ and that $c>0$ for definition.
+This means that \ref{ass3} holds for $e_{k|N}(p_k^*)$ and we can say that:
 \begin{equation}\label{dim2}
     \hat{h}(\hat{f}(e_{k|N},p_k^*,t_i),p_k^*) \le \hat{h}(e_{k|N})^*-q(e_{k|N},p_k^*)
 \end{equation}
@@ -361,33 +373,46 @@ Note that, considering the definitions in Assumption 4, $\hat{h}(\hat{f}(e_{k|N}
 \begin{equation*}
     \begin{split}
         J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
-        &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^m h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
+        &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
     \end{split}
 \end{equation*}
-Then using Equation \ref{ass3_1}:
+It is possible to note that: 
+\begin{equation}
+\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^* \ge \phi(m)\hat{h}(e_{k|N})^*
+\end{equation}
+Then, using this and Equation \ref{ass3_1}:
 \begin{equation*}
     \begin{split}
         J({e}_{k|i},\tilde{p}_{k+1})&\le J({e}_{k|i},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
             &-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
     \end{split}
 \end{equation*}
-Noting that $\phi(b) \rightarrow 1$ for $b \rightarrow \infty$, for sufficiently high values of $b$, $J$ is a Lyapunov function. It follows that the closed loop system is asymptotically stable in $e=0$.
+
+Noting that the stage cost is positive definite and that $\phi(b) \rightarrow 1$ for $b \rightarrow \infty$, for sufficiently high values of $b$ as can be seen in Figure \ref{phito1}, $J$ is a Lyapunov function as in \ref{Lyap_func}. In other words means that for sufficiently high values of $b$, $J({e}_{k|i},\tilde{p}_{k+1})\le J({e}_{k|i},p_{k}^*)$, and from what explained \ref{chapter3}, it follows that the closed loop system is asymptotically stable in $e=0$.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.25]{IMMAGINI/phito1.png}
+\label{phito1}
+\caption{$\phi(b)$ value}
+\end{figure}
+
 
 \section{Constraints}
 
-Constraints will be introduced in order to properly define the problem taking into account feasibility configurations, maximum velocities and accelerations as well as to avoid self-collision of the system. Introducing constraints in the problem \ref{ourproblem_param} does not affect the stability proof since limiting state and control is equal to redefine accordingly sets $\mathbb{P}$ and $\mathbb{E}$ in Assumption 2 presented above.
-In particular, the constraints definition has been divided into: 
+Constraints will be introduced in order to properly define the problem taking into account feasibility configurations, maximum velocities and accelerations as well as to avoid self-collision of the system. Introducing constraints in the problem \ref{ourproblem_param} does not affect the stability proof since limiting state and control is equal to redefine accordingly sets $\mathbb{P}$ and $\mathbb{E}$ in Assumption 2 presented above. For example limiting joint speed for the arm is traduced in redefining the set $\mathbb{U}$, from which the set $\mathbb{P}$ is dependent and the proof in the previous section holds.
+
+In particular, the constraint definition has been divided into: 
 
 \subsubsection*{Joint position constraints}
 	To limit the configurations of the robot into feasible sets and to avoid the arm to self collide there are different approaches. We decided to limit the possible positions of the joints of the arm into feasible ranges. This means to generate a set:
 	\begin{equation}
-		\mathbb{R}^{x_a}:=x_a \in \mathbb{R}^{x_a}\ \ \text{s.t.}\ \  {x_a}_{min}\ \leq\ x_a\ \leq\ {x_a}_{max} 
+		\mathbb{X}_{arm}:=x_{arm} \in \mathbb{R}^{6}\ \ \text{s.t.}\ \  {x_{arm}}_{min}\ \leq\ x_{arm}\ \leq\ {x_{arm}}_{max} 
 	\end{equation}
-	Applying this constraint into the MPC problem defined in Equation \ref{ourproblem_param} is straigthforward given that $\mathbb{R}^{x_a}$ is a subset of $\mathbb{X}$.
+	Applying this constraint into the MPC problem defined in Equation \ref{ourproblem_param} is straigthforward given that $\mathbb{X}_{arm}$ is a subset of $\mathbb{X}$.
 \subsubsection*{Base position constraints}
-	Contrary to the manipulator, self-collision of the base of the system is not possible and the joint $q_b$ could remain unconstrained. Anyway, the $x$ and $y$ coordinates of the base have been limited to define a region of operation for the Mobile Manipulator, see as example figure \ref{xy_limits}. This constraint is particularly useful performing experiments defining a map of the surrounding environment. As before: 
+	Contrary to the manipulator, self-collision of the base of the system is not possible and the joint $q_b$ could remain unconstrained. Anyway, the $x$ and $y$ coordinates of the base have been limited to define a region of operation for the Mobile Manipulator, see an example in figure \ref{xy_limits}. This constraint is particularly useful performing experiments defining a map of the surrounding environment. As before: 
 	\begin{equation}
-		\mathbb{R}^{x_b}:=x_b \in \mathbb{R}^{x_b}\ \ s.t.\ \  {x_b}_{min}\ \leq\ x_b\ \leq\ {x_b}_{max} 
+		\mathbb{X}^{x_{base}}:=x_{base} \in \mathbb{R}^3\ \ s.t.\ \  {x_{base}}_{min}\ \leq\ x_{base}\ \leq\ {x_{base}}_{max} 
 	\end{equation}
 
 	\begin{figure}[h!]
@@ -397,7 +422,7 @@ In particular, the constraints definition has been divided into:
 	\label{xy_limits}
 	\end{figure}
 
-	Base and joints position constraints can be written in a compact form and for the entire prediction horizon redefining: 
+	Base and joint position constraints can be written in a compact form and for the entire prediction horizon redefining: 
 	\begin{equation}
 	\mathbb{X}:= x \in \mathbb{R}^{n}\ \ \text{s.t.}\ \  {x}_{min}\ \leq\ x\ \leq\ {x}_{max}
 	\end{equation}
@@ -405,12 +430,12 @@ In particular, the constraints definition has been divided into:
 \subsubsection*{Velocity constraints}
 	To take into account the maximum velcities allowed by the system, the control actions have been limited into minimum and maximum velocities according to manufacturer data in particular $\mathbb{R}^m$ have been redefined as:
 	\begin{equation}
-	\mathbb{R}^m:=\ {u}_{k|i} \in \mathbb{R}^m\ \ \textnormal{s.t.}\ \ u_{min}\leq{u_{k|i}}\leq u_{max}\ \ \forall i=0,\dots, N-1
+	\mathbb{U}:=\ {u}_{k|i} \in \mathbb{R}^m\ \ \textnormal{s.t.}\ \ u_{min}\leq{u_{k|i}}\leq u_{max}\ \ \forall i=0,\dots, N-1
 	\label{vel_constr}
 	\end{equation}
-	According to the parameterization chosen, the constraint has to be defined in parametric form, i.e. we have to map $\mathbb{R}^m$ in $\mathbb{P}$. The constraint to be included in the problem in Equation \ref{ourproblem_param} requires that:
+	According to the chosen parameterization, the constraint has to be defined in parametric form, i.e. we have to map $\mathbb{R}^m$ in $\mathbb{P}$. The constraint to be included in the problem in Equation \ref{ourproblem_param} requires that:
 	\begin{equation*}
-		\mathbb{P}:=p_k \in \mathbb{P}\ \textnormal{ s.t. Eq.\ref{vel_constr} is satisfied}
+		\mathbb{P}:=p_k \in \mathbb{R}^{N_p}\ \textnormal{ s.t. Eq.\ref{vel_constr} is satisfied}
 	\end{equation*}
 
 	Numerical values will be given in the next section.
@@ -426,7 +451,7 @@ In particular, the constraints definition has been divided into:
 
 	where $a_{max}$ is the vector of the maximum allowable acceleration. As done for velocity constraints this has to be written as a constraint on parameters, and results in requiring also that:
 	\begin{equation*}
-		\mathbb{P}:=p_k \in \mathbb{P}\ \textnormal{ s.t. Eq.\ref{acc_constr} is satisfied}
+		\mathbb{P}:=p_k \in \mathbb{R}^{N_p}\ \textnormal{ s.t. Eq.\ref{acc_constr} is satisfied}
 	\end{equation*}
 	Numerical values will be given in the next section. 
 
@@ -447,7 +472,7 @@ In particular, the constraints definition has been divided into:
 	\end{split}
 	\label{spheres_const}
 	\end{equation}
-	where ${C_0}_{x,y,z},{C_1}_{x,y,z} \text{and }{C_2}_{x,y,z}$ are the coordinates of the centres of the end effector and base spheres respectively defined in the reference frame of the base and $r_1$ and $r_2$ are their radii. This constraints definition introduces a nonlinear equation that has to be satiflied in the solution of the \ref{ourproblem_param}. \\
+	where ${C_0}_{x,y,z},{C_1}_{x,y,z} \text{and }{C_2}_{x,y,z}$ are the coordinates of the centres of the end effector and base spheres, respectively, defined in the reference frame of the base and $r_1$ and $r_2$ are their radii. $r_0$ is the radius of the sphere encompassing the last joints of the arm and the EE, defined according to the physical dimensions as in \ref{spheres_3d} . This constraints definition introduces a nonlinear equation that has to be satiflied in the solution of the \ref{ourproblem_param}. \\
 
 Summarizing, the presented constraints redefines the problem as:
 \begin{equation} 
