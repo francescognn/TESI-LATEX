@@ -22,7 +22,7 @@ In the next section the general NMPC structure for the mobile manipulation probl
 In this section the variables of the system and the model used for the MPC problem will be defined. The choice of the kinematic model instead of the dynamic one has been made for different reasons:
 
 \begin{itemize}
-\item even if our approach allows to reduce computational time, the usage of the dynamic model introduce further complexity to forecast the future states, this slow down significantly the solving time;
+\item even if our approach allows to reduce computational time, the usage of the dynamic model introduces further complexity to forecast the future states, this slow down significantly the solving time;
 \item because the control action of the kinematic model has been defined as velocities, it is easy to implement velocity constraints;
 \item low-level motor controllers are usually in charge to track velocities with higher frequency loops, this hierarchical approach is widely diffuse in controlling complex robotic systems;
 \item from a user point of view, kinematic variables allows a better understanding of what is happening on the real system;
@@ -55,14 +55,14 @@ G({x}) =  \left[
 \right] 
 \end{equation*}
 
-The continuous time model in \ref{system_base} has been discretized by means of Runge Kutta 4 method. that results in:
+The continuous time model in \ref{system_base} has been discretized by means of Runge Kutta 4 method, that results in:
 \begin{equation} \label{system_base_d}
 	{x}_{k+1}=f^+(x_k,u_k)
 \end{equation}
 Runge-Kutta method will be discussed more in details later on.
 
 \subsubsection*{Notation:}
-We will use the same notation as in Chapter \ref{chapter3}. Briefly recalling: ${x}_{k|i}$ is the state vector at time instant $i$ propagated starting from time instant $k$, and ${u}_{k|i}$ is defined in the same way. Moreover $(\cdot)^+$ will define the discrete Runge-Kutta function approximating $(\cdot)$.
+We will use the same notation as in Chapter \ref{chapter3}. Briefly recalling: ${x}_{k|i}$ is the state vector at time instant $i$ propagated starting from time instant $k$, and ${u}_{k|i}$ is defined in the same way. Moreover $f^+$ will define the discrete Runge-Kutta function approximating $f$.
 
 \subsection{NLP definition}
 
@@ -73,16 +73,16 @@ J({x}_{k|i},{u}_{k|i})=\sum_{i=1}^{N}l({x}_{k|i},{u}_{k|i})
 where $l({x}_{k|i},{u}_{k|i})$ is a positive definite function dependent on the state and the control action. By including Equation \ref{system_base_d} and state and control feasibility boundaries the problem becomes: 
 \begin{equation} \label{ourproblem_basic}
 \begin{split}
-		& min_{\textbf{u}}\ J({x}_{k|i},{u}_{k|i}) \\
+		& min_{\textbf{u}_k}\ J({x}_{k|i},{u}_{k|i}) \\
 		\textnormal{s.t.}\qquad
 		&\ \ \ \ x_{k|i+1}=f^+(x_{k|i},u_{k|i}) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\ \forall\ i=1,\dots,\ N  \\
 		&\ \ \ \ {u}_{k|i} \in \mathbb{U}\ \forall\ i=0,\dots,\ N-1 \\
 	\end{split}	
 \end{equation}
-where $\mathbb{X} = \lbrace {x}\in \mathbb{R}^n\ \textnormal{s.t.}\ {x}_{min}\leq x\leq x_{max} \rbrace$ is the feasible region of the state, $\mathbb{U} = \lbrace {u}\in \mathbb{R}^m\ \textnormal{s.t.}\ {u}_{min}\leq{u}\leq{u}_{max} \rbrace $ and $\textbf{u}=[\ u_{k|0},\ u_{k|1},\ \dots,\ u_{k|N-1}\ ]$.
-Note that the problem is discrete; we will refer at $T_k$ as the discretization time, so the time between $k$ and $k+1$ as well as the time between $i$ and $i+1$.
-The problem defined in \ref{ourproblem_basic} is a standard NMPC problem that can be solved using well-known numerical optimization methods. The solution to the problem so defined will be $\textbf{u}^* \in \mathbb{R}^{m\times N}\ \textnormal{s.t.}\ \textbf{u}^* =[{u}^*_{k|0},\ {u}^*_{k|1},\ \dots,\ {u}^*_{k|N-1}]$. Even if, according to MPC logic, only the first computed control action ${u}^*_{k|0}$ will be applied, the problem needs to be solved for all the prediction horizon. Because of that, the dimension of the problem is highly dependent on N. Considering our case, for example, we have $m=8$, so if we set $N=20$ the dimension of $\textbf{u}^*$ that has to be found is $8\times20=160$. The dependence of the problem dimension on the optimization horizon length generate restrictions on the choice of $N$. This is due to the increase in computational effort that may become too high to solve fast online applications like handling and grasping for mobile manipulators. A solution could be to bound the value of $N$ in order to keep the problem within a solvable dimension. However, the performance clearly increases as $N$ increase, allowing compliance with some constraints, like obstacle avoidance, over a longer period. For this reason, we introduced a parameterized control input approach to reduce the dependence of $N$ on the solving time without losing the advantages of a longer prediction horizon.
+where $\mathbb{X} = \lbrace {x_k}\in \mathbb{R}^n\ \textnormal{s.t.}\ {x}_{min}\leq x_k\leq x_{max} \rbrace$ is the feasible region of the state, $\mathbb{U} = \lbrace {u_k}\in \mathbb{R}^m\ \textnormal{s.t.}\ {u}_{min}\leq{u}\leq{u}_{max}, f^+(x_k,u_k) \in \mathbb{X} \rbrace $ and $\textbf{u}_k=[\ u_{k|0},\ u_{k|1},\ \dots,\ u_{k|N-1}\ ]$.
+Note that the problem is discrete; we will refer at $T$ as the discretization time, so the time between $k$ and $k+1$ as well as the time between $i$ and $i+1$. \\
+The problem defined in \ref{ourproblem_basic} is a standard NMPC problem that can be solved using well-known numerical optimization methods. The solution to the problem so defined will be $\textbf{u}^* \in \mathbb{R}^{m\times N}\ \textnormal{s.t.}\ \textbf{u}^* =[{u}^*_{k|0},\ {u}^*_{k|1},\ \dots,\ {u}^*_{k|N-1}]$. Even if, according to receiding horizon logic, only the first computed control action ${u}^*_{k|0}$ will be applied, the problem needs to be solved for all the prediction horizon. Because of that, the dimension of the problem is highly dependent on N. Considering our case, for example, we have $m=8$, so if we set $N=20$ the dimension of $\textbf{u}^*$ that has to be found is $8\times20=160$. The dependence of the problem dimension on the optimization horizon length generate restrictions on the choice of $N$. This is due to the increase in computational effort that may become too high to solve fast online applications like handling and grasping for mobile manipulators. A solution could be to bound the value of $N$ in order to keep the problem within a solvable dimension. However, the performance clearly increases as $N$ increases, allowing compliance with some constraints, like obstacle avoidance, over a longer period. For this reason, we introduced a parameterized control input approach to reduce the dependence of $N$ on the solving time, without losing the advantages of a longer prediction horizon.
 
 \subsection{Parameterization}
 The problem in \ref{ourproblem_basic} uses a control action defined as piece-wise constant that, as explained before, brings high computational cost dependence on $N$. To solve this issue we propose to express the control vector as a function of some parameters.
@@ -100,7 +100,8 @@ Because the problem we aim to solve in \ref{ourproblem_basic} is defined as a di
 \begin{equation}\label{param_eq}
 {u}_{k|i}=F(t_i)p_k
 \end{equation}
-where $t_i=(i-1)T_k\ \forall\ i=1,\ \dots,\  N$, and the matrix $F(t_i)$ is the base of the new space $\mathbb{R}^{N_p}$. The subscript $k$ for $p$ indicates the time instant the parameterization is referred to. A good choice of the parameterization is made according to the physics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the physical meaning requirement. The choice of the right parameterization to use will also be discussed in Section \ref{stabproof}.
+where $t_i=(i-1)T\ \forall\ i=1,\ \dots,\  N$, and the matrix $F(t_i)$ is the base of the new space $\mathbb{R}^{N_p}$. The subscript $k$ for $p$ indicates the time instant the parameterization is referred to. \\
+A good choice of the parameterization is made according to the physics of the variables to be parameterized. In \cite{kelly2013mobile} a parametric optimal approach is proposed, anyway, given that the variables to be controlled are longitudinal and angular velocities, a polynomial parameterization can fit the physical meaning requirement. The choice of the right parameterization to use will also be discussed in Section \ref{stabproof}. \\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{param_horizon}
@@ -114,32 +115,32 @@ H_v(t_i)          & 0 & \dots      & 0  \\
 0 &     H_\omega(t_i)      & \dots      & 0  \\
 \vdots     & \vdots     & \ddots     & \vdots      \\
 0 & \dots      & 0 &   H_{\Theta_6}(t_i)         \\
-\end{matrix} \right]}_{F(t_i)} \left[ \begin{matrix} p_v \\ p_{\omega} \\ p_{\Theta_1} \\ p_{\Theta_2} \\ \vdots \\ p_{\Theta_6} \end{matrix} \right]
+\end{matrix} \right]}_{F(t_i)} \left[ \begin{matrix} {p_v}_k \\ {p_{\omega}}_k \\ {p_{\Theta_1}}_k \\ {p_{\Theta_2}}_k \\ \vdots \\ {p_{\Theta_6}}_k \end{matrix} \right]
 \end{equation}
 where: 
 \begin{equation}
-\left[ \begin{matrix} p_v \\ p_{\omega} \\ {p}_{\Theta_1} \\ {p}_{\Theta_2} \\ \vdots \\ {p}_{\Theta_6} \end{matrix} \right] = \left[ \begin{matrix} p_1 \\ p_2 \\ p_3 \\ \vdots \\ p_{32} \end{matrix} \right]\ \ \textnormal{and }\ \ H_\cdot(t_i)=[\ t_i^3\ \ t_i^2\ \ t_i\ \ 1\ ]
+\left[ \begin{matrix} {p_v}_k \\ {p_{\omega}}_k \\ {{p}_{\Theta_1}}_k \\ {{p}_{\Theta_2}}_k \\ \vdots \\ {{p}_{\Theta_6}}_k \end{matrix} \right] = \left[ \begin{matrix} {p_1}_k \\ {p_2}_k \\ {p_3}_k \\ \vdots \\ {p_{32}}_k \end{matrix} \right]\ \ \textnormal{and }\ \ H_*(t_i)=[\ t_i^3\ \ t_i^2\ \ t_i\ \ 1\ ]
 \end{equation}
-where $H_\cdot(t_i)$ indicates each element on the diagonal of $F(t_i)$. Note that the value of $H_\cdot(t_i)$ varies along the prediction horizon depending on the $i$th time step. 
+where $H_*(t_i)$ indicates each element on the diagonal of $F(t_i)$. Note that the value of $H_*(t_i)$ varies along the prediction horizon depending on the $i$th time instant. 
 
 %%%%%%%%%%
 Now, to discretize the continuous system in \ref{state_eq_par} we will use Runge-Kutta 4, so defining: 
 \begin{equation*}
 \begin{split}
     &k_1 = \tilde{f}(x_{k|i},p_k,t_i) \\
-	&k_2 = \tilde{f}(x_{k|i}+k_1\frac{T_k}{2},p_k,t_i+\frac{T_k}{2}) \\
-	&k_3 = \tilde{f}(x_{k|i}+k_2\frac{T_k}{2},p_k,t_i+\frac{T_k}{2})\\
-	&k_4 = \tilde{f}(x_{k|i}+k_3T_k,p_k,t_i+\frac{T_k}{2})\\
+	&k_2 = \tilde{f}(x_{k|i}+k_1\frac{T}{2},p_k,t_i+\frac{T}{2}) \\
+	&k_3 = \tilde{f}(x_{k|i}+k_2\frac{T}{2},p_k,t_i+\frac{T}{2})\\
+	&k_4 = \tilde{f}(x_{k|i}+k_3T,p_k,t_i+\frac{T}{2})\\
 \end{split}	
 \end{equation*}
 The new state equation becomes:  
 \begin{equation}\label{state_eq_param}
 \begin{split}
-	x_{k|i+1}&=x_{k|i}+\frac{T_k}{6}(k_1+2k_2+2k_3+k4) \\
+	x_{k|i+1}&=x_{k|i}+\frac{T}{6}(k_1+2k_2+2k_3+k4) \\
 	&=\tilde{f}^+(x_{k|i},p_k,t_i)
 \end{split}
 \end{equation}
-Where $\tilde{f}^+$ denotes now the discretized parameterized state equation.
+where $\tilde{f}^+$ denotes now the discretized parameterized state equation.
 By applying the change of variables of Equation \ref{param_eq} into the problem formulation in \ref{ourproblem_basic} we obtain:
 \begin{equation} \label{ourproblem_param}
 \begin{split}
@@ -151,20 +152,20 @@ By applying the change of variables of Equation \ref{param_eq} into the problem 
 	\end{split}	
 \end{equation}
 where $\mathbb{P} = \lbrace p\in \mathbb{R}^{N_p}\ \textnormal{s.t.}\ F(t_i)p \in \mathbb{U}\quad \forall i = 1, \dots, N-1 \rbrace $ and $\tilde{l}$ is the stage cost $l$ as in Equation \ref{J_continua} being expressed as a function of $p_k$ instead of ${u}_{k|i}$. By means of this substitution the problem has to be minimized with respect to $N_p$ parameters, whose number do not depend on $N$. As a matter of fact, using 3rd order polynomials as in the previous example, we have to minimize $J$ with respect to $32$ parameters for any length of the prediction horizon. Implementing this approach results in a faster solution of the optimization problem, and the possibility to enlarge significantly the prediction horizon. Anyway $N$ has to be chosen properly: increasing too much the prediction horizon may result in bad performances due to overconstraining of the control action. This effect, as well as a performance comparison with respect to traditional MPC will be discussed later on.
-\subsection{Increasing-Weights Cost Function definition}
+\subsection{Increasing-Weight Cost Function definition}
 
 Once the problem has been defined in its general form we have to properly choose the cost function. In particular, the stage cost $\tilde{l}$ has to be defined. A common choice is to use a quadratic stage cost in order to have a positive definite cost function. Even if it is important to have a quadratic cost function for the stability of the controller, it is still possible to find suboptimal solutions (i.e. local minima) because of the nonlinearities of the system. We will define the stage cost $\tilde{l}$ as a sum of different contributions using increasing weights into the optimization horizon, 
 \begin{equation}\label{costfunctionh}
 J({x}_{k|i},p_k)=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \left[ \sum_{j=1}^{5} h_j({x}_{k|i},p_k) \right]=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b h({x}_{k|i},p_k)
 \end{equation} 
-Where $b \in \mathbb{N}$ is the exponent of the weight term. This approach allows, by means of increasing weighted stage costs, to assess the stability of the NMPC without the imposition of terminal constraints, as shown in \cite{alamir2018stability}. This aspect will be reviewed in detail in the following section.
-The definition of the functions $h_j$ defines what we want to minimize. Because the aim of the controller is to track the trajectory of the end-effector solving the mobile manipulation problem, the following stage costs are defined.
+where $b \in \mathbb{N}$ is the exponent of the weight term. This approach allows, by means of increasing weighted stage costs, to assess the stability of the NMPC without the imposition of terminal constraints, as shown in \cite{alamir2018stability}. This aspect will be reviewed in detail in the following section.
+The definition of the functions $h_j$ defines what we want to minimize. Because the aim of the controller is to track the trajectory of the end-effector solving the mobile manipulation problem, the following stage costs are defined:
 \begin{itemize}
 
-\item First of all, $h_1$ is the cost related to the end effector pose error defined as: 
+\item first of all, $h_1$ is the cost related to the end effector pose error defined as: 
 \begin{equation}
 \begin{split}
-h_1 = \left[\begin{matrix} \xi_{k|i}-\xi_{{d}_{k|i}} \\ 1-\Phi_{k|i} \end{matrix}\right]^T W_1\left[\begin{matrix} \xi_{k|i}-\xi_{{d}_{k|i}} \\ 1-\Phi_{k|i}\end{matrix}\right]\textbf{}
+h_1 = \left[\begin{matrix} \xi_{k|i}-\xi_{{d}_{k|i}} \\ [1\ 1]^T-\Phi_{k|i} \end{matrix}\right]^T W_1\left[\begin{matrix} \xi_{k|i}-\xi_{{d}_{k|i}} \\ [1\ 1]^T-\Phi_{k|i}\end{matrix}\right]\textbf{}
 \end{split}
 \end{equation}
 Defining:
@@ -182,25 +183,22 @@ and
 \end{matrix}\right] 
 \end{equation}
 
-Where $A_{{ee}_{k|i}}$ is the rototraslation matrix of the end effector with respect to the global reference frame, which is a function of the state $x$;  $\vec{\vartheta}_{k|i}$ and $\vec{\psi}_{k|i}$ are the orientation vectors of the end effector position (i.e. the first and the third columns of $A_{{ee}_{k|i}}$) and $W_1$ is the diagonal weighting matrix for cost $h_1$.
+where $A_{{ee}_{k|i}}$ is the rototraslation matrix of the end effector with respect to the global reference frame, which is a function of the state $x$;  $\vec{\vartheta}_{k|i}$ and $\vec{\psi}_{k|i}$ are the orientation vectors of the end effector (i.e. the first and the third columns of $A_{{ee}_{k|i}}$) and $W_1$ is the diagonal weighting matrix for cost $h_1$.
 
 \item In order to maximize the manipulability a cost related to the manipulability of the system is defined as:
 \begin{equation}
-h_2 = W_2 \left( \frac{1}{man_{k|i}} \right)^2
+h_2 = W_2 \left( \frac{1}{\det({\mathcal{J}_{ee}}_{k|i}^T{\mathcal{J}_{ee}}_{k|i})} \right)^2
 \end{equation}
-with:
-\begin{equation}
-man_{k|i} =  \det(\mathcal{J}_{ee}^T\mathcal{J}_{ee})
-\end{equation}
-Where $\mathcal{J}=[\ \mathcal{J}_b(q)\ \mathcal{J}_a(q)\ ]$ i.e. the Jacobians which relates the end effector pose to the joints of the base and of the arm, respectively. Like before $W_2$ is a weighting term. As briefly mentioned in Chapter \ref{chapter4}, there are many other ways to express an index for the manipulability of the system. For example, another way this index can be described is with the sine of the elbow joint angle of the manipulator, since the manipulability depends mostly on that angle.
+
+where ${\mathcal{J_ee}}_{k|i}=[\ {\mathcal{J}_b(x)}_{k|i}\ {\mathcal{J}_a(x)}_{k|i}\ ]$ are the Jacobians which relates the end effector pose to the joints of the base and of the arm, respectively. Like before $W_2$ is a weighting term. As briefly mentioned in Chapter \ref{chapter4}, there are many other ways to express an index for the manipulability of the system. For example, another way this index can be described is with the sine of the elbow joint angle of the manipulator, since the manipulability depends mostly on that angle.
     
-\item $h_3$ is the cost related to the control effort defined as: 
+\item $h_3$ is the cost related to the base control effort defined as: 
 	\begin{equation}
 	        h_3=\left[ \begin{matrix} v_{k|i-1} \\ \omega_{k|i-1} \end{matrix}\right]^T W_3 \left[ \begin{matrix} v_{k|i-1} \\ \omega_{k|i-1} \end{matrix}\right]
 	 \end{equation}
 This cost is particularly useful since the higher it is, the less the controller will choose to make adjustments on the end effector position through motions of the base, given that its positioning system is less reliable than the manipulator's one.
 \end{itemize}
-We will introduce now other two terms that will be used according to the application and in moving the system from and towards the grasping area. Decoupling the problem with two different cost functions allows having a faster controller during the motion of the system when it is required to have high speeds, and to increase the complexity of the problem only inside a grasping area, where the system moves slower, to perform grasping. 
+We will introduce now other two terms that will be used according to the application and in moving the system from and towards the grasping area. Decoupling the problem with two different cost functions allows having a faster controller during the motion of the system when it is required to have high speeds, and to increase the complexity of the problem only inside a grasping area, where the system moves slower, to perform grasping. The two additional terms are:
 \begin{itemize}
     \item $h_4$ will be used to consider the base positioning error with respect to a given planned trajectory $x_{d_{base}}$ to reach the grasping area:
         \begin{equation}
@@ -216,14 +214,18 @@ This terms, allowing to directly compute the error without passing through the f
 
 \section{Stability Proof}\label{stabproof}
 
-Once the NMPC problem has been formulated and the feasibility of the problem has been investigated as in Equation \ref{feasibility} guaranteeing the respect of hard  constraints, its stability has to be assessed. The proof is very similar to what done in \cite{alamir2018stability} with few modifications.\\
+Once the NMPC problem has been formulated and the feasibility of the problem has been investigated as in Equation \ref{feasibility} guaranteeing the fulfillment of hard  constraints, its stability has to be assessed. The proof is very similar to what done in \cite{alamir2018stability} with few modifications.\\
 We will consider now, for the stability proof, the tracking problem as a zero-reference tracking problem. In order to do that we will consider:
 \begin{equation}\label{change_var}
     e_k=x_k-{x_d}_k
 \end{equation}
-and so, substituting \ref{change_var} in the state equation \ref{state_eq_param}, we have:
+and so, substituting \ref{change_var} in the state equation \ref{state_eq_param}, we can define:
+\begin{equation} \label{NLsystem}
+	\hat{f}^+(e_{k|i},p_k,{{x_d}_{k|i}},{{x_d}_{k|i+1}},t_i) = \tilde{f}^+(e_{k|i}-{x_d}_k,p_k,t_i)
+\end{equation}
+then the discrete error state equation becomes:
 \begin{equation}\label{sys_eq_con_e}
-    e_{k|i+1}=\hat{f}^+(e_{k|i},p_k,{{x_d}_{k|i}},{{x_d}_{k|i+1}})=\hat{f}^+(e_{k|i},p_k)
+    e_{k|i+1}=\hat{f}^+(e_{k|i},p_k,{{x_d}_{k|i}},{{x_d}_{k|i+1}},t_i)=\hat{f}^+(e_{k|i},p_k,t_i)
 \end{equation}
 Note that, for simplicity of notation, the system equation in \ref{sys_eq_con_e} has been expressed as a function of the state error ${e_{k|i}}$ and the parameters $p_k$ only, given that the desired states are known.\\
 In this way the problem is moved to track a zero error reference and becomes: 
@@ -238,9 +240,9 @@ In this way the problem is moved to track a zero error reference and becomes:
 \end{equation}
 where $\mathbb{E} = \lbrace {e}\in \mathbb{R}^n\ \textnormal{s.t.}\ {e}_{min}\leq e\leq e_{max} \rbrace$ is the feasible region of the state error and $\hat{h}$ is the stage cost function in \ref{costfunctionh} considering the change of variables in Equation \ref{change_var}. Now, following the demonstration in \cite{alamir2018stability} we need to introduce some assumptions in order to assess stability of the controller. The proof will consider some modification of what done in \cite{alamir2018stability} to consider the parametrization of the control input. 
 
-\paragraph{Assumption 1} Equations $\hat{f}: \mathbb{R}^n\times\mathbb{R}^{N_p}\times\mathbb{R}\rightarrow\mathbb{R}^n$ and $\hat{h}: \mathbb{R}^n\times\mathbb{R}^{N_p}\rightarrow\mathbb{R}$ are continuous with respect to $e$, $p$ and $t$, and $\hat{h}$ is a positive definite function. 
+\paragraph{Assumption 1} Equations $\hat{f}: \mathbb{R}^n\times\mathbb{R}^{N_p}\times\mathbb{R}\rightarrow\mathbb{R}^n$ and $\hat{h}: \mathbb{R}^n\times\mathbb{R}^{N_p}\rightarrow\mathbb{R}$ are continuous with respect to $e$, $p$ and $t$, and $\hat{h}$ is a positive definite function. That means a function $\hat{l}:\mathbb{R} \to \mathbb{C}$ such that, given any real numbers $x_1,\ \dots,\ x_n$, the matrix $A={(a_{i,j})}_{i,j=1}^{n_i}$ with $a_{i,j}=\hat{l}(x_i-x_j)$ is positive semi-definite, i.e. that $x^TAx \ge 0$. 
 
-\paragraph{Assumption 2} We will introduce also a reachability requirement, i.e. a set $\mathbb{E}_N\in\mathbb{E}$ exists so that $\forall e \in \mathbb{E}_N $ the set:
+\paragraph{Assumption 2} We will require that a set $\mathbb{E}_N\subset\mathbb{E}$ exists so that $\forall e \in \mathbb{E}_N $ the set:
 \begin{equation*}
 	\mathbb{P}_{e \to 0}:=\lbrace \ p \in \mathbb{P}\ \text{s.t.}\ e_{N}(e,p)=0\ \rbrace
 \end{equation*} exist and is not empty, considering $e_{N}(e,p)$ as the state error forecasted at time step $N$ calculated solving the problem in \ref{ourproblem_stab}, propagating the system from $e$ with the input commands parameterized with $p$. With this assumption we state that at least one vector $p$ for which $e_{N}(e,p)=0$ exists, and therefore a solution to the problem can be found.
@@ -258,9 +260,10 @@ for some positive definite function $q$ that satisfy:
 	q(e,p) \ge \gamma \hat{h}(e,p)
 	\label{ass3_1} 
 \end{equation}
-for some $\gamma \geq 0$ and $\forall e \in \mathbb{E}$.
-Where $B_{\hat{h}}(\rho) \subset \mathbb{R}^n$ is the $\rho-$level set of $\hat{h}$, defined as $B_{\hat{h}}(\rho) := \lbrace\ e \in \mathbb{E}\ |\ l(e) \leq \rho \rbrace$. This is a rather standard assumption simply meaning that $\hat{h}$ is a local Lyapunov function with decrease rate described by $q$. In general, if $\hat{h}$ and $q$ are positive definite quadratic functions, inequality \ref{ass3_1} is valid.
-\\{REMARK:  } Since in the definition of $B_{\hat{h}}(\rho)$, $e$ is said to be feasible belonging to $\mathbb{E}$, this guarantees the recursive feasibility of the problem, as stated also in \cite{alamir2018stability}.
+for some $\gamma \geq 0$ and $\forall e \in \mathbb{E}_N$,
+where $B_{\hat{h}}(\rho) \subset \mathbb{R}^n$ is defined as $B_{\hat{h}}(\rho) := \lbrace\ e \in \mathbb{E}\ |\ h(e) \leq \rho \rbrace$. This is a rather standard assumption simply meaning that $\hat{h}$ is a local Lyapunov function with decrease rate described by $q$, i.e. there exist a value of the control action for which the variation of the cost function is bounded. In general, if $\hat{h}$ and $q$ are positive definite quadratic functions, inequality \ref{ass3_1} is valid.\\
+
+{REMARK:  } Since the definition of $\mathbb{E}_N$ requires that $p \in \mathbb{P}$, i.e. that $p$ is a feasible control action, from its definition, and that $B_{\hat{h}}(\rho)$ is such that $e$ is within boundaries, Assumption 3 guarantees recursive feasibility as in \ref{def_rec_feas} because the \ref{ass3} states $\forall e\ \in B_{\hat{h}}(\rho)$ and $\forall e\ \in\ \mathbb{E}_N$
 
 \paragraph{Assumption 4}
 We will require an extended control input parameterization vector $p:=[p_1,\ p_2,\ \dots,\ p_{N_p},\ \kappa]$, with $\kappa\in\mathbb{N}$ such that: 
@@ -273,8 +276,8 @@ We will require an extended control input parameterization vector $p:=[p_1,\ p_2
         \end{cases}
     \end{split}
 \end{equation} 
-where $f^+$ has been defined in \ref{system_base_d} and $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ is the stage cost expressed directly as a function of $u$ without passing through the parameterization. To better understand the meaning of $\bar{u}$: at time step $k-1$ the optimization of $J$ has already been solved having as a result a forecast of the state after $N$ steps as $x_{k-1|N}$, and therefore an error $e_{k-1|N}$; $\bar{u}$ is the single vector of the control commands for which $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ has the minimum value. Note that the expression of $\bar{u}$ doesn't depend on the parameters vector $p$, since what we are interested in is a single evaluation of the input and not a parameterized function.\\
-Moreover we will require that the parameterization function function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameters $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
+where $f^+$ has been defined in \ref{system_base_d} and $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ is the stage cost expressed directly as a function of $u$ without passing through the parameterization. Note that the expression of $\bar{u}$ does not depend on the parameters vector $p$, since what we are interested in is a single evaluation of the input and not a parameterized function.\\
+Moreover we will require that the parameterization function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $$p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameter $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{IMMAGINI/trans_u.png}
@@ -284,7 +287,7 @@ Moreover we will require that the parameterization function function \ref{new_pa
 
 \paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}_N$, one has:
 \begin{equation}
-	h(e_N(e,p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
+	\hat{h}(e_N(e,p^*)) \leq \eta\ c^m\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
  	\label{lemma1}
 \end{equation}
 for some $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
@@ -298,10 +301,12 @@ for some $\eta < 0$ where $e_N(e,p^*)$ indicates the state at time instant N com
 \end{equation}
 and since by Assumption 1 we have $\hat{h}(e_N,p^0)=0$ we can remove the last term leading to:
 \begin{equation}
-\begin{split}
-	J(e,p^*)&\leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0) \\
-	&\leq \left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0)
-\end{split}
+	J(e,p^*)\leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)
+\end{equation}
+now, given that $\left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0) \geq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)$:
+
+\begin{equation}
+	J(e,p^*)\leq \left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0)
 \end{equation}
 and considering:
 \begin{equation}
@@ -410,11 +415,11 @@ In particular, the constraints definition has been divided into:
 
 	Numerical values will be given in the next section.
 \subsubsection*{Acceleration constraints}
-	Given that any real system is not capable to perform infinite accelerations, a constraint to limit the computed velocity control input has to be defined. In particular, given that the controller compute control actions with a frequency $f_c=\frac{1}{T_k}$, the acceleration constraint is in the form:
+	Given that any real system is not capable to perform infinite accelerations, a constraint to limit the computed velocity control input has to be defined. In particular, given that the controller compute control actions with a frequency $f_c=\frac{1}{T}$, the acceleration constraint is in the form:
 	\begin{equation}
 		\begin{split}
-			\lvert u_{k|0}\rvert &\leq \lvert u_{k-1|0}\rvert + a_{max} T_k\qquad \textnormal{and}\\
-			\lvert u_{k|i+1}\rvert &\leq \lvert u_{k|i}\rvert + a_{max} T_k\quad  \forall i=0,\dots,N-1
+			\lvert u_{k|0}\rvert &\leq \lvert u_{k-1|0}\rvert + a_{max} T\qquad \textnormal{and}\\
+			\lvert u_{k|i+1}\rvert &\leq \lvert u_{k|i}\rvert + a_{max} T\quad  \forall i=0,\dots,N-1
 		\end{split}	
 		\label{acc_constr}
 	\end{equation}  
