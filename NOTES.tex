@@ -1,3 +1,4 @@
+%!TEX output_directory = build
 %!TEX aux_directory = build
 
 
@@ -120,14 +121,14 @@ Possiamo usare, a questo punto, quello che abbiamo dimostrato prima per dire che
 e quindi: 
 
 \begin{equation}
-	J({e}_{k+1|i},p^{NP}_{k+1}) \leq J({e}_{k|i},\tilde{p}_k^*)- \frac{1}{N^b}\hat{h}(e_{k|1})^*-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
+	J({e}_{k+1|i},p_{k+1}) \leq J({e}_{k|i},\tilde{p}_k^*)- \frac{1}{N^b}\hat{h}(e_{k|1})^*-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
 \end{equation}
 
 E quindi: 
 Se partiamo da una soluzione ottima iniziale parametrizzata con $N-1 < \pi_k \leq N$, dal primo passo in poi la funzione di costo parametrizzata e vincolata ad avere $N-1 < \pi_k \leq N\  \forall k$ è una lyapunov function per b sufficientemente alti.
 
 \textbf{IN SINTESI:}\\
-Si parte con l'ipotesi del punto 3 che, anche se non possiamo garantire che il solutore troverà quella parametrizzazione, ipotizziamo di averla trovata (perchè esiste, vedi punto 2). A quel punto la dimostrazione procede tutta e quello che riusciamo a dire alla fine è che vincolare la parametrizzazione ad avere $N-1 < \pi_k \leq N$ mantiene $J$ una liapunov function, e questo verifica l'ipotesi del punto 3.
+Si parte con l'ipotesi del punto 3 che, anche se non possiamo garantire che il solutore troverà quella parametrizzazione, ipotizziamo di averla trovata (perchè esiste, vedi punto 2). A quel punto la dimostrazione procede tutta e quello che riusciamo a dire alla fine è che vincolare la parametrizzazione ad avere $N-1 < \pi_k \leq N$ mantiene $J$ una Lyapunov function, e questo verifica l'ipotesi del punto 3.
 
 
 \end{document}
