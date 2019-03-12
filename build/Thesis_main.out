@@ -24,7 +24,7 @@
 \BOOKMARK [2][-]{subsection.5.2.1}{Model}{section.5.2}% 24
 \BOOKMARK [2][-]{subsection.5.2.2}{NLP definition}{section.5.2}% 25
 \BOOKMARK [2][-]{subsection.5.2.3}{Parameterization}{section.5.2}% 26
-\BOOKMARK [2][-]{subsection.5.2.4}{Increasing-Weights Cost Function definition}{section.5.2}% 27
+\BOOKMARK [2][-]{subsection.5.2.4}{Increasing-Weight Cost Function definition}{section.5.2}% 27
 \BOOKMARK [1][-]{section.5.3}{Stability Proof}{chapter.5}% 28
 \BOOKMARK [1][-]{section.5.4}{Constraints}{chapter.5}% 29
 \BOOKMARK [0][-]{chapter.6}{Experimental Setup}{}% 30
@@ -39,18 +39,16 @@
 \BOOKMARK [1][-]{section.7.1}{Simulations results}{chapter.7}% 39
 \BOOKMARK [2][-]{subsection.7.1.1}{Mobile Manipulator Handling Simulations}{section.7.1}% 40
 \BOOKMARK [2][-]{subsection.7.1.2}{Mobile Manipulator Grasping Simulations}{section.7.1}% 41
-\BOOKMARK [2][-]{subsection.7.1.3}{passaggio da una funz costo all'altra}{section.7.1}% 42
-\BOOKMARK [1][-]{section.7.2}{Physical experiments results}{chapter.7}% 43
-\BOOKMARK [2][-]{subsection.7.2.1}{Movement of the system toward grasping area}{section.7.2}% 44
-\BOOKMARK [2][-]{subsection.7.2.2}{Movement of the system toward grasping area}{section.7.2}% 45
-\BOOKMARK [2][-]{subsection.7.2.3}{Trajectory tracking in grasping operation}{section.7.2}% 46
-\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 47
-\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 48
-\BOOKMARK [0][-]{chapter*.42}{List of Tables}{}% 49
-\BOOKMARK [0][-]{chapter*.43}{Appendices}{}% 50
-\BOOKMARK [1][-]{section.Alph0.1}{Super Mega Bot Datasheet}{chapter*.43}% 51
-\BOOKMARK [0][-]{figure.caption.45}{Appendices}{}% 52
-\BOOKMARK [1][-]{section.Alph0.2}{UR5 Datasheet}{figure.caption.45}% 53
-\BOOKMARK [0][-]{table.caption.46}{Appendices}{}% 54
-\BOOKMARK [1][-]{section.Alph0.3}{Interior Point OPTimizer \(IPOPT\)}{table.caption.46}% 55
-\BOOKMARK [0][-]{section*.47}{References}{}% 56
+\BOOKMARK [1][-]{section.7.2}{Physical experiments results}{chapter.7}% 42
+\BOOKMARK [2][-]{subsection.7.2.1}{Movement of the system toward grasping area}{section.7.2}% 43
+\BOOKMARK [2][-]{subsection.7.2.2}{Trajectory tracking in grasping operation}{section.7.2}% 44
+\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 45
+\BOOKMARK [0][-]{chapter.8}{List of Figures}{}% 46
+\BOOKMARK [0][-]{chapter*.49}{List of Tables}{}% 47
+\BOOKMARK [0][-]{chapter*.50}{Appendices}{}% 48
+\BOOKMARK [1][-]{section.Alph0.1}{Super Mega Bot Datasheet}{chapter*.50}% 49
+\BOOKMARK [0][-]{figure.caption.52}{Appendices}{}% 50
+\BOOKMARK [1][-]{section.Alph0.2}{UR5 Datasheet}{figure.caption.52}% 51
+\BOOKMARK [0][-]{table.caption.53}{Appendices}{}% 52
+\BOOKMARK [1][-]{section.Alph0.3}{Interior Point OPTimizer \(IPOPT\)}{table.caption.53}% 53
+\BOOKMARK [0][-]{section*.54}{References}{}% 54
