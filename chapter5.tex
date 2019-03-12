@@ -73,7 +73,7 @@ J({x}_{k|i},{u}_{k|i})=\sum_{i=1}^{N}l({x}_{k|i},{u}_{k|i})
 where $l({x}_{k|i},{u}_{k|i})$ is a positive definite function dependent on the state and the control action. By including Equation \ref{system_base_d} and state and control feasibility boundaries the problem becomes: 
 \begin{equation} \label{ourproblem_basic}
 \begin{split}
-		& min_{\textbf{u}_k}\ J({x}_{k|i},{u}_{k|i}) \\
+		& min_{\textbf{u}_k}\ J({x}_{k|0},\textbf{u}_{k}) \\
 		\textnormal{s.t.}\qquad
 		&\ \ \ \ x_{k|i+1}=f^+(x_{k|i},u_{k|i}) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\ \forall\ i=1,\dots,\ N  \\
@@ -144,7 +144,7 @@ where $\tilde{f}^+$ denotes now the discretized parameterized state equation.
 By applying the change of variables of Equation \ref{param_eq} into the problem formulation in \ref{ourproblem_basic} we obtain:
 \begin{equation} \label{ourproblem_param}
 \begin{split}
-		& min_{p_k}\ J({x}_{k|i},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
+		& min_{p_k}\ J({x}_{k|0},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
 		\textnormal{s.t.}\qquad
 		&\ \ \ \ x_{k|i+1}=\tilde{f}^+(x_{k|i},p_k,t_i) \\
 		&\ \ \ \ {x}_{k|i} \in \mathbb{X}\quad \forall i=1,\dots, N  \\
@@ -156,7 +156,7 @@ where $\mathbb{P} = \lbrace p\in \mathbb{R}^{N_p}\ \textnormal{s.t.}\ F(t_i)p \i
 
 Once the problem has been defined in its general form we have to properly choose the cost function. In particular, the stage cost $\tilde{l}$ has to be defined. A common choice is to use a quadratic stage cost in order to have a positive definite cost function. Even if it is important to have a quadratic cost function for the stability of the controller, it is still possible to find suboptimal solutions (i.e. local minima) because of the nonlinearities of the system. We will define the stage cost $\tilde{l}$ as a sum of different contributions using increasing weights into the optimization horizon, 
 \begin{equation}\label{costfunctionh}
-J({x}_{k|i},p_k)=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \left[ \sum_{j=1}^{5} h_j({x}_{k|i},p_k) \right]=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b h({x}_{k|i},p_k)
+J({x}_{k|0},p_k)=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \left[ \sum_{j=1}^{5} h_j({x}_{k|i},p_k) \right]=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b h({x}_{k|i},p_k)
 \end{equation} 
 where $b \in \mathbb{N}$ is the exponent of the weight term. This approach allows, by means of increasing weighted stage costs, to assess the stability of the NMPC without the imposition of terminal constraints, as shown in \cite{alamir2018stability}. This aspect will be reviewed in detail in the following section.
 The definition of the functions $h_j$ defines what we want to minimize. Because the aim of the controller is to track the trajectory of the end-effector solving the mobile manipulation problem, the following stage costs are defined:
@@ -231,7 +231,7 @@ Note that, for simplicity of notation, the system equation in \ref{sys_eq_con_e}
 In this way the problem is moved to track a zero error reference and becomes: 
 \begin{equation} \label{ourproblem_stab}
 \begin{split}
-		& min_{{p}_k}\ J({e}_{k|i},{p}_k) =\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b\hat{h}(e_{k|i},{p}_{k}) \\
+		& min_{{p}_k}\ J({e}_{k|0},{p}_k) =\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b\hat{h}(e_{k|i},{p}_{k}) \\
 		\textnormal{s.t.}\qquad
 		&\ \ \ \ e_{k|i+1}=\hat{f}^+(e_{k|i},p_k,t_i) \\
 		&\ \ \ \ e_{k|i} \in \mathbb{E}\ \forall\ i=1,\dots,\ N  \\
@@ -327,36 +327,36 @@ So, considering the cost function related to $\tilde{p}_{k+1}$ as presented in \
 \end{equation*}
 and then:
 \begin{equation*}
-    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i+1},p^*_{k})+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
+    J({e}_{k+1|0},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i+1},p^*_{k})+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
 Now considering $j=i+1$ and a simplified notation $\hat{h}({e}_{k|i},p_{k}^*)=\hat{h}(e_{k|i})^*$, it follows: 
 \begin{equation*}
-    J({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
+    J({e}_{k+1|0},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
 \end{equation*}
 Now rearranging the terms: 
 \begin{equation*}
     \begin{split}
-        J({e}_{k+1|i},\tilde{p}_{k+1})=&\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^b-1\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \\
+        J({e}_{k+1|0},\tilde{p}_{k+1})=&\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^b-1\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \\
         &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^* + \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation*}
 Note that, subtracting the first stage cost at the optimal cost function at time instant $k$:   
 \begin{equation*}
-	\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*=J({e}_{k|i},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*
+	\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*=J({e}_{k|0},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*
 \end{equation*}
 So we get:
 \begin{equation*}
     \begin{split}
-        J({e}_{k+1|i},&\tilde{p}_{k+1})=J({e}_{k|i},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-        &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^b\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+        J({e}_{k+1|0},&\tilde{p}_{k+1})=J({e}_{k|0},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
+        &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^b\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation*}
 And because $\forall j \in \lbrace2,\ \dots,\ N\rbrace$ holds that: 
 $\left[ 1-\left(\frac{j-1}{N}\right)^b \right]\ge\left[ 1-\left(\frac{N-1}{N}\right)^b \right]= \phi(b)$. We can then say that: 
 \begin{equation}\label{dim1}
     \begin{split}
-        J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-        &-\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)
+        J({e}_{k+1|0},\tilde{p}_{k+1})\le &J({e}_{k|0},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
+        &-\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
     \end{split}
 \end{equation}
 
@@ -367,23 +367,23 @@ Now according to Lemma 1, $e_{k|N}(p_k^*) \in B_{\hat{h}}(\eta c^b)$ and togethe
 where $\bar{\rho}$ is the positive real called in Assumption 3. This is possible because, from the definition of $\rho$ in Assumption 3, we have that $\rho > 0$ and that $c>0$ for definition.
 This means that \ref{ass3} holds for $e_{k|N}(p_k^*)$ and we can say that:
 \begin{equation}\label{dim2}
-    \hat{h}(\hat{f}(e_{k|N},p_k^*,t_i),p_k^*) \le \hat{h}(e_{k|N})^*-q(e_{k|N},p_k^*)
+    \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right) \le \hat{h}(e_{k|N})^*-q(e_{k|N},p_k^*)
 \end{equation}
-Note that, considering the definitions in Assumption 4, $\hat{h}(\hat{f}(e_{k|N},p_k^*,t_i),p_k^*)$ corresponds to $\hat{h}^u\left(f^+(x_{k-1|N},\bar{u},t_i),\bar{u}\right)$. So, by applying this relation and Equation \ref{dim2} in Equation \ref{dim1} we obtain: 
+because of the definition of $\bar{u}$ in Assumption 4. So, by applying this relation and Equation \ref{dim2} in Equation \ref{dim1} we obtain: 
 \begin{equation*}
     \begin{split}
-        J({e}_{k|i},\tilde{p}_{k+1})\le &J({e}_{k|i},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
+        J({e}_{k+1|0},\tilde{p}_{k+1})\le &J({e}_{k|0},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
         &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
     \end{split}
 \end{equation*}
 It is possible to note that: 
 \begin{equation}
-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^* \ge \phi(m)\hat{h}(e_{k|N})^*
+\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^* \ge \phi(b)\hat{h}(e_{k|N})^*
 \end{equation}
 Then, using this and Equation \ref{ass3_1}:
 \begin{equation*}
     \begin{split}
-        J({e}_{k|i},\tilde{p}_{k+1})&\le J({e}_{k|i},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
+        J({e}_{k+1|0},\tilde{p}_{k+1})&\le J({e}_{k|0},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
             &-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
     \end{split}
 \end{equation*}
@@ -477,7 +477,7 @@ In particular, the constraint definition has been divided into:
 Summarizing, the presented constraints redefines the problem as:
 \begin{equation} 
 	\begin{split}
-			& min_{p_k}\ J({x}_{k|i},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
+			& min_{p_k}\ J({x}_{k|0},p_k) = \sum_{i=1}^{N}\tilde{l}({x}_{k|i},p_k) \\
 			\textnormal{s.t.}\qquad
 			&\ \ \ \ x_{k|i+1}=\tilde{f}^+(x_{k|i},p_k,t_i) \\
 			&\ \ \ \ {x}_{min}\ \leq\ x_{k|i}\ \leq\ {x}_{max}\  \forall\ i=1,\dots,\ N  \\

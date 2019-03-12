@@ -1,0 +1,133 @@
+%!TEX aux_directory = build
+
+
+\documentclass[12pt]{article}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amsmath}               
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{subfigure}
+\usepackage{afterpage}
+\usepackage{amsmath,amssymb}            
+\usepackage{rotating}  
+\usepackage{fancyhdr}  
+\usepackage{cancel}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{filecontents}
+\usepackage{listings}
+\usepackage{nomencl}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
+\usepackage{epigraph}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[italian]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage[nodisplayskipstretch]{setspace}
+\setstretch{1.2}
+
+\begin{document}
+
+\section*{Correzioni alla dimostrazione}
+
+Abbiamo pensato una soluzione che però richiede sicuramente una rilettura.
+Per punti quello che facciamo, senza cambiare esageratamente la dimostrazione, è:
+\begin{enumerate}
+\item limitiamo $\pi_k$ come  $\pi_k\ \in\  \mathbb{R} \textnormal{ s.t. } N-1 \leq \pi_k \leq N$;
+\item richiamiamo l'Assunzione 2 per mostrare che se esiste un ottimo con $\pi_k = N-1$, è possibile trovarne uno anche con $N-1 < \pi_k \leq N$;
+\item di conseguenza aggiungiamo l'ipotesi che la soluzione ottima al passo $k$ sia con $N-1 < \pi_k \leq N$ (ovvero senza $\bar{u}$ alla fine) giustificandola.
+\item mostriamo che la J è una lyapunov function anche non ammettendo soluzioni \textbf{ottime} con $\pi_k = N-1$
+\end{enumerate}
+
+\textbf{Punto 1}:
+La parametrizzazione viene definita quindi: \\
+
+\textit{The control input parameterization is required to be $p_k:=[{p_1}_k,\ {p_2}_k,\ \dots,\ {p_{N_p}}_k,\ \pi_k]^T$, with $\pi_k \in \mathbb{R} \textnormal{ s.t. } N-1 \leq \pi_k \leq N$, such that: 
+\begin{equation*}
+\begin{split}
+    u_{k|i}=
+        \begin{cases}
+            F(t_i)\ \left[{p_1}_k,\ {p_2}_k,\ \dots,\ {p_{N_p}}_k\right]^T &\textnormal{if } i<\pi_k \\
+            \Bar{u}=\arg\min_u \hat{h}^u\left({f}^+\left(x_{k-1|N},u\right),u\right)  \ &\textnormal{if } i\ge \pi_k
+        \end{cases}
+    \end{split}
+\end{equation*}
+where $\hat{h}^u$ is the equivalent of $\hat{h}$ expressed in terms of $u$, instead of the parameter vector $p_k$.} \\
+
+NOTA: definendo così la parametrizzazione, abbiamo la $\bar{u}$ tra le azioni di controllo solo se $\pi_k = N-1 $. \\ 
+A questo punto la cost function risulta: 
+
+\begin{equation*}
+\begin{split}
+    J_{k}=
+        \begin{cases}
+            J^1_k=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \textnormal{   if  } N-1 < \pi_k \leq N \\
+            J^2_k=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k)+\hat{h}^{\bar{u}}({f}^+\left(x_{k|N-1},\bar{u}\right),\bar{u})\ \ \ \ \  \textnormal{   if  } \pi_k = N -1
+        \end{cases}
+    \end{split}
+\end{equation*}
+Da notare che $\hat{h}^{\bar{u}}({f}^+\left(x_{k|N},\bar{u}\right),\bar{u})$, visto che siamo al passo k e visto come è definita, non dipende da $[{p_1}_k, {p_2}_k, \dots, {p_{N_p}}_k]$.
+
+
+\textbf{Punto 2}:
+
+Utilizzando l'assunto 2 (in rif. alla tesi), ovvero: 
+\textit{\paragraph{Assumption 2} We will require that a set $\mathbb{E}_N\subset\mathbb{E}$ exists so that $\forall e \in \mathbb{E}_N $ the set:
+\begin{equation*}
+	\mathbb{P}_{e \to 0}:=\lbrace \ p \in \mathbb{P}\ \text{s.t.}\ e_{N}(e,p)=0\ \rbrace
+\end{equation*} exist and is not empty, considering $e_{N}(e,p)$ as the state error forecasted at time step $N$.}
+
+Significa che \textbf{esiste un $p_k$} t.c. $\hat{h}({e}_{k|N},p_k)=0$ e quindi: 
+
+\begin{equation}
+	\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k)=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k)+\cancel{\hat{h}({e}_{k|N},p_k)}
+\end{equation}
+quindi: 
+\begin{equation}
+	\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k) \leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k) + \hat{h}^{\bar{u}}({f}^+\left(x_{k|N-1},\bar{u}\right),\bar{u}) 
+\end{equation}
+In poche parole: 
+L'assumption 2 implica che esista un valore di $p$ tale per cui $J_k^1$ sia minore o uguale di $J_k^2$. In altre parole: se abbiamo una soluzione ottima $[{p_1}_k^*, {p_2}_k^*,\ \dots,\ {p_{N_p}}_k^*,\ \pi_k^1]$ a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-2}}^*\ ,\bar{u} ]$ esiste una soluzione almeno uguale, definita  $[{p_1}_k^*, {p_2}_k^*,\ \dots,\ {p_{N_p}}_k^*,\ \pi_k^2]$ a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$.\\
+\\
+\textbf{Punto 3}:
+
+Iniziamo la dimostrazione del paper/tesi con \textbf{l'ipotesi} di avere la soluzione ottima $p_k^*$ a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, ovvero le u tutte parametrizzate. il che è possibile visto che esiste sempre una $p$ t.c. $J_k^1$ sia minore o uguale di $J_k^2$ come visto al punto 2. 
+
+Poi la dimostrazione procede normalmente, fino alla fine, e termina così:
+
+\begin{equation*}
+    \begin{split}
+        J({e}_{k+1|i},\tilde{p}_{k+1})&\le J({e}_{k|i},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
+            &-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
+    \end{split}
+\end{equation*}
+
+\textbf{Punto 4}:
+
+Possiamo usare, a questo punto, quello che abbiamo dimostrato prima per dire che esiste una $p_{k+1}$ con $\pi_{k+1} = N$ tale percui:
+
+\begin{equation}
+	J({e}_{k+1|i},p_{k+1}) \leq J({e}_{k+1|i},\tilde{p}_{k+1})
+\end{equation}
+
+e quindi: 
+
+\begin{equation}
+	J({e}_{k+1|i},p^{NP}_{k+1}) \leq J({e}_{k|i},\tilde{p}_k^*)- \frac{1}{N^b}\hat{h}(e_{k|1})^*-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
+\end{equation}
+
+E quindi: 
+Se partiamo da una soluzione ottima iniziale parametrizzata con $N-1 < \pi_k \leq N$, dal primo passo in poi la funzione di costo parametrizzata e vincolata ad avere $N-1 < \pi_k \leq N\  \forall k$ è una lyapunov function per b sufficientemente alti.
+
+\textbf{IN SINTESI:}\\
+Si parte con l'ipotesi del punto 3 che, anche se non possiamo garantire che il solutore troverà quella parametrizzazione, ipotizziamo di averla trovata (perchè esiste, vedi punto 2). A quel punto la dimostrazione procede tutta e quello che riusciamo a dire alla fine è che vincolare la parametrizzazione ad avere $N-1 < \pi_k \leq N$ mantiene $J$ una liapunov function, e questo verifica l'ipotesi del punto 3.
+
+
+\end{document}
