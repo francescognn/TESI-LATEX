@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  12 MAR 2019 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  12 MAR 2019 18:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1682,44 +1682,56 @@ Package pdftex.def Info: IMMAGINI/handling_joints.png used on input line 77.
 
 LaTeX Warning: Reference `ee_tests' on page 79 undefined on input line 89.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
 [79]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 107.
+               Default added (so using `tbp') on input line 114.
 
 <IMMAGINI/traj_ee1.png, id=1081, 897.3525pt x 325.215pt>
 File: IMMAGINI/traj_ee1.png Graphic file (type png)
 
 <use IMMAGINI/traj_ee1.png>
-Package pdftex.def Info: IMMAGINI/traj_ee1.png used on input line 150.
+Package pdftex.def Info: IMMAGINI/traj_ee1.png used on input line 157.
 (pdftex.def)             Requested size: 323.04665pt x 117.0773pt.
  [80]
-<IMMAGINI/empty.png, id=1089, 961.5925pt x 722.7pt>
+<IMMAGINI/empty.png, id=1088, 961.5925pt x 722.7pt>
 File: IMMAGINI/empty.png Graphic file (type png)
  <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 159.
+Package pdftex.def Info: IMMAGINI/empty.png used on input line 166.
 (pdftex.def)             Requested size: 192.3151pt x 144.53743pt.
 
-[81 <./IMMAGINI/traj_ee1.png> <./IMMAGINI/empty.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[81 <./IMMAGINI/traj_ee1.png>]
 File: IMMAGINI/empty.png Graphic file (type png)
  <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 170.
+Package pdftex.def Info: IMMAGINI/empty.png used on input line 177.
 (pdftex.def)             Requested size: 192.3151pt x 144.53743pt.
 File: IMMAGINI/empty.png Graphic file (type png)
 
 <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 176.
+Package pdftex.def Info: IMMAGINI/empty.png used on input line 183.
 (pdftex.def)             Requested size: 192.3151pt x 144.53743pt.
-) [82]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [82 <./IMMAGINI/empty.png>] [83]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 8.
-) [83
+) [84
 
 
 
-] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.lof [84
+] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.lof [85
 
 
 
@@ -1728,11 +1740,11 @@ Chapter 8.
 \openout6 = `Thesis_main.lof'.
 
 
-[85] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.lot)
+[86] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.lot)
 \tf@lot=\write7
 \openout7 = `Thesis_main.lot'.
 
- [86
+ [87
 
 
 ]
@@ -1740,7 +1752,7 @@ Chapter 8.
 
 
 (./appendixA.tex
-<IMMAGINI/SuperMegaBot.PNG, id=1177, 432.11438pt x 277.53688pt>
+<IMMAGINI/SuperMegaBot.PNG, id=1182, 432.11438pt x 277.53688pt>
 File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot.PNG>
@@ -1751,13 +1763,13 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<IMMAGINI/SMBwires.png, id=1179, 559.08875pt x 324.21124pt>
+<IMMAGINI/SMBwires.png, id=1184, 559.08875pt x 324.21124pt>
 File: IMMAGINI/SMBwires.png Graphic file (type png)
 
 <use IMMAGINI/SMBwires.png>
 Package pdftex.def Info: IMMAGINI/SMBwires.png used on input line 33.
 (pdftex.def)             Requested size: 223.63153pt x 129.68219pt.
-) [87
+) [88
 
  <./IMMAGINI/SuperMegaBot.PNG> <./IMMAGINI/SMBwires.png>]
 \openout2 = `appendixB.aux'.
@@ -1772,24 +1784,24 @@ Overfull \hbox (43.22495pt too wide) in paragraph at lines 8--41
 [][] 
  []
 
-) [88
+) [89
 
 
 ]
 \openout2 = `appendixC.aux'.
 
- (./appendixC.tex) [89
+ (./appendixC.tex) [90
 
 
-] [90
+] [91
 
 ]
-(/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.bbl [91
+(/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.bbl [92
 
-] [92]
-[93])
+] [93]
+[94])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
- [94]
+ [95]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
  (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.aux
 (/home/francesco/Documents/GIT/TESI-LATEX/build/frontespizio.aux)
@@ -1821,8 +1833,8 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
  ) 
 Here is how much of TeX's memory you used:
- 12437 strings out of 493029
- 182756 string characters out of 6136234
+ 12438 strings out of 493029
+ 182763 string characters out of 6136234
  289930 words of memory out of 5000000
  15226 multiletter control sequences out of 15000+600000
  29248 words of font info for 76 fonts, out of 8000000 for 9000
@@ -1855,10 +1867,10 @@ r/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sftt1200.pfb>
 Output written on /home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.pd
-f (104 pages, 6269717 bytes).
+f (105 pages, 6270849 bytes).
 PDF statistics:
- 1387 PDF objects out of 1440 (max. 8388607)
- 1175 compressed objects within 12 object streams
- 344 named destinations out of 1000 (max. 500000)
+ 1391 PDF objects out of 1440 (max. 8388607)
+ 1178 compressed objects within 12 object streams
+ 345 named destinations out of 1000 (max. 500000)
  663 words of extra memory for PDF output out of 10000 (max. 10000000)
 
