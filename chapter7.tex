@@ -99,6 +99,14 @@ Results of these simulations are showed in Figure \ref{end_effector_tests}. The 
 %%%%%%%%%% ---------------------
 
 \section{Physical experiments results}
+	Physical experiments have been performed on the MM and are presented in this section. The system has been tested in performing handling, i.e. tracking a desired trajectory for the base and a fixed position for the joint angles, and in grasping of an object. The experiments have been performed at slow speeds mainly for two reasons: \\
+	\begin{itemize}
+	\item The accuracy in measuring base position and orientation is highly dependent on the velocity of the base given that measures are taken from wheels encoders.
+	\item The frequency of the controller $f_c=\frac{1}{T}$, which is still low compared to linear MPC schemes, limits the accuracy in performing tracking. The low frequency of the controller $~2\ Hz$ is related both to performance of the code and to higher solving time for NMP compared to linear MPC. 
+	\end{itemize} 
+
+	
+
 	\fix{parlare del fatto che gli esperimenti sono stati fatti a basse velocità per diversi motivi: software e del posizionamento della base che non funziona bene ad alte velocità e si possono mettere anche dei grafici per la ripetibilità della base e una foto.
 	Parlare del sistema di telecamere che è stato usato ma non funzionava bene in termini di stabilità e magari mettere qualche foto?}
 

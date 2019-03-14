@@ -38,7 +38,6 @@
 
 \section*{Correzioni alla dimostrazione}
 
-Abbiamo pensato una soluzione che però richiede sicuramente una rilettura.
 Per punti quello che facciamo, senza cambiare esageratamente la dimostrazione, è:
 \begin{enumerate}
 \item limitiamo $\pi_k$ come  $\pi_k\ \in\  \mathbb{R} \textnormal{ s.t. } N-1 \leq \pi_k \leq N$;
@@ -90,12 +89,12 @@ Significa che \textbf{esiste un $p_k$} t.c. $\hat{h}({e}_{k|N},p_k)=0$ e quindi:
 \begin{equation}
 	\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k)=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k)+\cancel{\hat{h}({e}_{k|N},p_k)}
 \end{equation}
-quindi: 
+quindi,, per questa $p_k$ vale: 
 \begin{equation}
 	\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k) \leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i},p_k) + \hat{h}^{\bar{u}}({f}^+\left(x_{k|N-1},\bar{u}\right),\bar{u}) 
 \end{equation}
 In poche parole: 
-L'assumption 2 implica che esista un valore di $p$ tale per cui $J_k^1$ sia minore o uguale di $J_k^2$. In altre parole: se abbiamo una soluzione ottima $[{p_1}_k^*, {p_2}_k^*,\ \dots,\ {p_{N_p}}_k^*,\ \pi_k^1]$ a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-2}}^*\ ,\bar{u} ]$ esiste una soluzione almeno uguale, definita  $[{p_1}_k^*, {p_2}_k^*,\ \dots,\ {p_{N_p}}_k^*,\ \pi_k^2]$ a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$.\\
+L'assumption 2 implica che esista un valore di $p$ tale per cui $J_k^1$ sia minore o UGUALE di $J_k^2$. In altre parole: se abbiamo una soluzione ottima $[{p_1}_k^*,\ {p_2}_k^*,\ \dots,\ {p_{N_p}}_k^*,\ \pi_k^1]$, con $\pi_k=N-1$, a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-2}}^*\ ,\bar{u} ]$,  esiste una soluzione \textbf{almeno uguale}, definita  $[{p_1}_k^*,\ {p_2}_k^*,\ \dots,\ {p_{N_p}}_k^*,\ \pi_k^2]$, con $N-1 < \pi_k \leq N$, a cui corrisponde $[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$.\\
 \\
 \textbf{Punto 3}:
 
@@ -112,23 +111,30 @@ Poi la dimostrazione procede normalmente, fino alla fine, e termina così:
 
 \textbf{Punto 4}:
 
-Possiamo usare, a questo punto, quello che abbiamo dimostrato prima per dire che esiste una $p_{k+1}$ con $\pi_{k+1} = N$ tale percui:
+Possiamo usare, a questo punto, quello che abbiamo dimostrato prima per dire che esiste una $p_{k+1}$ con $N-1 < \pi_k \leq N$ tale per cui:
 
 \begin{equation}
 	J({e}_{k+1|i},p_{k+1}) \leq J({e}_{k+1|i},\tilde{p}_{k+1})
 \end{equation}
 
-e quindi: 
+e quindi, visto che la dimostrazione termina:
+
+\begin{equation}
+	J({e}_{k+1|i},\tilde{p}_{k+1}) \leq J({e}_{k|i},\tilde{p}_k^*)- \frac{1}{N^b}\hat{h}(e_{k|1})^*-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
+\end{equation}
+
+Vale anche
 
 \begin{equation}
 	J({e}_{k+1|i},p_{k+1}) \leq J({e}_{k|i},\tilde{p}_k^*)- \frac{1}{N^b}\hat{h}(e_{k|1})^*-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
+	\label{eq5}
 \end{equation}
 
 E quindi: 
-Se partiamo da una soluzione ottima iniziale parametrizzata con $N-1 < \pi_k \leq N$, dal primo passo in poi la funzione di costo parametrizzata e vincolata ad avere $N-1 < \pi_k \leq N\  \forall k$ è una lyapunov function per b sufficientemente alti.
+Qeust'ultima equazione dimostra che, una funzione di costo con una parametrizzazione degli input dove $N-1 < \pi_k \leq N$ è una LyapunoV function per $b$ sufficientemente elevati.
 
 \textbf{IN SINTESI:}\\
-Si parte con l'ipotesi del punto 3 che, anche se non possiamo garantire che il solutore troverà quella parametrizzazione, ipotizziamo di averla trovata (perchè esiste, vedi punto 2). A quel punto la dimostrazione procede tutta e quello che riusciamo a dire alla fine è che vincolare la parametrizzazione ad avere $N-1 < \pi_k \leq N$ mantiene $J$ una Lyapunov function, e questo verifica l'ipotesi del punto 3.
+Si parte con l'ipotesi del punto 3 che, anche se non possiamo garantire che il solutore troverà la soluzione ottima con $N-1 < \pi_k \leq N$, ipotizziamo di averla trovata (perchè esiste ed è altrettanto ottima, vedi punto 2). A quel punto la dimostrazione procede come prima, e quello che riusciamo a dire alla fine è che vincolare la parametrizzazione ad avere $N-1 < \pi_k \leq N$ mantiene $J$ una Lyapunov function, \textbf{e questo verifica l'ipotesi del punto 3}.
 
 
 \end{document}
