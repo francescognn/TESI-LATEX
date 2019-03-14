@@ -77,16 +77,22 @@ The entire Mobile Manipulator has been simulated performing a trajectory trackin
 	\includegraphics[scale=0.45]{handling_joints}
 	\caption{Trajectory following of the joints during a Mobile Manipulator handling task}
 	\label{handling_joints}
-\end{figure}A first consideration can be done on the Cartesian errors in tracking the mobile base motion. Indeed, in Figure \ref{handling_traj}, a peak of $1$ m of error can be seen at the very beginning of the trajectory. This is because the reference trajectory does not start with velocity equal to zero, while the robot starts from a stationary position; for this reason we can notice that the robot cuts the corner of the path to keep up with the reference trajectory. This "cutting the corner", actually, is the reason why increasing $N$, the errors in tracking the base position increase, as can also be seen in Figure \ref{handling_traj}. A second consideration is done on the trajectory tracking of the joint variables. Figure \ref{handling_joints} shows that our controller tracks very well a constant reference trajectory, varying the convergence to the constant value depending on $N$. This is because, even without imposing a constraint on the terminal state, our controller is driven to track exactly the reference value at the end of the prediction horizon; having kept the time step $T$ constant in all the simulations, a smaller time horizon leads to more reactive responses of the state.
-
-	\subsubsection{errors in tracking}
-		
-	\subsubsection{J function components}
+\end{figure}
+A first consideration can be done on the Cartesian errors in tracking the mobile base motion. Indeed, in Figure \ref{handling_traj}, a peak of $1$ m of error can be seen at the very beginning of the trajectory. This is because the reference trajectory does not start with velocity equal to zero, while the robot starts from a stationary position; for this reason we can notice that the robot cuts the corner of the path to keep up with the reference trajectory. This "cutting the corner", actually, is the reason why increasing $N$, the errors in tracking the base position increase, as can also be seen in Figure \ref{handling_traj}. A second consideration is done on the trajectory tracking of the joint variables. Figure \ref{handling_joints} shows that our controller tracks very well a constant reference trajectory, varying the convergence to the constant value depending on $N$. This is because, even without imposing a constraint on the terminal state, our controller is driven to track exactly the reference value at the end of the prediction horizon; having kept the time step $T$ constant in all the simulations, a smaller time horizon leads to more reactive responses of the state.
 
 \subsection{Mobile Manipulator Grasping Simulations}
+The entire Mobile Manipulator has then been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path. Since part of the trajectory lies outside the UR5 workspace, the Mobile Manipulator is asked to move in a synchronized fashion to correctly track the end effector pose. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.55]{end_effector_tests}
+	\caption{End effector pose trajectory following with different N }
+	\label{end_effector_tests}
+\end{figure}
+Results of these simulations are showed in Figure \ref{end_effector_tests}. The considerations made about previous tests still stand: the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons. The same effect has been seen keeping constant $N$ and increasing the time step $T$. Nonetheless, also in these results, it is possible to see how the optimization time has just a slight increment increasing $N$.
 
-The entire Mobile Manipulator has been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path.
-However, from the results showed in Figure \ref{ee_tests} and from other experiments run with different time steps $T$, it can be seen that, as in previous tests, the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons
+
+\paragraph{simulation self collision}
+\paragraph{control actions}
 
 \fix{passaggio da una funz costo all'altra?}
 
