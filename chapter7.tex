@@ -79,38 +79,47 @@ The entire Mobile Manipulator has been simulated performing a trajectory trackin
 	\label{handling_joints}
 \end{figure}
 A first consideration can be done on the Cartesian errors in tracking the mobile base motion. Indeed, in Figure \ref{handling_traj}, a peak of $1$ m of error can be seen at the very beginning of the trajectory. This is because the reference trajectory does not start with velocity equal to zero, while the robot starts from a stationary position; for this reason we can notice that the robot cuts the corner of the path to keep up with the reference trajectory. This "cutting the corner", actually, is the reason why increasing $N$, the errors in tracking the base position increase, as can also be seen in Figure \ref{handling_traj}. A second consideration is done on the trajectory tracking of the joint variables. Figure \ref{handling_joints} shows that our controller tracks very well a constant reference trajectory, varying the convergence to the constant value depending on $N$. This is because, even without imposing a constraint on the terminal state, our controller is driven to track exactly the reference value at the end of the prediction horizon; having kept the time step $T$ constant in all the simulations, a smaller time horizon leads to more reactive responses of the state.
-
-\subsection{Mobile Manipulator Grasping Simulations}
-The entire Mobile Manipulator has then been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path. Since part of the trajectory lies outside the UR5 workspace, the Mobile Manipulator is asked to move in a synchronized fashion to correctly track the end effector pose. 
-\begin{figure}[h!]
+\begin{figure}[p]
 	\centering
-	\includegraphics[scale=0.55]{end_effector_tests}
+	\includegraphics[scale=0.53]{end_effector_tests}
 	\caption{End effector pose trajectory following with different N }
 	\label{end_effector_tests}
 \end{figure}
-Results of these simulations are showed in Figure \ref{end_effector_tests}. The considerations made about previous tests still stand: the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons. The same effect has been seen keeping constant $N$ and increasing the time step $T$. Nonetheless, also in these results, it is possible to see how the optimization time has just a slight increment increasing $N$.
-
-
-\paragraph{simulation self collision}
-\paragraph{control actions}
-
-\fix{passaggio da una funz costo all'altra?}
+\begin{figure}[p]
+	\centering
+	\includegraphics[scale=0.47]{control_actions_SIM}
+	\caption{Control actions values over time. Boundary constraints are represented with the dashed lines}
+	\label{control_actions_SIM}
+\end{figure}
+\subsection{Mobile Manipulator Grasping Simulations}
+The entire Mobile Manipulator has then been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path. Since part of the trajectory lies outside the UR5 workspace, the Mobile Manipulator is asked to move in a synchronized fashion to correctly track the end effector pose. 
+Results of these simulations are showed in Figure \ref{end_effector_tests}. The considerations made about previous tests still stand: the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons. The same effect has been seen keeping constant $N$ and increasing the time step $T$. Nonetheless, also in these results, it is possible to see how the optimization time has just a slight increment increasing $N$. In Figure \ref{control_actions_SIM} the control actions computed by the controller are shown to always satisfy the boundary constaints imposed.\\
+In addition to the state and the control actions boundary constraints, others are been added to avoid self collision of the Mobile Manipulator. In particular, boundaries on the maximum and minimum arm joint values have to be satisfyied, along with a constraint on the minimum distance between the spheres embedding different parts of the robot. A brief simulation has been run to investigate wheter these self-collision constraint are satisfied; as shown in Figure \ref{self_collision}, giving the end effector a trajectory to folllow colliding with the mobile platform, the spheres embedding the end effector and the base never interpenetrate due to the given constraints.
+\begin{figure}[t]
+	\centering
+	\includegraphics[scale=0.55]{self_collision_test}
+	\caption{Tracking a self colliding trajectory}
+	\label{self_collision}
+\end{figure}
+\\
+We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. However a brief consideration on the passage from one control law to the other has to be done. Since both control laws are stable, this passage does not imply any instability ????????
 
 %%%%%%%%%% ---------------------
 
 \section{Physical experiments results}
-	Physical experiments have been performed on the MM and are presented in this section. The system has been tested in performing handling, i.e. tracking a desired trajectory for the base and a fixed position for the joint angles, and in grasping of an object. The experiments have been performed at slow speeds mainly for two reasons: \\
-	\begin{itemize}
-	\item The accuracy in measuring base position and orientation is highly dependent on the velocity of the base given that measures are taken from wheels encoders.
-	\item The frequency of the controller $f_c=\frac{1}{T}$, which is still low compared to linear MPC schemes, limits the accuracy in performing tracking. The low frequency of the controller $~2\ Hz$ is related both to performance of the code and to higher solving time for NMP compared to linear MPC. 
-	\end{itemize} 
+Once all the MPC parameters and weights have been properly tuned, the MM has been tested performing a trajectory following task, tracking the position and orientation of the end-effector along a given trajectory in order to grasp an object. In particular, the robot is asked to move towards a grasping area, grasp the object preferably without stopping the mobile base, and then move away from the grasping area. In all these steps the obstacle avoidance and self collision avoidance constraints have to be satisfied, maximizing also the manipulability measure and limiting maximum accelerations and maximum speeds of all joints. At the same time the MPC optimization process solves the kinematic redundancy problem.
+The pre-planned desired trajectories of the end effector and mobile base are shown in Figure \ref{ref_traj}. The given trajectories do not involve high speeds for the mobile base for two main reasons: first of all, since the controller has been developed on Matlab/Simulin
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.55]{ref_traj_REAL}
+	\caption{Desired trajectories of end effector and mobile base during experiments with the physical system}
+	\label{ref_traj}
+\end{figure}
+Experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
+\fix{parlare del fatto che gli esperimenti sono stati fatti a basse velocità per diversi motivi: software e del posizionamento della base che non funziona bene ad alte velocità e si possono mettere anche dei grafici per la ripetibilità della base e una foto.
+Parlare del sistema di telecamere che è stato usato ma non funzionava bene in termini di stabilità e magari mettere qualche foto?}
 
-	
-
-	\fix{parlare del fatto che gli esperimenti sono stati fatti a basse velocità per diversi motivi: software e del posizionamento della base che non funziona bene ad alte velocità e si possono mettere anche dei grafici per la ripetibilità della base e una foto.
-	Parlare del sistema di telecamere che è stato usato ma non funzionava bene in termini di stabilità e magari mettere qualche foto?}
-
-	\subsection{Movement of the system toward grasping area}
+\subsection{Movement of the system toward grasping area}
 
 
 \subsection{Trajectory tracking in grasping operation}
