@@ -183,7 +183,7 @@ The controller has been tested to perform grasping operations tracking EE trajec
 	\end{figure}
 	The trajectories in \ref{traj_ee1_comp} show that the system behaviour is close to the simulated one, this confirm the accuracy of the model. We will now analize the errors in performing this trajectory with respect to the desired one.  
 	Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the number of the given points $x_d$ implies that we are referring to a trajectory and not to a path. For this reason the offline planned desired points have to be generate accorging to velocity and acceleration requirements. 
-	In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the EE is shown for a linear parameterization of the arm joints velocities.
+	In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the EE are shown for a linear parameterization of the arm joints velocities.
 	\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{error_xyz1.png}
@@ -192,10 +192,20 @@ The controller has been tested to perform grasping operations tracking EE trajec
 	\end{figure}
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.2]{empty}
+	\includegraphics[scale=0.4]{error_orient1.png}
 	\caption{EE orientation errors during grasping}
 	\label{error_orient1}
 	\end{figure}
 
-	Errors in orientation are shown in Figure \ref{error_orient1}. Orientation is important in grasping operation because trajectories have to be planned according to the part to be handled. What is possible to see is that the more the points are close eachother  
+	Errors in orientation are shown in Figure \ref{error_orient1}. Orientation is important in grasping operation because trajectories have to be planned according to the part to be handled. What is possible to see from \ref{error_xyz1} and \ref{error_orient1} is that the more the points are close eachother, that means low speeds, the more the tracking errors are small. In Figure \ref{base_err_exp1} the base motion and errors are shown and it is possible to notice that the errors are higher than the EE position. This is due to the fact that, for this task, we are weighting more the EE error than the base error.
+	The experiments has been performed successfully grasping different objects requiring different orientation approach for the EE.  
 
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{base_err_exp1.png}
+	\caption{Base motion during grasping}
+	\label{base_err_exp1}
+	\end{figure}
+
+	\fix{Aggiungere errori numerici sulla base e le velocità fatte e che rispettano constraints e manipolabilità}
+	\fix{aggiungere qualcosa sul solutore}
