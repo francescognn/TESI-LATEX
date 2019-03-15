@@ -106,6 +106,9 @@ We have described the results of simulations in two different tasks, having good
 \section{Physical experiments results}
 \begin{floatingfigure}[l]{.3\textwidth}
 	\centering
+	\includegraphics[scale=0.03]{robot_marker}
+	\caption{Aruco Markers positioning on ADAMMS\label{robot_marker}}
+\end{floatingfigure} 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{img_real_exp.png}
@@ -113,9 +116,6 @@ We have described the results of simulations in two different tasks, having good
 	\label{img_real_exp}
 \end{figure}
 
-	\includegraphics[scale=0.03]{robot_marker}
-	\caption{Aruco Markers positioning on ADAMMS\label{robot_marker}}
-\end{floatingfigure} 
 Thanks to the results coming from simulations we were able to properly tune all the MPC parameters and weights in order to test the Mobile Manipulator in analogous tasks of handling and grasping tracking pre-planned reference trajectories. The latter do not involve high speeds for the mobile base for two main reasons: first of all, since the controller has been developed on Matlab/Simulink, even with the improvements we proposed, the commercial solver we used is still not suitable for fast online optimization processes. Therefore, being bound by the software availability point of view, we had to keep an high time step $T$, resulting in very distant way-points defining the base trajectory when the base speed is high. The other reason is related to available hardware.
 The only measures of the position of the mobile platform are given from the odometry measurements of the platform itself, which are not reliable at high speeds because they do not consider the slipping of the wheels. Tests with different measuring systems like Aruco Markers localization, as in Figure \ref{robot_marker}, with cameras placed on the ceiling have been carried out, but the flickering of the image did not allow a fairly good measure.\\
 Thence, experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
