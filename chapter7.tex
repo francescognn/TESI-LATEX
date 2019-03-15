@@ -119,18 +119,22 @@ Experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
 \fix{parlare del fatto che gli esperimenti sono stati fatti a basse velocità per diversi motivi: software e del posizionamento della base che non funziona bene ad alte velocità e si possono mettere anche dei grafici per la ripetibilità della base e una foto.
 Parlare del sistema di telecamere che è stato usato ma non funzionava bene in termini di stabilità e magari mettere qualche foto?}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{img_real_exp.png}
+	\caption{ADAMMS Experiments}
+	\label{img_real_exp}
+\end{figure}
+
 \subsection{Movement of the system toward grasping area}
 
 
 \subsection{Trajectory tracking in grasping operation}
 
-The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base as mentioned before, did not allow to test the system at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
-
+The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
 
 	\begin{table}[]
-	
 	\centering
-
 	\begin{tabular}{|l|l|l|ll}
 	\cline{1-2}
 	\multicolumn{2}{|l|}{ \textbf{Parameters} }	\\ \cline{1-2}
@@ -163,10 +167,14 @@ The controller has been tested to perform grasping operations tracking EE trajec
 	\caption{Experiment Parameters}
 	\label{tableparam1}
 	\end{table}
-
-
-	\fix{NON SO SE QUESTO riusciamo a farlo, occhio! Nel caso se si riesce mettiamo nei grafici una comparison (se ne vale la pena) ... 
-	Parameterization has been chosen as in simulation, so comparing linear and constant parameterization for the arm joints.} The gripper used in the experiments is a Robotiq 2-Finger 85mm for Universal Robots. The instant at which the gripper has to be closed was defined offline and the communication ensured through a ROS node. The first experiment's results, performed with a linear parameterization for the arm joints are obtained using the parameters shown in Table \ref{tableparam1}. 
+	The gripper used in the experiments is a Robotiq 2-Finger 85mm for Universal Robots. The instant at which the gripper has to be closed was defined offline and the communication ensured through a ROS node. In Figure \ref{seq_robot} the phisical system performing grasping during experiments is shoown.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.3]{seq_robot.png}
+	\caption{ADAMMS Experiments}
+	\label{seq_robot}
+	\end{figure}
+	The first experiment's results, performed with a linear parameterization for the arm joints are obtained using the parameters shown in Table \ref{tableparam1}. As can be seen the weight for the solution of the optimization problem has been chosen higher for the EE pose than for the base error. This choice lies in what is the aim of the performed task: since we are interested in grasp an object, the error we are more interested in is the pose of the end effector. Giving a desired position and orientation for the base only helps in defining the cost function properly. In fact, as mentioned in \ref{chapter4} the high redundancy of Mobile Manupulators is usually managed adding secondary tasks to be performed like maximization of manipulability index. 
 	In Figure \ref{traj_ee1} the performed trajectory is shown in a 3D graph. 
 	\begin{figure}[h!]
 	\centering
@@ -174,23 +182,19 @@ The controller has been tested to perform grasping operations tracking EE trajec
 	\caption{EE position during grasping}
 	\label{traj_ee1}
 	\end{figure}
-
 	The results are then compared in Figure \ref{traj_ee1_comp} with the trajectory performed in simulation. The position and orientation of the EE are measured through the positioning system of the base presented in \ref{chapter6} and then using forward kinematics to compute position of the end effector. 
-
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.2]{empty}
+	\includegraphics[scale=0.45]{traj_ee1_comp.png}
 	\caption{EE position comparison during grasping}
 	\label{traj_ee1_comp}
 	\end{figure}
 	The trajectories in \ref{traj_ee1_comp} show that the system behaviour is close to the simulated one, this confirm the accuracy of the model. We will now analize the errors in performing this trajectory with respect to the desired one.  
-
-	Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the number of the given points $x_d$ implies that we are referring to a trajectory and not to a path. For this reason the offline planned trajectory has to be generate according to that. 
+	Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the number of the given points $x_d$ implies that we are referring to a trajectory and not to a path. For this reason the offline planned desired points have to be generate accorging to velocity and acceleration requirements. 
 	In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the EE is shown for a linear parameterization of the arm joints velocities.
-
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.2]{empty}
+	\includegraphics[scale=0.4]{error_xyz1.png}
 	\caption{EE position errors during grasping}
 	\label{error_xyz1}
 	\end{figure}
