@@ -22,7 +22,7 @@ Initially some simulations with only the mobile base have been run on a trajecto
 	\caption{Cartesian error and Optimization time when varying N}
 	\label{base_curves_errors}
 \end{figure}
-\\In Figure \ref{base_curves} the trajectories that the mobile base follows are shown, considering different levels of random disturbances added to the input commands and considering different values of $N$. In Figure \ref{base_curves_errors} the relative errors and optimization times are shown. From these results we can notice that our controller is able to manage even high disturbances, but because of the limitation introduced by the parameterization of the input, it is more difficult for the optimizer to find a curve built on polynomial input commands that correctly approximates the given trajectory. This effect is even enlarged by the weighting profile of the cost function which give less importance to the accuracy of the first steps in the control horizon. Nevertheless Figure \ref{base_curves_errors} let us see that the time elapsed during the the optimization process doesn't increase exponentially like in traditional MPC, but it has just a slight increment.\\
+\\In Figure \ref{base_curves} the trajectories that the mobile base follows are shown, considering different levels of random disturbances added to the input commands and considering different values of $N$. In Figure \ref{base_curves_errors} the relative errors and optimization times are shown. From these results we can notice that our controller is able to manage even high disturbances, but because of the limitation introduced by the parameterization of the input, it is more difficult for the optimizer to find a curve built on polynomial input commands that correctly approximates the given trajectory. This effect is even enlarged by the weighting profile of the cost function which give less importance to the accuracy of the first steps in the control horizon. Nevertheless Figure \ref{base_curves_errors} let us see that the time elapsed during the the optimization process does not increase exponentially like in traditional MPC, but it has just a slight increment.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.5]{base_curves2}
@@ -87,7 +87,7 @@ A first consideration can be done on the Cartesian errors in tracking the mobile
 \end{figure}
 \begin{figure}[p]
 	\centering
-	\includegraphics[scale=0.47]{control_actions_SIM}
+	\makebox[\textwidth][c]{\includegraphics[scale=0.47]{control_actions_SIM}}
 	\caption{Control actions values over time. Boundary constraints are represented with the dashed lines}
 	\label{control_actions_SIM}
 \end{figure}
@@ -103,22 +103,9 @@ In addition to the state and the control actions boundary constraints, others ar
 \end{figure}
 \\
 We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. However a brief consideration on the passage from one control law to the other has to be done. Since both control laws are stable, this passage does not imply any instability ????????
-
-%%%%%%%%%% ---------------------
-
 \section{Physical experiments results}
-Once all the MPC parameters and weights have been properly tuned, the MM has been tested performing a trajectory following task, tracking the position and orientation of the end-effector along a given trajectory in order to grasp an object. In particular, the robot is asked to move towards a grasping area, grasp the object preferably without stopping the mobile base, and then move away from the grasping area. In all these steps the obstacle avoidance and self collision avoidance constraints have to be satisfied, maximizing also the manipulability measure and limiting maximum accelerations and maximum speeds of all joints. At the same time the MPC optimization process solves the kinematic redundancy problem.
-The pre-planned desired trajectories of the end effector and mobile base are shown in Figure \ref{ref_traj}. The given trajectories do not involve high speeds for the mobile base for two main reasons: first of all, since the controller has been developed on Matlab/Simulin
-\begin{figure}[h!]
+\begin{floatingfigure}[l]{.3\textwidth}
 	\centering
-	\includegraphics[scale=0.55]{ref_traj_REAL}
-	\caption{Desired trajectories of end effector and mobile base during experiments with the physical system}
-	\label{ref_traj}
-\end{figure}
-Experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
-\fix{parlare del fatto che gli esperimenti sono stati fatti a basse velocità per diversi motivi: software e del posizionamento della base che non funziona bene ad alte velocità e si possono mettere anche dei grafici per la ripetibilità della base e una foto.
-Parlare del sistema di telecamere che è stato usato ma non funzionava bene in termini di stabilità e magari mettere qualche foto?}
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{img_real_exp.png}
@@ -126,9 +113,14 @@ Parlare del sistema di telecamere che è stato usato ma non funzionava bene in t
 	\label{img_real_exp}
 \end{figure}
 
+	\includegraphics[scale=0.03]{robot_marker}
+	\caption{Aruco Markers positioning on ADAMMS\label{robot_marker}}
+\end{floatingfigure} 
+Thanks to the results coming from simulations we were able to properly tune all the MPC parameters and weights in order to test the Mobile Manipulator in analogous tasks of handling and grasping tracking pre-planned reference trajectories. The latter do not involve high speeds for the mobile base for two main reasons: first of all, since the controller has been developed on Matlab/Simulink, even with the improvements we proposed, the commercial solver we used is still not suitable for fast online optimization processes. Therefore, being bound by the software availability point of view, we had to keep an high time step $T$, resulting in very distant way-points defining the base trajectory when the base speed is high. The other reason is related to available hardware.
+The only measures of the position of the mobile platform are given from the odometry measurements of the platform itself, which are not reliable at high speeds because they do not consider the slipping of the wheels. Tests with different measuring systems like Aruco Markers localization, as in Figure \ref{robot_marker}, with cameras placed on the ceiling have been carried out, but the flickering of the image did not allow a fairly good measure.\\
+Thence, experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
+\\\\
 \subsection{Movement of the system toward grasping area}
-
-
 \subsection{Trajectory tracking in grasping operation}
 
 The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
