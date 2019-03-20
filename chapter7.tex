@@ -121,6 +121,35 @@ The only measures of the position of the mobile platform are given from the odom
 Thence, experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
 \\\\
 \subsection{Movement of the system toward grasping area}
+
+The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the error due to the base position $h_4$ and the error due to arm position in joints space $h_5$ as presented in \ref{chapter5}. The control horizon ($N$) used for this experiments has been setted equal to $10$, chosen after simulation results. In Figure \ref{hand_real1} the desired and the real performed trajectory of the base are shown.
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Base motion during grasping}
+	\label{hand_real1}
+	\end{figure}  
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Base error during handling}
+	\label{err_hand_1}
+	\end{figure}  
+
+It is possible to notice, looking at the error graph in Figure \ref{err_hand_1}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} joints position is given and compared to the desired one and it is possible to notice that, given that we are requiring a fixed position, the response of each joint is the response to a step input. 
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Joint position during handling}
+	\label{joint_pos_handl}
+	\end{figure}  
+
+
+
+
 \subsection{Trajectory tracking in grasping operation}
 
 The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
