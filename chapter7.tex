@@ -228,13 +228,31 @@ The controller has been tested to perform grasping operations tracking EE trajec
 
 	Errors in orientation are shown in Figure \ref{error_orient1}. Orientation is important in grasping operation because trajectories have to be planned according to the part to be handled. What is possible to see from \ref{error_xyz1} and \ref{error_orient1} is that the more the points are close eachother, that means low speeds, the more the tracking errors are small. In Figure \ref{base_err_exp1} the base motion and errors are shown and it is possible to notice that the errors are higher than the EE position. This is due to the fact that, for this task, we are weighting more the EE error than the base error.
 	The experiments has been performed successfully grasping different objects requiring different orientation approach for the EE.  
-
 	\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{base_err_exp1.png}
 	\caption{Base motion during grasping}
 	\label{base_err_exp1}
 	\end{figure}
+	In Figure \ref{err_num_base} errors on the cartesian base position of the base are reported for grasping experiment while in Figure \ref{vel_real} acceleration of the base in it's longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{empty.png}
+	\caption{Base cartesian error during grasping}
+	\label{err_num_base}
+	\end{figure}
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.20]{empty.png}
+	\caption{Control actions constraints}
+	\label{vel_real}
+	\end{figure}
+	To understand the performance in manipulability maximization we will show the value of $sin(\Theta_3)$ which is a good index of how far the arm is from it's singularities. In figure \ref{man_real1} is it possible to notice that this value is well bounded and minimized as was possible to notice during the experiments.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Manipulability during grasping}
+	\label{man_real1}
+	\end{figure}
 
-	\fix{Aggiungere errori numerici sulla base e le velocità fatte e che rispettano constraints e manipolabilità}
 	\fix{aggiungere qualcosa sul solutore}
