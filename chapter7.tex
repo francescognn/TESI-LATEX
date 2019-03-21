@@ -64,7 +64,7 @@ The previous tests have been performed describing the input commands $v$ and $\o
 \caption{Solving time comparison}
 \label{solving_times}
 \end{figure}
-Once understood how some parameters affect the performance of the controlled system, we assessed the actual convenience of the presented approach running some simulations with the entire Mobile Manipulator system. We compared the solving times of our approach with the ones of a traditional MPC at different time horizon tracking a simple sinusoidal trajectory for the end effector position, in Figure \ref{solving_times}. It is easy to see the convenience of our approach, since the number of the unknowns that the optimizer has to find does not increase with $N$ and so with the dimension of the problem. In other words, the mean time needed to the optimizer to solve the MPC problem stays almost constant instead of increasing exponentially.\\
+Once understood how some parameters affect the performance of the controlled system, we assessed the actual convenience of the presented approach running some simulations with the entire Mobile Manipulator system. We compared the solving times of our approach with the ones of a traditional NMPC with a piecewise constant control action and terminal constraint at different time horizon tracking a simple sinusoidal trajectory for the end effector position, in Figure \ref{solving_times}. It is easy to see the convenience of our approach, since the number of the unknowns that the optimizer has to find does not increase with $N$ and so with the dimension of the problem. In other words, the mean time needed to the optimizer to solve the MPC problem stays almost constant instead of increasing exponentially.\\
 The following results have been obtained simulating the control of the Mobile Manipulator performing two types of motion, handling and grasping, since the controller is meant to be suitable for all the phases of a pick-and-transport task. The stage costs used in both cases have been explained in Chapter \ref{chapter6}.
 \subsection{Mobile Manipulator Handling Simulations}
 The entire Mobile Manipulator has been simulated performing a trajectory tracking in joint space, i.e. a custom trajectory for each coordinate of the base and for each manipulator joint has been given. Typically, in Mobile Manipulator handling tasks, the main objective is the locomotion of the base, while the arm can be kept stationary. For this reason a constant trajectory is asked to be tracked for the joints of the arm, while we have chosen to give the mobile base a trajectory involving high velocities to track. The results of the simulations are shown in Figures \ref{handling_traj} and \ref{handling_joints}. 
@@ -104,7 +104,7 @@ In addition to the state and the control actions boundary constraints, others ar
 \label{self_collision}
 \end{figure}
 \\
-We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. Since both control laws are equally stable, the passage from one control law to the other does not imply any instability.
+We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. \fix{metterei: "The controller has been tested and appears to behaves stabilizing the system even in passing from one cost function to the other one"}. Since both control laws are equally stable, the passage from one control law to the other does not imply any instability.
 \section{Physical experiments results}
 \begin{figure}[h!]
 \centering
@@ -151,7 +151,7 @@ The presented controller has been tested to perform handling operations tracking
 \label{cost_function_HANDL}
 \end{figure}
 
-In Figure \ref{traj_handl} the desired and the real performed trajectory of the base are shown. It is possible to notice, looking at the error graph in Figure \ref{err_handl}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} the arm joints values are given compared to the desired ones and it is possible to notice that, given that we are requiring a fixed configuration of the arm, the response of each joint is the response to a step input. Finally, in Figure \ref{cost_function_HANDL} the optimal cost function evaluations are given for each time step of the operation; it is possible to notice how the cost is mainly due to the error in the base positioning, while the cost related to the joints error is high just in the first instants of the operation and it is basically null in the remaining part of the experiment.
+In Figure \ref{traj_handl} the desired and the real performed trajectory of the base are shown. It is possible to notice, looking at the error graph in Figure \ref{err_handl}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} the arm joints values are given compared to the desired ones and it is possible to notice that, given that we are requiring a fixed configuration of the arm, the response of each joint is the response to a step input. Finally, in Figure \ref{cost_function_HANDL} the optimal cost function evaluations are given for each time step of the operation; it is possible to notice how the cost is mainly due to the error in the base positioning, while the cost related to the joints error is high just in the first instants of the operation and it is basically null in the remaining part of the experiment. \fix{qui ci sono da rifare i grafici perchè le h sono in ordine diverso rispetto a come le abbiamo definite nel capitolo 5. Purtroppo è perchè su initialization sono definite in ordine diverso, bisogna girare il grafico}
 
 \subsection{Trajectory tracking in grasping operation}
 
@@ -214,46 +214,46 @@ The results are then compared in Figure \ref{traj_ee1_comp} with the trajectory 
 \end{figure} 
 %We will now analize the errors in performing this trajectory with respect to the desired one. Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right time instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the given points of the desired trajectory $x_d$ are not just the way-points of a path, but they refer also to a certain timing law that defines the trajectory. For this reason the offline planned desired points have to be generated according to velocity and acceleration requirements. 
 In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the end effector are shown for a linear parameterization of the arm joints velocities.
-\fix{immagine sbagliata}
+
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.4]{error_xyz1.png}
+\includegraphics[scale=0.3]{error_xyz1.png}
 \caption{End effector position errors during grasping}
 \label{error_xyz1}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.4]{error_orient1.png}
+\includegraphics[scale=0.3]{error_orient1.png}
 \caption{End effector orientation errors during grasping}
 \label{error_orient1}
 \end{figure}
-The end effector orientation errors are shown in Figure \ref{error_orient1} as the angles $\varphi_{EE}$ and $\vartheta_{EE}$ between the $x$ and $z$ axes of the end effector reference frame and the corresponding desired ones. Orientation is important in grasping operations because trajectories have to be planned according to the part to be handled. What is possible to see from Figures \ref{error_xyz1} and \ref{error_orient1} is that the closer are the way-points to eachother, meaning lower end effector desired speeds, the smaller are the tracking errors. In Figure \ref{base_err_exp1} the base motion and relative errors are shown: it is possible to notice that the base errors are higher than the ones on the end effector position, due to the different weights on the two terms in the cost function.
+The end effector orientation errors are shown in Figure \ref{error_orient1} as the angles $\varphi_{EE}$ and $\vartheta_{EE}$ between the $x$ and $z$ axes of the end effector reference frame and the corresponding desired ones. Orientation is important in grasping operations because trajectories have to be planned according to the part to be handled. What is possible to see from Figures \ref{error_xyz1} and \ref{error_orient1} is that the closer are the way-points to eachother, meaning lower end effector desired speeds, the smaller are the tracking errors. In Figure \ref{base_err_exp1} the base motion during grasping is shown: it is possible to notice that the base errors are higher than the ones on the end effector position, due to the different weights on the two terms in the cost function.
 The experiments has been performed successfully grasping different objects requiring different orientation approach for the end effector.  
-\begin{figure}[h!]
+
+\begin{figure}%
 \centering
-\includegraphics[scale=0.4]{base_err_exp1.png}
+\subfigure[Base motion]{%
+\label{base_err_exp1}%
+\includegraphics[scale=0.21]{base_err_exp1.png}}%
+\qquad
+\subfigure[Base cartesian error]{%
+\label{err_num_base}%
+\includegraphics[scale=0.22]{err_num_base.png}}%
 \caption{Base motion during grasping}
-\label{base_err_exp1}
 \end{figure}
+
 In Figure \ref{err_num_base} errors on the Cartesian base position of the base are reported for grasping experiment while in Figure \ref{vel_real} acceleration of the base in its longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
+
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.2]{empty.png}
-\caption{Base cartesian error during grasping}
-\label{err_num_base}
-\end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.20]{empty.png}
+\includegraphics[scale=0.250]{vel_real.png}
 \caption{Control actions constraints}
 \label{vel_real}
 \end{figure}
-To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In figure \ref{man_real1} is possible to notice that this value is well bounded and minimized as was possible to notice during the experiments.
+To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In figure \ref{man_real1} is possible to notice that this value is well bounded and tries to remain equal to $-1$ which corresponds to $90\ deg$, i.e. a good condition for manipulability.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.25]{empty.png}
+\includegraphics[scale=0.25]{man_real1.png}
 \caption{Manipulability during grasping}
 \label{man_real1}
 \end{figure}
-
-\fix{aggiungere qualcosa sul solutore}

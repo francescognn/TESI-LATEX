@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  19 MAR 2019 23:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  21 MAR 2019 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1542,307 +1542,314 @@ Package pdftex.def Info: IMMAGINI/diagramreal.png used on input line 114.
 
 (./chapter7.tex
 Chapter 7.
-<IMMAGINI/traj_base_curves.png, id=1016, 292.84406pt x 539.01375pt>
+<IMMAGINI/traj_base_curves.png, id=1017, 292.84406pt x 539.01375pt>
 File: IMMAGINI/traj_base_curves.png Graphic file (type png)
 
 <use IMMAGINI/traj_base_curves.png>
-Package pdftex.def Info: IMMAGINI/traj_base_curves.png used on input line 8.
-(pdftex.def)             Requested size: 117.13554pt x 215.60167pt.
+Package pdftex.def Info: IMMAGINI/traj_base_curves.png used on input line 10.
+(pdftex.def)             Requested size: 146.42166pt x 269.50621pt.
 
-Package floatflt Message: Floating figure 1 set on page 73
 <IMMAGINI/base_curves.png, id=1018, 575.90157pt x 396.7322pt>
 File: IMMAGINI/base_curves.png Graphic file (type png)
 
 <use IMMAGINI/base_curves.png>
-Package pdftex.def Info: IMMAGINI/base_curves.png used on input line 15.
+Package pdftex.def Info: IMMAGINI/base_curves.png used on input line 16.
 (pdftex.def)             Requested size: 287.95007pt x 198.3656pt.
 
-<IMMAGINI/base_curves_error.png, id=1019, 632.3625pt x 360.59718pt>
+<IMMAGINI/base_curves_error.png, id=1021, 632.3625pt x 360.59718pt>
 File: IMMAGINI/base_curves_error.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_error.png>
-Package pdftex.def Info: IMMAGINI/base_curves_error.png used on input line 20.
+Package pdftex.def Info: IMMAGINI/base_curves_error.png used on input line 22.
 (pdftex.def)             Requested size: 316.18048pt x 180.29814pt.
 
-<IMMAGINI/base_curves2.png, id=1023, 626.34pt x 338.76563pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<IMMAGINI/base_curves2.png, id=1025, 626.34pt x 338.76563pt>
 File: IMMAGINI/base_curves2.png Graphic file (type png)
 
 <use IMMAGINI/base_curves2.png>
-Package pdftex.def Info: IMMAGINI/base_curves2.png used on input line 28.
+Package pdftex.def Info: IMMAGINI/base_curves2.png used on input line 30.
 (pdftex.def)             Requested size: 313.16922pt x 169.38239pt.
 
-<IMMAGINI/base_curves_error2.png, id=1024, 634.62094pt x 371.13657pt>
+<IMMAGINI/base_curves_error2.png, id=1026, 634.62094pt x 371.13657pt>
 File: IMMAGINI/base_curves_error2.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_error2.png>
-Package pdftex.def Info: IMMAGINI/base_curves_error2.png used on input line 33.
+Package pdftex.def Info: IMMAGINI/base_curves_error2.png used on input line 35.
 
 (pdftex.def)             Requested size: 317.3097pt x 185.56783pt.
 
-<IMMAGINI/base_curves3.png, id=1027, 575.14874pt x 396.7322pt>
+<IMMAGINI/base_curves3.png, id=1029, 575.14874pt x 396.7322pt>
 File: IMMAGINI/base_curves3.png Graphic file (type png)
 
 <use IMMAGINI/base_curves3.png>
-Package pdftex.def Info: IMMAGINI/base_curves3.png used on input line 41.
+Package pdftex.def Info: IMMAGINI/base_curves3.png used on input line 43.
 (pdftex.def)             Requested size: 287.57367pt x 198.3656pt.
 
-<IMMAGINI/base_curves_error3.png, id=1028, 621.82312pt x 368.87813pt>
+<IMMAGINI/base_curves_error3.png, id=1030, 621.82312pt x 368.87813pt>
 File: IMMAGINI/base_curves_error3.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_error3.png>
-Package pdftex.def Info: IMMAGINI/base_curves_error3.png used on input line 46.
+Package pdftex.def Info: IMMAGINI/base_curves_error3.png used on input line 48.
 
 (pdftex.def)             Requested size: 310.9108pt x 184.4386pt.
 
-<IMMAGINI/base_curves_poly5.png, id=1029, 632.3625pt x 359.09157pt>
+<IMMAGINI/base_curves_poly5.png, id=1031, 632.3625pt x 359.09157pt>
 File: IMMAGINI/base_curves_poly5.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_poly5.png>
-Package pdftex.def Info: IMMAGINI/base_curves_poly5.png used on input line 53.
+Package pdftex.def Info: IMMAGINI/base_curves_poly5.png used on input line 55.
 (pdftex.def)             Requested size: 316.18048pt x 179.54533pt.
 
-<IMMAGINI/solving_times_small.png, id=1033, 488.57532pt x 328.97906pt>
+<IMMAGINI/solving_times_small.png, id=1035, 488.57532pt x 328.97906pt>
 File: IMMAGINI/solving_times_small.png Graphic file (type png)
 
 <use IMMAGINI/solving_times_small.png>
-Package pdftex.def Info: IMMAGINI/solving_times_small.png used on input line 61
+Package pdftex.def Info: IMMAGINI/solving_times_small.png used on input line 63
 .
 (pdftex.def)             Requested size: 293.14745pt x 197.38895pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--67
+Underfull \hbox (badness 10000) in paragraph at lines 27--69
 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [73
 
 
 
- <./IMMAGINI/traj_base_curves.png (PNG copy)>] [74 <./IMMAGINI/base_curves.png 
-(PNG copy)> <./IMMAGINI/base_curves_error.png (PNG copy)>]
+] [74 <./IMMAGINI/traj_base_curves.png (PNG copy)> <./IMMAGINI/base_curves.png 
+(PNG copy)>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[75 <./IMMAGINI/base_curves2.png (PNG copy)> <./IMMAGINI/base_curves_error2.png
- (PNG copy)>] [76 <./IMMAGINI/base_curves3.png (PNG copy)> <./IMMAGINI/base_cur
-ves_error3.png (PNG copy)>] [77 <./IMMAGINI/base_curves_poly5.png (PNG copy)> <
-./IMMAGINI/solving_times_small.png (PNG copy)>]
-<IMMAGINI/handling_traj.png, id=1068, 739.26187pt x 556.32843pt>
+[75 <./IMMAGINI/base_curves_error.png (PNG copy)>] [76 <./IMMAGINI/base_curves2
+.png (PNG copy)> <./IMMAGINI/base_curves_error2.png (PNG copy)>] [77 <./IMMAGIN
+I/base_curves3.png (PNG copy)> <./IMMAGINI/base_curves_error3.png (PNG copy)>]
+[78 <./IMMAGINI/base_curves_poly5.png (PNG copy)> <./IMMAGINI/solving_times_sma
+ll.png (PNG copy)>]
+<IMMAGINI/handling_traj.png, id=1074, 739.26187pt x 556.32843pt>
 File: IMMAGINI/handling_traj.png Graphic file (type png)
 
 <use IMMAGINI/handling_traj.png>
-Package pdftex.def Info: IMMAGINI/handling_traj.png used on input line 71.
+Package pdftex.def Info: IMMAGINI/handling_traj.png used on input line 73.
 (pdftex.def)             Requested size: 332.66476pt x 250.34547pt.
 
-<IMMAGINI/handling_joints.png, id=1069, 826.58812pt x 506.6428pt>
+<IMMAGINI/handling_joints.png, id=1075, 826.58812pt x 506.6428pt>
 File: IMMAGINI/handling_joints.png Graphic file (type png)
 
 <use IMMAGINI/handling_joints.png>
-Package pdftex.def Info: IMMAGINI/handling_joints.png used on input line 77.
+Package pdftex.def Info: IMMAGINI/handling_joints.png used on input line 79.
 (pdftex.def)             Requested size: 371.96121pt x 227.98715pt.
 
-<IMMAGINI/end_effector_tests.png, id=1073, 545.78906pt x 416.30531pt>
+<IMMAGINI/end_effector_tests.png, id=1079, 545.78906pt x 416.30531pt>
 File: IMMAGINI/end_effector_tests.png Graphic file (type png)
 
 <use IMMAGINI/end_effector_tests.png>
-Package pdftex.def Info: IMMAGINI/end_effector_tests.png used on input line 84.
+Package pdftex.def Info: IMMAGINI/end_effector_tests.png used on input line 86.
 
 (pdftex.def)             Requested size: 289.26682pt x 220.64076pt.
 
-<IMMAGINI/control_actions_SIM.png, id=1074, 968.11688pt x 554.07pt>
+<IMMAGINI/control_actions_SIM.png, id=1080, 968.11688pt x 554.07pt>
 File: IMMAGINI/control_actions_SIM.png Graphic file (type png)
 
 <use IMMAGINI/control_actions_SIM.png>
-Package pdftex.def Info: IMMAGINI/control_actions_SIM.png used on input line 90
+Package pdftex.def Info: IMMAGINI/control_actions_SIM.png used on input line 92
 .
 (pdftex.def)             Requested size: 455.015pt x 260.41293pt.
- [78] [79 <./IMMAGINI/handling_traj.png (PNG copy)> <./IMMAGINI/handling_joints
+ [79] [80 <./IMMAGINI/handling_traj.png (PNG copy)> <./IMMAGINI/handling_joints
 .png (PNG copy)>]
-<IMMAGINI/self_collision_test.png, id=1088, 711.1368pt x 171.5208pt>
+<IMMAGINI/self_collision_test.png, id=1094, 711.1368pt x 171.5208pt>
 File: IMMAGINI/self_collision_test.png Graphic file (type png)
 
 <use IMMAGINI/self_collision_test.png>
 Package pdftex.def Info: IMMAGINI/self_collision_test.png used on input line 10
-0.
+2.
 (pdftex.def)             Requested size: 391.12645pt x 94.33672pt.
 
-Overfull \hbox (1.12645pt too wide) in paragraph at lines 100--101
+Overfull \hbox (1.12645pt too wide) in paragraph at lines 102--103
  [][] 
  []
 
-[80] [81 <./IMMAGINI/end_effector_tests.png> <./IMMAGINI/control_actions_SIM.pn
-g>]
-
-Package floatflt Warning: Floating figures 1 and 2 colliding.
-
-<IMMAGINI/robot_marker.jpg, id=1101, 3468.96pt x 4625.28pt>
-File: IMMAGINI/robot_marker.jpg Graphic file (type jpg)
-
-<use IMMAGINI/robot_marker.jpg>
-Package pdftex.def Info: IMMAGINI/robot_marker.jpg used on input line 109.
-(pdftex.def)             Requested size: 104.0643pt x 138.75241pt.
-
-<IMMAGINI/img_real_exp.png, id=1102, 577.15625pt x 544.0325pt>
+[81] [82 <./IMMAGINI/end_effector_tests.png> <./IMMAGINI/control_actions_SIM.pn
+g>] <IMMAGINI/img_real_exp.png, id=1107, 577.15625pt x 544.0325pt>
 File: IMMAGINI/img_real_exp.png Graphic file (type png)
 
 <use IMMAGINI/img_real_exp.png>
-Package pdftex.def Info: IMMAGINI/img_real_exp.png used on input line 114.
+Package pdftex.def Info: IMMAGINI/img_real_exp.png used on input line 111.
 (pdftex.def)             Requested size: 230.8584pt x 217.60915pt.
 
+<IMMAGINI/robot_marker.jpg, id=1108, 3070.47125pt x 4000.9475pt>
+File: IMMAGINI/robot_marker.jpg Graphic file (type jpg)
+
+<use IMMAGINI/robot_marker.jpg>
+Package pdftex.def Info: IMMAGINI/robot_marker.jpg used on input line 119.
+(pdftex.def)             Requested size: 153.53255pt x 200.0591pt.
+ [83 <./IMMAGINI/self_collision_test.png> <./IMMAGINI/img_real_exp.png (PNG cop
+y)>]
+<IMMAGINI/traj_HANDL.png, id=1117, 632.3625pt x 522.45187pt>
+File: IMMAGINI/traj_HANDL.png Graphic file (type png)
+
+<use IMMAGINI/traj_HANDL.png>
+Package pdftex.def Info: IMMAGINI/traj_HANDL.png used on input line 129.
+(pdftex.def)             Requested size: 278.24036pt x 229.87953pt.
+
+<IMMAGINI/errors_HANDL.png, id=1118, 632.3625pt x 230.36063pt>
+File: IMMAGINI/errors_HANDL.png Graphic file (type png)
+
+<use IMMAGINI/errors_HANDL.png>
+Package pdftex.def Info: IMMAGINI/errors_HANDL.png used on input line 135.
+(pdftex.def)             Requested size: 284.5605pt x 103.66132pt.
+ [84 <./IMMAGINI/robot_marker.jpg>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Package floatflt Message: Floating figure 2 set on page 82
+<IMMAGINI/joint_pos_HANDL.png, id=1124, 819.06pt x 398.99063pt>
+File: IMMAGINI/joint_pos_HANDL.png Graphic file (type png)
 
-Overfull \hbox (12.46997pt too wide) in paragraph at lines 119--123
-\T1/cmr/m/n/12 on-line op-ti-miza-tion pro-cesses. There-fore, be-ing bound
- []
+<use IMMAGINI/joint_pos_HANDL.png>
+Package pdftex.def Info: IMMAGINI/joint_pos_HANDL.png used on input line 142.
+(pdftex.def)             Requested size: 409.52899pt x 199.49483pt.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--123
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--123
-
- []
-
-[82 <./IMMAGINI/self_collision_test.png> <./IMMAGINI/robot_marker.jpg>]
-[83 <./IMMAGINI/img_real_exp.png (PNG copy)>]
-<IMMAGINI/empty.png, id=1118, 961.5925pt x 722.7pt>
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 129.
-(pdftex.def)             Requested size: 240.39754pt x 180.67455pt.
-File: IMMAGINI/empty.png Graphic file (type png)
-
-<use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 136.
-(pdftex.def)             Requested size: 240.39754pt x 180.67455pt.
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 145.
-(pdftex.def)             Requested size: 240.39754pt x 180.67455pt.
- [84 <./IMMAGINI/empty.png>]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 157.
-
-<IMMAGINI/seq_robot.png, id=1130, 1301.86375pt x 844.15375pt>
-File: IMMAGINI/seq_robot.png Graphic file (type png)
-
-<use IMMAGINI/seq_robot.png>
-Package pdftex.def Info: IMMAGINI/seq_robot.png used on input line 194.
-(pdftex.def)             Requested size: 390.56213pt x 253.24808pt.
-
-Overfull \hbox (0.56213pt too wide) in paragraph at lines 194--195
+Overfull \hbox (19.52899pt too wide) in paragraph at lines 142--143
  [][] 
  []
 
-<IMMAGINI/traj_ee1.png, id=1134, 897.3525pt x 325.215pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<IMMAGINI/cost_function_HANDL.png, id=1125, 632.3625pt x 474.27188pt>
+File: IMMAGINI/cost_function_HANDL.png Graphic file (type png)
+
+<use IMMAGINI/cost_function_HANDL.png>
+Package pdftex.def Info: IMMAGINI/cost_function_HANDL.png used on input line 14
+9.
+(pdftex.def)             Requested size: 278.24036pt x 208.68027pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[85 <./IMMAGINI/traj_HANDL.png (PNG copy)>]
+<IMMAGINI/seq_robot.png, id=1139, 1301.86375pt x 844.15375pt>
+File: IMMAGINI/seq_robot.png Graphic file (type png)
+
+<use IMMAGINI/seq_robot.png>
+Package pdftex.def Info: IMMAGINI/seq_robot.png used on input line 161.
+(pdftex.def)             Requested size: 390.56213pt x 253.24808pt.
+
+Overfull \hbox (0.56213pt too wide) in paragraph at lines 161--162
+ [][] 
+ []
+
+[86 <./IMMAGINI/errors_HANDL.png (PNG copy)> <./IMMAGINI/joint_pos_HANDL.png (P
+NG copy)>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<IMMAGINI/traj_ee1.png, id=1148, 897.3525pt x 325.215pt>
 File: IMMAGINI/traj_ee1.png Graphic file (type png)
 
 <use IMMAGINI/traj_ee1.png>
-Package pdftex.def Info: IMMAGINI/traj_ee1.png used on input line 202.
+Package pdftex.def Info: IMMAGINI/traj_ee1.png used on input line 204.
 (pdftex.def)             Requested size: 323.04665pt x 117.0773pt.
 
-<IMMAGINI/traj_ee1_comp.png, id=1137, 596.2275pt x 270.25969pt>
+<IMMAGINI/traj_ee1_comp.png, id=1150, 596.2275pt x 270.25969pt>
 File: IMMAGINI/traj_ee1_comp.png Graphic file (type png)
 
 <use IMMAGINI/traj_ee1_comp.png>
-Package pdftex.def Info: IMMAGINI/traj_ee1_comp.png used on input line 209.
+Package pdftex.def Info: IMMAGINI/traj_ee1_comp.png used on input line 211.
 (pdftex.def)             Requested size: 268.2999pt x 121.61572pt.
+ [87 <./IMMAGINI/cost_function_HANDL.png (PNG copy)>]
 
-<IMMAGINI/error_xyz1.png, id=1140, 713.66624pt x 519.9425pt>
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<IMMAGINI/error_xyz1.png, id=1159, 861.2175pt x 713.66624pt>
 File: IMMAGINI/error_xyz1.png Graphic file (type png)
 
 <use IMMAGINI/error_xyz1.png>
-Package pdftex.def Info: IMMAGINI/error_xyz1.png used on input line 218.
-(pdftex.def)             Requested size: 285.46143pt x 207.97331pt.
+Package pdftex.def Info: IMMAGINI/error_xyz1.png used on input line 220.
+(pdftex.def)             Requested size: 258.36723pt x 214.10152pt.
 
-<IMMAGINI/error_orient1.png, id=1141, 758.835pt x 629.35126pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<IMMAGINI/error_orient1.png, id=1160, 758.835pt x 629.35126pt>
 File: IMMAGINI/error_orient1.png Graphic file (type png)
 
 <use IMMAGINI/error_orient1.png>
-Package pdftex.def Info: IMMAGINI/error_orient1.png used on input line 224.
-(pdftex.def)             Requested size: 303.52863pt x 251.73604pt.
+Package pdftex.def Info: IMMAGINI/error_orient1.png used on input line 226.
+(pdftex.def)             Requested size: 227.65225pt x 188.80682pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[85] [86 <./IMMAGINI/seq_robot.png>] [87 <./IMMAGINI/traj_ee1.png> <./IMMAGINI/
-traj_ee1_comp.png>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<IMMAGINI/base_err_exp1.png, id=1163, 840.13875pt x 667.49374pt>
+[88 <./IMMAGINI/seq_robot.png>] [89 <./IMMAGINI/traj_ee1.png> <./IMMAGINI/traj_
+ee1_comp.png>] [90 <./IMMAGINI/error_xyz1.png> <./IMMAGINI/error_orient1.png>]
+<IMMAGINI/base_err_exp1.png, id=1182, 840.13875pt x 667.49374pt>
 File: IMMAGINI/base_err_exp1.png Graphic file (type png)
 
 <use IMMAGINI/base_err_exp1.png>
-Package pdftex.def Info: IMMAGINI/base_err_exp1.png used on input line 233.
-(pdftex.def)             Requested size: 336.04955pt x 266.99277pt.
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 240.
-(pdftex.def)             Requested size: 192.3151pt x 144.53743pt.
-File: IMMAGINI/empty.png Graphic file (type png)
+Package pdftex.def Info: IMMAGINI/base_err_exp1.png used on input line 237.
+(pdftex.def)             Requested size: 176.43434pt x 140.17783pt.
 
-<use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 246.
-(pdftex.def)             Requested size: 192.3151pt x 144.53743pt.
-File: IMMAGINI/empty.png Graphic file (type png)
- <use IMMAGINI/empty.png>
-Package pdftex.def Info: IMMAGINI/empty.png used on input line 253.
-(pdftex.def)             Requested size: 240.39754pt x 180.67455pt.
+<IMMAGINI/err_num_base.png, id=1183, 757.83125pt x 597.23125pt>
+File: IMMAGINI/err_num_base.png Graphic file (type png)
 
+<use IMMAGINI/err_num_base.png>
+Package pdftex.def Info: IMMAGINI/err_num_base.png used on input line 241.
+(pdftex.def)             Requested size: 166.72339pt x 131.39127pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<IMMAGINI/vel_real.png, id=1186, 1566.85374pt x 690.58pt>
+File: IMMAGINI/vel_real.png Graphic file (type png)
 
+<use IMMAGINI/vel_real.png>
+Package pdftex.def Info: IMMAGINI/vel_real.png used on input line 249.
+(pdftex.def)             Requested size: 391.71248pt x 172.64458pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Overfull \hbox (1.71248pt too wide) in paragraph at lines 249--250
+ [][] 
+ []
 
+<IMMAGINI/man_real1.png, id=1188, 797.98125pt x 601.24625pt>
+File: IMMAGINI/man_real1.png Graphic file (type png)
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[88 <./IMMAGINI/error_xyz1.png>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [89 <./IMMAGINI/error_orient1.png>] [90 <./IMMAGINI/base_err_exp1.png>]
-[91]
+<use IMMAGINI/man_real1.png>
+Package pdftex.def Info: IMMAGINI/man_real1.png used on input line 256.
+(pdftex.def)             Requested size: 199.49481pt x 150.31119pt.
+) [91 <./IMMAGINI/base_err_exp1.png> <./IMMAGINI/err_num_base.png> <./IMMAGINI/
+vel_real.png>] [92 <./IMMAGINI/man_real1.png>]
 \openout2 = `conclusions.aux'.
 
- (./conclusions.tex
+
+(./conclusions.tex
 Chapter 8.
-) [92
+) [93
 
 
 
-] (build/Thesis_main.lof [93
+] (build/Thesis_main.lof [94
 
 
 
-] [94])
+] [95])
 \tf@lof=\write6
 \openout6 = `Thesis_main.lof'.
 
- [95] (build/Thesis_main.lot)
+ [96] (build/Thesis_main.lot)
 \tf@lot=\write7
 \openout7 = `Thesis_main.lot'.
 
- [96
+ [97
 
 
 ]
@@ -1850,7 +1857,7 @@ Chapter 8.
 
 
 (./appendixA.tex
-<IMMAGINI/SuperMegaBot.PNG, id=1278, 432.11438pt x 277.53688pt>
+<IMMAGINI/SuperMegaBot.PNG, id=1294, 432.11438pt x 277.53688pt>
 File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot.PNG>
@@ -1861,13 +1868,13 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<IMMAGINI/SMBwires.png, id=1280, 559.08875pt x 324.21124pt>
+<IMMAGINI/SMBwires.png, id=1296, 559.08875pt x 324.21124pt>
 File: IMMAGINI/SMBwires.png Graphic file (type png)
 
 <use IMMAGINI/SMBwires.png>
 Package pdftex.def Info: IMMAGINI/SMBwires.png used on input line 33.
 (pdftex.def)             Requested size: 223.63153pt x 129.68219pt.
-) [97
+) [98
 
  <./IMMAGINI/SuperMegaBot.PNG> <./IMMAGINI/SMBwires.png>]
 \openout2 = `appendixB.aux'.
@@ -1882,26 +1889,26 @@ Overfull \hbox (43.22495pt too wide) in paragraph at lines 8--41
 [][] 
  []
 
-) [98
+) [99
 
 
 ]
 \openout2 = `appendixC.aux'.
 
- (./appendixC.tex) [99
+ (./appendixC.tex) [100
 
 
-] [100
+] [101
 
-] (build/Thesis_main.bbl [101
+] (build/Thesis_main.bbl [102
 
-] [102] [103])
+] [103]
+[104])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
-
-[104]
+ [105]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
- (build/Thesis_main.aux (build/frontespizio.aux) (build/dedica.aux)
-(build/ringraziamenti.aux) (build/abstract.aux) (build/chapter1.aux)
+ (build/Thesis_main.aux (build/frontespizio.aux) (build/dedica.aux) (build/ring
+raziamenti.aux) (build/abstract.aux) (build/chapter1.aux)
 (build/chapter2.aux) (build/chapter3.aux) (build/chapter4.aux)
 (build/chapter5.aux) (build/chapter6.aux) (build/chapter7.aux)
 (build/conclusions.aux) (build/appendixA.aux) (build/appendixB.aux)
@@ -1920,13 +1927,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
  ) 
 Here is how much of TeX's memory you used:
- 12519 strings out of 493029
- 181412 string characters out of 6136234
- 290857 words of memory out of 5000000
- 15275 multiletter control sequences out of 15000+600000
+ 12555 strings out of 493029
+ 182338 string characters out of 6136234
+ 292285 words of memory out of 5000000
+ 15301 multiletter control sequences out of 15000+600000
  29248 words of font info for 76 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 36i,30n,43p,1607b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,30n,43p,1607b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/
 fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
@@ -1953,10 +1960,10 @@ er/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0800.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sftt1200.pfb>
-Output written on build/Thesis_main.pdf (114 pages, 12520604 bytes).
+Output written on build/Thesis_main.pdf (115 pages, 11253607 bytes).
 PDF statistics:
- 1493 PDF objects out of 1728 (max. 8388607)
- 1258 compressed objects within 13 object streams
- 367 named destinations out of 1000 (max. 500000)
- 713 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1510 PDF objects out of 1728 (max. 8388607)
+ 1268 compressed objects within 13 object streams
+ 370 named destinations out of 1000 (max. 500000)
+ 743 words of extra memory for PDF output out of 10000 (max. 10000000)
 
