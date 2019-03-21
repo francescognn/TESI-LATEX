@@ -6,135 +6,135 @@
 The goal of the initial simulations is to assess the actual convenience of our approach and to tune the MPC parameters and weights. Once achieved good performances with a proper set of parameters, the controller can be tested with the physical system.\\
 Initially some simulations with only the mobile base have been run on a trajectory with low-radius curves (in Figure \ref{traj_base_curves}), seeing the effect of different control horizon lengths and of input disturbances. This trajectory has been chosen to simulate how our controller tracks a trajectory which goes around some obstacles. No obstacle avoidance is considered in this simulation.
 \begin{figure}%
-	\centering
-	\includegraphics[scale=0.5]{traj_base_curves}
-	\caption{Reference trajectory involving sharp curves. Radius=0.6m}
-	\label{traj_base_curves}
+\centering
+\includegraphics[scale=0.5]{traj_base_curves}
+\caption{Reference trajectory involving sharp curves. Radius=0.6m}
+\label{traj_base_curves}
 \end{figure}
 \begin{figure}
-	\centering
-	\includegraphics[scale=0.5]{base_curves}
-	\caption{Trajectories of the mobile platform tracking the trajectory in Fig.\ref{traj_base_curves}}
-	\label{base_curves}
+\centering
+\includegraphics[scale=0.5]{base_curves}
+\caption{Trajectories of the mobile platform tracking the trajectory in Fig.\ref{traj_base_curves}}
+\label{base_curves}
 \end{figure}
 
 \begin{figure}[!h]
-	\includegraphics[scale=0.5]{base_curves_error}
-	\centering
-	\caption{Cartesian error and Optimization time when varying N}
-	\label{base_curves_errors}
+\includegraphics[scale=0.5]{base_curves_error}
+\centering
+\caption{Cartesian error and Optimization time when varying N}
+\label{base_curves_errors}
 \end{figure}
 In Figure \ref{base_curves} the trajectories that the mobile base follows are shown, considering different levels of random disturbances added to the input commands and considering different values of $N$. In Figure \ref{base_curves_errors} the relative errors and optimization times are shown. From these results we can notice that our controller is able to manage even high disturbances, but because of the limitation introduced by the parameterization of the input, it is more difficult for the optimizer to find a curve built on polynomial input commands that correctly approximates the given trajectory. This effect is even enlarged by the weighting profile of the cost function which give less importance to the accuracy of the first steps in the control horizon. Nevertheless Figure \ref{base_curves_errors} let us see that the time elapsed during the the optimization process does not increase exponentially like in traditional MPC, but it has just a slight increment.\\
 \begin{figure}[p]
-	\centering
-	\includegraphics[scale=0.5]{base_curves2}
-	\caption{Mobile platform trajectories with different N with a small-radius trajectory}
-	\label{base_curves2}
+\centering
+\includegraphics[scale=0.5]{base_curves2}
+\caption{Mobile platform trajectories with different N with a small-radius trajectory}
+\label{base_curves2}
 \end{figure}
 \begin{figure}[p]
-	\includegraphics[scale=0.5]{base_curves_error2}
-	\centering
-	\caption{Cartesian error and Optimization time when varying N with a small-radius trajectory}
-	\label{base_curves_errors2}
+\includegraphics[scale=0.5]{base_curves_error2}
+\centering
+\caption{Cartesian error and Optimization time when varying N with a small-radius trajectory}
+\label{base_curves_errors2}
 \end{figure}
 To better understand the effect of a too high $N$ for complex trajectories, the same experiment has been run with a very similar trajectory but with a radius of the curves of $0.3$m instead of $0.6$m. The results of the simulations are found in Figures \ref{base_curves2} and \ref{base_curves_errors2}, where the effect of increasing $N$ is even more evident.
 \begin{figure}[p]
-	\centering
-	\includegraphics[scale=0.5]{base_curves3}
-	\caption{Mobile platform trajectories with different N using 5th order polynomial inputs}
-	\label{base_curves3}
+\centering
+\includegraphics[scale=0.5]{base_curves3}
+\caption{Mobile platform trajectories with different N using 5th order polynomial inputs}
+\label{base_curves3}
 \end{figure}
 \begin{figure}[p]
-	\includegraphics[scale=0.5]{base_curves_error3}
-	\centering
-	\caption{Cartesian error and Optimization time when varying N using 5th order polynomial inputs}
-	\label{base_curves_errors3}
+\includegraphics[scale=0.5]{base_curves_error3}
+\centering
+\caption{Cartesian error and Optimization time when varying N using 5th order polynomial inputs}
+\label{base_curves_errors3}
 \end{figure}
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.5]{base_curves_poly5}
-	\caption{Comparison of errors and time of computation for 3rd and 5th order polynomial inputs}
-	\label{base_curves_poly5}
+\centering
+\includegraphics[scale=0.5]{base_curves_poly5}
+\caption{Comparison of errors and time of computation for 3rd and 5th order polynomial inputs}
+\label{base_curves_poly5}
 \end{figure}
 The previous tests have been performed describing the input commands $v$ and $\omega$ with a 3rd order polynomial. As Figures \ref{base_curves3} and \ref{base_curves_errors3} show, the effect of $N$ is lowered increasing the order of the input polynomial to 5. In Figure \ref{base_curves_poly5} a comparison between the two parameterizations in term of Cartesian error and elapsed times is shown; as was foreseeable, since the unknowns of the problem are more numerous having increased the polynomial order, the time needed for the computation of the optimization problem is higher. On the other hand, lower errors were expected with higher order polynomials; however a better performance in this sense is reached only at high $N$, since the optimizer can now found trajectories which stay closer to the reference trajectory.
 \\\\
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.60]{solving_times_small}
-	\caption{Solving time comparison}
-	\label{solving_times}
+\centering
+\includegraphics[scale=0.60]{solving_times_small}
+\caption{Solving time comparison}
+\label{solving_times}
 \end{figure}
 Once understood how some parameters affect the performance of the controlled system, we assessed the actual convenience of the presented approach running some simulations with the entire Mobile Manipulator system. We compared the solving times of our approach with the ones of a traditional MPC at different time horizon tracking a simple sinusoidal trajectory for the end effector position, in Figure \ref{solving_times}. It is easy to see the convenience of our approach, since the number of the unknowns that the optimizer has to find does not increase with $N$ and so with the dimension of the problem. In other words, the mean time needed to the optimizer to solve the MPC problem stays almost constant instead of increasing exponentially.\\
 The following results have been obtained simulating the control of the Mobile Manipulator performing two types of motion, handling and grasping, since the controller is meant to be suitable for all the phases of a pick-and-transport task. The stage costs used in both cases have been explained in Chapter \ref{chapter6}.
 \subsection{Mobile Manipulator Handling Simulations}
 The entire Mobile Manipulator has been simulated performing a trajectory tracking in joint space, i.e. a custom trajectory for each coordinate of the base and for each manipulator joint has been given. Typically, in Mobile Manipulator handling tasks, the main objective is the locomotion of the base, while the arm can be kept stationary. For this reason a constant trajectory is asked to be tracked for the joints of the arm, while we have chosen to give the mobile base a trajectory involving high velocities to track. The results of the simulations are shown in Figures \ref{handling_traj} and \ref{handling_joints}. 
 \begin{figure}[p]
-	\centering
-	\includegraphics[scale=0.45]{handling_traj}
-	\caption{Trajectory following of the mobile base during a Mobile Manipulator handling task}
-	\label{handling_traj}
+\centering
+\includegraphics[scale=0.45]{handling_traj}
+\caption{Trajectory following of the mobile base during a Mobile Manipulator handling task}
+\label{handling_traj}
 \end{figure}
 \begin{figure}[p]
-	\centering
-	\includegraphics[scale=0.45]{handling_joints}
-	\caption{Trajectory following of the joints during a Mobile Manipulator handling task}
-	\label{handling_joints}
+\centering
+\includegraphics[scale=0.45]{handling_joints}
+\caption{Trajectory following of the joints during a Mobile Manipulator handling task}
+\label{handling_joints}
 \end{figure}
 A first consideration can be done on the Cartesian errors in tracking the mobile base motion. Indeed, in Figure \ref{handling_traj}, a peak of $1$ m of error can be seen at the very beginning of the trajectory. This is because the reference trajectory does not start with velocity equal to zero, while the robot starts from a stationary position; for this reason we can notice that the robot cuts the corner of the path to keep up with the reference trajectory. This "cutting the corner", actually, is the reason why increasing $N$, the errors in tracking the base position increase, as can also be seen in Figure \ref{handling_traj}. A second consideration is done on the trajectory tracking of the joint variables. Figure \ref{handling_joints} shows that our controller tracks very well a constant reference trajectory, varying the convergence to the constant value depending on $N$. This is because, even without imposing a constraint on the terminal state, our controller is driven to track exactly the reference value at the end of the prediction horizon; having kept the time step $T$ constant in all the simulations, a smaller time horizon leads to more reactive responses of the state.
 \begin{figure}[p]
-	\centering
-	\includegraphics[scale=0.53]{end_effector_tests}
-	\caption{End effector pose trajectory following with different N }
-	\label{end_effector_tests}
+\centering
+\includegraphics[scale=0.53]{end_effector_tests}
+\caption{End effector pose trajectory following with different N }
+\label{end_effector_tests}
 \end{figure}
 \begin{figure}[p]
-	\centering
-	\makebox[\textwidth][c]{\includegraphics[scale=0.47]{control_actions_SIM}}
-	\caption{Control actions values over time. Boundary constraints are represented with the dashed lines}
-	\label{control_actions_SIM}
+\centering
+\makebox[\textwidth][c]{\includegraphics[scale=0.47]{control_actions_SIM}}
+\caption{Control actions values over time. Boundary constraints are represented with the dashed lines}
+\label{control_actions_SIM}
 \end{figure}
 \subsection{Mobile Manipulator Grasping Simulations}
 The entire Mobile Manipulator has then been simulated performing an EE position and orientation trajectory tracking on a sinusoidal 3D path. Since part of the trajectory lies outside the UR5 workspace, the Mobile Manipulator is asked to move in a synchronized fashion to correctly track the end effector pose. 
 Results of these simulations are showed in Figure \ref{end_effector_tests}. The considerations made about previous tests still stand: the biggest limit of this controller is that it cannot find a trajectory defined with polynomial inputs that can stay close to too complex desired trajectories during long prediction horizons. The same effect has been seen keeping constant $N$ and increasing the time step $T$. Nonetheless, also in these results, it is possible to see how the optimization time has just a slight increment increasing $N$. In Figure \ref{control_actions_SIM} the control actions computed by the controller are shown to always satisfy the boundary constaints imposed.\\
 In addition to the state and the control actions boundary constraints, others are been added to avoid self collision of the Mobile Manipulator. In particular, boundaries on the maximum and minimum arm joint values have to be satisfyied, along with a constraint on the minimum distance between the spheres embedding different parts of the robot. A brief simulation has been run to investigate wheter these self-collision constraint are satisfied; as shown in Figure \ref{self_collision}, giving the end effector a trajectory to folllow colliding with the mobile platform, the spheres embedding the end effector and the base never interpenetrate due to the given constraints.
 \begin{figure}[t]
-	\centering
-	\includegraphics[scale=0.55]{self_collision_test}
-	\caption{Tracking a self colliding trajectory}
-	\label{self_collision}
+\centering
+\includegraphics[scale=0.55]{self_collision_test}
+\caption{Tracking a self colliding trajectory}
+\label{self_collision}
 \end{figure}
 \\
-We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. However a brief consideration on the passage from one control law to the other has to be done. Since both control laws are stable, this passage does not imply any instability ????????
+We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. Since both control laws are equally stable, the passage from one control law to the other does not imply any instability.
 \section{Physical experiments results}
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{img_real_exp.png}
-	\caption{ADAMMS Experiments}
-	\label{img_real_exp}
+\centering
+\includegraphics[scale=0.4]{img_real_exp.png}
+\caption{ADAMMS Experiments}
+\label{img_real_exp}
 \end{figure}
 Thanks to the results coming from simulations we were able to properly tune all the MPC parameters and weights in order to test the Mobile Manipulator in analogous tasks of handling and grasping tracking pre-planned reference trajectories. The latter do not involve high speeds for the mobile base for two main reasons: first of all, since the controller has been developed on Matlab/Simulink, even with the improvements we proposed, the commercial solver we used is still not suitable for fast online optimization processes. Therefore, being bound by the software availability point of view, we had to keep an high time step $T$, resulting in very distant way-points defining the base trajectory when the base speed is high. The other reason is related to available hardware.
 The only measures of the position of the mobile platform are given from the odometry measurements of the platform itself, which are not reliable at high speeds because they do not consider the slipping of the wheels. 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.05]{robot_marker}
-	\caption{Aruco Markers positioning on ADAMMS}
-	\label{robot_marker}
+\centering
+\includegraphics[scale=0.05]{robot_marker}
+\caption{Aruco Markers positioning on ADAMMS}
+\label{robot_marker}
 \end{figure} Tests with different measuring systems like Aruco Markers localization, as in Figure \ref{robot_marker}, with cameras placed on the ceiling have been carried out, but the flickering of the image did not allow a fairly good measure.\\
 Thence, experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
 
 \subsection{Trajectory tracking in handling operation}
 The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the cost due to the base position error $h_1$ and the cost due to arm position error in joints space $h_2$. The control horizon ($N$) used for this experiments has been setted equal to $10$, chosen after simulation results. 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.44]{traj_HANDL}
-	\caption{Base trajectory tracking in handling operation test}
-	\label{traj_handl}
+\centering
+\includegraphics[scale=0.44]{traj_HANDL}
+\caption{Base trajectory tracking in handling operation test}
+\label{traj_handl}
 \end{figure}
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.45]{errors_HANDL}
-	\caption{Base trajectory tracking Cartesian error in handling tests}
-	\label{err_handl}
+\centering
+\includegraphics[scale=0.45]{errors_HANDL}
+\caption{Base trajectory tracking Cartesian error in handling tests}
+\label{err_handl}
 \end{figure}
 
 \begin{figure}[h!]
@@ -145,117 +145,115 @@ The presented controller has been tested to perform handling operations tracking
 \end{figure}  
 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.44]{cost_function_HANDL}
-	\caption{Upper: Cost function evaluations at each time step. Lower: percentage of each cost function term over the total}
-	\label{cost_function_HANDL}
+\centering
+\includegraphics[scale=0.44]{cost_function_HANDL}
+\caption{Upper: Cost function evaluations at each time step. Lower: percentage of each cost function term over the total}
+\label{cost_function_HANDL}
 \end{figure}
 
 In Figure \ref{traj_handl} the desired and the real performed trajectory of the base are shown. It is possible to notice, looking at the error graph in Figure \ref{err_handl}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} the arm joints values are given compared to the desired ones and it is possible to notice that, given that we are requiring a fixed configuration of the arm, the response of each joint is the response to a step input. Finally, in Figure \ref{cost_function_HANDL} the optimal cost function evaluations are given for each time step of the operation; it is possible to notice how the cost is mainly due to the error in the base positioning, while the cost related to the joints error is high just in the first instants of the operation and it is basically null in the remaining part of the experiment.
 
 \subsection{Trajectory tracking in grasping operation}
 
-The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
+The controller has been tested to perform grasping operations tracking end effector trajectories as its position and orientation over time, as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. In Figure \ref{seq_robot} the phisical system performing grasping during experiments is shown. The position and orientation of the end effector are measured through the positioning system of the base presented in Chapter \ref{chapter6} and then using forward kinematics to compute position of the end effector. The gripper used in the experiments is a Robotiq 2-Finger 85mm for Universal Robots. The instant at which the gripper has to be closed was defined offline and the communication ensured through a ROS node. 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.3]{seq_robot.png}
+\caption{ADAMMS Experiments}
+\label{seq_robot}
+\end{figure}
 
-	\begin{table}[h]
-	\centering
-	\begin{tabular}{|l|l|l|ll}
-	\cline{1-2}
-	\multicolumn{2}{|l|}{ \textbf{Parameters} }	\\ \cline{1-2}
-	$N$     				&  $10$ 	      					\\ \cline{1-2}
-	$T$     				&  $0.4\ s$  	      					\\ \cline{1-2}
-	$b$     				&  $3$ 	      						\\ \cline{1-2}
-	$w_1$    				&  $1e6$       						\\ \cline{1-2}
-	$w_2$    				&  $50$       						\\ \cline{1-2}
-	$w_3$    				&  $1e5$       						\\ \cline{1-2}
-	$w_4$    				&  $5e3$       						\\ \cline{1-2}
-	$w_5$    				&  $0$      						\\ \cline{1-2}
-	\end{tabular}
-	\quad
-	\begin{tabular}{|l|l|l|ll}
-	\cline{1-3}
-	\textbf{Constraints}    	& \textbf{min} 					& \textbf{max}			\\ \cline{1-3}
-	$x_b$		 			 		&  -0.15 $m$ 					&  3.00 $m$ 			\\ \cline{1-3}
-	$y_b$		 			 		&  -2.60 $m$ 					&  0.20 $m$ 			\\ \cline{1-3}
-	$\theta_b$ 			 		&  -$\infty$  					&  +$\infty$ 			\\ \cline{1-3}
-	$\Theta_1$ (Base)			&  -350°  						&  350° 				\\ \cline{1-3}
-	$\Theta_2$ (Shoulder)		&  -180° 						&  0°		 			\\ \cline{1-3}
-	$\Theta_3$ (Elbow) 			&  -140° 						&  140°		 			\\ \cline{1-3}
-	$\Theta_4$ (Wrist1) 		&  -180° 						&  0°		 			\\ \cline{1-3}
-	$\Theta_5$ (Wrist2)			&  -140° 						&  97°		 			\\ \cline{1-3} 
-	$\Theta_6$ (Wrist3) 		&  -357° 						&  357°		 			\\ \cline{1-3}
-	$\dot{v}$ 			 		&  -0.1 $m/s^2$					&  -0.1 $m/s^2$ 		\\ \cline{1-3}
-	$\dot{\omega}$		 		&  -0.1 $rad/s^2$ 				&  -0.1 $rad/s^2$		\\ \cline{1-3}
-	$\dot{\Theta}_{1,\dots,6}$	&  -0.2 $rad/s$					&  -0.2 $rad/s$ 		\\ \cline{1-3}
-	\end{tabular}
-	\caption{Experiment Parameters}
-	\label{tableparam1}
-	\end{table}
-	The gripper used in the experiments is a Robotiq 2-Finger 85mm for Universal Robots. The instant at which the gripper has to be closed was defined offline and the communication ensured through a ROS node. In Figure \ref{seq_robot} the phisical system performing grasping during experiments is shoown.
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.3]{seq_robot.png}
-	\caption{ADAMMS Experiments}
-	\label{seq_robot}
-	\end{figure}
-	The first experiment's results, performed with a linear parameterization for the arm joints are obtained using the parameters shown in Table \ref{tableparam1}. As can be seen the weight for the solution of the optimization problem has been chosen higher for the EE pose than for the base error. This choice lies in what is the aim of the performed task: since we are interested in grasp an object, the error we are more interested in is the pose of the end effector. Giving a desired position and orientation for the base only helps in defining the cost function properly. In fact, as mentioned in \ref{chapter4} the high redundancy of Mobile Manupulators is usually managed adding secondary tasks to be performed like maximization of manipulability index. 
-	In Figure \ref{traj_ee1} the performed trajectory is shown in a 3D graph. 
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.36]{traj_ee1.png}
-	\caption{EE position during grasping}
-	\label{traj_ee1}
-	\end{figure}
-	The results are then compared in Figure \ref{traj_ee1_comp} with the trajectory performed in simulation. The position and orientation of the EE are measured through the positioning system of the base presented in \ref{chapter6} and then using forward kinematics to compute position of the end effector. 
-	\begin{figure}[h!]
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|ll}
+\cline{1-2}
+\multicolumn{2}{|l|}{ \textbf{Parameters} }	\\ \cline{1-2}
+$N$     				&  $10$ 	      					\\ \cline{1-2}
+$T$     				&  $0.4\ s$  	      					\\ \cline{1-2}
+$b$     				&  $3$ 	      						\\ \cline{1-2}
+$w_1$    				&  $1e6$       						\\ \cline{1-2}
+$w_2$    				&  $50$       						\\ \cline{1-2}
+$w_3$    				&  $1e5$       						\\ \cline{1-2}
+$w_4$    				&  $5e3$       						\\ \cline{1-2}
+$w_5$    				&  $0$      						\\ \cline{1-2}
+\end{tabular}
+\quad
+\begin{tabular}{|l|l|l|ll}
+\cline{1-3}
+\textbf{Constraints}    	& \textbf{min} 					& \textbf{max}			\\ \cline{1-3}
+$x_b$		 			 		&  -0.15 $m$ 					&  3.00 $m$ 			\\ \cline{1-3}
+$y_b$		 			 		&  -2.60 $m$ 					&  0.20 $m$ 			\\ \cline{1-3}
+$\theta_b$ 			 		&  -$\infty$  					&  +$\infty$ 			\\ \cline{1-3}
+$\Theta_1$ (Base)			&  -350°  						&  350° 				\\ \cline{1-3}
+$\Theta_2$ (Shoulder)		&  -180° 						&  0°		 			\\ \cline{1-3}
+$\Theta_3$ (Elbow) 			&  -140° 						&  140°		 			\\ \cline{1-3}
+$\Theta_4$ (Wrist1) 		&  -180° 						&  0°		 			\\ \cline{1-3}
+$\Theta_5$ (Wrist2)			&  -140° 						&  97°		 			\\ \cline{1-3} 
+$\Theta_6$ (Wrist3) 		&  -357° 						&  357°		 			\\ \cline{1-3}
+$\dot{v}$ 			 		&  -0.1 $m/s^2$					&  -0.1 $m/s^2$ 		\\ \cline{1-3}
+$\dot{\omega}$		 		&  -0.1 $rad/s^2$ 				&  -0.1 $rad/s^2$		\\ \cline{1-3}
+$\dot{\Theta}_{1,\dots,6}$	&  -0.2 $rad/s$					&  -0.2 $rad/s$ 		\\ \cline{1-3}
+\end{tabular}
+\caption{Experiment Parameters}
+\label{tableparam1}
+\end{table}
+The first experiment's results, performed with a linear parameterization for the arm joints are obtained using the parameters shown in Table \ref{tableparam1}. As can be seen, the weights for the solution of the optimization problem have been chosen higher for the end effector pose error than for the base error. This choice lies in what is the aim of the performed task: since we are interested in grasp an object, the term we are more interested in is the one related to the pose of the end effector. Giving a desired position and orientation for the base only helps in defining the cost function properly. In fact, as mentioned in Chapter \ref{chapter4}, the high redundancy of Mobile Manupulators is usually managed adding secondary tasks to be performed.
+In Figure \ref{traj_ee1} the performed trajectory of the end effector is shown in a 3D graph. 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.36]{traj_ee1.png}
+\caption{End effector position during grasping}
+\label{traj_ee1}
+\end{figure}
+The results are then compared in Figure \ref{traj_ee1_comp} with the trajectory performed in simulation: showing that the system behaviour is close to the simulated one, this confirm the accuracy of the model. 
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.45]{traj_ee1_comp.png}
-	\caption{EE position comparison during grasping}
+	\caption{End effector position comparison during grasping}
 	\label{traj_ee1_comp}
-	\end{figure}
-	The trajectories in \ref{traj_ee1_comp} show that the system behaviour is close to the simulated one, this confirm the accuracy of the model. We will now analize the errors in performing this trajectory with respect to the desired one.  
-	Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the number of the given points $x_d$ implies that we are referring to a trajectory and not to a path. For this reason the offline planned desired points have to be generate accorging to velocity and acceleration requirements. 
-	In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the EE are shown for a linear parameterization of the arm joints velocities.
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{error_xyz1.png}
-	\caption{EE position errors during grasping}
-	\label{error_xyz1}
-	\end{figure}
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{error_orient1.png}
-	\caption{EE orientation errors during grasping}
-	\label{error_orient1}
-	\end{figure}
+\end{figure} 
+%We will now analize the errors in performing this trajectory with respect to the desired one. Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right time instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the given points of the desired trajectory $x_d$ are not just the way-points of a path, but they refer also to a certain timing law that defines the trajectory. For this reason the offline planned desired points have to be generated according to velocity and acceleration requirements. 
+In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the end effector are shown for a linear parameterization of the arm joints velocities.
+\fix{immagine sbagliata}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{error_xyz1.png}
+\caption{End effector position errors during grasping}
+\label{error_xyz1}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{error_orient1.png}
+\caption{End effector orientation errors during grasping}
+\label{error_orient1}
+\end{figure}
+The end effector orientation errors are shown in Figure \ref{error_orient1} as the angles $\varphi_{EE}$ and $\vartheta_{EE}$ between the $x$ and $z$ axes of the end effector reference frame and the corresponding desired ones. Orientation is important in grasping operations because trajectories have to be planned according to the part to be handled. What is possible to see from Figures \ref{error_xyz1} and \ref{error_orient1} is that the closer are the way-points to eachother, meaning lower end effector desired speeds, the smaller are the tracking errors. In Figure \ref{base_err_exp1} the base motion and relative errors are shown: it is possible to notice that the base errors are higher than the ones on the end effector position, due to the different weights on the two terms in the cost function.
+The experiments has been performed successfully grasping different objects requiring different orientation approach for the end effector.  
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{base_err_exp1.png}
+\caption{Base motion during grasping}
+\label{base_err_exp1}
+\end{figure}
+In Figure \ref{err_num_base} errors on the Cartesian base position of the base are reported for grasping experiment while in Figure \ref{vel_real} acceleration of the base in its longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.2]{empty.png}
+\caption{Base cartesian error during grasping}
+\label{err_num_base}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.20]{empty.png}
+\caption{Control actions constraints}
+\label{vel_real}
+\end{figure}
+To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In figure \ref{man_real1} is possible to notice that this value is well bounded and minimized as was possible to notice during the experiments.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.25]{empty.png}
+\caption{Manipulability during grasping}
+\label{man_real1}
+\end{figure}
 
-	Errors in orientation are shown in Figure \ref{error_orient1}. Orientation is important in grasping operation because trajectories have to be planned according to the part to be handled. What is possible to see from \ref{error_xyz1} and \ref{error_orient1} is that the more the points are close eachother, that means low speeds, the more the tracking errors are small. In Figure \ref{base_err_exp1} the base motion and errors are shown and it is possible to notice that the errors are higher than the EE position. This is due to the fact that, for this task, we are weighting more the EE error than the base error.
-	The experiments has been performed successfully grasping different objects requiring different orientation approach for the EE.  
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{base_err_exp1.png}
-	\caption{Base motion during grasping}
-	\label{base_err_exp1}
-	\end{figure}
-	In Figure \ref{err_num_base} errors on the cartesian base position of the base are reported for grasping experiment while in Figure \ref{vel_real} acceleration of the base in it's longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.2]{empty.png}
-	\caption{Base cartesian error during grasping}
-	\label{err_num_base}
-	\end{figure}
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.20]{empty.png}
-	\caption{Control actions constraints}
-	\label{vel_real}
-	\end{figure}
-	To understand the performance in manipulability maximization we will show the value of $sin(\Theta_3)$ which is a good index of how far the arm is from it's singularities. In figure \ref{man_real1} is it possible to notice that this value is well bounded and minimized as was possible to notice during the experiments.
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.25]{empty.png}
-	\caption{Manipulability during grasping}
-	\label{man_real1}
-	\end{figure}
-
-	\fix{aggiungere qualcosa sul solutore}
+\fix{aggiungere qualcosa sul solutore}
