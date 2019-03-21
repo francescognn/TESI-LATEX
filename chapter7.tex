@@ -138,6 +138,37 @@ Firstly some tests on tracking a simple trajectory of the base keeping the arm i
 	\caption{Upper: Cost function evaluations at each time step. Lower: percentage of each cost function term over the total}
 	\label{cost_function_HANDL}
 \end{figure}
+\\\\
+\subsection{Movement of the system toward grasping area}
+
+The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the error due to the base position $h_4$ and the error due to arm position in joints space $h_5$ as presented in \ref{chapter5}. The control horizon ($N$) used for this experiments has been setted equal to $10$, chosen after simulation results. In Figure \ref{hand_real1} the desired and the real performed trajectory of the base are shown.
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Base motion during grasping}
+	\label{hand_real1}
+	\end{figure}  
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Base error during handling}
+	\label{err_hand_1}
+	\end{figure}  
+
+It is possible to notice, looking at the error graph in Figure \ref{err_hand_1}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} joints position is given and compared to the desired one and it is possible to notice that, given that we are requiring a fixed position, the response of each joint is the response to a step input. 
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Joint position during handling}
+	\label{joint_pos_handl}
+	\end{figure}  
+
+
+
+
 \subsection{Trajectory tracking in grasping operation}
 
 The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
@@ -200,7 +231,7 @@ The controller has been tested to perform grasping operations tracking EE trajec
 	\end{figure}
 	The trajectories in \ref{traj_ee1_comp} show that the system behaviour is close to the simulated one, this confirm the accuracy of the model. We will now analize the errors in performing this trajectory with respect to the desired one.  
 	Given that we are interested in a tracking problem, i.e. the system has to be in the correct position at the right instant, and that the controller works at a fixed frequency $f_c=\frac{1}{T}$, the number of the given points $x_d$ implies that we are referring to a trajectory and not to a path. For this reason the offline planned desired points have to be generate accorging to velocity and acceleration requirements. 
-	In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the EE is shown for a linear parameterization of the arm joints velocities.
+	In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the EE are shown for a linear parameterization of the arm joints velocities.
 	\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{error_xyz1.png}
@@ -209,10 +240,38 @@ The controller has been tested to perform grasping operations tracking EE trajec
 	\end{figure}
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.2]{empty}
+	\includegraphics[scale=0.4]{error_orient1.png}
 	\caption{EE orientation errors during grasping}
 	\label{error_orient1}
 	\end{figure}
 
-	Errors in orientation are shown in Figure \ref{error_orient1}. Orientation is important in grasping operation because trajectories have to be planned according to the part to be handled. What is possible to see is that the more the points are close eachother  
+	Errors in orientation are shown in Figure \ref{error_orient1}. Orientation is important in grasping operation because trajectories have to be planned according to the part to be handled. What is possible to see from \ref{error_xyz1} and \ref{error_orient1} is that the more the points are close eachother, that means low speeds, the more the tracking errors are small. In Figure \ref{base_err_exp1} the base motion and errors are shown and it is possible to notice that the errors are higher than the EE position. This is due to the fact that, for this task, we are weighting more the EE error than the base error.
+	The experiments has been performed successfully grasping different objects requiring different orientation approach for the EE.  
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{base_err_exp1.png}
+	\caption{Base motion during grasping}
+	\label{base_err_exp1}
+	\end{figure}
+	In Figure \ref{err_num_base} errors on the cartesian base position of the base are reported for grasping experiment while in Figure \ref{vel_real} acceleration of the base in it's longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{empty.png}
+	\caption{Base cartesian error during grasping}
+	\label{err_num_base}
+	\end{figure}
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.20]{empty.png}
+	\caption{Control actions constraints}
+	\label{vel_real}
+	\end{figure}
+	To understand the performance in manipulability maximization we will show the value of $sin(\Theta_3)$ which is a good index of how far the arm is from it's singularities. In figure \ref{man_real1} is it possible to notice that this value is well bounded and minimized as was possible to notice during the experiments.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{empty.png}
+	\caption{Manipulability during grasping}
+	\label{man_real1}
+	\end{figure}
 
+	\fix{aggiungere qualcosa sul solutore}
