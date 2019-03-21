@@ -123,57 +123,41 @@ The only measures of the position of the mobile platform are given from the odom
 Thence, experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
 
 \subsection{Trajectory tracking in handling operation}
-Firstly some tests on tracking a simple trajectory of the base keeping the arm in a fixed position have been run with the physical system to reproduce an handling operation. In Figure \ref{traj_handl} 
-\begin{figure}%
+The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the cost due to the base position error $h_1$ and the cost due to arm position error in joints space $h_2$. The control horizon ($N$) used for this experiments has been setted equal to $10$, chosen after simulation results. 
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.44]{traj_HANDL}
-	\includegraphics[scale=0.45]{errors_HANDL}
 	\caption{Base trajectory tracking in handling operation test}
 	\label{traj_handl}
 \end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.45]{errors_HANDL}
+	\caption{Base trajectory tracking Cartesian error in handling tests}
+	\label{err_handl}
+\end{figure}
 
-\begin{figure}%
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{joint_pos_HANDL}
+\caption{Joint postions (dashed blue line) during handling, against the desired joint values (in red)}
+\label{joint_pos_handl}
+\end{figure}  
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.44]{cost_function_HANDL}
 	\caption{Upper: Cost function evaluations at each time step. Lower: percentage of each cost function term over the total}
 	\label{cost_function_HANDL}
 \end{figure}
-\\\\
-\subsection{Movement of the system toward grasping area}
 
-The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the error due to the base position $h_4$ and the error due to arm position in joints space $h_5$ as presented in \ref{chapter5}. The control horizon ($N$) used for this experiments has been setted equal to $10$, chosen after simulation results. In Figure \ref{hand_real1} the desired and the real performed trajectory of the base are shown.
-
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.25]{empty.png}
-	\caption{Base motion during grasping}
-	\label{hand_real1}
-	\end{figure}  
-
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.25]{empty.png}
-	\caption{Base error during handling}
-	\label{err_hand_1}
-	\end{figure}  
-
-It is possible to notice, looking at the error graph in Figure \ref{err_hand_1}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} joints position is given and compared to the desired one and it is possible to notice that, given that we are requiring a fixed position, the response of each joint is the response to a step input. 
-
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.25]{empty.png}
-	\caption{Joint position during handling}
-	\label{joint_pos_handl}
-	\end{figure}  
-
-
-
+In Figure \ref{traj_handl} the desired and the real performed trajectory of the base are shown. It is possible to notice, looking at the error graph in Figure \ref{err_handl}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} the arm joints values are given compared to the desired ones and it is possible to notice that, given that we are requiring a fixed configuration of the arm, the response of each joint is the response to a step input. Finally, in Figure \ref{cost_function_HANDL} the optimal cost function evaluations are given for each time step of the operation; it is possible to notice how the cost is mainly due to the error in the base positioning, while the cost related to the joints error is high just in the first instants of the operation and it is basically null in the remaining part of the experiment.
 
 \subsection{Trajectory tracking in grasping operation}
 
 The controller has been tested to perform grasping operations tracking EE trajectories as position and orientation in time as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. The time chosen to perform this task has been setted between $35$ and $45 s$ according to the choice of $T$. 
 
-	\begin{table}[]
+	\begin{table}[h]
 	\centering
 	\begin{tabular}{|l|l|l|ll}
 	\cline{1-2}
