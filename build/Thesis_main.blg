@@ -18,44 +18,44 @@ A level-1 auxiliary file: appendixB.aux
 A level-1 auxiliary file: appendixC.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
-You've used 33 entries,
+You've used 38 entries,
             1876 wiz_defined-function locations,
-            691 strings with 9115 characters,
-and the built_in function-call counts, 9744 in all, are:
-= -- 1024
-> -- 264
+            714 strings with 10156 characters,
+and the built_in function-call counts, 11102 in all, are:
+= -- 1135
+> -- 337
 < -- 0
-+ -- 102
-- -- 69
-* -- 621
-:= -- 1266
-add.period$ -- 38
-call.type$ -- 33
-change.case$ -- 28
++ -- 128
+- -- 90
+* -- 735
+:= -- 1461
+add.period$ -- 43
+call.type$ -- 38
+change.case$ -- 33
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 539
-empty$ -- 998
-format.name$ -- 69
-if$ -- 2442
+cite$ -- 38
+duplicate$ -- 616
+empty$ -- 1137
+format.name$ -- 90
+if$ -- 2765
 int.to.chr$ -- 0
-int.to.str$ -- 33
-missing$ -- 37
-newline$ -- 107
-num.names$ -- 33
-pop$ -- 138
+int.to.str$ -- 38
+missing$ -- 42
+newline$ -- 122
+num.names$ -- 38
+pop$ -- 166
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 386
+skip$ -- 422
 stack$ -- 0
-substring$ -- 784
-swap$ -- 228
+substring$ -- 844
+swap$ -- 249
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 105
-width$ -- 35
-write$ -- 331
+while$ -- 115
+width$ -- 40
+write$ -- 379
