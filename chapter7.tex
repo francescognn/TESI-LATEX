@@ -104,7 +104,7 @@ In addition to the state and the control actions boundary constraints, others ar
 \label{self_collision}
 \end{figure}
 \\
-We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. \fix{metterei: "The controller has been tested and appears to behaves stabilizing the system even in passing from one cost function to the other one"}. Since both control laws are equally stable, the passage from one control law to the other does not imply any instability.
+We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. The controller has been tested and appears to behaves stabilizing the system even in passing from one cost function to the other one.
 \section{Physical experiments results}
 \begin{figure}[h!]
 \centering
@@ -155,7 +155,7 @@ In Figure \ref{traj_handl} the desired and the real performed trajectory of the 
 
 \subsection{Trajectory tracking in grasping operation}
 
-The controller has been tested to perform grasping operations tracking end effector trajectories as its position and orientation over time, as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. In Figure \ref{seq_robot} the phisical system performing grasping during experiments is shown. The position and orientation of the end effector are measured through the positioning system of the base presented in Chapter \ref{chapter6} and then using forward kinematics to compute position of the end effector. The gripper used in the experiments is a Robotiq 2-Finger 85mm for Universal Robots. The instant at which the gripper has to be closed was defined offline and the communication ensured through a ROS node. 
+The controller has been tested to perform grasping operations tracking end effector trajectories as its position and orientation over time, as well as a desired motion of the base. For these experiments the system shows a response comparable to the model used in simulation. Anyway, considering the errors due to the positioning system of the base, as mentioned before, the system did not allow to be tested at high speed. In Figure \ref{seq_robot} the physical system performing grasping during experiments is shown. The position and orientation of the end effector are measured through the positioning system of the base presented in Chapter \ref{chapter6} and then using forward kinematics to compute position of the end effector. The gripper used in the experiments is a Robotiq 2-Finger 85mm for Universal Robots. The instant at which the gripper has to be closed was defined offline and the communication ensured through a ROS node. 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.3]{seq_robot.png}
@@ -250,7 +250,7 @@ In Figure \ref{err_num_base} errors on the Cartesian base position of the base a
 \caption{Control actions constraints}
 \label{vel_real}
 \end{figure}
-To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In figure \ref{man_real1} is possible to notice that this value is well bounded and tries to remain equal to $-1$ which corresponds to $90\ deg$, i.e. a good condition for manipulability.
+To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In Figure \ref{man_real1} is possible to notice that this value is well bounded and tries to remain equal to $-1$ which corresponds to $-90\ deg$, i.e. a good condition for manipulability.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.25]{man_real1.png}
