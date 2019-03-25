@@ -104,7 +104,7 @@ In addition to the state and the control actions boundary constraints, others ar
 \label{self_collision}
 \end{figure}
 \\
-We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. The controller has been tested and appears to behaves stabilizing the system even in passing from one cost function to the other one.
+We have described the results of simulations in two different tasks, having good performances controlling the robot in both situations. The controller has been tested and appears to behave stabilizing the system even in passing from one cost function to the other one.
 \section{Physical experiments results}
 \begin{figure}[h!]
 \centering
@@ -123,7 +123,7 @@ The only measures of the position of the mobile platform are given from the odom
 Thence, experiments have been performed with $N=10$ and choosing $T=0.4\ s$.
 
 \subsection{Trajectory tracking in handling operation}
-The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the cost due to the base position error $h_1$ and the cost due to arm position error in joints space $h_2$. The control horizon ($N$) used for this experiments has been setted equal to $10$, chosen after simulation results. 
+The presented controller has been tested to perform handling operations tracking a fixed position for the arm joints and a given trajectory for the mobile base. This approach allows the controller to solve faster the optimization problem. For these experiments the initial position of the system was random and not belonging to the desired trajectory. The cost function used to solve this problem combines the cost due to the base position error $h_4$ and the cost due to arm position error in joint space $h_5$. The control horizon ($N$) used for this experiments, based on simulation results, has been set equal to $10$. 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.44]{traj_HANDL}
@@ -147,11 +147,11 @@ The presented controller has been tested to perform handling operations tracking
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.44]{cost_function_HANDL}
-\caption{Upper: Cost function evaluations at each time step. Lower: percentage of each cost function term over the total}
+\caption{Upper: Cost function evaluations at each time step. Lower: overall percentage of each cost function term over the total, summing the contributions at each time step}
 \label{cost_function_HANDL}
 \end{figure}
 
-In Figure \ref{traj_handl} the desired and the real performed trajectory of the base are shown. It is possible to notice, looking at the error graph in Figure \ref{err_handl}, that the base track properly the given trajectory. In Figure \ref{joint_pos_handl} the arm joints values are given compared to the desired ones and it is possible to notice that, given that we are requiring a fixed configuration of the arm, the response of each joint is the response to a step input. Finally, in Figure \ref{cost_function_HANDL} the optimal cost function evaluations are given for each time step of the operation; it is possible to notice how the cost is mainly due to the error in the base positioning, while the cost related to the joints error is high just in the first instants of the operation and it is basically null in the remaining part of the experiment. \fix{qui ci sono da rifare i grafici perchè le h sono in ordine diverso rispetto a come le abbiamo definite nel capitolo 5. Purtroppo è perchè su initialization sono definite in ordine diverso, bisogna girare il grafico}
+In Figure \ref{traj_handl} the desired and the real performed trajectory of the base are shown. It is possible to notice, looking at the error graph in Figure \ref{err_handl}, that the base tracks properly the given trajectory. In Figure \ref{joint_pos_handl} the arm joint values are given compared to the desired ones and it is possible to notice that, given that we are requiring a fixed configuration of the arm, the response of each joint is the response to a step input. Finally, in Figure \ref{cost_function_HANDL} the optimal cost function evaluations are given for each time step of the operation; it is possible to notice how the cost is mainly due to the error in the base positioning, while the cost related to the joint errors is high just in the first instants of the operation and it is basically null in the remaining part of the experiment. \fix{qui ci sono da rifare i grafici perchè le h sono in ordine diverso rispetto a come le abbiamo definite nel capitolo 5. Purtroppo è perchè su initialization sono definite in ordine diverso, bisogna girare il grafico}
 
 \subsection{Trajectory tracking in grasping operation}
 
@@ -197,7 +197,7 @@ $\dot{\Theta}_{1,\dots,6}$	&  -0.2 $rad/s$					&  -0.2 $rad/s$ 		\\ \cline{1-3}
 \caption{Experiment Parameters}
 \label{tableparam1}
 \end{table}
-The first experiment's results, performed with a linear parameterization for the arm joints are obtained using the parameters shown in Table \ref{tableparam1}. As can be seen, the weights for the solution of the optimization problem have been chosen higher for the end effector pose error than for the base error. This choice lies in what is the aim of the performed task: since we are interested in grasp an object, the term we are more interested in is the one related to the pose of the end effector. Giving a desired position and orientation for the base only helps in defining the cost function properly. In fact, as mentioned in Chapter \ref{chapter4}, the high redundancy of Mobile Manupulators is usually managed adding secondary tasks to be performed.
+The first experimental results, performed with a linear parameterization for the arm joints are obtained using the parameters shown in Table \ref{tableparam1}. As can be seen, the weights for the solution of the optimization problem have been chosen higher for the end effector pose error than for the base error. This choice lies in what is the aim of the performed task: since we are interested in grasping an object, the term we are more interested in is the one related to the pose of the end effector. Giving a desired position and orientation for the base only helps in defining the cost function properly. In fact, as mentioned in Chapter \ref{chapter4}, the high redundancy of Mobile Manupulators is usually managed adding secondary tasks to be performed.
 In Figure \ref{traj_ee1} the performed trajectory of the end effector is shown in a 3D graph. 
 \begin{figure}[h!]
 \centering
@@ -242,7 +242,7 @@ The experiments has been performed successfully grasping different objects requi
 \caption{Base motion during grasping}
 \end{figure}
 
-In Figure \ref{err_num_base} errors on the Cartesian base position of the base are reported for grasping experiment while in Figure \ref{vel_real} acceleration of the base in its longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
+In Figure \ref{err_num_base} errors on the Cartesian base position are reported for a grasping experiment while in Figure \ref{vel_real} acceleration of the base in its longitudinal and angular components and velcities of the joints are reported and compared to the given constraints.
 
 \begin{figure}[h!]
 \centering
@@ -250,7 +250,7 @@ In Figure \ref{err_num_base} errors on the Cartesian base position of the base a
 \caption{Control actions constraints}
 \label{vel_real}
 \end{figure}
-To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In Figure \ref{man_real1} is possible to notice that this value is well bounded and tries to remain equal to $-1$ which corresponds to $-90\ deg$, i.e. a good condition for manipulability.
+To understand the performance in manipulability maximization we will show the value of $\sin\Theta_3$ which is a good index of how far the arm is from its singularities. In Figure \ref{man_real1} it is possible to notice that this value is well bounded and tries to remain equal to $-1$ which corresponds to $-90\ deg$, i.e. a good condition for manipulability.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.25]{man_real1.png}
