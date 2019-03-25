@@ -7,9 +7,13 @@ The developed high level controller for the presented Mobile Manipulator, togeth
 
 \section{Future Works}
 
-- dire del codice che si può implementare meglio \\
-- dire che si possono provare a verificare dove e come avvengono minimi locali \\
-- dire che si possono fare delle prove con della sensoristica migliore \\
-- dire che si può introdurre grasping fatto meglio studiando le traiettorie corrette \\
-- dire che se il solutore si può settare meglio (tolleranze e componenti del solutore commerciale) \\
-- dire che si può provare ad applicare questo approccio a linear MPC per ridurre la dipendenza sull'N \\
+The presented work propose an approach towards fast nonlinear model predictive control for online application but leaves a consistent number of aspects that needs to be studied in deep. 
+Indeed, the developed implementation of this approach can be improved optimizing the code using stand alone C++ code to be run in ROS. Futhermore, the presence of local minima in the cost function minimization can be studied and a better understanding of the affection of different terms in the cost function is required for this. The capabilities of the available sensors for the positioning system of the base affect significantly the position of the end effector and so the accuracy of the entire system. Because of that, the performances in real applications can be improved developing a better estimation system using filtering techniques. Grasping, as presented in this work, can be improved studing different approaches that can be integrated with the controller as presented, though giving optimized pre-planned trajectories can be a sufficient solution. The setup of the solver used (IPOPT) can be analized and customized to reduce again the solving times. Moreover, this approach can be tested with a linearized system to understand if the same benefits are present in linear MPC approaches, i.e. if the dipendece on $N$ is reduced. Finally stability of this approach has to be studied in deep to understand if there is a closed form to proof the stability of this approach depending on the exponent $b$ or if the stability is necessarily dependent on solver performances.
+
+
+% - dire del codice che si può implementare meglio \\
+% - dire che si possono provare a verificare dove e come avvengono minimi locali \\
+% - dire che si possono fare delle prove con della sensoristica migliore \\
+% - dire che si può introdurre grasping fatto meglio studiando le traiettorie corrette \\
+% - dire che se il solutore si può settare meglio (tolleranze e componenti del solutore commerciale) \\
+% - dire che si può provare ad applicare questo approccio a linear MPC per ridurre la dipendenza sull'N \\
