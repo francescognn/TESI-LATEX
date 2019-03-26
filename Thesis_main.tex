@@ -22,7 +22,8 @@
 \usepackage{array}
 \usepackage{subfigure}
 \usepackage{afterpage}
-\usepackage{amsmath,amssymb}            
+\usepackage{amsmath,amssymb} 
+\usepackage{amsfonts}           
 \usepackage{rotating}  
 \usepackage{fancyhdr}  
 \usepackage[scriptsize]{caption} 
@@ -41,6 +42,7 @@
 \usepackage[toc,page]{appendix}
 \usepackage{floatflt}
 \usepackage{xcolor}
+\usepackage{pdfpages}
 \makenomenclature
 
 \let\counterwithout\relax
@@ -129,6 +131,13 @@
 \newcommand\fix[1]{\textcolor{red}{FIX: #1} }                             
 %\renewcommand{\thefigure}{\arabic{figure}.\arabic{section}}
 %\renewcommand{\thetable}{\arabic{table}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Ipopt}{\textsc{Ipopt}\xspace}
+\newcommand{\JIpopt}{\textsc{JIpopt}\xspace}
+\newcommand{\ipoptr}{\texttt{ipoptr}\xspace}
+\newcommand{\sIpopt}{\textsc{sIpopt}\xspace}
+\newcommand{\Matlab}{\textsc{MATLAB}\xspace}
+\newcommand{\invisiblesection}[1]{ \refstepcounter{section} \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}  \sectionmark{#1}}
                                    
                                         
 %\fancyhead[RE]{\bfseries\leftmark}    
@@ -146,7 +155,9 @@
 \include{chapter6}
 \include{chapter7}
 \include{conclusions}
-
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\include{appendices}
 
 \cleardoublepage
 
@@ -159,18 +170,6 @@
 
 \addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
-
-
-
-
-
-\appendix
-\renewcommand{\thesection}{\Alph{section}}
-\include{appendixA}
-\include{appendixB}
-\include{appendixC}
-
-
 
 
 

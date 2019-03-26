@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  25 MAR 2019 18:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.14)  26 MAR 2019 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -574,6 +574,36 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2015/09/18 v0.5d Insert pages of external PDF documents (AM)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count146
+\calc@Bcount=\count147
+\calc@Adimen=\dimen158
+\calc@Bdimen=\dimen159
+\calc@Askip=\skip76
+\calc@Bskip=\skip77
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count148
+\calc@Cskip=\skip78
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+)
+\AM@pagewidth=\dimen160
+\AM@pageheight=\dimen161
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2015/09/18 v0.5d Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box64
+\AM@toc@title=\toks34
+\c@AM@survey=\count149
+\AM@templatesizebox=\box65
+)
 \@nomenclaturefile=\write3
 \openout3 = `Thesis_main.nlo'.
 
@@ -584,15 +614,15 @@ Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/15 v2.10.1 Sectioning titles
-\ttl@box=\box64
-\beforetitleunit=\skip76
-\aftertitleunit=\skip77
-\ttl@plus=\dimen158
-\ttl@minus=\dimen159
-\ttl@toksa=\toks34
-\titlewidth=\dimen160
-\titlewidthlast=\dimen161
-\titlewidthfirst=\dimen162
+\ttl@box=\box66
+\beforetitleunit=\skip79
+\aftertitleunit=\skip80
+\ttl@plus=\dimen162
+\ttl@minus=\dimen163
+\ttl@toksa=\toks35
+\titlewidth=\dimen164
+\titlewidthlast=\dimen165
+\titlewidthfirst=\dimen166
 )
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
@@ -606,8 +636,8 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks35
-\inpenc@posthook=\toks36
+\inpenc@prehook=\toks36
+\inpenc@posthook=\toks37
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
@@ -999,63 +1029,67 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2016/02/24 3.9q Babel common definitions
-\babel@savecnt=\count146
-\U@D=\dimen163
+\babel@savecnt=\count150
+\U@D=\dimen167
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(build/Thesis_main.aux (build/frontespizio.aux) (build/dedica.aux)
-(build/ringraziamenti.aux) (build/abstract.aux) (build/chapter1.aux)
-(build/chapter2.aux) (build/chapter3.aux) (build/chapter4.aux)
-(build/chapter5.aux
+(/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.aux
+(/home/francesco/Documents/GIT/TESI-LATEX/build/frontespizio.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/dedica.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/ringraziamenti.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/abstract.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter1.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter2.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter3.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter4.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter5.aux
 
 LaTeX Warning: Label `NLsystem' multiply defined.
 
-) (build/chapter6.aux) (build/chapter7.aux) (build/conclusions.aux)
-(build/appendixA.aux) (build/appendixB.aux
-
-LaTeX Warning: Label `SMB Wiring' multiply defined.
-
-) (build/appendixC.aux))
+) (/home/francesco/Documents/GIT/TESI-LATEX/build/chapter6.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter7.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/conclusions.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/appendices.aux))
 \openout1 = `Thesis_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 91.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    ... okay on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count147
-\scratchdimen=\dimen164
-\scratchbox=\box65
-\nofMPsegments=\count148
-\nofMParguments=\count149
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count150
-\MPscratchDim=\dimen165
-\MPnumerator=\count151
-\makeMPintoPDFobject=\count152
-\everyMPtoPDFconversion=\toks38
+\scratchcounter=\count151
+\scratchdimen=\dimen168
+\scratchbox=\box67
+\nofMPsegments=\count152
+\nofMParguments=\count153
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count154
+\MPscratchDim=\dimen169
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
+\everyMPtoPDFconversion=\toks39
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1076,8 +1110,8 @@ Package caption Info: floatflt package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box66
-Package hyperref Info: Link coloring OFF on input line 89.
+\AtBeginShipoutBox=\box68
+Package hyperref Info: Link coloring OFF on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1085,21 +1119,32 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count153
+\c@section@level=\count157
 )
-LaTeX Info: Redefining \ref on input line 89.
-LaTeX Info: Redefining \pageref on input line 89.
-LaTeX Info: Redefining \nameref on input line 89.
+LaTeX Info: Redefining \ref on input line 91.
+LaTeX Info: Redefining \pageref on input line 91.
+LaTeX Info: Redefining \nameref on input line 91.
 
-(build/Thesis_main.out) (build/Thesis_main.out)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.out)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.out)
 \@outlinefile=\write4
 \openout4 = `Thesis_main.out'.
 
-\c@lstlisting=\count154
+\c@lstlisting=\count158
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+)
 \openout2 = `frontespizio.aux'.
 
- (./frontespizio.tex
-<IMMAGINI/Logo_Politecnico_Milano.png, id=212, 666.49pt x 489.83pt>
+
+(./frontespizio.tex
+<IMMAGINI/Logo_Politecnico_Milano.png, id=208, 666.49pt x 489.83pt>
 File: IMMAGINI/Logo_Politecnico_Milano.png Graphic file (type png)
 
 <use IMMAGINI/Logo_Politecnico_Milano.png>
@@ -1119,7 +1164,7 @@ o_Milano.png>])
 
 
 
-] (build/Thesis_main.toc
+] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1167,13 +1212,13 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
  (./chapter1.tex
 Chapter 1.
-<IMMAGINI/MM.png, id=321, 569.9694pt x 275.1078pt>
+<IMMAGINI/MM.png, id=316, 569.9694pt x 275.1078pt>
 File: IMMAGINI/MM.png Graphic file (type png)
  <use IMMAGINI/MM.png>
 Package pdftex.def Info: IMMAGINI/MM.png used on input line 6.
 (pdftex.def)             Requested size: 284.98401pt x 137.55356pt.
 
-<IMMAGINI/JPL_rover.png, id=323, 2509.375pt x 1411.2725pt>
+<IMMAGINI/JPL_rover.png, id=318, 2509.375pt x 1411.2725pt>
 File: IMMAGINI/JPL_rover.png Graphic file (type png)
 
 <use IMMAGINI/JPL_rover.png>
@@ -1202,21 +1247,21 @@ Chapter 2.
 
 
 
-] <IMMAGINI/unicyclemodel.PNG, id=372, 754.017pt x 296.7888pt>
+] <IMMAGINI/unicyclemodel.PNG, id=367, 754.017pt x 296.7888pt>
 File: IMMAGINI/unicyclemodel.PNG Graphic file (type png)
 
 <use IMMAGINI/unicyclemodel.PNG>
 Package pdftex.def Info: IMMAGINI/unicyclemodel.PNG used on input line 41.
 (pdftex.def)             Requested size: 301.60146pt x 118.71341pt.
  [6] [7 <./IMMAGINI/unicyclemodel.PNG>]
-<IMMAGINI/mobilebase.png, id=397, 283.2984pt x 192.72pt>
+<IMMAGINI/mobilebase.png, id=392, 283.2984pt x 192.72pt>
 File: IMMAGINI/mobilebase.png Graphic file (type png)
 
 <use IMMAGINI/mobilebase.png>
 Package pdftex.def Info: IMMAGINI/mobilebase.png used on input line 97.
 (pdftex.def)             Requested size: 226.63902pt x 154.1762pt.
  [8 <./IMMAGINI/mobilebase.png>]
-<IMMAGINI/denavithartenberg.PNG, id=408, 639.38875pt x 393.47pt>
+<IMMAGINI/denavithartenberg.PNG, id=403, 639.38875pt x 393.47pt>
 File: IMMAGINI/denavithartenberg.PNG Graphic file (type png)
 
 <use IMMAGINI/denavithartenberg.PNG>
@@ -1227,7 +1272,7 @@ Package pdftex.def Info: IMMAGINI/denavithartenberg.PNG used on input line 126.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9] <IMMAGINI/MMkinematics.png, id=420, 332.442pt x 280.8894pt>
+[9] <IMMAGINI/MMkinematics.png, id=415, 332.442pt x 280.8894pt>
 File: IMMAGINI/MMkinematics.png Graphic file (type png)
 
 <use IMMAGINI/MMkinematics.png>
@@ -1249,14 +1294,14 @@ Overfull \hbox (5.59927pt too wide) in paragraph at lines 37--39
 positive-definite
  []
 
-<IMMAGINI/mpc_usage_table.png, id=471, 1365.1pt x 760.8425pt>
+<IMMAGINI/mpc_usage_table.png, id=466, 1365.1pt x 760.8425pt>
 File: IMMAGINI/mpc_usage_table.png Graphic file (type png)
 
 <use IMMAGINI/mpc_usage_table.png>
 Package pdftex.def Info: IMMAGINI/mpc_usage_table.png used on input line 63.
 (pdftex.def)             Requested size: 382.2254pt x 213.03444pt.
  [17] [18] [19 <./IMMAGINI/mpc_usage_table.png>] <IMMAGINI/MPC_base_diagram.jpg
-, id=496, 955.57pt x 273.02pt>
+, id=491, 955.57pt x 273.02pt>
 File: IMMAGINI/MPC_base_diagram.jpg Graphic file (type jpg)
 
 <use IMMAGINI/MPC_base_diagram.jpg>
@@ -1266,7 +1311,7 @@ Package pdftex.def Info: IMMAGINI/MPC_base_diagram.jpg used on input line 88.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[20] <IMMAGINI/mpc_horizon_base_scheme.jpg, id=504, 1212.53pt x 720.6925pt>
+[20] <IMMAGINI/mpc_horizon_base_scheme.jpg, id=499, 1212.53pt x 720.6925pt>
 File: IMMAGINI/mpc_horizon_base_scheme.jpg Graphic file (type jpg)
 
 <use IMMAGINI/mpc_horizon_base_scheme.jpg>
@@ -1275,7 +1320,7 @@ e 103.
 (pdftex.def)             Requested size: 388.01753pt x 230.62631pt.
  [21 <./IMMAGINI/MPC_base_diagram.jpg> <./IMMAGINI/mpc_horizon_base_scheme.jpg>
 ]
-<IMMAGINI/scheme_model_based_opt.jpg, id=512, 1256.695pt x 314.17375pt>
+<IMMAGINI/scheme_model_based_opt.jpg, id=507, 1256.695pt x 314.17375pt>
 File: IMMAGINI/scheme_model_based_opt.jpg Graphic file (type jpg)
 
 <use IMMAGINI/scheme_model_based_opt.jpg>
@@ -1293,7 +1338,7 @@ Overfull \hbox (11.38618pt too wide) in paragraph at lines 183--183
  []
 
 [24] [25] [26]
-<IMMAGINI/feasibility_image1.png, id=561, 879.285pt x 797.98125pt>
+<IMMAGINI/feasibility_image1.png, id=556, 879.285pt x 797.98125pt>
 File: IMMAGINI/feasibility_image1.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_image1.png>
@@ -1301,7 +1346,7 @@ Package pdftex.def Info: IMMAGINI/feasibility_image1.png used on input line 254
 .
 (pdftex.def)             Requested size: 175.85388pt x 159.59341pt.
 
-<IMMAGINI/feasibility_region.png, id=562, 722.7pt x 658.46pt>
+<IMMAGINI/feasibility_region.png, id=557, 722.7pt x 658.46pt>
 File: IMMAGINI/feasibility_region.png Graphic file (type png)
 
 <use IMMAGINI/feasibility_region.png>
@@ -1309,7 +1354,7 @@ Package pdftex.def Info: IMMAGINI/feasibility_region.png used on input line 258
 .
 (pdftex.def)             Requested size: 180.67455pt x 164.6146pt.
 
-<IMMAGINI/feasible_image2.png, id=563, 550.055pt x 628.3475pt>
+<IMMAGINI/feasible_image2.png, id=558, 550.055pt x 628.3475pt>
 File: IMMAGINI/feasible_image2.png Graphic file (type png)
 
 <use IMMAGINI/feasible_image2.png>
@@ -1321,7 +1366,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [27 <./IMMAGINI/feasibility_image1.png> <./IMMAGINI/feasibility_region.png>]
 [28 <./IMMAGINI/feasible_image2.png>] [29] [30]
-<IMMAGINI/linearvsnl.png, id=605, 1018.80624pt x 930.47626pt>
+<IMMAGINI/linearvsnl.png, id=599, 1018.80624pt x 930.47626pt>
 File: IMMAGINI/linearvsnl.png Graphic file (type png)
 
 <use IMMAGINI/linearvsnl.png>
@@ -1332,13 +1377,13 @@ Package pdftex.def Info: IMMAGINI/linearvsnl.png used on input line 368.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [31])
-Overfull \hbox (1.03938pt too wide) in paragraph at lines 380--143
+Overfull \hbox (1.03938pt too wide) in paragraph at lines 380--152
 \T1/cmr/m/n/12 Pro-gram-ming (SQP) tech-niques which are an ex-ten-sion of Newt
 on-type meth-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--143
+Underfull \hbox (badness 10000) in paragraph at lines 380--152
 
  []
 
@@ -1357,7 +1402,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
 
 ] [35] [36] [37]
-<IMMAGINI/potential_field.PNG, id=682, 462.72874pt x 399.4925pt>
+<IMMAGINI/potential_field.PNG, id=677, 462.72874pt x 399.4925pt>
 File: IMMAGINI/potential_field.PNG Graphic file (type png)
 
 <use IMMAGINI/potential_field.PNG>
@@ -1374,7 +1419,7 @@ Chapter 5.
 
 
 ] [42] [43] [44] [45]
-<IMMAGINI/param_horizon.jpg, id=754, 940.51375pt x 553.06625pt>
+<IMMAGINI/param_horizon.jpg, id=749, 940.51375pt x 553.06625pt>
 File: IMMAGINI/param_horizon.jpg Graphic file (type jpg)
 
 <use IMMAGINI/param_horizon.jpg>
@@ -1389,7 +1434,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 262--265
 
  []
 
-[53] <IMMAGINI/trans_u.png, id=836, 580.41844pt x 287.57437pt>
+[53] <IMMAGINI/trans_u.png, id=831, 580.41844pt x 287.57437pt>
 File: IMMAGINI/trans_u.png Graphic file (type png)
 
 <use IMMAGINI/trans_u.png>
@@ -1412,14 +1457,14 @@ See the caption package documentation for explanation.
 
 LaTeX Warning: Reference `phito1' on page 58 undefined on input line 391.
 
-<IMMAGINI/phito1.png, id=877, 787.94376pt x 594.22pt>
+<IMMAGINI/phito1.png, id=872, 787.94376pt x 594.22pt>
 File: IMMAGINI/phito1.png Graphic file (type png)
 
 <use IMMAGINI/phito1.png>
 Package pdftex.def Info: IMMAGINI/phito1.png used on input line 394.
 (pdftex.def)             Requested size: 196.98546pt x 148.55463pt.
  [58 <./IMMAGINI/phito1.png>]
-<IMMAGINI/xy_limits.png, id=887, 1599.9775pt x 539.01375pt>
+<IMMAGINI/xy_limits.png, id=882, 1599.9775pt x 539.01375pt>
 File: IMMAGINI/xy_limits.png Graphic file (type png)
 
 <use IMMAGINI/xy_limits.png>
@@ -1431,7 +1476,7 @@ Overfull \hbox (9.9934pt too wide) in paragraph at lines 420--421
  []
 
 [59] [60 <./IMMAGINI/xy_limits.png>]
-<IMMAGINI/spheres_3d.png, id=912, 357.335pt x 402.50375pt>
+<IMMAGINI/spheres_3d.png, id=907, 357.335pt x 402.50375pt>
 File: IMMAGINI/spheres_3d.png Graphic file (type png)
 
 <use IMMAGINI/spheres_3d.png>
@@ -1447,7 +1492,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 474--476
 
  (./chapter6.tex
 Chapter 6.
-<IMMAGINI/ADDAMS1.png, id=930, 1019.007pt x 942.4008pt>
+<IMMAGINI/ADDAMS1.png, id=925, 1019.007pt x 942.4008pt>
 File: IMMAGINI/ADDAMS1.png Graphic file (type png)
 
 <use IMMAGINI/ADDAMS1.png>
@@ -1463,7 +1508,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
 
  <./IMMAGINI/ADDAMS1.png>]
-<IMMAGINI/SuperMegaBot1.PNG, id=938, 371.3875pt x 232.36812pt>
+<IMMAGINI/SuperMegaBot1.PNG, id=933, 371.3875pt x 232.36812pt>
 File: IMMAGINI/SuperMegaBot1.PNG Graphic file (type png)
 
 <use IMMAGINI/SuperMegaBot1.PNG>
@@ -1473,35 +1518,35 @@ Package pdftex.def Info: IMMAGINI/SuperMegaBot1.PNG used on input line 25.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[64] <IMMAGINI/UR5.png, id=948, 414.54875pt x 405.515pt>
+[64] <IMMAGINI/UR5.png, id=943, 414.54875pt x 405.515pt>
 File: IMMAGINI/UR5.png Graphic file (type png)
 
 <use IMMAGINI/UR5.png>
 Package pdftex.def Info: IMMAGINI/UR5.png used on input line 39.
 (pdftex.def)             Requested size: 165.81656pt x 162.20311pt.
  [65 <./IMMAGINI/SuperMegaBot1.PNG>] [66 <./IMMAGINI/UR5.png>] <IMMAGINI/nodegr
-aph1.png, id=961, 1181.3736pt x 231.264pt>
+aph1.png, id=956, 1181.3736pt x 231.264pt>
 File: IMMAGINI/nodegraph1.png Graphic file (type png)
 
 <use IMMAGINI/nodegraph1.png>
 Package pdftex.def Info: IMMAGINI/nodegraph1.png used on input line 68.
 (pdftex.def)             Requested size: 472.54106pt x 92.50395pt.
 
-<IMMAGINI/Hdiagram.png, id=968, 415.5525pt x 413.545pt>
+<IMMAGINI/Hdiagram.png, id=963, 415.5525pt x 413.545pt>
 File: IMMAGINI/Hdiagram.png Graphic file (type png)
 
 <use IMMAGINI/Hdiagram.png>
 Package pdftex.def Info: IMMAGINI/Hdiagram.png used on input line 78.
 (pdftex.def)             Requested size: 207.77574pt x 206.77199pt.
  [67 <./IMMAGINI/nodegraph1.png>] [68 <./IMMAGINI/Hdiagram.png>] <IMMAGINI/simd
-iagram1.png, id=988, 707.64375pt x 272.01625pt>
+iagram1.png, id=982, 707.64375pt x 272.01625pt>
 File: IMMAGINI/simdiagram1.png Graphic file (type png)
 
 <use IMMAGINI/simdiagram1.png>
 Package pdftex.def Info: IMMAGINI/simdiagram1.png used on input line 98.
 (pdftex.def)             Requested size: 318.43675pt x 122.40617pt.
  [69 <./IMMAGINI/simdiagram1.png>]
-<IMMAGINI/diagramreal.png, id=997, 1047.915pt x 321.2pt>
+<IMMAGINI/diagramreal.png, id=992, 1047.915pt x 321.2pt>
 File: IMMAGINI/diagramreal.png Graphic file (type png)
 
 <use IMMAGINI/diagramreal.png>
@@ -1513,21 +1558,21 @@ Package pdftex.def Info: IMMAGINI/diagramreal.png used on input line 114.
 
 (./chapter7.tex
 Chapter 7.
-<IMMAGINI/traj_base_curves.png, id=1009, 292.84406pt x 539.01375pt>
+<IMMAGINI/traj_base_curves.png, id=1004, 292.84406pt x 539.01375pt>
 File: IMMAGINI/traj_base_curves.png Graphic file (type png)
 
 <use IMMAGINI/traj_base_curves.png>
 Package pdftex.def Info: IMMAGINI/traj_base_curves.png used on input line 10.
 (pdftex.def)             Requested size: 146.42166pt x 269.50621pt.
 
-<IMMAGINI/base_curves.png, id=1010, 575.90157pt x 396.7322pt>
+<IMMAGINI/base_curves.png, id=1005, 575.90157pt x 396.7322pt>
 File: IMMAGINI/base_curves.png Graphic file (type png)
 
 <use IMMAGINI/base_curves.png>
 Package pdftex.def Info: IMMAGINI/base_curves.png used on input line 16.
 (pdftex.def)             Requested size: 287.95007pt x 198.3656pt.
 
-<IMMAGINI/base_curves_error.png, id=1013, 632.3625pt x 360.59718pt>
+<IMMAGINI/base_curves_error.png, id=1008, 632.3625pt x 360.59718pt>
 File: IMMAGINI/base_curves_error.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_error.png>
@@ -1537,14 +1582,14 @@ Package pdftex.def Info: IMMAGINI/base_curves_error.png used on input line 22.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/base_curves2.png, id=1017, 626.34pt x 338.76563pt>
+<IMMAGINI/base_curves2.png, id=1012, 626.34pt x 338.76563pt>
 File: IMMAGINI/base_curves2.png Graphic file (type png)
 
 <use IMMAGINI/base_curves2.png>
 Package pdftex.def Info: IMMAGINI/base_curves2.png used on input line 30.
 (pdftex.def)             Requested size: 313.16922pt x 169.38239pt.
 
-<IMMAGINI/base_curves_error2.png, id=1018, 634.62094pt x 371.13657pt>
+<IMMAGINI/base_curves_error2.png, id=1013, 634.62094pt x 371.13657pt>
 File: IMMAGINI/base_curves_error2.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_error2.png>
@@ -1552,14 +1597,14 @@ Package pdftex.def Info: IMMAGINI/base_curves_error2.png used on input line 35.
 
 (pdftex.def)             Requested size: 317.3097pt x 185.56783pt.
 
-<IMMAGINI/base_curves3.png, id=1021, 575.14874pt x 396.7322pt>
+<IMMAGINI/base_curves3.png, id=1016, 575.14874pt x 396.7322pt>
 File: IMMAGINI/base_curves3.png Graphic file (type png)
 
 <use IMMAGINI/base_curves3.png>
 Package pdftex.def Info: IMMAGINI/base_curves3.png used on input line 43.
 (pdftex.def)             Requested size: 287.57367pt x 198.3656pt.
 
-<IMMAGINI/base_curves_error3.png, id=1022, 621.82312pt x 368.87813pt>
+<IMMAGINI/base_curves_error3.png, id=1017, 621.82312pt x 368.87813pt>
 File: IMMAGINI/base_curves_error3.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_error3.png>
@@ -1567,14 +1612,14 @@ Package pdftex.def Info: IMMAGINI/base_curves_error3.png used on input line 48.
 
 (pdftex.def)             Requested size: 310.9108pt x 184.4386pt.
 
-<IMMAGINI/base_curves_poly5.png, id=1023, 632.3625pt x 359.09157pt>
+<IMMAGINI/base_curves_poly5.png, id=1018, 632.3625pt x 359.09157pt>
 File: IMMAGINI/base_curves_poly5.png Graphic file (type png)
 
 <use IMMAGINI/base_curves_poly5.png>
 Package pdftex.def Info: IMMAGINI/base_curves_poly5.png used on input line 55.
 (pdftex.def)             Requested size: 316.18048pt x 179.54533pt.
 
-<IMMAGINI/solving_times_small.png, id=1027, 488.57532pt x 328.97906pt>
+<IMMAGINI/solving_times_small.png, id=1022, 488.57532pt x 328.97906pt>
 File: IMMAGINI/solving_times_small.png Graphic file (type png)
 
 <use IMMAGINI/solving_times_small.png>
@@ -1603,21 +1648,21 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 I/base_curves3.png (PNG copy)> <./IMMAGINI/base_curves_error3.png (PNG copy)>]
 [77 <./IMMAGINI/base_curves_poly5.png (PNG copy)> <./IMMAGINI/solving_times_sma
 ll.png (PNG copy)>]
-<IMMAGINI/handling_traj.png, id=1066, 739.26187pt x 556.32843pt>
+<IMMAGINI/handling_traj.png, id=1061, 739.26187pt x 556.32843pt>
 File: IMMAGINI/handling_traj.png Graphic file (type png)
 
 <use IMMAGINI/handling_traj.png>
 Package pdftex.def Info: IMMAGINI/handling_traj.png used on input line 73.
 (pdftex.def)             Requested size: 332.66476pt x 250.34547pt.
 
-<IMMAGINI/handling_joints.png, id=1067, 826.58812pt x 506.6428pt>
+<IMMAGINI/handling_joints.png, id=1062, 826.58812pt x 506.6428pt>
 File: IMMAGINI/handling_joints.png Graphic file (type png)
 
 <use IMMAGINI/handling_joints.png>
 Package pdftex.def Info: IMMAGINI/handling_joints.png used on input line 79.
 (pdftex.def)             Requested size: 371.96121pt x 227.98715pt.
 
-<IMMAGINI/end_effector_tests.png, id=1071, 545.78906pt x 416.30531pt>
+<IMMAGINI/end_effector_tests.png, id=1066, 545.78906pt x 416.30531pt>
 File: IMMAGINI/end_effector_tests.png Graphic file (type png)
 
 <use IMMAGINI/end_effector_tests.png>
@@ -1625,7 +1670,7 @@ Package pdftex.def Info: IMMAGINI/end_effector_tests.png used on input line 86.
 
 (pdftex.def)             Requested size: 289.26682pt x 220.64076pt.
 
-<IMMAGINI/control_actions_SIM.png, id=1072, 968.11688pt x 554.07pt>
+<IMMAGINI/control_actions_SIM.png, id=1067, 968.11688pt x 554.07pt>
 File: IMMAGINI/control_actions_SIM.png Graphic file (type png)
 
 <use IMMAGINI/control_actions_SIM.png>
@@ -1634,7 +1679,7 @@ Package pdftex.def Info: IMMAGINI/control_actions_SIM.png used on input line 92
 (pdftex.def)             Requested size: 455.015pt x 260.41293pt.
  [78] [79 <./IMMAGINI/handling_traj.png (PNG copy)> <./IMMAGINI/handling_joints
 .png (PNG copy)>]
-<IMMAGINI/self_collision_test.png, id=1086, 711.1368pt x 171.5208pt>
+<IMMAGINI/self_collision_test.png, id=1081, 711.1368pt x 171.5208pt>
 File: IMMAGINI/self_collision_test.png Graphic file (type png)
 
 <use IMMAGINI/self_collision_test.png>
@@ -1646,7 +1691,7 @@ Overfull \hbox (1.12645pt too wide) in paragraph at lines 102--103
  [][] 
  []
 
-<IMMAGINI/img_real_exp.png, id=1087, 577.15625pt x 544.0325pt>
+<IMMAGINI/img_real_exp.png, id=1082, 577.15625pt x 544.0325pt>
 File: IMMAGINI/img_real_exp.png Graphic file (type png)
 
 <use IMMAGINI/img_real_exp.png>
@@ -1654,7 +1699,7 @@ Package pdftex.def Info: IMMAGINI/img_real_exp.png used on input line 111.
 (pdftex.def)             Requested size: 230.8584pt x 217.60915pt.
  [80] [81 <./IMMAGINI/end_effector_tests.png> <./IMMAGINI/control_actions_SIM.p
 ng>]
-<IMMAGINI/robot_marker.jpg, id=1100, 3070.47125pt x 4000.9475pt>
+<IMMAGINI/robot_marker.jpg, id=1095, 3070.47125pt x 4000.9475pt>
 File: IMMAGINI/robot_marker.jpg Graphic file (type jpg)
 
 <use IMMAGINI/robot_marker.jpg>
@@ -1662,21 +1707,21 @@ Package pdftex.def Info: IMMAGINI/robot_marker.jpg used on input line 119.
 (pdftex.def)             Requested size: 153.53255pt x 200.0591pt.
  [82 <./IMMAGINI/self_collision_test.png> <./IMMAGINI/img_real_exp.png (PNG cop
 y)>]
-<IMMAGINI/traj_HANDL.png, id=1108, 632.3625pt x 522.45187pt>
+<IMMAGINI/traj_HANDL.png, id=1103, 632.3625pt x 522.45187pt>
 File: IMMAGINI/traj_HANDL.png Graphic file (type png)
 
 <use IMMAGINI/traj_HANDL.png>
 Package pdftex.def Info: IMMAGINI/traj_HANDL.png used on input line 129.
 (pdftex.def)             Requested size: 278.24036pt x 229.87953pt.
 
-<IMMAGINI/errors_HANDL.png, id=1109, 632.3625pt x 230.36063pt>
+<IMMAGINI/errors_HANDL.png, id=1104, 632.3625pt x 230.36063pt>
 File: IMMAGINI/errors_HANDL.png Graphic file (type png)
 
 <use IMMAGINI/errors_HANDL.png>
 Package pdftex.def Info: IMMAGINI/errors_HANDL.png used on input line 135.
 (pdftex.def)             Requested size: 284.5605pt x 103.66132pt.
  [83 <./IMMAGINI/robot_marker.jpg>]
-<IMMAGINI/joint_pos_HANDL.png, id=1116, 856.70062pt x 362.85562pt>
+<IMMAGINI/joint_pos_HANDL.png, id=1110, 856.70062pt x 362.85562pt>
 File: IMMAGINI/joint_pos_HANDL.png Graphic file (type png)
 
 <use IMMAGINI/joint_pos_HANDL.png>
@@ -1690,7 +1735,7 @@ Overfull \hbox (38.34926pt too wide) in paragraph at lines 142--143
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/cost_function_HANDL.png, id=1117, 632.3625pt x 474.27188pt>
+<IMMAGINI/cost_function_HANDL.png, id=1111, 632.3625pt x 474.27188pt>
 File: IMMAGINI/cost_function_HANDL.png Graphic file (type png)
 
 <use IMMAGINI/cost_function_HANDL.png>
@@ -1704,7 +1749,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [84 <./IMMAGINI/traj_HANDL.png (PNG copy)> <./IMMAGINI/errors_HANDL.png (PNG co
 py)>] [85 <./IMMAGINI/joint_pos_HANDL.png (PNG copy)> <./IMMAGINI/cost_function
 _HANDL.png (PNG copy)>]
-<IMMAGINI/seq_robot.png, id=1136, 1301.86375pt x 844.15375pt>
+<IMMAGINI/seq_robot.png, id=1131, 1301.86375pt x 844.15375pt>
 File: IMMAGINI/seq_robot.png Graphic file (type png)
 
 <use IMMAGINI/seq_robot.png>
@@ -1721,14 +1766,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<IMMAGINI/traj_ee1.png, id=1140, 897.3525pt x 325.215pt>
+<IMMAGINI/traj_ee1.png, id=1135, 897.3525pt x 325.215pt>
 File: IMMAGINI/traj_ee1.png Graphic file (type png)
 
 <use IMMAGINI/traj_ee1.png>
 Package pdftex.def Info: IMMAGINI/traj_ee1.png used on input line 204.
 (pdftex.def)             Requested size: 323.04665pt x 117.0773pt.
 
-<IMMAGINI/traj_ee1_comp.png, id=1142, 596.2275pt x 270.25969pt>
+<IMMAGINI/traj_ee1_comp.png, id=1137, 596.2275pt x 270.25969pt>
 File: IMMAGINI/traj_ee1_comp.png Graphic file (type png)
 
 <use IMMAGINI/traj_ee1_comp.png>
@@ -1742,7 +1787,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/error_xyz1.png, id=1151, 861.2175pt x 713.66624pt>
+<IMMAGINI/error_xyz1.png, id=1146, 861.2175pt x 713.66624pt>
 File: IMMAGINI/error_xyz1.png Graphic file (type png)
 
 <use IMMAGINI/error_xyz1.png>
@@ -1752,7 +1797,7 @@ Package pdftex.def Info: IMMAGINI/error_xyz1.png used on input line 220.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/error_orient1.png, id=1152, 758.835pt x 629.35126pt>
+<IMMAGINI/error_orient1.png, id=1147, 758.835pt x 629.35126pt>
 File: IMMAGINI/error_orient1.png Graphic file (type png)
 
 <use IMMAGINI/error_orient1.png>
@@ -1763,21 +1808,21 @@ Package pdftex.def Info: IMMAGINI/error_orient1.png used on input line 226.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [87 <./IMMAGINI/seq_robot.png> <./IMMAGINI/traj_ee1.png>]
-<IMMAGINI/base_err_exp1.png, id=1165, 840.13875pt x 667.49374pt>
+<IMMAGINI/base_err_exp1.png, id=1160, 840.13875pt x 667.49374pt>
 File: IMMAGINI/base_err_exp1.png Graphic file (type png)
 
 <use IMMAGINI/base_err_exp1.png>
 Package pdftex.def Info: IMMAGINI/base_err_exp1.png used on input line 237.
 (pdftex.def)             Requested size: 176.43434pt x 140.17783pt.
 
-<IMMAGINI/err_num_base.png, id=1166, 757.83125pt x 597.23125pt>
+<IMMAGINI/err_num_base.png, id=1161, 757.83125pt x 597.23125pt>
 File: IMMAGINI/err_num_base.png Graphic file (type png)
 
 <use IMMAGINI/err_num_base.png>
 Package pdftex.def Info: IMMAGINI/err_num_base.png used on input line 241.
 (pdftex.def)             Requested size: 166.72339pt x 131.39127pt.
  [88 <./IMMAGINI/traj_ee1_comp.png>]
-<IMMAGINI/vel_real.png, id=1175, 1566.85374pt x 690.58pt>
+<IMMAGINI/vel_real.png, id=1170, 1566.85374pt x 690.58pt>
 File: IMMAGINI/vel_real.png Graphic file (type png)
 
 <use IMMAGINI/vel_real.png>
@@ -1791,7 +1836,7 @@ Overfull \hbox (1.71248pt too wide) in paragraph at lines 249--250
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<IMMAGINI/man_real1.png, id=1177, 797.98125pt x 601.24625pt>
+<IMMAGINI/man_real1.png, id=1172, 797.98125pt x 601.24625pt>
 File: IMMAGINI/man_real1.png Graphic file (type png)
 
 <use IMMAGINI/man_real1.png>
@@ -1811,84 +1856,115 @@ Chapter 8.
 
 
 
-]) [93] (build/Thesis_main.lof [94
+]) [93]
+\openout2 = `appendices.aux'.
+
+ (./appendices.tex [94
 
 
 
-] [95])
+]
+<IMMAGINI/SuperMegaBot.PNG, id=1203, 432.11438pt x 277.53688pt>
+File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
+
+<use IMMAGINI/SuperMegaBot.PNG>
+Package pdftex.def Info: IMMAGINI/SuperMegaBot.PNG used on input line 13.
+(pdftex.def)             Requested size: 185.80556pt x 119.33852pt.
+
+<IMMAGINI/SMBwires.png, id=1204, 559.08875pt x 324.21124pt>
+File: IMMAGINI/SMBwires.png Graphic file (type png)
+
+<use IMMAGINI/SMBwires.png>
+Package pdftex.def Info: IMMAGINI/SMBwires.png used on input line 18.
+(pdftex.def)             Requested size: 240.40347pt x 139.40811pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 31.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+<ur5_en_V2.pdf, id=1206, 597.29552pt x 756.69897pt>
+File: ur5_en_V2.pdf Graphic file (type pdf)
+ <use ur5_en_V2.pdf>
+Package pdftex.def Info: ur5_en_V2.pdf used on input line 43.
+(pdftex.def)             Requested size: 597.29405pt x 756.69713pt.
+File: ur5_en_V2.pdf Graphic file (type pdf)
+
+<use ur5_en_V2.pdf>
+Package pdftex.def Info: ur5_en_V2.pdf used on input line 43.
+(pdftex.def)             Requested size: 597.29405pt x 756.69713pt.
+
+<ur5_en_V2.pdf, id=1209, page=1, 597.29552pt x 756.69897pt>
+File: ur5_en_V2.pdf Graphic file (type pdf)
+
+<use ur5_en_V2.pdf, page 1>
+Package pdftex.def Info: ur5_en_V2.pdf, page1 used on input line 43.
+(pdftex.def)             Requested size: 597.29405pt x 756.69713pt.
+File: ur5_en_V2.pdf Graphic file (type pdf)
+ <use ur5_en_V2.pdf, page 1>
+Package pdftex.def Info: ur5_en_V2.pdf, page1 used on input line 43.
+(pdftex.def)             Requested size: 597.79532pt x 757.33217pt.
+ [95
+
+ <./IMMAGINI/SuperMegaBot.PNG> <./IMMAGINI/SMBwires.png>]
+File: ur5_en_V2.pdf Graphic file (type pdf)
+ <use ur5_en_V2.pdf, page 1>
+Package pdftex.def Info: ur5_en_V2.pdf, page1 used on input line 43.
+(pdftex.def)             Requested size: 597.79532pt x 757.33217pt.
+File: ur5_en_V2.pdf Graphic file (type pdf)
+
+<use ur5_en_V2.pdf, page 1>
+Package pdftex.def Info: ur5_en_V2.pdf, page1 used on input line 43.
+(pdftex.def)             Requested size: 597.79532pt x 757.33217pt.
+File: ur5_en_V2.pdf Graphic file (type pdf)
+ <use ur5_en_V2.pdf, page 1>
+Package pdftex.def Info: ur5_en_V2.pdf, page1 used on input line 43.
+(pdftex.def)             Requested size: 597.79532pt x 757.33217pt.
+ [96 <./ur5_en_V2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 62--75
+
+ []
+
+) [97] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.lof [98
+
+
+
+]
+[99])
 \tf@lof=\write6
 \openout6 = `Thesis_main.lof'.
 
- [96] (build/Thesis_main.lot)
+ [100] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.lot)
 \tf@lot=\write7
 \openout7 = `Thesis_main.lot'.
 
 
-[97
+[101
 
 
-]
-\openout2 = `appendixA.aux'.
-
- (./appendixA.tex
-<IMMAGINI/SuperMegaBot.PNG, id=1291, 432.11438pt x 277.53688pt>
-File: IMMAGINI/SuperMegaBot.PNG Graphic file (type png)
-
-<use IMMAGINI/SuperMegaBot.PNG>
-Package pdftex.def Info: IMMAGINI/SuperMegaBot.PNG used on input line 12.
-(pdftex.def)             Requested size: 185.80556pt x 119.33852pt.
-
-<IMMAGINI/SMBwires.png, id=1292, 559.08875pt x 324.21124pt>
-File: IMMAGINI/SMBwires.png Graphic file (type png)
-
-<use IMMAGINI/SMBwires.png>
-Package pdftex.def Info: IMMAGINI/SMBwires.png used on input line 17.
-(pdftex.def)             Requested size: 240.40347pt x 139.40811pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)) [98
-
- <./IMMAGINI/SuperMegaBot.PNG> <./IMMAGINI/SMBwires.png>]
-\openout2 = `appendixB.aux'.
-
- (./appendixB.tex
-<IMMAGINI/ur5_en_V2.png, id=1302, 597.41049pt x 756.79166pt>
-File: IMMAGINI/ur5_en_V2.png Graphic file (type png)
-
-<use IMMAGINI/ur5_en_V2.png>
-Package pdftex.def Info: IMMAGINI/ur5_en_V2.png used on input line 7.
-(pdftex.def)             Requested size: 537.66447pt x 681.1062pt.
-
-
-LaTeX Warning: Float too large for page by 116.6062pt on input line 10.
-
-) [99 <./IMMAGINI/ur5_en_V2.png>]
-\openout2 = `appendixC.aux'.
-
- (./appendixC.tex) [100
-
-
-
-
-] [101
+] (/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.bbl [102
 
 ]
-(build/Thesis_main.bbl [102
-
-] [103] [104] [105])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
+[103] [104] [105])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 201.
  [106]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
- (build/Thesis_main.aux
-(build/frontespizio.aux) (build/dedica.aux) (build/ringraziamenti.aux)
-(build/abstract.aux) (build/chapter1.aux) (build/chapter2.aux)
-(build/chapter3.aux) (build/chapter4.aux) (build/chapter5.aux)
-(build/chapter6.aux) (build/chapter7.aux) (build/conclusions.aux)
-(build/appendixA.aux) (build/appendixB.aux) (build/appendixC.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 201.
+
+(/home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.aux
+(/home/francesco/Documents/GIT/TESI-LATEX/build/frontespizio.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/dedica.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/ringraziamenti.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/abstract.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter1.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter2.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter3.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter4.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter5.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter6.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/chapter7.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/conclusions.aux)
+(/home/francesco/Documents/GIT/TESI-LATEX/build/appendices.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 201.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 201.
 Package rerunfilecheck Info: File `Thesis_main.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
@@ -1898,16 +1974,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 201.
  ) 
 Here is how much of TeX's memory you used:
- 12549 strings out of 493029
- 182140 string characters out of 6136234
- 292446 words of memory out of 5000000
- 15296 multiletter control sequences out of 15000+600000
+ 13221 strings out of 493029
+ 195776 string characters out of 6136234
+ 304505 words of memory out of 5000000
+ 15959 multiletter control sequences out of 15000+600000
  29248 words of font info for 76 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 36i,30n,43p,2127b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,30n,45p,2127b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/
 fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
@@ -1934,10 +2010,11 @@ er/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0800.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sftt1200.pfb>
-Output written on build/Thesis_main.pdf (116 pages, 12803646 bytes).
+Output written on /home/francesco/Documents/GIT/TESI-LATEX/build/Thesis_main.pd
+f (116 pages, 14578486 bytes).
 PDF statistics:
- 1514 PDF objects out of 1728 (max. 8388607)
- 1271 compressed objects within 13 object streams
- 371 named destinations out of 1000 (max. 500000)
- 717 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1525 PDF objects out of 1728 (max. 8388607)
+ 1278 compressed objects within 13 object streams
+ 373 named destinations out of 1000 (max. 500000)
+ 724 words of extra memory for PDF output out of 10000 (max. 10000000)
 
