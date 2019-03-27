@@ -217,15 +217,14 @@ In Figure \ref{error_xyz1} absolute errors in $x$,$y$ and $z$ position of the en
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.3]{error_xyz1.png}
-\caption{End effector position errors during grasping}
-\label{error_xyz1}
-\end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.3]{error_orient1.png}
-\caption{End effector orientation errors during grasping}
-\label{error_orient1}
+\subfigure[End effector position errors during grasping]{
+\includegraphics[scale=0.2]{error_xyz1.png}
+\label{error_xyz1}}
+\qquad
+\subfigure[End effector orientation errors during grasping]{
+\includegraphics[scale=0.23]{error_orient1.png}
+\label{error_orient1}}
+\caption{End effector errors during grasping}
 \end{figure}
 The end effector orientation errors are shown in Figure \ref{error_orient1} as the angles $\varphi_{EE}$ and $\vartheta_{EE}$ between the $x$ and $z$ axes of the end effector reference frame and the corresponding desired ones. Orientation is important in grasping operations because trajectories have to be planned according to the part to be handled. What is possible to see from Figures \ref{error_xyz1} and \ref{error_orient1} is that the closer are the way-points to eachother, meaning lower end effector desired speeds, the smaller are the tracking errors. In Figure \ref{base_err_exp1} the base motion during grasping is shown: it is possible to notice that the base errors are higher than the ones on the end effector position, due to the different weights on the two terms in the cost function.
 The experiments has been performed successfully grasping different objects requiring different orientation approach for the end effector.  
