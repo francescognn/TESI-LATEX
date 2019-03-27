@@ -212,16 +212,16 @@ We will introduce now other two terms that will be used according to the applica
 where $x_{base}$ and $x_{arm}$ are defined as in \ref{dirkinMM}.
 This terms, allowing to directly compute the error without passing through the forward kinematics, simplify a lot the problem during the motion of the base allowing a faster computation of the control action.\\We have shown only few terms, but others can also be added to make the controller more completely defined or to make it choose a solution for the kinematic redundancy problem in a different way. 
 
-\section{Stability Proof}\label{stabproof}
+\section{Stability}\label{stabproof}
 
-Once the NMPC problem has been formulated and the feasibility of the problem has been investigated as in Equation \ref{feasibility} guaranteeing the fulfillment of hard  constraints, its stability has to be assessed. The proof is very similar to what done in \cite{alamir2018stability} with few modifications: extending it to a tracking problem, requiring an additional assumption regarding the parameterization and including the fulfillment of state and control constraints.
-We will consider now, for the stability proof, the tracking problem as a zero-reference tracking problem. In order to do that we will consider:
+Once the NMPC problem has been formulated and the feasibility of the problem has been analyzed as in Equation \ref{feasibility} guaranteeing the fulfillment of hard  constraints, its stability has to be investigated. A proof of a terminal constraint-free approach for a nonlinear MPC is presented in \cite{alamir2018stability}. Anyway, parameterizing the control actions as in our approach, some considerations have to be done. \\
+We will consider a zero-reference tracking problem considering the change of variables:
 \begin{equation}\label{change_var}
     e_k=x_k-{x_d}_k
 \end{equation}
 and so, substituting \ref{change_var} in the state equation \ref{state_eq_param}, we can define:
 \begin{equation} \label{NLsystem}
-	\hat{f}^+(e_{k|i},p_k,{{x_d}_{k|i}},{{x_d}_{k|i+1}},t_i) = \tilde{f}^+(e_{k|i}-{x_d}_k,p_k,t_i)
+	\tilde{f}^+(e_{k|i}-{x_d}_k,p_k,t_i)-{x_d}_{k|i+1}=\hat{f}^+(e_{k|i},p_k,{{x_d}_{k|i}},{{x_d}_{k|i+1}},t_i) 
 \end{equation}
 then the discrete error state equation becomes:
 \begin{equation}\label{sys_eq_con_e}
@@ -238,168 +238,48 @@ In this way the problem is moved to track a zero error reference and becomes:
 		&\ \ \ \ {p}_k\   \in \mathbb{P}\ \\
 	\end{split}	
 \end{equation}
-where $\mathbb{E} = \lbrace {e}\in \mathbb{R}^n\ \textnormal{s.t.}\ {e}_{min}\leq e\leq e_{max} \rbrace$ is the feasible region of the state error and $\hat{h}$ is the stage cost function in \ref{costfunctionh} considering the change of variables in Equation \ref{change_var}. Now, following the demonstration in \cite{alamir2018stability} we need to introduce some assumptions in order to assess stability of the controller. The proof will consider some modification of what done in \cite{alamir2018stability} to consider the parametrization of the control input. 
-
-\paragraph{Assumption 1} Equations $\hat{f}: \mathbb{R}^n\times\mathbb{R}^{N_p}\times\mathbb{R}\rightarrow\mathbb{R}^n$ and $\hat{h}: \mathbb{R}^n\times\mathbb{R}^{N_p}\rightarrow\mathbb{R}$ are continuous with respect to $e$, $p$ and $t$, and $\hat{h}$ is a positive definite function. That means a function $\hat{l}:\mathbb{R} \to \mathbb{C}$ such that, given any real numbers $x_1,\ \dots,\ x_n$, the matrix $A={(a_{i,j})}_{i,j=1}^{n_i}$ with $a_{i,j}=\hat{l}(x_i-x_j)$ is positive semi-definite, i.e. that $x^TAx \ge 0$. 
-
-\paragraph{Assumption 2} We will require that a set $\mathbb{E}_N\subset\mathbb{E}$ exists so that $\forall e \in \mathbb{E}_N $ the set:
-\begin{equation*}
-	\mathbb{P}_{e \to 0}:=\lbrace \ p \in \mathbb{P}\ \text{s.t.}\ e_{N}(e,p)=0\ \rbrace
-\end{equation*} exist and is not empty, considering $e_{N}(e,p)$ as the state error forecasted at time step $N$ calculated solving the problem in \ref{ourproblem_stab}, propagating the system from $e$ with the input commands parameterized with $p$. With this assumption we state that at least one vector $p$ for which $e_{N}(e,p)=0$ exists, and therefore a solution to the problem can be found.
-
-\paragraph{Assumption 3} Local control invariance is assumed in the neighborhood of the origin, i.e. there exist a $\bar{\rho} > 0$ such that:
+where $\mathbb{E} = \lbrace {e}\in \mathbb{R}^n\ \textnormal{s.t.}\ {e}_{min}\leq e\leq e_{max} \rbrace$ is the feasible region of the state error and $\hat{h}$ is the stage cost function in \ref{costfunctionh} considering the change of variables in Equation \ref{change_var}. \\
+Now, requiring that the point $e=0$ is a stable equilibrium point for the closed loop system means to establish that $J$ is a Lyapunov function, i.e. to assess that: 
 \begin{equation}
-	\begin{split}
-		\forall \rho &\leq \bar{\rho},\ \forall e \in B_{\hat{h}}(\rho),\ \exists\ \tilde{p}\ 	 \textnormal{s.t.} \\
-		&\hat{h}\left(\hat{f}\left(e,\tilde{p},t\right),\tilde{p}\right)-\hat{h}\left(e,p\right) \leq -q(e,p) 
-		\label{ass3}
-	\end{split}
+	J({e}_{k+1|0},p^*_{k+1}) \leq J({e}_{k|0},p^*_k)
+	\label{lyap_stab}
 \end{equation}
-for some positive definite function $q$ that satisfy:
-\begin{equation}
-	q(e,p) \ge \gamma \hat{h}(e,p)
-	\label{ass3_1} 
-\end{equation}
-for some $\gamma \geq 0$ and $\forall e \in \mathbb{E}_N$,
-where $B_{\hat{h}}(\rho) \subset \mathbb{R}^n$ is defined as $B_{\hat{h}}(\rho) := \lbrace\ e \in \mathbb{E}\ |\ h(e) \leq \rho \rbrace$. This is a rather standard assumption simply meaning that $\hat{h}$ is a local Lyapunov function with decrease rate described by $q$, i.e. there exist a value of the control action for which the variation of the cost function is bounded. In general, if $\hat{h}$ and $q$ are positive definite quadratic functions, inequality \ref{ass3_1} is valid.\\
-
-{REMARK:  } Since the definition of $\mathbb{E}_N$ requires that $p \in \mathbb{P}$, i.e. that $p$ is a feasible control action, from its definition, and that $B_{\hat{h}}(\rho)$ is such that $e$ is within boundaries, Assumption 3 guarantees recursive feasibility as in \ref{def_rec_feas} because the \ref{ass3} states $\forall e\ \in B_{\hat{h}}(\rho)$ and $\forall e\ \in\ \mathbb{E}_N$
-
-\paragraph{Assumption 4}
-We will require an extended control input parameterization vector $p:=[p_1,\ p_2,\ \dots,\ p_{N_p},\ \kappa]$, with $\kappa\in\mathbb{N}$ such that: 
-\begin{equation}
-\begin{split}\label{new_parameterization}
-    u_{k|i}(p_k)=
-        \begin{cases}
-            F(t_i){p_k}\ \ \ \ \   &\textnormal{if } i\le\kappa \\
-            \bar{u}=\arg \min_u \hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)\ \ &\textnormal{if } i> \kappa
-        \end{cases}
-    \end{split}
-\end{equation} 
-where $f^+$ has been defined in \ref{system_base_d} and $\hat{h}^u\left(f^+(x_{k-1|N},u,t_i),u\right)$ is the stage cost expressed directly as a function of $u$ without passing through the parameterization. Note that the expression of $\bar{u}$ does not depend on the parameters vector $p$, since what we are interested in is a single evaluation of the input and not a parameterized function.\\
-Moreover we will require that the parameterization function \ref{new_parameterization} has to be translatable: given the optimal solution at time instant $k$ defined as $p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^*,\ \kappa^* \right]^T$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, it is possible to obtain the parameter $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$. This is better understandable looking to Figure \ref{param_translatability}: if at time instant $k$ the computed optimal solution is represented by the blue line, the suboptimal solution $\tilde{p}_{k+1}$ for the optimization problem at time instant $k+1$ is the one described by the same blue line followed by the red one ($\bar{u}$).
+Usually the most used approaches to verify this relies on a terminal constaint for the problem (i.e. $e_{k|N}=0$) or requiring the existence of a terminal set.
+Anyway, the novelty of our approach lies in the absence of the terminal constraint and on the parameterization of the control action. Because of the latter, the extension of what done in \cite{alamir2018stability} is not straitforward and requires more general observations. \\
+Given the optimal solution to the problem in \ref{ourproblem_stab} at time instant $k$ defined as $p_k^*=\left[ p_{k_1}^*,\ p_{k_2}^*,  \dots,\ p_{k_{N_p}}^* \right]^T$ that corresponds to $  \textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$, consider the parameterization $\tilde{p}_{k+1}$ such that the correspondent control input is $  \tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u}_{k|N} \ ]$, where $\bar{u}_{k|N}$ does not belong to the optimal solution at time step $k$ but it is described with the same parameters. A clear graphical rapresentation of this can be seen in Figure \ref{param_translatability}.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.6]{IMMAGINI/trans_u.png}
+	\includegraphics[scale=0.35]{trans_u.jpg}
 	\caption{Translatability of the $F$ function}
 	\label{param_translatability}
 \end{figure}
-
-\paragraph{Lemma 1} Under Assumption 1, $\forall e \in \mathbb{E}_N$, one has:
+The cost function generated from $\tilde{p}_{k+1}$ will be then:
 \begin{equation}
-	\hat{h}(e_N(e,p^*)) \leq \eta\ c^b\ \ \  \textnormal{where    } c:=\frac{N-1}{N} < 1
- 	\label{lemma1}
+	J({e}_{k+1|0},\tilde{p}_{k+1})=\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b\hat{h}(e_{k+1|i},\tilde{p}_{k+1})
 \end{equation}
-for some $\eta > 0$ where $e_N(e,p^*)$ indicates the state at time instant N computed starting from time instant $e$ with the relative optimal solution $p^*$. \\
-
-{PROOF:} The proof, as presented in \cite{alamir2018stability}, is done considering $p^0 \in \mathbb{P}_{e \to 0}$, which means to take a $p^0$ that allows reaching $e_N=0$ which is possible because of Assumption 1. By the definition of optimal solution we have: 
+which, for the definition of $\tilde{p}_{k+1}$, can be rewritten as:
 \begin{equation}
 \begin{split}
-	J(e,p^*)&\leq J(e,p^0) \\
-	&\leq \sum_{i=1}^{N}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)
+	J({e}_{k+1|0},\tilde{p}_{k+1})=J({e}_{k|0},p^*_k) -\left( \frac{1}{N} \right)^b\hat{h}(e_{k|1},p^*_{k}) + \hat{h}(\hat{f}^+(e_{k|N},p^*_k,t_N),p^*_k) \\
 \end{split}
 \end{equation}
-and since by Assumption 1 we have $\hat{h}(e_N,p^0)=0$ we can remove the last term leading to:
+Rearranging the terms:
 \begin{equation}
-	J(e,p^*)\leq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)
+\begin{split}
+	\underbrace{J({e}_{k+1|0},\tilde{p}_{k+1})-J({e}_{k|0},p^*_k)}_{D}= \hat{h}(\hat{f}^+(e_{k|N},p^*_k,t_N),p^*_k) -\left( \frac{1}{N} \right)^b\hat{h}(e_{k|1},p^*_{k}) \\
+\end{split}
 \end{equation}
-now, given that $\left(\frac{N-1}{N}\right)\sum_{i=1}^{N-1}\hat{h}(e,p^0) \geq \sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b\hat{h}(e,p^0)$:
-
+Verifying that the term $D$ is less than or equal to zero, means to assess the stability of the system because, for the definition of optimality of the solution, that also implies: $J({e}_{k+1|0},{p^*}_{k+1}) - J({e}_{k|0},{p^*}_k) \leq 0$, i.e. the relation in \ref{lyap_stab} holds. Therefore, $D\leq0$ admit a solution for any $k$, if 
 \begin{equation}
-	J(e,p^*)\leq \left(\frac{N-1}{N}\right)^b\sum_{i=1}^{N-1}\hat{h}(e,p^0)
+\begin{split}
+	\hat{h}(\hat{f}^+(e_{k|N},p^*_k,t_N))-\left( \frac{1}{N} \right)^b\hat{h}(e_{k|1},p^*_{k}) \leq 0 \\
+\end{split}
 \end{equation}
-and considering:
-\begin{equation}
- \eta \leq \textnormal{sup} \sum_{i=1}^{N-1}\hat{h}(e,p^0)
-\end{equation}
-leads to the proof of \ref{lemma1} because: 
-\begin{equation}
-h(e_N(e,p^*))\leq J(e,p^*) \leq \left(\frac{N-1}{N}\right)^b\eta = \eta c^b
-\end{equation}
-
-In order to assess stability it is required that the cost function $J({e}_{k|i},{p}_k)$ is proven to be a Lyapunov function as explained in Chapter \ref{chapter3}. 
-We will consider now to have $p_k^*$ to which corresponds $\textbf{u}_k^*=[\ u_{k|0}^*,\ u_{k|1}^*,\  \dots,\  u_{k|{N-1}}^*\ ]$ as the optimal control parameterization at time instant $k$ and $\tilde{p}_{k+1}$ to which corresponds $\tilde{\textbf{u}}_{k+1}=[\ u_{k|1}^*,\ u_{k|2}^*,\  \dots,\  u_{k|{N-1}}^*,\ \bar{u} \ ]$ a suboptimal solution for time instant $k+1$.
-
-So, considering the cost function related to $\tilde{p}_{k+1}$ as presented in \ref{ourproblem_stab} is it possible to state that:
-
-\begin{equation*}
-	\sum_{i=1}^{N}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k+1|i},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i+1},p^*_{k})+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
-\end{equation*}
-and then:
-\begin{equation*}
-    J({e}_{k+1|0},\tilde{p}_{k+1})=\sum_{i=1}^{N-1}\left(\frac{i}{N}\right)^b \hat{h}({e}_{k|i+1},p^*_{k})+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
-\end{equation*}
-Now considering $j=i+1$ and a simplified notation $\hat{h}({e}_{k|i},p_{k}^*)=\hat{h}(e_{k|i})^*$, it follows: 
-\begin{equation*}
-    J({e}_{k+1|0},\tilde{p}_{k+1})=\sum_{j=2}^{N}\left(\frac{j-1}{N}\right)^b \hat{h}(e_{k|j})^*+\hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
-\end{equation*}
-Now rearranging the terms: 
-\begin{equation*}
-    \begin{split}
-        J({e}_{k+1|0},\tilde{p}_{k+1})=&\sum_{j=2}^{N}\left[\left(\frac{j-1}{N}\right)^b-1\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \\
-        &+\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^* + \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
-    \end{split}
-\end{equation*}
-Note that, subtracting the first stage cost at the optimal cost function at time instant $k$:   
-\begin{equation*}
-	\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*=J({e}_{k|0},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*
-\end{equation*}
-So we get:
-\begin{equation*}
-    \begin{split}
-        J({e}_{k+1|0},&\tilde{p}_{k+1})=J({e}_{k|0},p_{k}^*)-\frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-        &-\sum_{j=2}^{N}\left[1-\left(\frac{j-1}{N}\right)^b\right]\left(\frac{j}{N}\right)^b \hat{h}(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
-    \end{split}
-\end{equation*}
-And because $\forall j \in \lbrace2,\ \dots,\ N\rbrace$ holds that: 
-$\left[ 1-\left(\frac{j-1}{N}\right)^b \right]\ge\left[ 1-\left(\frac{N-1}{N}\right)^b \right]= \phi(b)$. We can then say that: 
-\begin{equation}\label{dim1}
-    \begin{split}
-        J({e}_{k+1|0},\tilde{p}_{k+1})\le &J({e}_{k|0},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-        &-\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right)
-    \end{split}
-\end{equation}
-
-Now according to Lemma 1, $e_{k|N}(p_k^*) \in B_{\hat{h}}(\eta c^b)$ and together with Assumption 3 implies that exist a value of $b$ for which it is possible to say:
-\begin{equation}
-\eta c^b \leq \bar{\rho}
-\end{equation}
-where $\bar{\rho}$ is the positive real called in Assumption 3. This is possible because, from the definition of $\rho$ in Assumption 3, we have that $\rho > 0$ and that $c>0$ for definition.
-This means that \ref{ass3} holds for $e_{k|N}(p_k^*)$ and we can say that:
-\begin{equation}\label{dim2}
-    \hat{h}^u\left(f^+(x_{k|N},\bar{u},t_i),\bar{u}\right) \le \hat{h}(e_{k|N})^*-q(e_{k|N},p_k^*)
-\end{equation}
-because of the definition of $\bar{u}$ in Assumption 4. So, by applying this relation and Equation \ref{dim2} in Equation \ref{dim1} we obtain: 
-\begin{equation*}
-    \begin{split}
-        J({e}_{k+1|0},\tilde{p}_{k+1})\le &J({e}_{k|0},p_{k}^*) - \frac{1}{N^m}h(e_{k|1})^*+ \\ 
-        &-\phi(m)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^*+ h(e_{k|N})^*-q(e_{k|N},p_k^*)
-    \end{split}
-\end{equation*}
-It is possible to note that: 
-\begin{equation}
-\phi(b)\sum_{j=2}^{N}\left(\frac{j}{N}\right)^b h(e_{k|j})^* \ge \phi(b)\hat{h}(e_{k|N})^*
-\end{equation}
-Then, using this and Equation \ref{ass3_1}:
-\begin{equation*}
-    \begin{split}
-        J({e}_{k+1|0},\tilde{p}_{k+1})&\le J({e}_{k|0},p_{k}^*) - \frac{1}{N^b}\hat{h}(e_{k|1})^*+ \\ 
-            &-(\phi(b)-1+\gamma)\ \hat{h}(e_{k|N})^*
-    \end{split}
-\end{equation*}
-
-Noting that the stage cost is positive definite and that $\phi(b) \rightarrow 1$ for $b \rightarrow \infty$, for sufficiently high values of $b$ as can be seen in Figure \ref{phito1}, $J$ is a Lyapunov function as in \ref{Lyap_func}. In other words means that for sufficiently high values of $b$, $J({e}_{k|i},\tilde{p}_{k+1})\le J({e}_{k|i},p_{k}^*)$, and from what explained \ref{chapter3}, it follows that the closed loop system is asymptotically stable in $e=0$.
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.25]{IMMAGINI/phito1.png}
-\label{phito1}
-\caption{$\phi(b)$ value}
-\end{figure}
+is always true for any $k$. Theoretically a value of $b$ for which the point $e=0$ is a stable equilibrium point for the closed loop system always exists, but it is not possible to define it precisely. This because it depends on the values of $\hat{h}(\cdot,\cdot)$; for example it is possible to have $\hat{h}(e_{k|1},p^*_{k})=0$ implying the need of $b=-\infty$ which is not practically possible.\\ The discussion is therefore reduced to the capacity of the solver decreasing the cost function with a parameterization $\tilde{p}_{k+1}$. This requirement, as shown in \cite{alamir_boh}, can be verified by looking at solving time and solver capabilities.
 
 
 \section{Constraints}
-\fix{questa introduzione dei vincoli va rivista alla luce di come decidiamo la sezione prima}
-Constraints will be introduced in order to properly define the problem taking into account feasibility configurations, maximum velocities and accelerations as well as to avoid self-collision of the system. Introducing constraints in the problem \ref{ourproblem_param} does not affect the stability proof since limiting state and control is equal to redefine accordingly sets $\mathbb{P}$ and $\mathbb{E}$ in Assumption 2 presented above. For example limiting joint speed for the arm is traduced in redefining the set $\mathbb{U}$, from which the set $\mathbb{P}$ is dependent and the proof in the previous section holds.
+Constraints will be introduced in order to properly define the problem taking into account feasibility configurations, maximum velocities and accelerations as well as to avoid self-collision of the system. Introducing constraints in the problem \ref{ourproblem_param} does not affect the stability since limiting state and control is equal to redefine accordingly sets $\mathbb{P}$ and $\mathbb{E}$. For example limiting joint speed for the arm is traduced in redefining the set $\mathbb{U}$, from which the set $\mathbb{P}$ is dependent and what said before holds.
 
 In particular, the constraint definition has been divided into: 
 
