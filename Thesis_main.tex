@@ -43,6 +43,7 @@
 \usepackage{floatflt}
 \usepackage{xcolor}
 \usepackage{pdfpages}
+\usepackage{fancyhdr}
 \makenomenclature
 
 \let\counterwithout\relax
@@ -88,7 +89,6 @@
 %\renewcommand{\captionfont}{\normalfont \sffamily \itshape \small}
 
 \pagestyle{empty}
-%\input{SetHeaders}
 
 \begin{document}
 
@@ -128,7 +128,12 @@
 \include{abstract}
 \include{estratto}
 \thispagestyle{empty} \vspace*{.75truecm} \cleardoublepage
-\pagestyle{plain}\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
+%\pagestyle{plain}
+%\input{SetHeaders}
+\pagestyle{fancy}
+\lhead{}
+
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
 %\fancyhead[LE,RO]{\bfseries\thepage}    
 \newcommand\fix[1]{\textcolor{red}{FIX: #1} }                             

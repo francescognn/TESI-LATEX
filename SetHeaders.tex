@@ -1,5 +1,5 @@
 % DEFAULT HEADERS
-\fancypagestyle{defaultPageStyle}{%
+\fancypagestyle{plain}{%
 	\pagestyle{fancy}
 	\fancyhf{}
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ ##1}{}}
@@ -14,17 +14,17 @@
 	}
 	\fancyfoot[LE,RO]{\thepage}
 }
-
-% TABLE OF CONTENTS HEADERS
-\fancypagestyle{contentsPageStyle}{%
-	\pagestyle{fancy}
-	\fancyhf{}
-	\fancyhead[RE,LO]{\usefont{T1}{ppl}{m}{sc}\contentsname}
-	\fancyhead[LE]{\usefont{T1}{ppl}{m}{it}}
-	\fancyhead[RO]{\setlength{\unitlength}{1mm}
-%		\begin{picture}(0,0)
-%		\put(-15,0){\includegraphics[width=15mm]{OtherMaterial/Logo_POLIMI}}
-%		\end{picture}
-	}
-	\fancyfoot[LE,RO]{\thepage}
-}
+%
+%% TABLE OF CONTENTS HEADERS
+%\fancypagestyle{contentsPageStyle}{%
+%	\pagestyle{fancy}
+%	\fancyhf{}
+%	\fancyhead[RE,LO]{\usefont{T1}{ppl}{m}{sc}\contentsname}
+%	\fancyhead[LE]{\usefont{T1}{ppl}{m}{it}}
+%	\fancyhead[RO]{\setlength{\unitlength}{1mm}
+%%		\begin{picture}(0,0)
+%%		\put(-15,0){\includegraphics[width=15mm]{OtherMaterial/Logo_POLIMI}}
+%%		\end{picture}
+%	}
+%	\fancyfoot[LE,RO]{\thepage}
+%}
