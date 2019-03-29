@@ -1,11 +1,15 @@
 %!TEX root = Thesis_main.tex
 	\newpage
-\chapter*{Estratto}
+\chapter*{Sommario}
 
-\addcontentsline{toc}{chapter}{Estratto}
-L'utilizzo di manipolatori mobili nelle aziende è in continua crescita, andando verso la completa automatizzazione dei processi a tempo ottimo, aumentando quindi l'efficienza dell'impianto. La University of Southern California (USC) ha proposto in \cite{shantanuthakar} un algoritmo per la definizione di traiettorie ottimali per manipolatori mobili nelle operazioni di pick-and-transport. Una volta eseguita la pianificazione del movimento del robot, è necessaria la progettazione di un controllore in grado di eseguire tale traiettoria. \\
-In questo lavoro abbiamo mirato a progettare un controllore in grado di risolvere il problema della manipolazione mobile nello svolgimento di un task assegnato trattando con ostacoli imprevisti e con il posizionamento impreciso del sistema durante l'operazione di grasping. \\La logica di controllo scelta per questo fine è il Model Predictive Control (MPC). La difficoltà della sua implementazione risiede nell'elevata non linearità del sistema unita all'elevato livello di ridondanza dello stesso nell'esecuzione di task di trajectory following. Il lavoro qui presentato si pone lo scopo di progettare un controllore basato sul sistema nonlineare invece che utilizzare tecniche di linearizzazione. Data tale complessità, al fine di ridurre lo sforzo computazionale dell'ottimizzatore, il profilo delle variabili di controllo calcolate dal MPC è stato parametrizzato, riducendo drasticamente la dipendenza dalla lunghezza dell'orizzonte di controllo. Inoltre, per semplificare ulteriormente la definizione del problema, è stato introdotto un approccio senza vincoli sullo stato terminale, come estensione di quanto fatto in \cite{alamir2018stability}. \\
-Il controllore è stato progettato e simulato in Matlab/Simulink e successivamente testato sul sistema fisico disponibile presso la USC utilizzando l'interfaccia ROS. I risultati e le prestazioni di quanto implementato vengono presentati.
+\addcontentsline{toc}{chapter}{Sommario}
+\begin{otherlanguage*}{italian}
+	L'utilizzo di manipolatori mobili nelle aziende è in continua crescita, andando verso la completa automatizzazione dei processi, aumentando quindi l'efficienza dell'impianto. La University of Southern California (USC) ha proposto in \cite{shantanuthakar} un algoritmo per la definizione di traiettorie ottimali per manipolatori mobili nelle operazioni di pick-and-transport. Una volta eseguita la pianificazione del movimento del robot, è necessaria la progettazione di un controllore in grado di eseguire tale traiettoria. \\
+	In questo lavoro abbiamo mirato a progettare un controllore in grado di risolvere il problema della manipolazione mobile nello svolgimento di un compito assegnato considerando ostacoli imprevisti e il posizionamento impreciso del sistema durante l'operazione di grasping. \\
+	La logica di controllo scelta per questo fine è il Model Predictive Control (MPC). La difficoltà della sua implementazione risiede nell'elevata non linearità del sistema unita all'elevato livello di ridondanza dello stesso durante operazioni in cui è richiesto di seguire una traiettoria. Il lavoro qui presentato si pone l'obiettivo di progettare un controllore basato sul sistema non lineare invece che utilizzare tecniche di linearizzazione. Data tale complessità, al fine di ridurre lo sforzo computazionale dell'ottimizzatore, il profilo delle variabili di controllo calcolate dal MPC è stato parametrizzato, riducendo drasticamente la dipendenza dalla lunghezza dell'orizzonte di controllo. Inoltre, per semplificare ulteriormente la definizione del problema, è stato introdotto un approccio senza vincoli sullo stato terminale, come estensione di \cite{alamir2018stability}. \\
+	Il controllore è stato implementato e simulato in Matlab/Simulink e successivamente testato sul sistema fisico disponibile presso la USC utilizzando l'interfaccia ROS. Esponiamo infine i risultati e le prestazioni di quanto implementato.
+\end{otherlanguage*}
+
 
 \vspace{0.5cm}
 \noindent 
