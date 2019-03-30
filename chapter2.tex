@@ -32,7 +32,7 @@ where $x\in \mathbb{R}^n $ is the vector of the generalized coordinates describi
 \begin{matrix}
 u_1 &  \cdots & u_m
 \end{matrix}
-\right]^T\in\mathbb{R}^m $ is the input vector and $\left\lbrace  g_1(x) \cdots g_m(x) \right\rbrace $ is a basis of the null space of $A^T$.\\ 
+\right]^T\in\mathbb{R}^m $ is the vector of input velocities and $\left\lbrace  g_1(x) \cdots g_m(x) \right\rbrace $ is a basis of the null space of $A^T$.\\ 
 Talking about mobile robots, wheels are by far the most common mechanism to achieve locomotion. Any wheeled vehicle is subject to kinematic pure rolling constraints that reduce in general its local mobility, while leaving intact the possibility of reaching arbitrary configurations by appropriate manoeuvres. The pure rolling constraint is nonholonomic, because it implies no loss of accessibility in the configuration space of the vehicle.\\
 The kinematics of a wheeled mobile robot subjected to pure rolling constraints changes depending on how locomotion is achieved. Mainly there are two types of wheeled mobile robot models: unicycle like robots and bicycle like ones. We will focus on the first one.
 \subsubsection{Unicycle Model}
@@ -66,7 +66,7 @@ g_1 (x) & g_2 (x)
 \end{matrix}
 \right] 
 \end{equation}
-All the generalized velocities of the unicycle at $x$ are a combination of $g_1 (x)$ and $g_2 (x)$.
+All the admissible generalized velocities of the unicycle at $x$ are a combination of $g_1 (x)$ and $g_2 (x)$.
 \begin{equation} 
 \dot{x}=\left[
 \begin{matrix}
@@ -82,8 +82,8 @@ All the generalized velocities of the unicycle at $x$ are a combination of $g_1 
 \end{matrix}
 \right]\omega
 \end{equation}
-Where $v$ is the driving velocity, i.e. the velocity of the disk along its sagittal plane, and $\omega$ is the steering velocity, i.e. the angular speed around its vertical axis.\\
-A lot of mobile robots are kinematically equivalent to a unicycle, like differential drive robots, like the one in figure \ref{fig:mobilebase}, skid steering robots or synchro drive vehicles.\\
+where $v$ and $\omega$ can be easily interepreted as the driving velocity, i.e. the velocity of the disk along its sagittal plane, and the steering velocity, i.e. the angular speed around its vertical axis.\\
+A lot of mobile robots are kinematically equivalent to a unicycle, like differential drive robots, like the one in Figure \ref{fig:mobilebase}, skid steering robots or synchro drive vehicles.\\
 In most of the unicycle-like mobile robots, $v$ and $\omega$ are the command input to the system, while the actual velocity input are $\omega_R$ and $\omega_L$, i.e. the right and left wheels angular speeds: 
 \begin{equation}
 v=\frac{r\left(\omega_R + \omega_L\right)}{2} \qquad \omega=\frac{r\left(\omega_R - \omega_L\right)}{d}
@@ -91,7 +91,7 @@ v=\frac{r\left(\omega_R + \omega_L\right)}{2} \qquad \omega=\frac{r\left(\omega_
 \begin{equation}
 \omega_R =\frac{1}{r}\left(v+\frac{d}{2}\omega\right) \qquad \omega_L=\frac{1}{r}\left(v-\frac{d}{2}\omega\right)
 \end{equation}
-where $r$ is the wheel radius and $d$ is the distance between their centres.
+where $r$ is the wheel radius and $d$ is the distance between the left and right wheels.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{mobilebase}
@@ -99,18 +99,18 @@ where $r$ is the wheel radius and $d$ is the distance between their centres.
 	\label{fig:mobilebase}
 \end{figure}
 \section{Manipulator Model}
-A manipulator consists of a series of rigid links connected by joints. Mathematically it can be modeled as a kinematic chain where one end of the chain is constrained to a base, while an end effector is mounted to the other end. The end effector is used to manipulate objects in space. Therefore, it is the end effector position and orientation, \textit{pose}, that is often studied. \textit{Forward kinematics} describes the pose of the end effector as a function of the joint values:
-\begin{equation}
- 	\xi=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)
+A manipulator consists of a series of rigid links connected by joints. Mathematically it can be modeled as a kinematic chain where one end of the chain is constrained to a base, while an end effector is mounted to the other end. The end effector is used to manipulate objects in space, therefore it is the end effector position and orientation, \textit{pose}, that is often studied. \textit{Forward kinematics} describes the pose of the end effector as a function of the joint values:
+\begin{equation}\label{forw_kin}
+ 	\xi=\left[\begin{matrix}p_{EE}\\\Phi_{EE}\end{matrix}\right]=f(x)
 \end{equation} 
-where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector position and $\Phi =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. 
-It is possible to express this relation in a compact form using the homogenous \textit{rototraslation matrix} $A_{ee}^{base}$ that describes the end effector reference frame with respect to the base global reference frame:
+where $p_{EE}=\left[\begin{matrix}x_{EE}&y_{EE}&z_{EE}\end{matrix}\right]^T$ is the vector of the end effector Cartesian coordinates and $\Phi_{EE} =\left[\begin{matrix}\vartheta_{EE}&\varphi_{EE}&\psi_{EE}\end{matrix}\right]$ is the vector of the end effector orientation which can be expressed with different conventions like Azimut-Elevation-Rotation, or Roll-Pitch-Yaw. 
+It is possible to express relation \eqref{forw_kin} in a compact form using the homogenous \textit{rototraslation matrix} $A_{ee}^{base}$ that describes the end effector reference frame with respect to the base global reference frame:
 \begin{equation}\label{AAAA_man}
 A_{ee}^{base}=A_1^{base}A_2^1A_3^2\cdots A_{ee}^{ee-1}
 \end{equation}
-where $A_i^{i-1}$ is the expression of the transformation from one joint frame to the following one through the use of Denavit-Hartemberg parameters \cite{DH}: $a\text{, }\alpha\text{, }d\text{, }\theta$ (defined as in figure \ref{fig:DH}):
+where $A_i^{i-1}$ is the expression of the transformation from one joint frame to the following one through the use of Denavit-Hartemberg parameters \cite{DH}: $a\text{, }\alpha\text{, }d\text{, }\theta$ (defined as in Figure \ref{fig:DH}):
 \begin{equation}
-A_i^{i-1}(q_i)=\left[
+A_i^{i-1}=\left[
 \begin{matrix}
 \cos\theta & -\sin\theta\cos\alpha & \sin\theta\sin\alpha & a\cos\theta \\
 \sin\theta & \cos\theta\cos\alpha & -\cos\theta\sin\alpha & a\sin\theta \\
@@ -128,10 +128,10 @@ This matrix is function only of the joint variables $\theta$ and $d$.
 	\label{fig:DH}
 \end{figure}
 
-The opposite problem is the definition of the \textit{inverse kinematics}, i.e. given the position and orientation of the end effector, finding the corresponding joint variables. The inverse kinematics problem is not easy to solve since it is often nonlinear and there can be infinite solutions as well as none.\\
-An important concept which roboticists are still working on is \textit{kinematic redundancy}, i.e. when the number of joint variables is greater than the dimension of the operational space relative to the task to be achieved. For example, for a problem of end effector position and orientation regulation the task operational space is 6-dimensional.
+The opposite problem is the definition of the \textit{inverse kinematics}, i.e. given the position and orientation of the end effector, the corresponding joint variables have to be found. The inverse kinematics problem is not easy to solve since it is often nonlinear and there can be infinite solutions as well as none.\\
+An important concept which roboticists are still working on is \textit{kinematic redundancy}, i.e. the condition when the dimension of joint space is greater than the dimension of the operational space relative to the task to be achieved. For example, for a problem of end effector position and orientation regulation the task operational space is 6-dimensional, so a 7-Dof robotic system would be redundant.
 When a system is kinematically redundant, direct kinematics is always possible to be defined, while inverse kinematics can have infinite solutions.
-Solving the \textit{kinematic redundancy problem} means to define a criterion in order to be able to pick one among the infinite configurations which have the end effector in the same position and orientation.\\
+Solving the \textit{kinematic redundancy problem} means to define a criterion in order to be able to pick one among the infinite configurations which are a solution to the inverse kinematic problem.\\
 This concept will be very important in the defintion of Mobile Manipulator control, since Mobile Manipulators are highly redundant systems.
 
 \section{Mobile Manipulator Model}
@@ -141,23 +141,23 @@ This concept will be very important in the defintion of Mobile Manipulator contr
 \caption{A simple Mobile Manipulator composed by a mobile base and a 2-Dof robotic arm}
 \label{fig:MMkinematics}
 \end{figure}
-Considering the general case of a mobile manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location and orientation of the end effector as a function of both the arm and base generalized coordinates:
+Considering the general case of a Mobile Manipulator composed by a manipulator arm mounted on a mobile platform, its kinematic model set the location and orientation of the end effector as a function of both the arm and base generalized coordinates:
 \begin{equation}\label{dirkinMM}
 	\xi=\left[\begin{matrix}p_{EE}\\\Phi\end{matrix}\right]=f(x)=f\left(\left[\begin{matrix}x_{base}\\x_{arm} \end{matrix}\right]\right)
 \end{equation}
 where $x_{base}$ is the configuration vector of the mobile base and $x_{arm}$ is the vector of joint coordinates of the manipulator.
-As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in figure \ref{fig:MMkinematics} is
+As an example, the forward kinematics for just the Cartesian coordinates of the end effector of the simplified system in Figure \ref{fig:MMkinematics} is
 \begin{equation*}
 \begin{split}
-	x_{EE}&=x_b+a\cos\theta-b\sin\theta+l_1\cos\left(\theta+\theta_1\right)+l_2\cos\left(\theta+\theta_1+\theta_2\right)\\
-	y_{EE}&=y_b+a\sin\theta-b\cos\theta+l_1\sin\left(\theta+\theta_1\right)+l_2\sin\left(\theta+\theta_1+\theta_2\right)
+	x_{EE}&=x_b+a\cos\theta_b-b\sin\theta_b+l_1\cos\left(\theta_b+\theta_1\right)+l_2\cos\left(\theta_b+\theta_1+\theta_2\right)\\
+	y_{EE}&=y_b+a\sin\theta_b-b\cos\theta_b+l_1\sin\left(\theta_b+\theta_1\right)+l_2\sin\left(\theta_b+\theta_1+\theta_2\right)
 \end{split}
 \end{equation*}
-It is possible to express the function $f(x)$ of Eq.\ref{dirkinMM} as in \ref{AAAA} premultiplying the rototranslation matrix $A_{base}^{global}$, relative to the mobile base motion, to the direct kinematics of the arm. In the case of the previous example:
+It is possible to express the function $f(x)$ of Equations \eqref{dirkinMM} as in \eqref{AAAA_man} premultiplying the rototranslation matrix $A_{base}^{global}$, relative to the mobile base motion, to the direct kinematics of the arm. In the case of the previous example:
 \begin{equation}
 	A_{base}^{global}=\left[\begin{matrix}
-		\cos\theta&-\sin\theta&0&x_b+a\cos\theta-b\sin\theta\\
-		\sin\theta&\cos\theta&0&y_b+a\sin\theta-b\cos\theta\\
+		\cos\theta_b&-\sin\theta_b&0&x_b+a\cos\theta_b-b\sin\theta_b\\
+		\sin\theta_b&\cos\theta_b&0&y_b+a\sin\theta_b-b\cos\theta_b\\
 		0&0&1&h_{base}\\
 		0&0&0&1
 	\end{matrix}\right]
@@ -178,7 +178,7 @@ As we had briefly introduced before, a robot is kinematically redundant if the n
 A common way to deal with redundant systems is to move the problem at velocity level through the use of Jacobians, as we will see more in detail in the following chapters. 
 \paragraph{Differential kinematics}Differentiating $f$, the differential forward kinematics of the Mobile Manipulator can be obtained:
 \begin{equation}\label{eq:dotx_EE}
-	\dot{X}_{EE}=\mathcal{J}_b(x)\dot{x}_{base}+\mathcal{J}_a(x)\dot{x}_{arm}
+	\dot{\xi}=\mathcal{J}_b(x)\dot{x}_{base}+\mathcal{J}_a(x)\dot{x}_{arm}
 \end{equation}
 where the columns of $\mathcal{J}_a(x)={\partial f}/{\partial x_{arm}}(x)$ can be obtained as:
 \begin{equation}
@@ -202,7 +202,7 @@ In this the nonholonomic constraint \ref{G} of the mobile platform should be tak
 \end{equation}
 Therefore is now possible to reformulate eq \ref{eq:dotx_EE} in a compact form to express the end effector traslational and rotational velocities as a function of the 8-elements input vector of joints and vehicle velocities.
 \begin{equation}
-\dot{X}_{EE}=\left[\begin{matrix}
+\dot{\xi}=\left[\begin{matrix}
 \mathcal{J}_v(\theta_b) & \mathcal{J}_a(x)
 \end{matrix}\right]\left[\begin{matrix}v\\\dot{x}_{arm} \end{matrix}\right] = \mathcal{J}(x)\dot{x}
 \end{equation}
