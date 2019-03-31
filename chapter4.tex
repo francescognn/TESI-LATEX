@@ -3,19 +3,19 @@
 \chapter{Mobile Manipulators Control Problem}
 \label{chapter4}
 We have previously seen that Mobile Manipulators are systems where locomotion and manipulation tasks are held simultaneously. The coordination of this two tasks is not trivial since the mobile platform combined with the manipulator is a redundant system, so the same point in workspace can be reached moving the mobile base, or moving the manipulator, or with a combined motion of the two. In addition to this kinematic issue, also the dynamic interaction between mobile base and manipulator should be taken into account in a control logic. \\
-In literature the control of mobile manipulators mainly followed two strategies. The first approach is the separate control of the mobile base and of the manipulator arm, considering later their interaction. With this approach is possible to simply solve the kinematic redundancy of the system. A reference for this approach can be \cite{liulewis} or \cite{chung1998interaction}. The second approach is the coordination of the motion of both the base and the manipulator through the control of the whole integrated redundant system choosing one configuration among the infinite possible ones with a suitable criterion.\\
+In literature the control of mobile manipulators mainly followed two strategies. The first approach is the separate control of the mobile base and of the manipulator arm, considering later their interaction. With this approach is possible to simply solve the kinematic redundancy of the system. References for this approach can be \cite{liulewis} or \cite{chung1998interaction}. The second approach is the coordination of the motion of both the base and the manipulator through the control of the whole integrated redundant system choosing one configuration among the infinite possible ones with a suitable criterion.\\
 \section{Control of Mobile Manipulators}
-Although Mobile Manipulators are a known technology from decades, the control of these systems is still sparse. As said before it is surely possible to consider separately the base and the manipulator using known strategies for the control of the two, dealing only with the coupling of their motions, but what is of particular interest is the possibility of coordination of the motion of the two subsystems in order to achieve a certain task. In literature many approaches have been proposed to track a reference trajectory of the end effector position and orientation $\xi_{ref}(t)$ coping with the kinematic redundancy of the Mobile Manipulator system. As explained in \cite{bayle},\cite{seraji1998},\cite{seraji1993} and \cite{mikschschroeder}, the redundant degrees of freedom of the system can be exploited to solve the kinematic redundancy problem satisfying a set of user-defined additional tasks. In those works, these tasks are described by a set of internal coordinates, defined as kinematic functions of the generalized coordinates $x=\left[x_a^T ; x_b^T\right]$:
-\begin{equation}\label{Phi}
-	\Phi=g(x)
+Although Mobile Manipulators are a known technology from decades, the control of these systems is still sparse. As said before it is surely possible to consider separately the base and the manipulator using known strategies for the control of the two, dealing only with the coupling of their motions, but what is of particular interest is the possibility of coordination of the motion of the two subsystems in order to achieve a certain task. In literature many approaches have been proposed to track a reference trajectory of the end effector position and orientation $\xi_{ref}(t)$ coping with the kinematic redundancy of the Mobile Manipulator system. In \cite{bayle},\cite{seraji1998},\cite{seraji1993} and \cite{mikschschroeder}, the redundant degrees of freedom of the system can be exploited to solve the kinematic redundancy problem satisfying a set of user-defined additional tasks. In those works, these tasks are described by a set of internal coordinates, defined as kinematic functions of the generalized coordinates $x=\left[x_{arm}^T ; x_{base}^T\right]$:
+\begin{equation}\label{Gamma}
+	\Gamma=g(x)
 \end{equation}
 These internal coordinates can have different physical meanings, like the distance between the wrist of the manipulator from the arm, or mathematical meanings, such as the projection of the gradient of an objecive function. There is not a fixed set of kinematic functions to pick, but the user can define those according to the task that has to be performed. A new extended vector $X_{ext}$ can then be defined as:
 \begin{equation}
 	X_{ext}=\left[\begin{matrix}
-	\xi \\ \Phi
+	\xi \\ \Gamma
 	\end{matrix}\right]
 \end{equation}
-The control problem now becomes a trajectory tracking of ${X_{ext}}_{ref}(t) =\left[\begin{matrix} \xi_{ref}^T(t) \ ;\ \Phi_{ref}^T(t) \end{matrix}\right]$, where $ \Phi_{ref}(t)$ is defined by the relation \ref{Phi} over time.\\
+The control problem now becomes a trajectory tracking of ${X_{ext}}_d(t) =\left[\begin{matrix} \xi_d^T(t) \ ;\ \Gamma_d^T(t) \end{matrix}\right]$, where $ \Gamma_d(t)$ is defined by the relation \eqref{Gamma}.\\
 The trajectory tracking problem usually consists in the optimization of an objective function $\varphi(x)$ defined with one or multiple properly weighted criteria, some of which are shown in \cite{multicriteria}. The most used optimization criteria are: 
 \begin{itemize}
 	\item The maximization of the manipulability of the system. See \cite{yamamoto}. A short description of how manipulability is managed will follow.
@@ -23,12 +23,12 @@ The trajectory tracking problem usually consists in the optimization of an objec
 	\item The minimization of the deviation from the mid-range joints of the manipulator. See \cite{khatib1999}.
 \end{itemize}
 Clearly, in addition to all these terms, one is added for the minimization of the tracking error for all the vector $X_{ext}$.\\
-The use of internal coordinates is only one of the ways to ask the robot to accomplish the user defined additional tasks. This indeed can be obtained adding a term to be minimized, e.g. the manipulability index, in the optimization problem. See for example \cite{bayle1} or \cite{bayle2} where the control is divided in two terms, one term that imposes the joint velocities  through the pseudo-inverse matrix of $J(x)$ and one term to maximize the manipulability of the system.\\
+The use of internal coordinates is only one of the ways to ask the robot to accomplish the user defined additional tasks. This indeed can be obtained adding a term to be minimized, e.g. the manipulability index, in the optimization problem. See for example \cite{bayle1} or \cite{bayle2} where the control is divided in two terms, one term that imposes the joint velocities  through the pseudo-inverse matrix of $J(x)$ and one term to maximize the manipulability of the system exploiting its redundancy.\\
 Exposing these methods we have not had to specify wheter a kinematic or dynamic model is used, leaving the user the possibility to choose the more suitable one with respect to the type of task the robot has to perform. If, for example, the planned motions of the robot can involve an high dynamic influence of the base on the arm and/or viceversa, a dynamic model should be considered, using as input to the system the joint torques. A modelisation of the compensation of the dynamic effects between arm and base is discussed in \cite{yamamoto1}.
 Moreover, in the last years also some adaptive and robust controllers are being developed to deal with dynamic uncertainties, but they will not be discussed in this work. We refer to \cite{libromobilemanipulators} for a fairly thorough discussion on the subject.
 
 \subsubsection{Manipulability} 
-Kinematically the manipulability of a manipulator is a measure of its attitude to arbitrarily change the end effector position and orientation, so it is of interest to maximize manipulability in robotic operations in order to achieve high performances.\\
+Kinematically the manipulability of a manipulator is a property of its coniguration as a measure of its attitude to arbitrarily change the end effector position and orientation, so it is of interest to maximize manipulability in robotic operations in order to achieve high performances.\\
 A commonly used manipulability index has been presented in \cite{yoshikawa1983} \cite{yoshikawa1985}:
 \begin{equation}
 w(x) = \sqrt{\det\left(\mathcal{J}(x)\mathcal{J}^T(x)\right)}
@@ -38,10 +38,9 @@ Both the mobile platform and the manipulator have contributions on the manipulab
 \begin{equation}
 w(x) = \sqrt{\det\left(\mathcal{J}(x)J^T(x)\right)}=\sqrt{\det\left(\mathcal{J}_b(x)\mathcal{J}_b^T(x)\right)+\det\left(\mathcal{J}_a(x)\mathcal{J}_a^T(q)\right)}
 \end{equation}
-It is possible to see that the base degrees of freedom increase the manipulability of the manipulator, i.e. even if the manipulator is in a singular configuration, $w(x)\neq0$. However, in certain cases $w$ can still be equal to 0. Different indices can be used giving different measures of manipulability and therefore they are suitable for different problems.
-
+It is possible to see that the base degrees of freedom increase the manipulability of the manipulator, i.e. even if the manipulator is in a singular configuration, $w(x)\neq0$. However, in certain cases $w$ can still be equal to 0. Different indices can be used therefore giving different measures of the manipulability, depending on the problem they are more suitable for.
 \subsection{Obstacle Avoidance for Mobile Manipulators}
-Usually the main task assigned to a Mobile Manipulator is to follow a preplanned trajectory in the Cartesian space with the end effector. However, the robot doesn't know the environment in which it is. The robot motion has to be controlled such that the minimum distance between the robot links and the obstacles which can be present in the environment is kept greater than a security margin.\\
+Usually the main task assigned to a Mobile Manipulator is to follow a preplanned trajectory in the Cartesian space with the end effector. However, the robot doesn't know the environment in which it move. The robot motion has to be controlled such that the minimum distance between the robot links and the obstacles, which can be present in the environment, is kept greater than a security margin.\\
 The pioneering work of \cite{khatib1986} exploits the concept of \textit{artificial potential fields} in obstacle avoidance within the control of manipulators with a fixed base, or of mobile robots. A potential field is generated in the Cartesian space decreasing towards the goal position of the robot and increasing going in proximity of obstacles. An example of the expression of the potential field can be: 
 \begin{equation}
 	\mathcal{U}=\mathcal{U}_{target}+\mathcal{U}_{obstacle}
@@ -55,7 +54,7 @@ The pioneering work of \cite{khatib1986} exploits the concept of \textit{artific
 	\end{cases}
 	\end{split}
 \end{equation}
-where $k$ and $\eta$ are positive constant, $\rho$ is a measure of the distance between a point of the robot and the obstacle and $\rho_0$ is a security distance margin from the obstacle. The result is a field of force shaped similarly to the one showed in figure \ref{potential_field}. \\
+where $k$ and $\eta$ are positive constant, $\rho$ is a measure of the distance between a point of the robot and the obstacle and $\rho_0$ is a security distance margin from the obstacle. The result is a field of force shaped similarly to the one showed in Figure \ref{potential_field}. \\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.26]{potential_field}
@@ -71,10 +70,10 @@ F^*_{obstacle}&=-\nabla\mathcal{U}_{obstacle}=\begin{cases}\eta\left(\frac{1}{\r
 \end{cases}
 \end{split}
 \end{equation}
-Multiple points can be chosen on the manipulator arm, to avoid collisions with all the links of the robot. The forces generated on all of these points are then projected on joint torques space through the Jacobian matrices. This way the manipulator arm, or the mobile robot, is induced by the joint torques to move away from the obstacles. Therefore the system is forced to move towards a point of minimum in the artificial potential field, which should be the target configuration, but, with this basic approach, it is very easy that the system runs into incorrect configurations of local minima of the potential field, .\\
+Multiple points can be chosen on the manipulator arm, to avoid collisions with all the links of the robot. The forces generated on all of these points are then projected on joint torques space through the Jacobian matrices. This way the manipulator arm, or the mobile robot, is induced by the joint torques to move away from the obstacles. Therefore the system is forced to move towards a point of minimum in the artificial potential field, which should be the target configuration. However, with this basic approach, it is very easy that the system runs into incorrect configurations of local minima of the potential field, .\\
 With systems like Mobile Manipulators the obstacle avoidance problem can also be formulated as an optimization problem. Exploiting its increased number of joints a Mobile Manipulator can follow a primary task, i.e. trajectory traking of the end effector, while simoultaneously optimizing a secondary objective, and/or satisfying certain constraints by utilisation of the system's redundancy. In this sense, obstacle avoidance naturally arises as a secondary objective to be achieved, as explained in \cite{yamamoto2},\cite{tanner2000} or in \cite{perdereau2002}, where an obstacle avoidance term is added in the objective function of the optimization problem for the control of Mobile Manipulators
 \begin{equation}
-	\varphi_{OA}(q)=\sum_{i=1}^{l}\alpha_ip(\rho_i(q))
+	\varphi_{OA}(x)=\sum_{i=1}^{l}\alpha_ip(\rho_i(x))
 \end{equation}
 where $l$ is the number of points where the obstacle avoidance is considered, $\alpha$ is a weighting factor and $p$ is a penalty function depending on the distance of the point from the obstacle.\\
 Another approach on Mobile Manipualator obstacle avoidance that deserves to be mentioned is the Elastic Strips method proposed in \cite{brockKhatib} where the motion of the robot is chosen between a set of homotopic collision-free paths through a potential field-based control algorithm. \\
