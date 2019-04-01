@@ -42,7 +42,7 @@ The kinematics of a wheeled mobile robot subjected to pure rolling constraints c
 	\caption{Unicycle model}
 	\label{fig:unicyclemodel}
 \end{figure}
-A unicycle is a vehicle whose configuration is completely described by the configuration vector $x = \left[\begin{matrix}x_b&y_b&\theta_b\end{matrix}\right]^T$, where $x_b$ and $y_b$ are the Cartesian coordinates of the contact point of the wheel with the ground and $\theta_b$ is the orientation of the wheel with respect to the axis of the abscissas, as showed in figure \ref{fig:unicyclemodel}. \\
+A unicycle is a vehicle whose configuration is completely described by the configuration vector $x = \left[\begin{matrix}x_b&y_b&\theta_b\end{matrix}\right]^T$, where $x_b$ and $y_b$ are the Cartesian coordinates of the contact point of the wheel with the ground and $\theta_b$ is the orientation of the wheel with respect to the axis of the abscissas, as showed in Figure \ref{fig:unicyclemodel}. \\
 The pure rolling constraint for the unicycle is simply expressed as:
 \begin{equation} \label{At}
 \dot{x}_b\sin\theta_b-\dot{y}_b\cos\theta_b=\left[
@@ -196,11 +196,11 @@ where the columns of $\mathcal{J}_a(x)={\partial f}/{\partial x_{arm}}(x)$ can b
 	\end{cases} 
 \end{equation}
 and $\mathcal{J}_b(x)={\partial f}/{\partial x_{base}}(x)$ can be obtained at the same way considering $x_b$ and $y_b$ as prismatic joints and $\theta_b$ as a revolute joint of the compound system.\\
-In this the nonholonomic constraint \ref{G} of the mobile platform should be taken into account:
+Considering $\mathcal{J}_b(x)$, the nonholonomic constraint of Equation \eqref{G} of the mobile platform should be taken into account:
 \begin{equation}
-	\mathcal{J}_b(x)\dot{x}_b=\mathcal{J}_b(x)G(x)v=\mathcal{J}_v(\theta_b)v
+	\mathcal{J}_b(x)\dot{x}_b=\mathcal{J}_b(x)G(x)v=\mathcal{J}_v(x)v
 \end{equation}
-Therefore is now possible to reformulate eq \ref{eq:dotx_EE} in a compact form to express the end effector traslational and rotational velocities as a function of the 8-elements input vector of joints and vehicle velocities.
+Therefore is now possible to reformulate Equation \eqref{eq:dotx_EE} in a compact form to express the end effector traslational and rotational velocities as a function of the 8-elements input vector of joints and vehicle velocities.
 \begin{equation}
 \dot{\xi}=\left[\begin{matrix}
 \mathcal{J}_v(\theta_b) & \mathcal{J}_a(x)
